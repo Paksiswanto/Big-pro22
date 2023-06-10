@@ -1,0 +1,242 @@
+<span style="margin-bottom: 5px; font-size: 30px; width: 22%;">Tambah Pendapatan</span>
+<div class="content-wrapper-scroll">
+
+                <!-- Content wrapper start -->
+                <div class="content-wrapper">
+
+
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 cool-12">
+
+                            <span style="font-size: 20px; color: #000000;">Umum</span>
+                            <p style="font-size: 16px;">Di sini Anda dapat memasukkan informasi umum transaksi seperti tanggal, jumlah, akun, deskripsi, dll.</p>
+                            <hr>
+
+                            <div class="content">
+                                <div class="row" style="margin-top: 3%;">
+                                    <div class="d-flex">
+                                        <div class="col-5">
+                                            <span style="font-size: 16px; color: #000000;">Tanggal</span>
+                                            <input style="margin-top: 15px;" type="date" class="form-control" placeholder="First name" aria-label="First name">
+                                        </div>
+                                        <!-- <div class="col-5 dropdown" style="margin-left: 225px;">
+                                        <span style="font-size: 16px; color: #000000;">Metode Pembayaran</span>
+                                        <input style="margin-top: 15px;" type="text" class="form-control dropbtn" placeholder="Last name" aria-label="Last name">
+                                        <div class="dropdown-content">
+                                        <select id="buah" name="buah" style="margin-top: 15px;" class="form-control">
+                                            <option value="">juni</option>
+                                            
+                                            <button onclick="openModal('Modal 1')">Modal 1</button>
+                                            </div>
+
+                                        </select>
+                                    </div> -->
+                                        <div class="dropdown">
+                                            <div class="col-5" tyle="margin-left: 225px;">
+                                                <span style="font-size: 16px; color: #000000;">Metode Pembayaran</span>
+                                                <button class="dropbtn form-control">Pilih Menu</button>
+                                                <div class="dropdown-content">
+                                                    <a href="#" onclick="openModal('Modal1')">Link 1</a>
+                                                    <a href="#" onclick="openModal('Modal2')">Link 2</a>
+                                                    <a href="#" onclick="openModal('Modal3')">Link 3</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="dropdown">
+                                        <button class="dropbtn">Pilih</button>
+                                        <div class="dropdown-content">
+                                            <button onclick="openModal('Modal 1')">Modal 1</button>
+                                            <button onclick="openModal('Modal 2')">Modal 2</button>
+                                            <button onclick="openModal('Modal 3')">Modal 3</button>
+                                        </div>
+                                    </div> -->
+
+                                        <div id="myModal" class="modal">
+                                            <div class="modal-content">
+                                                <span class="close" onclick="closeModal()">&times;</span>
+                                                <p id="modalText"></p>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="myModal" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Modal title</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Modal body text goes here.</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 3%;">
+                                    <div class="col-5">
+
+                                        <!-- <input style="margin-top: 15px;" type="text" class="form-control" placeholder="First name" aria-label="First name"> -->
+                                        <!-- <select id="myDropdown" name="" style="margin-top: 15px;" class="form-control" onchange="switchPage()">
+                                            <option value="apel">Cash</option>
+                                            <option value="jeruk">Transfer Bank</option>
+                                            <option onclick="openModal('Modal1')">Link 1</option>
+
+                                            <a href="#" onclick="openModal('Modal3')">Link 3</a>
+                                        </select> -->
+                                        
+                                        <div id="myModal" class="modal">
+                                            <div class="modal-content">
+                                                <span class="close" onclick="closeModal()">&times;</span>
+                                                <p id="modalText"></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-5" style="margin-left: 225px;">
+                                        <span style="font-size: 16px; color: #000000;">Metode Pembayaran</span>
+                                        <input style="margin-top: 15px;" type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+
+                                    </div>
+                                </div>
+                                <div style="margin-top: 3%;">
+                                    <span style="font-size: 16px; color: #000000; margin-top: 3%">Deskrisi</span>
+                                    <div class="form-floating" style="margin-top: 15px;">
+                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px "></textarea>
+                                        <label for="floatingTextarea2">Comments</label>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 3%;">
+                                    <span style="font-size: 20px; color: #000000;">Tetapkan</span>
+                                    <p style="font-size: 16px;">Pilih kategori dan pelanggan untuk membuat laporan Anda lebih detail.</p>
+                                    <hr>
+                                </div>
+                                <div class="row" style="margin-top: 3%;">
+                                    <div class="col-5">
+                                        <span style="font-size: 16px; color: #000000;">Tanggal</span>
+                                        <input style="margin-top: 15px;" type="text" class="form-control" placeholder="First name" aria-label="First name">
+                                    </div>
+                                    <div class="col-5" style="margin-left: 225px;">
+                                        <span style="font-size: 16px; color: #000000;">Metode Pembayaran</span>
+                                        <input style="margin-top: 15px;" type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                                    </div>
+                                </div>
+                                <div style="margin-top: 3%;">
+                                    <span style="font-size: 20px; color: #000000;">Lainnya</span>
+                                    <p style="font-size: 16px;">Masukkan Lampiran Pendukung untuk menyimpan transaksi yang ditautkan ke catatan
+                                        Anda.</p>
+                                    <hr>
+                                </div>
+                                <div class="row" style="margin-top: 3%;">
+                                    <div class="col-5">
+                                        <span style="font-size: 16px; color: #000000;">Tanggal</span>
+                                        <input style="margin-top: 15px;" type="text" class="form-control" placeholder="First name" aria-label="First name">
+                                    </div>
+                                </div>
+                                <div style="margin-top: 3%;">
+                                    <span style="font-size: 16px; color: #000000; margin-top: 3%">Deskrisi</span>
+                                    <div class="form-floating" style="margin-top: 15px;">
+                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px "></textarea>
+                                        <label for="floatingTextarea2">Comments</label>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+
+                                    <table class="table caption-top" style="margin-top: 1%;">
+                                        <!-- <caption>List of users</caption> -->
+                                        <thead>
+                                            <tr>
+                                                <th><input type="checkbox" style="width: 18px; height: 18px;"></th>
+                                                <th scope="col"><span style="font-size: 16px;">Tanggal Mulai</span></th>
+                                                <th scope="col">Tanggal Berakhir</th>
+                                                <th scope="col">Jenis</th>
+                                                <th scope="col">Kategori</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Jumlah</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="checkbox" style="width: 18px; height: 18px;"></td>
+                                                <th scope="row">13 Mei 2023</th>
+                                                <td>19 Mei 2023</td>
+                                                <td>Pendapatan</td>
+                                                <td>Penjualan Website</td>
+
+                                                <td>
+                                                    <span style="font-size: 14px;" class="badge2">Selesai</span>
+                                                </td>
+                                                <td>Rp700.000.000</td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" style="width: 18px; height: 18px;"></td>
+                                                <th scope="row">16 Mei 2023</th>
+                                                <td>23 April 2023</td>
+                                                <td>Pengeluaran</td>
+                                                <td>Biaya Lain-Lain</td>
+                                                <td>
+                                                    <span style="font-size: 14px;" class="badge1">Aktif</span>
+                                                </td>
+                                                <td>Rp900.000.000</td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" style="width: 18px; height: 18px;"></td>
+                                                <th scope="row">23 Mei 2023</th>
+                                                <td>31 Desember 2024</td>
+                                                <td>Pendapatan</td>
+                                                <td>Penjualan</td>
+                                                <td>
+                                                    <span style="font-size: 14px;" class="badge2">Selesai</span>
+                                                </td>
+                                                <td>Rp200.000.000</td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" style="width: 18px; height: 18px;"></td>
+                                                <th scope="row">34 Mei 2023</th>
+                                                <td>1 Januari 2024</td>
+                                                <td>Pendapatan</td>
+                                                <td>Penjualan Website</td>
+                                                <td>
+                                                    <span style="font-size: 14px;" class="badge1">Aktif</span>
+                                                </td>
+                                                <td>Rp1.000.000.000</td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" style="width: 18px; height: 18px;"></td>
+                                                <th scope="row">34 Mei 2023</th>
+                                                <td>15 Juli 2023</td>
+                                                <td>Pengeluaran</td>
+                                                <td>Biaya Listrik</td>
+                                                <td>
+                                                    <span style="font-size: 14px;" class="badge2">Selesai</span>
+                                                </td>
+                                                <td>Rp1.000.000.000</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                        <!-- Row end -->
+
+                    </div>
+                    <!-- Content wrapper end -->
+
+                    <!-- App footer start -->
+                    <div class="app-footer">© Uni Pro Admin 2021</div>
+                    <!-- App footer end -->
+
+                </div>
+                <!-- Content wrapper scroll end -->
+
+            </div>

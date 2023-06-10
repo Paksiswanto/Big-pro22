@@ -1,0 +1,70 @@
+.account-atur-kotak {
+    border-right: 1px solid #e1e8f3;
+    height: 100%;
+}
+
+.account-atur-kotak .atur-kotak {
+    margin-bottom: 1rem;
+
+}
+.atur-kotak-judul{
+    margin-bottom: 20px;
+    height: 30px;
+    width: 430px;
+    padding: 0 0 0 0rem;
+    font-size: 15px;
+}
+
+.account-atur-kotak .atur-kotak .atur-kotak-judul {
+    margin: 0 0 .7rem 0;
+    font-size: .825rem;
+    font-weight: 400;
+}
+
+.account-atur-kotak .atur-kotak .atur-kotak-badan a {
+    padding: 0;
+}
+
+
+.account-atur-kotak-kanan {
+    height: 100%;
+    padding: 0 0 0 0rem;
+    width: 100%;
+}
+
+.atur-kotak-judul-kanan{
+    border-bottom: 1px solid #e1e8f3;
+    margin-bottom: 20px;
+    height: 30px;
+    width: 100%;
+    padding: 0 0 0 0rem;
+    font-size: 15px;
+}
+
+
+.list-grub {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .button-tagihan {
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .button-tagihan::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #A9A9A9;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+  }
+
+  .button-tagihan:hover::after {
+    transform: scaleX(1);
+  }
