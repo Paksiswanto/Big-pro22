@@ -4,9 +4,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemController;
 use Faker\Guesser\Name;
 
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\TransactionsController;
-use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\CostumersController;
 use App\Http\Controllers\AccountController;
@@ -24,6 +23,7 @@ use App\Http\Controllers\CopyTextController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
@@ -48,10 +48,10 @@ Route::get('/',[DashboardController::class,'index'])->name('dashboard');
 Route::get('kalender', function () {
     return view('kalender');
 });
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('login', function () {
-    return view('login');
-});
 Route::get('register', function () {
     return view('register');
 });
