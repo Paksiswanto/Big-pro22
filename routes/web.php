@@ -4,8 +4,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemController;
 use Faker\Guesser\Name;
 
-use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\TransactionsController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\CostumersController;
 use App\Http\Controllers\AccountController;
