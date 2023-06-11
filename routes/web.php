@@ -208,8 +208,14 @@ Route::get('/profile',[ProfileController::class,'profile'])->name('profile');
 // Route::get('invoice', )
 //Tax
 Route::get('/tax',[TaxController::class,'tax_index'])->name('tax');
+
 Route::get('/add-tax',[TaxController::class,'tax_add'])->name('tax-add');
-Route::get('/edit-tax',[TaxController::class,'tax_edit'])->name('tax-edit');
+Route::post('/insert_tax',[TaxController::class,'tax_insert'])->name('insert_tax');
+
+Route::get('/edit-tax/{id}',[TaxController::class,'tax_edit'])->name('tax-edit');
+Route::post('/update_tax/{id}',[TaxController::class,'tax_update'])->name('update_tax');
+
+Route::get('/delete_tax/{id}',[TaxController::class,'tax_delete'])->name('tax-delete');
 //currency
 Route::get('/currency',[CurrencyController::class,'currency_index'])->name('currency');
 Route::get('/add-currency',[CurrencyController::class,'currency_add'])->name('currency-add');

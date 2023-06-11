@@ -88,6 +88,7 @@
 			border: 0px;
 			border-bottom: 2px solid #333;
 		}
+
 		.searchcontainer {
 			width: 90%;
 			font-size: 20px;
@@ -153,35 +154,37 @@
 
 					<!-- Row start -->
 					<div class="card-body">
-					<div class="row gutters">
-						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+						<div class="row gutters">
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-							<!-- Card start -->
-                            <div class="card">
-							<!-- <div class=""> -->
-								<div class="card-header">
-                                <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
-                                        <div class="card-title"><h3>Pajak<button type="button" style="border: none; background:transparent;">☆</button></h3></div>
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">
-                                            <div class="graph-day-selection" role="group" style="margin-left: -30px;margin-right: 10px;">
-                                                <a href="{{url('add-tax')}}">
-                                                    <button type="button" class="btn active" style="background: transparent">Tambah</button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown">
-                                            <a class="btn btn-ekspor-primary dropdown icon-dots-three-vertical" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<!-- Card start -->
+								<div class="card">
+									<!-- <div class=""> -->
+									<div class="card-header">
+										<div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
+											<div class="card-title">
+												<h3>Pajak<button type="button" style="border: none; background:transparent;">☆</button></h3>
+											</div>
+										</div>
+										<div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">
+											<div class="graph-day-selection" role="group" style="margin-left: -30px;margin-right: 10px;">
+												<a href="{{url('add-tax')}}">
+													<button type="button" class="btn active" style="background: transparent">Tambah</button>
+												</a>
+											</div>
+										</div>
+										<div class="dropdown">
+											<a class="btn btn-ekspor-primary dropdown icon-dots-three-vertical" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
-                                            </a>
+											</a>
 
-                                            <ul class="dropdown-menu dropdown-menu-lg-end" style="z-index: 100;">
-                                                <li><a class="dropdown-item" href="#">Impor</a></li>
-                                                <li><a class="dropdown-item" href="#">Expor</a></li>
+											<ul class="dropdown-menu dropdown-menu-lg-end" style="z-index: 100;">
+												<li><a class="dropdown-item" href="#">Impor</a></li>
+												<li><a class="dropdown-item" href="#">Expor</a></li>
 
-                                            </ul>
-                                        </div>
-								<!-- <div class="dropdown icon-dots-three-vertical">
+											</ul>
+										</div>
+										<!-- <div class="dropdown icon-dots-three-vertical">
 											<span></span>
 											<div class="dropdown-content">
 												<a href="#">
@@ -194,7 +197,7 @@
 												</a>
 											</div>
 										</div>      -->
-								</div>
+									</div>
 
 									<!-- Row start -->
 
@@ -226,50 +229,21 @@
 												</tr>
 											</thead>
 											<tbody>
+												@foreach ($data as $row)
 												<!-- Data 1 -->
 												<tr class="table-row">
 													<td><input type="checkbox" class="other-checkbox"></td>
-													<td>PPh</td>
-													<td>Normal</td>
-													<td>12</td>
+													<td>{{ $row->name }}</td>
+													<td>{{ $row->type }}</td>
+													<td>{{ $row->tax_amount }}%</td>
 													<td>
 														<div class="menu-icons" style="font-size: 15px;">
-															<a href="{{route('tax-edit')}}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
+															<a href="{{ route('tax-edit', ['id' => $row->id]) }}," class="menu-icon icon-edit-2"></a>
+															<a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
 														</div>
 													</td>
 												</tr>
-
-												<!-- Data 2 -->
-												<tr class="table-row">
-													<td><input type="checkbox" class="other-checkbox"></td>
-													<td>PPn</td>
-													<td>Pemotongan</td>
-													<td>10</td>
-													<td>
-														<div class="menu-icons" style="font-size: 15px;">
-															<a href="{{route('tax-edit')}}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-														</div>
-													</td>
-												</tr>
-
-
-												<!-- Data 3 -->
-												<tr class="table-row">
-													<td><input type="checkbox" class="other-checkbox"></td>
-													<td>PPh</td>
-													<td>pemotongan</td>
-													<td>12</td>
-													<td>
-														<div class="menu-icons" style="font-size: 15px;">
-															<a href="{{route('tax-edit')}}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-														</div>
-													</td>
-												</tr>
-
-
+												@endforeach
 											</tbody>
 										</table>
 									</div>
@@ -299,146 +273,153 @@
 									</div>
 									<!-- Card end -->
 									<!-- Modal start -->
-  <!-- Modal start -->
-  <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content" style="padding: 0px">
-			<div class="modal-header">
-				<h5 class="modal-title" id="staticBackdropLabel">Hapus Pajak</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<p>Anda Yakin Ingin Menghapus Pajak Ini?</p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
+									<!-- Modal start -->
+									<div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content" style="padding: 0px">
+												<div class="modal-header">
+													<h5 class="modal-title" id="staticBackdropLabel">Hapus Pajak</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
 
-			</div>
-		</div>
-	</div>
-</div>
-<!-- Modal end -->
+												<div class="modal-body">
+
+													<p>Anda Yakin Ingin Menghapus Pajak Ini?</p>
+												</div>
+												<div class="modal-footer">
+													@isset($row)
+													<a href="{{ route('tax-delete', ['id' => $row->id]) }}"><button type="button" class="btn btn-danger" id="deleteButton">Hapus</button></a>
+													@endisset
+												</div>
+
+
+											</div>
+										</div>
+									</div>
+									<!-- Modal end -->
 									<!-- Modal end -->
 
-							<!-- </div> -->
-							<!-- Card end -->
+									<!-- </div> -->
+									<!-- Card end -->
 
+								</div>
+							</div>
 						</div>
+						<!-- Row end -->
+
 					</div>
-					</div>
-					<!-- Row end -->
+					<!-- Content wrapper end -->
+
+					<!-- App Footer start -->
+					<div class="app-footer">© Uni Pro Admin 2021</div>
+					<!-- App footer end -->
 
 				</div>
-				<!-- Content wrapper end -->
-
-				<!-- App Footer start -->
-				<div class="app-footer">© Uni Pro Admin 2021</div>
-				<!-- App footer end -->
+				<!-- Content wrapper scroll end -->
 
 			</div>
-			<!-- Content wrapper scroll end -->
-
-		</div>
-		<!-- *************
+			<!-- *************
 				************ Main container end *************
 			************* -->
 
-	</div>
-	<!-- Page wrapper end -->
+		</div>
+		<!-- Page wrapper end -->
 
-	<!-- *************
+		<!-- *************
 			************ Required JavaScript Files *************
 		************* -->
-	<!-- Required jQuery first, then Bootstrap Bundle JS -->
-	<script src="{{ asset ("Gmbslagi/js/jquery.min.js")}}"></script>
-	<script src="{{ asset ("Gmbslagi/js/bootstrap.bundle.min.js")}}"></script>
-	<script src="{{ asset ("Gmbslagi/js/modernizr.js")}}"></script>
-	<script src="{{ asset ("Gmbslagi/js/moment.js")}}"></script>
+		<!-- Required jQuery first, then Bootstrap Bundle JS -->
+		<script src="{{ asset ("Gmbslagi/js/jquery.min.js")}}"></script>
+		<script src="{{ asset ("Gmbslagi/js/bootstrap.bundle.min.js")}}"></script>
+		<script src="{{ asset ("Gmbslagi/js/modernizr.js")}}"></script>
+		<script src="{{ asset ("Gmbslagi/js/moment.js")}}"></script>
 
-	<!-- *************
+		<!-- *************
 			************ Vendor Js Files *************
 		************* -->
 
-	<!-- Megamenu JS -->
-	<script src="{{ asset ("Gmbslagi/vendor/megamenu/js/megamenu.js")}}"></script>
-	<script src="{{ asset ("Gmbslagi/vendor/megamenu/js/custom.js")}}"></script>
+		<!-- Megamenu JS -->
+		<script src="{{ asset ("Gmbslagi/vendor/megamenu/js/megamenu.js")}}"></script>
+		<script src="{{ asset ("Gmbslagi/vendor/megamenu/js/custom.js")}}"></script>
 
-	<!-- Slimscroll JS -->
-	<script src="{{ asset ("Gmbslagi/vendor/slimscroll/slimscroll.min.js")}}"></script>
-	<script src="{{ asset ("Gmbslagi/vendor/slimscroll/custom-scrollbar.js")}}"></script>
+		<!-- Slimscroll JS -->
+		<script src="{{ asset ("Gmbslagi/vendor/slimscroll/slimscroll.min.js")}}"></script>
+		<script src="{{ asset ("Gmbslagi/vendor/slimscroll/custom-scrollbar.js")}}"></script>
 
-	<!-- Search Filter JS -->
-	<script src="{{ asset ("Gmbslagi/vendor/search-filter/search-filter.js")}}"></script>
-	<script src="{{ asset ("Gmbslagi/vendor/search-filter/custom-search-filter.js")}}"></script>
+		<!-- Search Filter JS -->
+		<script src="{{ asset ("Gmbslagi/vendor/search-filter/search-filter.js")}}"></script>
+		<script src="{{ asset ("Gmbslagi/vendor/search-filter/custom-search-filter.js")}}"></script>
 
-	<!-- Data Tables -->
-	<script src="{{ asset ("Gmbslagi/vendor/datatables/dataTables.min.js")}}"></script>
-	<script src="{{ asset ("Gmbslagi/vendor/datatables/dataTables.bootstrap.min.js")}}"></script>
+		<!-- Data Tables -->
+		<script src="{{ asset ("Gmbslagi/vendor/datatables/dataTables.min.js")}}"></script>
+		<script src="{{ asset ("Gmbslagi/vendor/datatables/dataTables.bootstrap.min.js")}}"></script>
 
-	<!-- Custom Data tables -->
-	<script src="{{ asset ("Gmbslagi/vendor/datatables/custom/custom-datatables.js")}}"></script>
-	<script src="{{ asset ("Gmbslagi/vendor/datatables/custom/fixedHeader.js")}}"></script>
+		<!-- Custom Data tables -->
+		<script src="{{ asset ("Gmbslagi/vendor/datatables/custom/custom-datatables.js")}}"></script>
+		<script src="{{ asset ("Gmbslagi/vendor/datatables/custom/fixedHeader.js")}}"></script>
 
-	<!-- Download / CSV / Copy / Print -->
-	<script src="{{ asset ("Gmbslagi/vendor/datatables/buttons.min.js")}}"></script>
-	<script src="{{ asset ("Gmbslagi/vendor/datatables/jszip.min.js")}}"></script>
-	<script src="{{ asset ("Gmbslagi/vendor/datatables/pdfmake.min.js")}}"></script>
-	<script src="{{ asset ("Gmbslagi/vendor/datatables/vfs_fonts.js")}}"></script>
-	<script src="{{ asset ("Gmbslagi/vendor/datatables/html5.min.js")}}"></script>
-	<script src="{{ asset ("Gmbslagi/vendor/datatables/buttons.print.min.js")}}"></script>
-	<script src="{{ asset ("Gmbslagi/vendor/dropzone/dropzone.min.js")}}"></script>
+		<!-- Download / CSV / Copy / Print -->
+		<script src="{{ asset ("Gmbslagi/vendor/datatables/buttons.min.js")}}"></script>
+		<script src="{{ asset ("Gmbslagi/vendor/datatables/jszip.min.js")}}"></script>
+		<script src="{{ asset ("Gmbslagi/vendor/datatables/pdfmake.min.js")}}"></script>
+		<script src="{{ asset ("Gmbslagi/vendor/datatables/vfs_fonts.js")}}"></script>
+		<script src="{{ asset ("Gmbslagi/vendor/datatables/html5.min.js")}}"></script>
+		<script src="{{ asset ("Gmbslagi/vendor/datatables/buttons.print.min.js")}}"></script>
+		<script src="{{ asset ("Gmbslagi/vendor/dropzone/dropzone.min.js")}}"></script>
 
-	<!-- Main Js Required -->
-	<script src="{{ asset ("Gmbslagi/js/main.js")}}"></script>
-	<script>
-		const checkboxes = document.querySelectorAll('.other-checkbox');
-		const selectAllCheckbox = document.querySelector('#select-all-checkbox');
-		const hiddenMenu = document.querySelector('.hidden-menu');
-		const countDisplay = document.querySelector('#count-display');
+		<!-- Main Js Required -->
+		<script src="{{ asset ("Gmbslagi/js/main.js")}}"></script>
 
-		// Function to count the number of checked checkboxes
-		function countCheckedCheckboxes() {
-			const checkedCheckboxes = document.querySelectorAll('.other-checkbox:checked');
-			return checkedCheckboxes.length;
-		}
+		
+		<script>
+			const checkboxes = document.querySelectorAll('.other-checkbox');
+			const selectAllCheckbox = document.querySelector('#select-all-checkbox');
+			const hiddenMenu = document.querySelector('.hidden-menu');
+			const countDisplay = document.querySelector('#count-display');
 
-		// Function to update the count display
-		function updateCountDisplay() {
-			const totalCount = countCheckedCheckboxes();
-			countDisplay.textContent = totalCount + ' Item Yang dipilih : ';
-		}
+			// Function to count the number of checked checkboxes
+			function countCheckedCheckboxes() {
+				const checkedCheckboxes = document.querySelectorAll('.other-checkbox:checked');
+				return checkedCheckboxes.length;
+			}
 
-		// Add event listener to each checkbox
-		checkboxes.forEach(function(checkbox) {
-			checkbox.addEventListener('change', function() {
+			// Function to update the count display
+			function updateCountDisplay() {
+				const totalCount = countCheckedCheckboxes();
+				countDisplay.textContent = totalCount + ' Item Yang dipilih : ';
+			}
+
+			// Add event listener to each checkbox
+			checkboxes.forEach(function(checkbox) {
+				checkbox.addEventListener('change', function() {
+					if (this.checked) {
+						hiddenMenu.style.display = 'block'; // Show the hidden menu
+					} else {
+						const checkedCount = countCheckedCheckboxes();
+						if (checkedCount === 0) {
+							hiddenMenu.style.display = 'none'; // Hide the hidden menu if no checkboxes are checked
+						}
+					}
+
+					updateCountDisplay(); // Update the count display
+				});
+			});
+
+			// Add event listener to the "Select All" checkbox
+			selectAllCheckbox.addEventListener('change', function() {
+				checkboxes.forEach(function(checkbox) {
+					checkbox.checked = selectAllCheckbox.checked; // Set the state of each checkbox based on the "Select All" checkbox
+				});
+
 				if (this.checked) {
 					hiddenMenu.style.display = 'block'; // Show the hidden menu
 				} else {
-					const checkedCount = countCheckedCheckboxes();
-					if (checkedCount === 0) {
-						hiddenMenu.style.display = 'none'; // Hide the hidden menu if no checkboxes are checked
-					}
+					hiddenMenu.style.display = 'none'; // Hide the hidden menu
 				}
 
 				updateCountDisplay(); // Update the count display
 			});
-		});
-
-		// Add event listener to the "Select All" checkbox
-		selectAllCheckbox.addEventListener('change', function() {
-			checkboxes.forEach(function(checkbox) {
-				checkbox.checked = selectAllCheckbox.checked; // Set the state of each checkbox based on the "Select All" checkbox
-			});
-
-			if (this.checked) {
-				hiddenMenu.style.display = 'block'; // Show the hidden menu
-			} else {
-				hiddenMenu.style.display = 'none'; // Hide the hidden menu
-			}
-
-			updateCountDisplay(); // Update the count display
-		});
-	</script>
+		</script>
 
 
 </body>

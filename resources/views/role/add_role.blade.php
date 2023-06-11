@@ -657,6 +657,475 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="headingSeven">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                                                Autentikasi
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faqAccordion">
+                                                            <div class="accordion-body">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-hover">
+                                                                        <thead>
+                                                                            <tr>
+
+                                                                                <th scope="col">Autentikasi</th>
+                                                                                <th scope="col">Full Access</th>
+                                                                                <th scope="col">View</th>
+                                                                                <th scope="col">Create</th>
+                                                                                <th scope="col">Edit</th>
+                                                                                <th scope="col">Delete</th>
+
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+
+                                                                                <td>Pengguna</th>
+                                                                                <td name="item" id="checkbox106">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox107"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox108"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox109"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox110"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Profil</th>
+                                                                                <td name="item" id="checkbox111">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox112"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox113"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox114"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox115"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Roles</th>
+                                                                                <td name="item" id="checkbox116">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox117"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox118"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox119"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox120"><input type="checkbox"></td>
+
+                                                                            </tr>
+
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="headingEight">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                                                Akun
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#faqAccordion">
+                                                            <div class="accordion-body">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col">Akun</th>
+                                                                                <th scope="col">Full Accesss</th>
+                                                                                <th scope="col">View</th>
+                                                                                <th scope="col">Create</th>
+                                                                                <th scope="col">Edit</th>
+                                                                                <th scope="col">Delete</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>Card</td>
+                                                                                <td name="item" id="checkbox121">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox122"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox123"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox124"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox125"><input type="checkbox"></td>
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Cart</th>
+                                                                                <td name="item" id="checkbox126">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox127"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox128"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox129"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox130"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Checkout</th>
+                                                                                <td name="item" id="checkbox126">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox127"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox128"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox129"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox130"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Plan</th>
+                                                                                <td name="item" id="checkbox126">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox127"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox128"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox129"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox130"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Reward</th>
+                                                                                <td name="item" id="checkbox131">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox132"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox133"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox134"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox135"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Subscription</th>
+                                                                                <td name="item" id="checkbox136">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox137"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox138"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox139"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox140"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Ticket</th>
+                                                                                <td name="item" id="checkbox141">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox142"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox143"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox144"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox145"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Transactions</th>
+                                                                                <td name="item" id="checkbox146">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox147"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox148"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox149"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox150"><input type="checkbox"></td>
+
+                                                                            </tr>
+
+
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="headingNine">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                                                Umum
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#faqAccordion">
+                                                            <div class="accordion-body">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col">Umum</th>
+                                                                                <th scope="col">Full Access</th>
+                                                                                <th scope="col">View</th>
+                                                                                <th scope="col">Create</th>
+                                                                                <th scope="col">Edit</th>
+                                                                                <th scope="col">Delete</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>Perusahaan</td>
+                                                                                <td name="item" id="checkbox151">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox152"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox153"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox154"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox155"><input type="checkbox"></td>
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Item</th>
+                                                                                <td name="item" id="checkbox156">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox157"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox158"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox159"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox160"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Import</th>
+                                                                                <td name="item" id="checkbox161">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox162"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox163"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox164"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox165"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Uploads</th>
+                                                                                <td name="item" id="checkbox166">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox167"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox168"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox169"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox170"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Dasbor</th>
+                                                                                <td name="item" id="checkbox171">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox172"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox173"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox174"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox175"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Laporan</th>
+                                                                                <td name="item" id="checkbox176">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox177"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox178"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox179"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox180"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Cari</th>
+                                                                                <td name="item" id="checkbox181">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox182"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox183"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox184"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox185"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Widget</th>
+                                                                                <td name="item" id="checkbox186">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox187"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox188"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox189"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox190"><input type="checkbox"></td>
+
+                                                                            </tr>
+
+
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="headingTen">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                                                                Pengaturan
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#faqAccordion">
+                                                            <div class="accordion-body">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col">Pengaturan</th>
+                                                                                <th scope="col">Full Access</th>
+                                                                                <th scope="col">View</th>
+                                                                                <th scope="col">Create</th>
+                                                                                <th scope="col">Edit</th>
+                                                                                <th scope="col">Delete</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>Kategori</td>
+                                                                                <td name="item" id="checkbox191">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox192"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox193"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox194"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox195"><input type="checkbox"></td>
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Pajak</th>
+                                                                                <td name="item" id="checkbox196">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox197"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox198"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox199"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox200"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Mata Uang</th>
+                                                                                <td name="item" id="checkbox201">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox202"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox203"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox204"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox205"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Aplikasi</th>
+                                                                                <td name="item" id="checkbox206">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox207"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox208"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox209"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox210"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Company</th>
+                                                                                <td name="item" id="checkbox211">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox212"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox213"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox214"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox215"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Default</th>
+                                                                                <td name="item" id="checkbox216">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox217"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox218"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox219"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox220"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Invoice</th>
+                                                                                <td name="item" id="checkbox221">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox222"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox223"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox224"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox225"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Localisation</th>
+                                                                                <td name="item" id="checkbox226">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox227"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox228"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox229"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox230"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Schedule</th>
+                                                                                <td name="item" id="checkbox231">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox232"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox233"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox234"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox235"><input type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Template Surel</th>
+                                                                                <td name="item" id="checkbox236">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox237"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox238"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox239"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox240"><input type="checkbox"></td>
+
+                                                                            </tr>
+
+
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                   
+
                                                 </div>
                                                 <!-- Faq end -->
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
