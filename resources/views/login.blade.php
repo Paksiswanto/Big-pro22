@@ -100,7 +100,8 @@
             </div>
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <div class="login-wrapper">
-                    <form action="/">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
                         <div class="login-screen" style="margin-left: 27px; margin-bottom: 100px;">
                             <div class="login-body">
                                 <a href="crm.html" class="login-logo">
@@ -108,11 +109,14 @@
                                 </a>
                                 <h6>Selamat Datang,<br>Login dan mulai manajemen keuangan anda</h6>
                                 <div class="field-wrapper">
-                                    <input type="email" placeholder="Masukan email anda" autofocus>
+                                    <input type="email" name="email" value="{{ old('email') }}" placeholder="Masukan email anda" autofocus>
+                                    @error('email')
+    <span class="error">{{ $message }}</span>
+@enderror
                                     <div class="field-placeholder">Email</div>
                                 </div>
                                 <div class="field-wrapper mb-3">
-                                    <input type="password" placeholder="Masukan kata kunci">
+                                    <input type="password" name="password" placeholder="Masukan kata kunci">
                                     <div class="field-placeholder">Kata Kunci</div>
                                 </div>
                                 <div class="actions">
