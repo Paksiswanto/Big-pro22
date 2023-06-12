@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('attachment')->nullable();
             $table->foreignId('account_id')->references('id')->on('account')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('category_id')->references('id')->on('category')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('customer_id')->references('id')->on('customer')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('company_id')->references('id')->on('company')->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();

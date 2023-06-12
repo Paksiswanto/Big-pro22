@@ -80,6 +80,14 @@
 						<!-- Row start -->
 						<div class="card-body">
                         <div class="row gutters">
+                        <div class="card-title">
+                                <div class="d-flex flex-wrap">
+                                    <h1 class="card-title col-xl-8 col-lg-6 col-md-6 col-sm-6 col-12" style="font-size: 20px;">Kalender
+
+                                    </h1>
+
+                                </div>
+                            </div>
 							<div class="col-xl-12">
 								<!-- Card start -->
 								<div class="">
