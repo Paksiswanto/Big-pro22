@@ -176,6 +176,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                   <form rm action="{{route('create_category')}}" method="post">
+                                        @csrf
                                     <div class="">
                                         <div style="border-bottom: solid grey 1px;margin-bottom:1%; margin-bottom: 2%; margin-top: 2%;">
                                             <h6>Umum</h6>
@@ -188,7 +190,7 @@
 
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <input class="form-control" type="text" placeholder=" Masukan Nama">
+                                                    <input class="form-control" name="name" type="text" placeholder=" Masukan Nama">
                                                     <div class="field-placeholder">Nama <span class="text-danger">*</span></div>
                                                     <div class="form-text">
 
@@ -202,15 +204,8 @@
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
                                                     <div class="color-input-container">
-                                                        
-                                                
-
-                                                       
-                                                            <input class="form-control" type="text" placeholder="Masukkan Warna Kategori">
-                                                      
-                                                      
-                                                            <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
-                                                        
+                                                        <input class="form-control" name="color" type="text" placeholder="Masukkan Warna Kategori" id="hex-input">
+                                                        <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">                                                        
                                                         <div class="field-placeholder">Warna <span class="text-danger">*</span></div>
                                                         <!-- <input type="color" style="width: 14%;background:transparent" id="color-picker">
                                                         <input type="text" id="hex-input" disabled> -->
@@ -224,12 +219,11 @@
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper-group">
                                                     <div class="field-wrapper">
-                                                        <select class="select-multiple js-states" title="Select Product Category">
-                                                            <option>Pilihan 1</option>
-                                                            <option>Pilihan 2</option>
-                                                            <option>Pilihan 3</option>
-                                                            <option>Pilihan 4</option>
+                                                        <select class="select-multiple js-states" name="category_type" title="Select Product Category">
+                                                            @foreach ($category_type as $category)  
 
+                                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                         <div class="field-placeholder">Kategori<span class="text-danger">*</span></div>
                                                     </div>
@@ -247,6 +241,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                </form>
                                 </div>
                                 <!-- Card end -->
 
@@ -306,12 +301,12 @@
     <script src="{{ asset('Gmbslagi/js/main.js') }}"></script>
 
     <script>
-        const colorPicker = document.getElementById('color-picker');
+        const colorPicker = document.getElementById('exampleColorInput');
         const hexInput = document.getElementById('hex-input');
-
+      
         colorPicker.addEventListener('input', (event) => {
-            const color = event.target.value;
-            hexInput.value = color;
+          const color = event.target.value;
+          hexInput.value = color;
         });
     </script>
 </body>

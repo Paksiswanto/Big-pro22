@@ -186,69 +186,27 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <!-- Data 1 -->
+                                                @foreach ($category as $category)
                                                 <tr class="table-row">
                                                     <td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>Deposit</td>
-                                                    <td>Pendapatan</td>
+                                                    <td>{{$category->name}}</td>
+                                                    <td>{{$category->category_type}}</td>
                                                     <td>
                                                         <div class="circle" style="
                                                                 width: 20px;
                                                                 height: 20px;
                                                                 border-radius: 50%;
-                                                                background-color: #000;">
+                                                                background-color: {{$category->color}};">
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{ route('edit-category') }}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
+                                                            <a href="edit-category/{{$category->id}}" class="menu-icon icon-edit-2"></a>
+                                                            <a href="delete_category{{$category->id}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
                                                         </div>
                                                     </td>
                                                 </tr>
-
-                                                <!-- Data 2 -->
-                                                <tr class="table-row">
-                                                    <td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>Penjualan</td>
-                                                    <td>Pendapatan</td>
-                                                    <td>
-                                                        <div class="circle" style="
-                                                            width: 20px;
-                                                            height: 20px;
-                                                            border-radius: 50%;
-                                                            background-color: #2d0bf0;">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{ route('edit-category') }}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-
-
-                                                <!-- Data 3 -->
-                                                <tr class="table-row">
-                                                    <td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>Umum</td>
-                                                    <td>Item</td>
-                                                    <td>
-                                                        <div class="circle" style="
-                                                            width: 20px;
-                                                            height: 20px;
-                                                            border-radius: 50%;
-                                                            background-color: #ff0000;">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{ route('edit-category') }}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                         <!-- Card start -->

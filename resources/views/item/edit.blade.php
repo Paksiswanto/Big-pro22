@@ -186,6 +186,7 @@ label {
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                 <!-- Card start -->
+                                <form action="">
                                 <div class="">
                                     <div class="d-flex">
                                         <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
@@ -201,7 +202,9 @@ label {
                                             <label for="toggle" class="toggle-label custom-bg " style="float: right;"></label>
                                         </div>
                                     </div>
-
+                                    <form method="PUT" action="{{ route('edit_item') }}">
+                                        @csrf
+                                        @method('PUT')
                                     <div class="">
                                         <div style="border-bottom: solid black 1px; margin-bottom: 2%; margin-top: 2%;">
                                             <h6>Umum</h6>
@@ -229,7 +232,7 @@ label {
 
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <input class="form-control" type="text" placeholder=" Masukan nama">
+                                                    <input class="form-control" value="{{$item->name}}" name="name" type="text" placeholder=" Masukan nama">
                                                     <div class="field-placeholder">Nama <span class="text-danger">*</span></div>
                                                     <div class="form-text">
 
@@ -242,10 +245,11 @@ label {
 
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <select class="select-multiple js-states" title="Select Product Category">
-                                                        <option disabled selected>Pilih Salah Satu</option>
-                                                        <option>Makanan</option>
-                                                        <option>Minuman</option>
+                                                    <select class="select-multiple js-states" value="{{$item->category}}" name="category" title="Select Product Category">
+                                                        <option disabled>Pilih Salah Satu</option>
+                                                        @foreach ($category as $item)                                                      
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                        @endforeach
                                                     </select>
                                                     <div class="field-placeholder">Kategori<span class="text-danger">*</span></div>
                                                 </div>
@@ -262,12 +266,12 @@ label {
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <textarea class="form-control" rows="2"></textarea>
+                                                        <textarea class="form-control" name="description"rows="2">{{$item->description}}</textarea>
                                                         <div class="field-placeholder">Deskripsi <span class="text-danger">*</span></div>
                                                         <div class="form-text">
                                                             Silakan masukkan Deskripsi.
                                                         </div>
-                                                    </div>
+                                                    </div>                                                    
                                                     <!-- Field wrapper end -->
 
                                                 </div>
@@ -298,7 +302,7 @@ label {
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <input class="form-control" type="number" id="inputField1" name="inputField1" disabled>
+                                                    <input class="form-control" value="{{$item->selling_price}}" type="number" id="inputField1" name="selling_price" disabled>
                                                     <div class="field-placeholder">Harga Jual</div>
                                                 </div>
                                                 <!-- Field wrapper end -->
@@ -307,7 +311,7 @@ label {
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <input class="form-control" type="text" id="inputField2" name="inputField2" disabled>
+                                                    <input class="form-control" value="{{$item->purchase_price}}" type="text" id="inputField2" name="purchase_price" disabled>
                                                     <div class="field-placeholder">Harga Beli</div>
                                                 </div>
                                                 <!-- Field wrapper end -->
@@ -316,10 +320,11 @@ label {
 
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <select class="select-multiple js-states" title="Select Product Category">
-                                                        <option disabled selected>Pilih Salah Satu</option>
-                                                        <option>PPn</option>
-                                                        <option>PPh</option>
+                                                    <select class="select-multiple js-states" value="{{$item->tax_id}}" name="tax_id" title="Select Product Category">
+                                                        <option disabled>Pilih Salah Satu</option>
+                                                        @foreach ($tax as $item)
+                                                            <option value="{{ $item->id }}" {{ old('tax_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                                        @endforeach                                             
                                                     </select>
                                                     <div class="field-placeholder">Pajak<span class="text-danger">*</span></div>
                                                 </div>
@@ -335,9 +340,11 @@ label {
                                                 </div>
                                             </div>
                                         </div>
+                                        </form>
                                         <!-- Row end -->
 
                                     </div>
+                                </form>
                                 </div>
                                 <!-- Card end -->
 

@@ -6,7 +6,6 @@ use Faker\Guesser\Name;
 
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\CostumersController;
 use App\Http\Controllers\AccountController;
@@ -72,7 +71,7 @@ Route::get('import', function () {
 });
 Route::get('/itemindex',[ItemController::class,'itemindex'])->Name('item-index');
 Route::get('/add-item',[ItemController::class,'additem'])->Name('item-add');
-Route::get('/edit-item',[ItemController::class,'edititem'])->Name('item-edit');
+Route::get('/edit-item/{id}',[ItemController::class,'edititem'])->Name('item-edit');
 
 Route::get('tambah_pemasok', function () {
     return view('pembelian.pembelian_tambah_pemasok');
@@ -169,7 +168,7 @@ Route::get('/laporan',[LaporanController::class, 'laporan'])->name('laporan');
 //category
 Route::get('/category',[CategoryController::class,'category_index'])->name('index-category');
 Route::get('/add-category',[CategoryController::class,'category_add'])->name('add-category');
-Route::get('/add-edit',[CategoryController::class,'category_edit'])->name('edit-category');
+Route::get('/edit-category/{id}',[CategoryController::class,'category_edit'])->name('edit-category');
 
 //bill
 Route::get('bill', [BillController::class, 'bill'])->name('bill');
@@ -208,8 +207,15 @@ Route::get('/profile',[ProfileController::class,'profile'])->name('profile');
 // Route::get('invoice', )
 //Tax
 Route::get('/tax',[TaxController::class,'tax_index'])->name('tax');
+
 Route::get('/add-tax',[TaxController::class,'tax_add'])->name('tax-add');
-Route::get('/edit-tax',[TaxController::class,'tax_edit'])->name('tax-edit');
+Route::post('/insert_tax',[TaxController::class,'tax_insert'])->name('insert_tax');
+
+Route::get('/edit-tax/{id}',[TaxController::class,'tax_edit'])->name('tax-edit');
+Route::post('/update_tax/{id}',[TaxController::class,'tax_update'])->name('update_tax');
+
+Route::get('/delete_tax/{id}',[TaxController::class,'tax_delete'])->name('tax-delete');
+
 //currency
 Route::get('/currency',[CurrencyController::class,'currency_index'])->name('currency');
 Route::get('/add-currency',[CurrencyController::class,'currency_add'])->name('currency-add');
@@ -217,3 +223,5 @@ Route::get('/edit-currency',[CurrencyController::class,'currency_edit'])->name('
 
 //Copy Text
 Route::get('copytext', [CopyTextController::class, 'CopyText'])->name('copytext');
+
+require __DIR__."/alfa.php";
