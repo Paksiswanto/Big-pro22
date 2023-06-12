@@ -84,7 +84,7 @@ Route::get('edit_pemasok', function () {
 //supplier
 Route::get('supplier', [SupplierController::class, 'supplier'])->name('supplier');
 Route::get('add_supplier', [SupplierController::class, 'add'])->name('add_supplier');
-Route::get('edit_supplier', [SupplierController::class, 'edit'])->name('edit_supplier');
+Route::get('/edit_supplier/{id}', [SupplierController::class, 'edit'])->name('edit_supplier');
 Route::get('details_supplier', [SupplierController::class, 'details'])->name('details_supplier');
 
 Route::get('icons', function () {
@@ -124,11 +124,8 @@ Route::get('details', [InvoiceController::class, 'details'])->name('details_inv'
 //cos
 Route::get('add_costumers', [CostumersController::class, 'add_cos'])->name('add_costumers');
 Route::get('costumer', [CostumersController::class, 'costumers'])->name('costumers');
-Route::get('show_cos', [CostumersController::class, 'show_cos'])->name('show_cos');
-Route::get('edit_cos', [CostumersController::class, 'edit_cos'])->name('edit_cos');
-
-Route::get('costumer', [InvoiceController::class, 'costumers'])->name('costumers');
-Route::get('add_costumers', [InvoiceController::class, 'add_cos'])->name('add_costumers');
+Route::get('/show_cos/{id}', [CostumersController::class, 'show_cos'])->name('show_cos');
+Route::get('/edit_cos/{id}', [CostumersController::class, 'edit_cos'])->name('edit_cos');
 
 
 
@@ -224,3 +221,4 @@ Route::get('/edit-currency',[CurrencyController::class,'currency_edit'])->name('
 Route::get('copytext', [CopyTextController::class, 'CopyText'])->name('copytext');
 
 require __DIR__."/alfa.php";
+require __DIR__. "/gmbs.php";
