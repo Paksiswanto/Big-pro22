@@ -49,7 +49,6 @@
     <link href="path/to/select2.css" rel="stylesheet" /> -->
     <style>
         .text-radio {
-            margin-left: 2%;
             margin-bottom: 1%;
             color: #5957b1;
         }
@@ -131,7 +130,7 @@
     </style>
 </head>
 
-<body>
+<body style="overflow-x: hidden">
 
     <!-- Page wrapper start -->
     <div class="page-wrapper">
@@ -156,18 +155,20 @@
                     <!-- Row start -->
                     <div class="card-body">
                         <div class="row gutters">
-                            <form action="">
 
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                                    <!-- Card start -->
-                                    <div class="" style="">
-                                        <div class="">
-                                            <div class="card-title">
-                                                <h3>Sunting Akun<button type="button" style="border: none; background:none;">☆</button></h3>
-                                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                <!-- Card start -->
+                                <div class="" style="">
+                                    <div class="">
+                                        <div class="card-title">
+                                            <h3>Sunting Akun<button type="button" style="border: none; background:none;">☆</button></h3>
                                         </div>
-                                        <div class="">
+                                    </div>
+                                    <div class="">
+                                        <form action="/update_account/{{ $data->id }}" method="post" enctype="multipart/form-data">
+                                            @csrf
 
                                             <!-- Row start -->
                                             <div class="row gutters">
@@ -180,7 +181,7 @@
                                                     </div>
 
                                                 </div>
-                                                
+
 
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
@@ -194,20 +195,20 @@
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control" placeholder="Masukkan Nama">
-
+                                                            <input type="text" class="form-control" style="z-index: auto" name="name" id="name" placeholder="Masukan nama" value="{{ $data->name }}" required>
                                                         </div>
                                                         <div class="field-placeholder">Nama<span class="text-danger">*</span></div>
                                                     </div>
                                                     <!-- Field wrapper end -->
 
                                                 </div>
+
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control" placeholder="Masukan Nomor Rekening">
+                                                            <input name="rekening_number" id="rekening_number" type="text" class="form-control" style="z-index: auto" placeholder="Masukan Nomor Rekening" value="{{ $data->rekening_number }}" required>
 
                                                         </div>
                                                         <div class="field-placeholder">Nomor Rekening<span class="text-danger">*</span></div>
@@ -222,11 +223,11 @@
 
                                                     <div class="field-wrapper-group">
                                                         <div class="field-wrapper">
-                                                            <select class="select-multiple js-states" title="Select Product Category">
-                                                                <option>Rupiah</option>
-                                                                <option>Dollar</option>
-                                                                <option>Ringgit</option>
-                                                                <option>Yen</option>
+                                                            <select name="currency" id="currency" class="select-multiple js-states" title="Select Product Category" required>
+                                                                <option value="">Pilih Mata Uang</option>
+                                                                <option value="Rupiah" <?php echo ($data['currency'] == 'Rupiah') ? 'selected="selected"' : '' ?>>Rupiah</option>
+                                                                <option value="Dollar" <?php echo ($data['currency'] == 'Dollar') ? 'selected="selected"' : '' ?>>Dollar</option>
+                                                                
 
                                                             </select>
                                                             <div class="field-placeholder">Mata Uang<span class="text-danger">*</span></div>
@@ -241,7 +242,7 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input class="form-control" type="number" placeholder="Rp0,00">
+                                                        <input name="balance" id="balance" class="form-control" type="number" placeholder="Rp0,00" value="{{ $data->balance }}" required>
                                                         <div class="field-placeholder">Saldo Saat Ini<span class="text-danger">*</span></div>
                                                     </div>
                                                     <!-- Field wrapper end -->
@@ -264,7 +265,7 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input class="form-control" type="text" placeholder="Masukkan Nama Bank">
+                                                        <input name="name_bank" id="name_bank" class="form-control" type="text" placeholder="Masukkan Nama Bank" value="{{ $data->name_bank }}" required>
                                                         <div class="field-placeholder">Nama Bank<span class="text-danger">*</span></div>
                                                     </div>
                                                     <!-- Field wrapper end -->
@@ -274,7 +275,7 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input class="form-control" type="text" placeholder="Masukkan Telepon Bank">
+                                                        <input name="bank_telephone" id="bank_telephone" class="form-control" type="text" placeholder="Masukkan Telepon Bank" value="{{ $data->bank_telephone }}" required>
                                                         <div class="field-placeholder">Telepon Bank<span class="text-danger">*</span></div>
                                                     </div>
                                                     <!-- Field wrapper end -->
@@ -284,7 +285,7 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <textarea class="form-control1" rows="2" placeholder="Masukkan Alamat Bank"></textarea>
+                                                        <textarea  name="bank_address" id="bank_address" class="form-control1" rows="2" placeholder="Masukkan Alamat Bank"  required>{{ $data->bank_address }}</textarea>
                                                         <div class="field-placeholder">Alamat Bank<span class="text-danger">*</span></div>
                                                         <div class="form-text">
                                                             Silakan masukkan Alamat Bank.
@@ -301,159 +302,161 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </form>
 
 
 
-                                        </div>
-                                        <!-- Button trigger modal -->
+                                    </div>
+                                    <!-- Button trigger modal -->
 
 
-                                        <!-- Modal account start -->
-                                        <form action="">
-                                            <div class="modal fade" id="modalmoney" tabindex="-1" aria-labelledby="modalmoney" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"  style="margin-top: -20px;">
-                                                    <div class="modal-content" style="padding: 0px">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Tambah Mata Uang</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <!-- Modal account start -->
+                                    <form action="">
+                                        <div class="modal fade" id="modalmoney" tabindex="-1" aria-labelledby="modalmoney" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="margin-top: -20px;">
+                                                <div class="modal-content" style="padding: 0px">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Tambah Mata Uang</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper">
+                                                                <label style="float: left;">Nama</label>
+                                                                <input class="form-control" type="text" placeholder="Masukkan Nama Akun">
+
+                                                            </div>
+                                                            <!-- Field wrapper end -->
+
                                                         </div>
-                                                        <div class="modal-body">
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
 
-                                                                <!-- Field wrapper start -->
+                                                            <!-- Field wrapper start -->
+
+                                                            <div class="field-wrapper-group">
                                                                 <div class="field-wrapper">
-                                                                    <input class="form-control" type="text" placeholder="Masukkan Nama Akun">
-                                                                    <div class="field-placeholder">Nama<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
+                                                                    <label style="float: left;">Mata Uang</label>
+                                                                    <select class="select-multiple js-states" title="Select Product Category">
+                                                                        <option>AED</option>
+                                                                        <option>AFN</option>
+                                                                        <option>ALL</option>
+                                                                        <option>AMD</option>
+                                                                        <option>ANG</option>
+                                                                        <option>AOA</option>
+                                                                        <option>ARS</option>
+                                                                        <option>AUD</option>
+                                                                        <option>AWG</option>
+                                                                        <option>AZN</option>
+                                                                        <option>BAM</option>
+                                                                        <option>BBD</option>
+                                                                        <option>BDT</option>
+                                                                        <option>BGN</option>
+                                                                        <option>BHD</option>
+                                                                        <option>BIF</option>
+                                                                        <option>BMD</option>
+                                                                        <option>BND</option>
+                                                                        <option>BOB</option>
+                                                                        <option>BRL</option>
+                                                                        <option>BSD</option>
+                                                                        <option>BTC</option>
+                                                                        <option>BTN</option>
+                                                                        <option>BWP</option>
+                                                                        <option>BYN</option>
+                                                                        <option>BZD</option>
+                                                                        <option>CAD</option>
+                                                                        <option>CDF</option>
+                                                                        <option>CHF</option>
+                                                                        <option>CLF</option>
+                                                                        <option>CLP</option>
+                                                                        <option>CNH</option>
+                                                                        <option>CNY</option>
+                                                                        <option>COP</option>
+                                                                        <option>CRC</option>
+                                                                        <option>CUC</option>
+                                                                        <option>CUP</option>
+                                                                        <option>CVE</option>
+                                                                        <option>CZK</option>
+                                                                        <option>DJF</option>
+                                                                        <option>DKK</option>
+                                                                        <option>DOP</option>
+                                                                        <option>DZD</option>
+                                                                        <option>EGP</option>
+                                                                        <option>ERN</option>
+                                                                        <option>ETB</option>
+                                                                        <option>EUR</option>
+                                                                        <option>FJD</option>
+                                                                        <option>FKP</option>
+                                                                        <option>GBP</option>
+                                                                        <option>GEL</option>
+                                                                        <option>GGP</option>
+                                                                        <option>GHS</option>
+                                                                        <option>GIP</option>
+                                                                        <option>GMD</option>
+                                                                        <option>GNF</option>
+                                                                        <option>GTQ</option>
+                                                                        <option>GYD</option>
+                                                                        <option>HKD</option>
+                                                                        <option>HNL</option>
+                                                                        <option>HRK</option>
+                                                                        <option>HTG</option>
+                                                                        <option>HUF</option>
+                                                                        <option>IDR</option>
+                                                                        <option>ILS</option>
+                                                                        <option>IMP</option>
+                                                                        <option>INR</option>
+                                                                        <option>IQD</option>
 
-                                                            </div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                                <!-- Field wrapper start -->
-
-                                                                <div class="field-wrapper-group">
-                                                                    <div class="field-wrapper">
-                                                                        <select class="select-multiple js-states" title="Select Product Category">
-                                                                            <option>AED</option>
-                                                                            <option>AFN</option>
-                                                                            <option>ALL</option>
-                                                                            <option>AMD</option>
-                                                                            <option>ANG</option>
-                                                                            <option>AOA</option>
-                                                                            <option>ARS</option>
-                                                                            <option>AUD</option>
-                                                                            <option>AWG</option>
-                                                                            <option>AZN</option>
-                                                                            <option>BAM</option>
-                                                                            <option>BBD</option>
-                                                                            <option>BDT</option>
-                                                                            <option>BGN</option>
-                                                                            <option>BHD</option>
-                                                                            <option>BIF</option>
-                                                                            <option>BMD</option>
-                                                                            <option>BND</option>
-                                                                            <option>BOB</option>
-                                                                            <option>BRL</option>
-                                                                            <option>BSD</option>
-                                                                            <option>BTC</option>
-                                                                            <option>BTN</option>
-                                                                            <option>BWP</option>
-                                                                            <option>BYN</option>
-                                                                            <option>BZD</option>
-                                                                            <option>CAD</option>
-                                                                            <option>CDF</option>
-                                                                            <option>CHF</option>
-                                                                            <option>CLF</option>
-                                                                            <option>CLP</option>
-                                                                            <option>CNH</option>
-                                                                            <option>CNY</option>
-                                                                            <option>COP</option>
-                                                                            <option>CRC</option>
-                                                                            <option>CUC</option>
-                                                                            <option>CUP</option>
-                                                                            <option>CVE</option>
-                                                                            <option>CZK</option>
-                                                                            <option>DJF</option>
-                                                                            <option>DKK</option>
-                                                                            <option>DOP</option>
-                                                                            <option>DZD</option>
-                                                                            <option>EGP</option>
-                                                                            <option>ERN</option>
-                                                                            <option>ETB</option>
-                                                                            <option>EUR</option>
-                                                                            <option>FJD</option>
-                                                                            <option>FKP</option>
-                                                                            <option>GBP</option>
-                                                                            <option>GEL</option>
-                                                                            <option>GGP</option>
-                                                                            <option>GHS</option>
-                                                                            <option>GIP</option>
-                                                                            <option>GMD</option>
-                                                                            <option>GNF</option>
-                                                                            <option>GTQ</option>
-                                                                            <option>GYD</option>
-                                                                            <option>HKD</option>
-                                                                            <option>HNL</option>
-                                                                            <option>HRK</option>
-                                                                            <option>HTG</option>
-                                                                            <option>HUF</option>
-                                                                            <option>IDR</option>
-                                                                            <option>ILS</option>
-                                                                            <option>IMP</option>
-                                                                            <option>INR</option>
-                                                                            <option>IQD</option>
-
-                                                                        </select>
-                                                                        <div class="field-placeholder">Mata Uang<span class="text-danger">*</span></div>
-                                                                    </div>
-
+                                                                    </select>
                                                                 </div>
 
                                                             </div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
 
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <input class="form-control" type="text" placeholder="Masukkan Nomor Telepone Akun">
-                                                                    <div class="field-placeholder">Kurs<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <input class="form-control" type="text" placeholder="Masukkan NPWP Akun">
-                                                                    <div class="field-placeholder">Saldo Awal<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
                                                         </div>
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
 
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Simpan</button>
-                                                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper">
+                                                                <label style="float: left;">Kurs</label>
+                                                                <input class="form-control" type="text" placeholder="Masukkan Nomor Telepone Akun">
+                                                            </div>
+                                                            <!-- Field wrapper end -->
+
                                                         </div>
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper">
+                                                                <label style="float: left;">Saldo Awal</label>
+                                                                <input class="form-control" type="text" placeholder="Masukkan NPWP Akun">
+                                                            </div>
+                                                            <!-- Field wrapper end -->
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Simpan</button>
+                                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                        <!-- Modal account end -->
+                                        </div>
+                                    </form>
+                                    <!-- Modal account end -->
 
 
 
 
-                                        <!-- Row end -->
+                                    <!-- Row end -->
 
-                                    </div>
                                 </div>
-                                <!-- Card end -->
+                            </div>
+                            <!-- Card end -->
 
                         </div>
-                        </form>
+
                     </div>
                 </div>
                 <!-- Row end -->

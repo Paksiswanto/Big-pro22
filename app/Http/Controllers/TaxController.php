@@ -21,13 +21,12 @@ class TaxController extends Controller
     public function tax_insert(Request $request)
     {
         $validatedData = $request->validate([
-
-            'name' => 'required|unique:tax',
-            'name' => 'required|max:80',
+            'name' => 'required|max:80|unique:tax,name,',
         ], [
             'name.unique' => 'Nama Pajak Sudah Tersedia',
             'name.max' => 'Judul Maksimal 80 Karakter',
         ]);
+
 
         $data = Tax::create([
             'name' => $request->name,
