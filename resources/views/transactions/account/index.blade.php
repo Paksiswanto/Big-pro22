@@ -320,8 +320,11 @@
 
                                 <div class="content">
                                     <div class="searchcontainer">
-                                        <i class="icon-search"></i><input class="search " type="text" placeholder="Cari Disini..." style="
+                                        <form action="{{ url('account') }}" method="get">
+                                        <i class="icon-search"></i><input class="search " name="katakunci"
+                                            value="{{ Request::get('katakunci') }}" type="text" placeholder="Cari Disini..." style="
                                               margin-bottom: 2%; font-size:10pt " />
+                                              </form>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -345,81 +348,22 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach ($data as $row)
                                             <tr>
                                                 <td name="item"><input type="checkbox" class="other-checkbox"></td>
-                                                <td>Hada</th>
-                                                <td>0998987</td>
-                                                <td>BNI</td>
-                                                <td>085607338154</td>
-                                                <td>Rp900.000.000</td>
+                                                <td>{{ $row->name }}</th>
+                                                <td>{{ $row->rekening_number }}</td>
+                                                <td>{{ $row->name_bank }}</td>
+                                                <td>{{ $row->bank_telephone }}</td>
+                                                <td>Rp{{ $row->balance }}</td>
                                                 <th>
                                                     <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{url('edit_account')}}" class="menu-icon icon-edit-2"></a>
+                                                        <a href="{{ route('edit_account', ['id' => $row->id]) }}," class="menu-icon icon-edit-2"></a>
                                                         <a href="{{url('delete_account')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteaccount"></a>
-                                                        <a href="{{url('show_account1')}}" class="menu-icon icon-eye1"></a>
+                                                        <a href="{{ route('show_account1', ['id' => $row->id]) }}," class="menu-icon icon-eye1"></a>
                                                     </div>
                                                 </th>
-                                            </tr>
-                                            <tr>
-                                                <td name="item"><input type="checkbox" class="other-checkbox"></td>
-                                                <td>Hidi</th>
-                                                <td>08875882</td>
-                                                <td>BRI</td>
-                                                <td>085607338154</td>
-                                                <td>Rp100.000.000</td>
-                                                <th>
-                                                    <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{url('edit_account')}}" class="menu-icon icon-edit-2"></a>
-                                                        <a href="{{url('delete_account')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteaccount"></a>
-                                                        <a href="{{url('show_account1')}}" class="menu-icon icon-eye1"></a>
-                                                    </div>
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <td name="item"><input type="checkbox" class="other-checkbox"></td>
-                                                <td>Huda</th>
-                                                <td>067805368</td>
-                                                <td>Mandiri</td>
-                                                <td>085607338154</td>
-                                                <td>Rp200.000.000</td>
-                                                <th>
-                                                    <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{url('edit_account')}}" class="menu-icon icon-edit-2"></a>
-                                                        <a href="{{url('delete_account')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteaccount"></a>
-                                                        <a href="{{url('show_account1')}}" class="menu-icon icon-eye1"></a>
-                                                    </div>
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <td name="item"><input type="checkbox" class="other-checkbox"></td>
-                                                <td>Hudu</th>
-                                                <td>085827292</td>
-                                                <td>BRI</td>
-                                                <td>085607338154</td>
-                                                <td>Rp900.000.000</td>
-                                                <th>
-                                                    <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{url('edit_account')}}" class="menu-icon icon-edit-2"></a>
-                                                        <a href="{{url('delete_account')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteaccount"></a>
-                                                        <a href="{{url('show_account1')}}" class="menu-icon icon-eye1"></a>
-                                                    </div>
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <td name="item" id=""><input type="checkbox" class="other-checkbox"></td>
-                                                <td>Hede</th>
-                                                <td>35927826</td>
-                                                <td>BNI</td>
-                                                <td>08560733815</td>
-                                                <td>Rp900.000.000</td>
-                                                <th>
-                                                    <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{url('edit_account')}}" class="menu-icon icon-edit-2"></a>
-                                                        <a href="{{url('delete_account')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteaccount"></a>
-                                                        <a href="{{url('show_account1')}}" class="menu-icon icon-eye1"></a>
-                                                    </div>
-                                                </th>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
 
@@ -464,8 +408,9 @@
                                             <p>Anda Yakin Ingin Menghapus Akun Ini?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
-
+                                        @isset($row)
+											<a href="{{ route('delete_account', ['id' => $row->id]) }}"><button type="button" class="btn btn-danger" id="deleteButton">Hapus</button></a>
+										@endisset
                                         </div>
                                     </div>
                                 </div>

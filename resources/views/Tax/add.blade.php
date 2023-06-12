@@ -181,16 +181,22 @@
 
                                             <!-- Row start -->
                                             <div class="row gutters">
+                                            
 
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input class="form-control" name="name" id="name" type="text" placeholder=" Masukan Nama">
+                                                        <input class="form-control" name="name" id="inputPwd" type="text" value="{{ old('name') }}" placeholder=" Masukan Nama" required>
+                                                        @error('name')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
+
                                                         <div class="field-placeholder">Nama <span class="text-danger">*</span></div>
                                                         <div class="form-text">
 
                                                         </div>
+
                                                     </div>
                                                     <!-- Field wrapper end -->
 
@@ -200,19 +206,18 @@
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper-group">
                                                         <div class="field-wrapper">
-                                                            <select name="type" id="type" class="select-multiple js-states" title="Select Product Category">
-                                                                <option value="Gabungan">Gabungan</option>
-                                                                <option value="Inklusif">Inklusif</option>
-                                                                <option value="Normal">Normal</option>
-                                                                <option value="Pemotongan">Pemotongan</option>
-                                                                <option value="Tetap">Tetap</option>
-
-
+                                                            <select name="type" id="type" class="select-multiple js-states" title="Select Product Category" required>
+                                                                <option value="">Pilih Jenis</option>
+                                                                <option value="Gabungan" {{ old('type') === 'Gabungan' ? 'selected' : '' }}>Gabungan</option>
+                                                                <option value="Inklusif" {{ old('type') === 'Inklusif' ? 'selected' : '' }}>Inklusif</option>
+                                                                <option value="Normal" {{ old('type') === 'Normal' ? 'selected' : '' }}>Normal</option>
+                                                                <option value="Pemotongan" {{ old('type') === 'Pemotongan' ? 'selected' : '' }}>Pemotongan</option>
+                                                                <option value="Tetap" {{ old('type') === 'Tetap' ? 'selected' : '' }}>Tetap</option>
                                                             </select>
                                                             <div class="field-placeholder">Jenis<span class="text-danger">*</span></div>
                                                         </div>
-
                                                     </div>
+
                                                     <!-- Field wrapper end -->
 
                                                 </div>
@@ -220,7 +225,7 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input name="tax_amount" id="tax_amount" class="form-control" type="number" placeholder=" Masukan Tarif (%)">
+                                                        <input name="tax_amount" id="tax_amount" class="form-control" type="number" value="{{ old('tax_amount') }}" placeholder=" Masukan Tarif (%)" required>
                                                         <div class="field-placeholder">Tarif (%) <span class="text-danger">*</span></div>
                                                         <div class="form-text">
 
@@ -233,7 +238,7 @@
                                             <!-- Row end -->
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
                                                 <div class="d-flex justify-content-end mt-4">
-                                                    <a href="{{url('tax')}}"><button class="btn btn-outline-secondary1" type="submit" style="border-radius: 2px; margin-right: 1%" >Batal</button></a>
+                                                    <a href="{{url('tax')}}"><button class="btn btn-outline-secondary1" style="border-radius: 2px; margin-right: 1%">Batal</button></a>
                                                     <button class="btn btn-primary" type="submit" style="border-radius: 2px">Simpan</button>
                                                 </div>
                                             </div>

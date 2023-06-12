@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('rekening_number');
+            $table->string('currency');
             $table->bigInteger('balance');
             $table->string('name_bank');
             $table->string('bank_telephone');

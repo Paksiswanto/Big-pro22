@@ -187,6 +187,9 @@
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
                                                         <input class="form-control" name="name" id="name" type="text" value="{{ $data->name }}">
+                                                        @error('name')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
                                                         <div class="field-placeholder">Nama <span class="text-danger">*</span></div>
                                                         <div class="form-text">
 

@@ -381,7 +381,7 @@
                                     <div class="d-flex">
                                         <div class="col-xl-11 col-lg-11 col-md-2 col-sm-2 col-12" >
                                             <div class="card-title">
-                                                <h3>Hada<button type="button" style="border: none; background:none;">☆</button></h3>
+                                                <h3>{{ $data->name }}<button type="button" style="border: none; background:none;">☆</button></h3>
                                             </div>
                                         </div>
                                         <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-12">
@@ -472,23 +472,23 @@
                                         <div style="margin-top: 10%;">
                                             <h6>Nomor Rekening</h6>
                                         </div>
-                                        <span>0998958</span>
+                                        <span>{{ $data->rekening_number }}</span>
                                         <div style="margin-top: 10%;">
                                             <h6>Mata Uang</h6>
                                         </div>
-                                        <span>Rupiah</span>
+                                        <span>{{ $data->currency }}</span>
                                         <div style="margin-top: 10%;">
                                             <h6>Saldo Awal</h6>
                                         </div>
-                                        <span>Rp700.000.000</span>
+                                        <span>Rp{{ $data->balance }}</span>
                                         <div style="margin-top: 10%;">
                                             <h6>Telepon Bank</h6>
                                         </div>
-                                        <span>085607338154</span>
+                                        <span>{{ $data->bank_telephone }}</span>
                                         <div style="margin-top: 10%;">
                                             <h6>Alamat Bank</h6>
                                         </div>
-                                        <span>Jl. Kutilang</span>
+                                        <span>{{ $data->bank_address }}</span>
 
                                         <!-- Row start -->
 
