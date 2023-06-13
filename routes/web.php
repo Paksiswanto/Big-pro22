@@ -133,9 +133,11 @@ Route::get('/setting-invoice',[InvoiceController::class,'setting_invoice'])->nam
 
 //role
 Route::get('/role', [RoleController::class, 'index'])->name('role');
-
+Route::post('add-role-permission',[RoleController::class,'addRolePermission'])->name('addRolePermission')->middleware('permission:Create_Role');
 Route::get('/add_role', [RoleController::class, 'add_role'])->name('add_role');
-Route::get('/edit_role', [RoleController::class, 'edit_role'])->name('edit_role');
+Route::get('/edit_role/{id}', [RoleController::class, 'edit_role'])->name('edit_role');
+Route::put('/edit/{id}', [RoleController::class, 'edit'])->name('edit-role');
+Route::get('/delete_role/{id}', [RoleController::class, 'delete_role'])->name('delete_role');
 
 //transaksi
 Route::get('/transaksi', [TransaksiController::class, 'transaksi'])->name('transaksi');

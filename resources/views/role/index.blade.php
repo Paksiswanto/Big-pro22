@@ -316,8 +316,11 @@
                                 <div class="">
                                     <div class="content">
                                         <div class="searchcontainer">
-                                            <i class="icon-search"></i><input class="search " type="text" placeholder="Cari Disini..." style="
-                                              margin-bottom: 2%; font-size:10pt " />
+                                            <form action="/role" method="GET">
+                                                @csrf
+                                            <i class="icon-search"></i><input class="search" name="key" type="search" placeholder="Cari Disini..." style="margin-bottom: 2%; font-size:10pt " />
+                                            </form>
+                                              
                                         </div>
                                     </div>
                                     <div class="table-responsive">
@@ -336,53 +339,22 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach ($data as $item)
+                                                    
                                                 <tr>
                                                     <td name="item" id="checkbox1"><input type="checkbox"></td>
-                                                    <td>Manager</th>
+                                                    <td>{{ $item->name }}</th>
                                                     <td>
-                                                        <div class="ellipsis" style="max-width: 500px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Mereka bisa mengakses halaman perbankan, dashboard, pembelian, penjualan, barang, kalender, laporan, profil</div>
+                                                        <div class="ellipsis" style="max-width: 500px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $item->description }}</div>
                                                     </td>
                                                     <th>
                                                         <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{url('edit_role')}}" class="menu-icon icon-edit-2"></a>
+                                                            <a href="{{url('edit_role/'[$item->id])}}" class="menu-icon icon-edit-2"></a>
                                                             <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
                                                         </div>
                                                     </th>
                                                 </tr>
-                                                <tr>
-                                                    <td name="item" id="checkbox1"><input type="checkbox"></td>
-                                                    <td>Accountant</th>
-                                                    <td>
-                                                        <div class="ellipsis" style="max-width: 500px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                                            Mereka bisa mengakses halaman perbankan, dashboard, pembelian, penjualan, barang, kalender, laporan, profil, notifikasi, perusahaan, faktur, tagihan
-                                                        </div>
-                                                    </td>
-                                                    <th>
-                                                        <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{url('edit_role')}}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                        </div>
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <td name="item" id="checkbox1"><input type="checkbox"></td>
-                                                    <td>Customer</th>
-                                                    <td>
-                                                        <div class="ellipsis" style="max-width: 500px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                                            Mereka bisa mengakses halaman perbankan, dashboard, pembelian, penjualan, barang, kalender, laporan, profil
-                                                        </div>
-                                                    </td>
-                                                    <th>
-                                                        <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{url('edit_role')}}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                        </div>
-                                                    </th>
-                                                </tr>
-
-
-
-
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -425,8 +397,9 @@
                                                 <p>Anda Yakin Ingin Menghapus Peran Ini?</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
-
+                                                @isset($item)
+                                                <a href="{{ route('delete_role', ['id' => $item->id]) }}"><button type="button" class="btn btn-danger" id="deleteButton">Hapus</button></a>
+                                                @endisset
                                             </div>
                                         </div>
                                     </div>
