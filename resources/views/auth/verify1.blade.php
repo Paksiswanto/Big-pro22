@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-
+	
 <!-- Mirrored from www.kodingwife.com/demos/unipro/v1-x/05-design-violet/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 May 2023 03:02:54 GMT -->
 <head>
 		<!-- Required meta tags -->
@@ -13,7 +13,7 @@
 		<link rel="shortcut icon" href="img/fav.png" />
 
 		<!-- Title -->
-		<title>Register</title>
+		<title>Reset Kata Kunci</title>
 
 
 		<!-- *************
@@ -21,7 +21,7 @@
 		************ -->
 		<!-- Bootstrap css -->
 		<link rel="stylesheet" href="{{ asset ("Gmbslagi/css/bootstrap.min.css")}}">
-
+		
 		<!-- Main css -->
 		<link rel="stylesheet" href="{{ asset ("Gmbslagi/css/main.css")}}">
 
@@ -46,7 +46,7 @@
 		<div class="login-container">
 
 			<div class="container-fluid h-100"  style="overflow: hidden">
-
+			
 			<!-- Row start -->
 			<div class="row g-0 h-100">
 				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
@@ -94,66 +94,27 @@
                                 </div>
                             </div>
                         </div>
-
+						
 
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 					<div class="login-wrapper">
-						<form action="" method="POST">
-							@csrf
-							<div class="login-screen" style="margin-bottom: 80px;">
+						<form action="https://www.kodingwife.com/demos/unipro/v1-x/05-design-violet/crm.html">
+							<div class="login-screen">
 								<div class="login-body">
 									<a href="crm.html" class="login-logo">
 										<img src="{{ asset ("gmbslagi/img/logo.svg")}}" alt="iChat">
 									</a>
-									<h6>Selamat Datang,<br>Login dan mulai manajemen keuangan anda</h6>
+									<h6>Selamat Datang<br></h6>
 									<div class="field-wrapper">
-										<input id="name" type="text"
-                                            class="form-control @error('name') is-invalid @enderror" name="name"
-                                            value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Masukan Nama">
-
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-
-										<div class="field-placeholder">Nama</div>
-									</div>
-									<div class="field-wrapper">
-
-                                        <input id="email" placeholder="Masukan Email" type="email"
-                                            class="form-control @error('email') is-invalid @enderror" name="email"
-                                            value="{{ old('email') }}" required autocomplete="email">
-
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror										<div class="field-placeholder">Email</div>
-									</div>
-									<div class="field-wrapper">
-										 <input placeholder="Masukan Katasandi" id="password" type="password"
-                                            class="form-control @error('password') is-invalid @enderror"
-                                            name="password" required autocomplete="new-password">
-
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-										<div class="field-placeholder">Kata Kunci</div>
-									</div>
-									<div class="field-wrapper mb-3">
-										<input type="password" name="password_confirmation" placeholder="Konfirmasi kata kunci">
-										<div class="field-placeholder">Konfirmasi Kata Kunci</div>
 									</div>
 									<div class="actions">
-										<button type="submit" class="btn btn-primary">Daftar</button>
+										<p>Mohon untuk verifikasi email terlebih dahulu</p>
 									</div>
 								</div>
-								
+								<div class="login-footer">
+								</div>
 							</div>
 						</form>
 					</div>
@@ -161,7 +122,7 @@
 			</div>
 			<!-- Row end -->
 
-
+		
 			</div>
 		</div>
 		<!-- *************
@@ -176,7 +137,7 @@
 		<script src="{{ asset ("Gmbslagi/js/bootstrap.bundle.min.js")}}"></script>
 		<script src="{{ asset ("Gmbslagi/js/modernizr.js")}}"></script>
 		<script src="{{ asset ("Gmbslagi/js/moment.js")}}"></script>
-
+		
 		<!-- *************
 			************ Vendor Js Files *************
 		************* -->
