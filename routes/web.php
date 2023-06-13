@@ -57,9 +57,7 @@ Route::get('reset_password', function () {
 Route::get('confirm_password', function () {
     return view('confirm_password');
 });
-Route::get('add_company', function () {
-    return view('add_company');
-});
+
 Route::get('import', function () {
     return view('import');
 });

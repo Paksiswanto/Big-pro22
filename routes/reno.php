@@ -22,4 +22,7 @@ Route::middleware([
 ])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('add_company', function () {
+        return view('add_company');
+    });
 });
