@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tax', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('type');
             $table->integer('tax_amount');
             $table->foreignId('company_id')->references('id')->on('company')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

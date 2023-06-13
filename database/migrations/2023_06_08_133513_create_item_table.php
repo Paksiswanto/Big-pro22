@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('item', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('description');
+            $table->boolean('active')->default(false);
             $table->string('type');
             $table->string('category');
             $table->integer('selling_price')->nullable();

@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tax extends Model
+class RoleHasPermission extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    function permission(){
+        return $this->belongsTo(permission::class,'permission_id');
+    }
     
-    protected $table='tax';
 }
-

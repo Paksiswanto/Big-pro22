@@ -110,6 +110,8 @@ class TaxController extends Controller
     public function tax_update(Request $request, $id)
     {
         $data = Tax::find($id);
+        $data->update($request->all());
+        return redirect()->route('tax');
         $validatedData = $request->validate([
             'name' => 'required|max:80|unique:tax,name,' . $data->id,
         ], [

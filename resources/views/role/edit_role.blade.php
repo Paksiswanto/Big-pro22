@@ -152,7 +152,9 @@
                     <!-- Row start -->
                     <div class="card-body">
                         <div class="row gutters">
-                            <form action="">
+                            <form action="/edit/{{ $data->id }}" method="POST">
+                                @method('PUT')
+                                @csrf
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                     <!-- Card start -->
@@ -183,10 +185,9 @@
 
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input class="form-control" type="text" placeholder="TRA-0076">
+                                                        <input class="form-control" name="name" value="{{ $data->name }}" type="text" placeholder="Masukan nama">
                                                         <div class="field-placeholder">Nama<span class="text-danger">*</span></div>
                                                     </div>
                                                     <!-- Field wrapper end -->
@@ -198,14 +199,16 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <textarea class="form-control1" rows="2" placeholder="Masukkan Deskripsi Peran"></textarea>
+                                                            
+                                                        <textarea class="form-control1" name="description" rows="2" placeholder="Masukkan Deskripsi Peran">{{ $data->description }}</textarea>
                                                         <div class="field-placeholder">Deskripsi<span class="text-danger">*</span></div>
                                                         <div class="form-text">
                                                             Silakan masukkan Deskripsi Peran yang Dibutuhkan.
                                                         </div>
                                                     </div>
                                                     <!-- Field wrapper end -->
-
+                                                    
+                                                    
                                                 </div>
 
 
@@ -246,10 +249,10 @@
                                                                                 <td name="item" id="checkbox1">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox2"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox3"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox4"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox5"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox2"><input name="permission[]" value="1" {{ in_array('View_Invoice',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox3"><input name="permission[]" value="2" {{ in_array('Create_Invoice',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox4"><input name="permission[]" value="3" {{ in_array('Edit_Invoice',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox5"><input name="permission[]" value="4" {{ in_array('Delete_Invoice',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
                                                                             </tr>
                                                                             <tr>
 
@@ -257,10 +260,10 @@
                                                                                 <td name="item" id="checkbox6">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox7"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox8"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox9"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox10"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox7"><input name="permission[]" value="5"  {{ in_array('View_Customer',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox8"><input name="permission[]" value="6"  {{ in_array('Create_Customer',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox9"><input name="permission[]" value="7"  {{ in_array('Edit_Customer',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox10"><input name="permission[]" value="8" {{ in_array('Delete_Customer',$permissions) ? 'checked' : '' }} type="checkbox"></td>
 
                                                                             </tr>
 
@@ -301,10 +304,10 @@
                                                                                 <td name="item" id="checkbox11">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox12"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox13"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox14"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox15"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox12"><input name="permission[]" value="9"  {{ in_array('View_Bill',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox13"><input name="permission[]" value="10" {{ in_array('Create_Bill',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox14"><input name="permission[]" value="11" {{ in_array('Edit_Bill',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox15"><input name="permission[]" value="12" {{ in_array('Delete_Bill',$permissions) ? 'checked' : '' }} type="checkbox"></td>
 
                                                                             </tr>
                                                                             <tr>
@@ -313,10 +316,10 @@
                                                                                 <td name="item" id="checkbox16">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox17"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox18"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox19"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox20"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox17"><input name="permission[]" value="13" {{ in_array('View_Supplier',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox18"><input name="permission[]" value="14" {{ in_array('Create_Supplier',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox19"><input name="permission[]" value="15" {{ in_array('Edit_Supplier',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox20"><input name="permission[]" value="16" {{ in_array('Delete_Supplier',$permissions) ? 'checked' : '' }} type="checkbox"></td>
 
                                                                             </tr>
 
@@ -357,10 +360,10 @@
                                                                                 <td name="item" id="checkbox21">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox22"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox23"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox24"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox25"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox22"><input name="permission[]" value="17" {{ in_array('View_Account',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox23"><input name="permission[]" value="18" {{ in_array('Create_Account',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox24"><input name="permission[]" value="19" {{ in_array('Edit_Account',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox25"><input name="permission[]" value="20" {{ in_array('Delete_Account',$permissions) ? 'checked' : '' }} type="checkbox"></td>
 
                                                                             </tr>
                                                                             <tr>
@@ -369,10 +372,10 @@
                                                                                 <td name="item" id="checkbox26">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox27"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox28"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox29"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox30"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox27"><input name="permission[]" value="21" {{ in_array('View_Transaction',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox28"><input name="permission[]" value="22" {{ in_array('Create_Transaction',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox29"><input name="permission[]" value="23" {{ in_array('Edit_Transaction',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox30"><input name="permission[]" value="24" {{ in_array('Delete_Transaction',$permissions) ? 'checked' : '' }} type="checkbox"></td>
 
                                                                             </tr>
                                                                             <tr>
@@ -381,10 +384,10 @@
                                                                                 <td name="item" id="checkbox31">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox32"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox33"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox34"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox35"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox32"><input name="permission[]" value="25" {{ in_array('View_Transfer',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox33"><input name="permission[]" value="26" {{ in_array('Create_Transfer',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox34"><input name="permission[]" value="27" {{ in_array('Edit_Transfer',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox35"><input name="permission[]" value="28" {{ in_array('Delete_Transfer',$permissions) ? 'checked' : '' }} type="checkbox"></td>
 
                                                                             </tr>
 
@@ -425,10 +428,10 @@
                                                                                 <td name="item" id="checkbox36">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox37"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox38"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox39"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox40"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox37"><input name="permission[]" value="29" {{ in_array('View_Income_summary',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox38"><input name="permission[]" value="30" {{ in_array('Create_Income_summary',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox39"><input name="permission[]" value="31" {{ in_array('Edit_Income_summary',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox40"><input name="permission[]" value="32" {{ in_array('Delete_Income_summary',$permissions) ? 'checked' : '' }} type="checkbox"></td>
 
                                                                             </tr>
                                                                             <tr>
@@ -437,10 +440,10 @@
                                                                                 <td name="item" id="checkbox41">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox42"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox43"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox44"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox45"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox42"><input name="permission[]" value="33" {{ in_array('View_Expenditure_summary',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox43"><input name="permission[]" value="34" {{ in_array('Create_Expenditure_summary',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox44"><input name="permission[]" value="35" {{ in_array('Edit_Expenditure_summary',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox45"><input name="permission[]" value="36" {{ in_array('Delete_Expenditure_summary',$permissions) ? 'checked' : '' }} type="checkbox"></td>
 
                                                                             </tr>
                                                                             <tr>
@@ -449,10 +452,10 @@
                                                                                 <td name="item" id="checkbox46">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox47"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox48"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox49"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox50"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox47"><input name="permission[]" value="37" {{ in_array('View_Tax_summary',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox48"><input name="permission[]" value="38" {{ in_array('Create_Tax_summary',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox49"><input name="permission[]" value="39" {{ in_array('Edit_Tax_summary',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox50"><input name="permission[]" value="40" {{ in_array('Delete_Tax_summary',$permissions) ? 'checked' : '' }} type="checkbox"></td>
 
                                                                             </tr>
                                                                             <tr>
@@ -461,10 +464,10 @@
                                                                                 <td name="item" id="checkbox51">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox52"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox53"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox54"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox55"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox52"><input name="permission[]" value="41" {{ in_array('View_Profit_and_loss',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox53"><input name="permission[]" value="42" {{ in_array('Create_Profit_and_loss',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox54"><input name="permission[]" value="43" {{ in_array('Edit_Profit_and_loss',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox55"><input name="permission[]" value="44" {{ in_array('Delete_Profit_and_loss',$permissions) ? 'checked' : '' }} type="checkbox"></td>
 
                                                                             </tr>
 
@@ -504,10 +507,11 @@
                                                                                 <td name="item" id="checkbox56">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox57"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox58"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox59"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox60"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox57"><input name="permission[]" value="45" {{ in_array('View_Balance',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox57"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox57"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox57"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                               
 
                                                                             </tr>
                                                                             <tr>
@@ -516,10 +520,11 @@
                                                                                 <td name="item" id="checkbox61">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox62"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox63"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox64"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox65"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox62"><input name="permission[]" value="46" {{ in_array('View_Cash_flow',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox62"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox62"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox62"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                
 
                                                                             </tr>
                                                                             <tr>
@@ -528,22 +533,16 @@
                                                                                 <td name="item" id="checkbox66">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox67"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox68"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox69"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox70"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox67"><input name="permission[]" value="47" {{ in_array('View_Expenses_by_category',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox67"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox67"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox67"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
 
                                                                             </tr>
                                                                             <tr>
 
-                                                                                <td>Mata Uang</th>
-                                                                                <td name="item" id="checkbox71">
-                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
-                                                                                </td>
-                                                                                <td name="item" id="checkbox72"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox73"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox74"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox75"><input type="checkbox"></td>
+                                                                               
+                                                                                
 
                                                                             </tr>
                                                                             <tr>
@@ -552,10 +551,11 @@
                                                                                 <td name="item" id="checkbox76">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox77"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox78"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox79"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox80"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox77"><input name="permission[]" value="48" {{ in_array('View_Debt',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox77"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox77"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox77"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                              
 
                                                                             </tr>
                                                                             <tr>
@@ -564,10 +564,11 @@
                                                                                 <td name="item" id="checkbox81">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox82"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox83"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox84"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox85"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox82"><input name="permission[]" value="49" {{ in_array('View_Profit_and_loss_widget',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox82"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox82"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox82"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                               
 
                                                                             </tr>
                                                                             <tr>
@@ -576,10 +577,10 @@
                                                                                 <td name="item" id="checkbox86">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox87"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox88"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox89"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox90"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox87"><input name="permission[]" value="50" {{ in_array('View_Receivables',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox87"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox87"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox87"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
 
                                                                             </tr>
 
@@ -613,40 +614,16 @@
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
-                                                                            <tr>
-
-                                                                                <td>Pengaturan</th>
-                                                                                <td name="item" id="checkbox91">
-                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
-                                                                                </td>
-                                                                                <td name="item" id="checkbox92"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox93"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox94"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox95"><input type="checkbox"></td>
-
-                                                                            </tr>
-                                                                            <tr>
-
-                                                                                <td>Widgets Calendar</th>
-                                                                                <td name="item" id="checkbox96">
-                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
-                                                                                </td>
-                                                                                <td name="item" id="checkbox97"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox98"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox99"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox100"><input type="checkbox"></td>
-
-                                                                            </tr>
-                                                                            <tr>
 
                                                                                 <td>Calendar</th>
                                                                                 <td name="item" id="checkbox101">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox102"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox103"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox104"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox105"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox102"><input name="permission[]" value="51" {{ in_array('View_Calender',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox102"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox102"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox102"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
+                                                                               
 
                                                                             </tr>
 
@@ -686,10 +663,10 @@
                                                                                 <td name="item" id="checkbox106">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox107"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox108"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox109"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox110"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox107"><input name="permission[]" value="52" {{ in_array('View_User',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox108"><input name="permission[]" value="53" {{ in_array('Create_User',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox109"><input name="permission[]" value="54" {{ in_array('Edit_User',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox110"><input name="permission[]" value="55" {{ in_array('Delete_User',$permissions) ? 'checked' : '' }} type="checkbox"></td>
 
                                                                             </tr>
                                                                             <tr>
@@ -698,10 +675,10 @@
                                                                                 <td name="item" id="checkbox111">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox112"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox113"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox114"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox115"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox112"><input name="permission[]" value="56" {{ in_array('View_Profil',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox114"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox113"><input name="permission[]" value="57" {{ in_array('Edit_Profil',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox115"><input name="permission[]" style="visibility: hidden" value="57" type="checkbox"></td>
 
                                                                             </tr>
                                                                             <tr>
@@ -710,10 +687,10 @@
                                                                                 <td name="item" id="checkbox116">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox117"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox118"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox119"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox120"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox117"><input name="permission[]" value="58" {{ in_array('View_Role',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox118"><input name="permission[]" value="59" {{ in_array('Create_Role',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox119"><input name="permission[]" value="60" {{ in_array('Edit_Role',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox120"><input name="permission[]" value="61" {{ in_array('Delete_Role',$permissions) ? 'checked' : '' }} type="checkbox"></td>
 
                                                                             </tr>
 
@@ -724,14 +701,14 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
+                                                  
                                                     <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="headingEight">
-                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                                        <h2 class="accordion-header" id="headingNine">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
                                                                 Umum
                                                             </button>
                                                         </h2>
-                                                        <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#faqAccordion">
+                                                        <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#faqAccordion">
                                                             <div class="accordion-body">
                                                                 <div class="table-responsive">
                                                                     <table class="table table-hover">
@@ -748,60 +725,61 @@
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td>Perusahaan</td>
-                                                                                <td name="item" id="checkbox121">
+                                                                                <td name="item" id="checkbox151">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox122"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox123"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox124"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox125"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox152"><input name="permission[]" value="62" {{ in_array('View_Company_general',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox153"><input name="permission[]" value="63" {{ in_array('Create_Company_general',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox154"><input name="permission[]" value="64" {{ in_array('Edit_Company_general',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox155"><input name="permission[]" value="65" {{ in_array('Delete_Company_general',$permissions) ? 'checked' : '' }} type="checkbox"></td>
                                                                             </tr>
                                                                             <tr>
 
                                                                                 <td>Item</th>
-                                                                                <td name="item" id="checkbox126">
+                                                                                <td name="item" id="checkbox156">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox127"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox128"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox129"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox130"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox157"><input name="permission[]" value="66" {{ in_array('View_Item',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox158"><input name="permission[]" value="67" {{ in_array('Create_Item',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox159"><input name="permission[]" value="68" {{ in_array('Edit_Item',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox160"><input name="permission[]" value="69" {{ in_array('Delete_Item',$permissions) ? 'checked' : '' }} type="checkbox"></td>
 
                                                                             </tr>
                                                                             <tr>
 
                                                                                 <td>Import</th>
-                                                                                <td name="item" id="checkbox131">
+                                                                                <td name="item" id="checkbox161">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox132"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox133"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox134"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox135"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox162"><input name="permission[]" value="71" {{ in_array('Import',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox163"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox164"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox165"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
 
                                                                             </tr>
-                                                                            <tr>
-
-                                                                                <td>Ekspor</th>
-                                                                                <td name="item" id="checkbox136">
-                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
-                                                                                </td>
-                                                                                <td name="item" id="checkbox137"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox138"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox139"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox140"><input type="checkbox"></td>
-
-                                                                            </tr>
+                                                                            
                                                                             <tr>
 
                                                                                 <td>Dasbor</th>
-                                                                                <td name="item" id="checkbox141">
+                                                                                <td name="item" id="checkbox171">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox142"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox143"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox144"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox145"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox172"><input name="permission[]" value="70" {{ in_array('View_Dashboard',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox173"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox174"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox175"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
+
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td>Laporan</th>
+                                                                                <td name="item" id="checkbox176">
+                                                                                    <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
+                                                                                </td>
+                                                                                <td name="item" id="checkbox177"><input name="permission[]" value="86" {{ in_array('View_Report',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox178"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox179"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox180"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
 
                                                                             </tr>
                                                                         </tbody>
@@ -813,12 +791,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="headingNine">
-                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                                        <h2 class="accordion-header" id="headingTen">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
                                                                 Pengaturan
                                                             </button>
                                                         </h2>
-                                                        <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#faqAccordion">
+                                                        <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#faqAccordion">
                                                             <div class="accordion-body">
                                                                 <div class="table-responsive">
                                                                     <table class="table table-hover">
@@ -835,60 +813,63 @@
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td>Kategori</td>
-                                                                                <td name="item" id="checkbox146">
+                                                                                <td name="item" id="checkbox191">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox147"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox148"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox149"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox150"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox192"><input name="permission[]" value="73" {{ in_array('View_Category',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox193"><input name="permission[]" value="74" {{ in_array('Create_Category',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox194"><input name="permission[]" value="75" {{ in_array('Edit_Category',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox195"><input name="permission[]" value="76" {{ in_array('Delete_Category',$permissions) ? 'checked' : '' }} type="checkbox"></td>
                                                                             </tr>
                                                                             <tr>
 
                                                                                 <td>Pajak</th>
-                                                                                <td name="item" id="checkbox151">
+                                                                                <td name="item" id="checkbox196">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox152"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox153"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox154"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox155"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox197"><input name="permission[]" value="77" {{ in_array('View_Tax',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox198"><input name="permission[]" value="78" {{ in_array('Create_Tax',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox199"><input name="permission[]" value="79" {{ in_array('Edit_Tax',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox200"><input name="permission[]" value="80" {{ in_array('Delete_Tax',$permissions) ? 'checked' : '' }} type="checkbox"></td>
 
-                                                                            </tr>
+                                                                            </tr>                   
+                                                                          
                                                                             <tr>
 
                                                                                 <td>Company</th>
-                                                                                <td name="item" id="checkbox156">
+                                                                                <td name="item" id="checkbox211">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox157"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox158"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox159"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox215"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox212"><input name="permission[]" value="81" {{ in_array('View_Company',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox213"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox214"><input name="permission[]" value="82" {{ in_array('Edit_Company',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox215"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
 
                                                                             </tr>
+                                                                          
                                                                             <tr>
 
                                                                                 <td>Invoice</th>
-                                                                                <td name="item" id="checkbox160">
+                                                                                <td name="item" id="checkbox221">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox161"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox162"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox163"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox164"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox222"><input name="permission[]" value="83" {{ in_array('View_Invoice_setting',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox223"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox224"><input name="permission[]" value="84" {{ in_array('Edit_Invoice_setting',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox225"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
 
                                                                             </tr>
+                                                                           
                                                                             <tr>
 
                                                                                 <td>Template Surel</th>
-                                                                                <td name="item" id="checkbox165">
+                                                                                <td name="item" id="checkbox236">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
-                                                                                <td name="item" id="checkbox166"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox167"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox168"><input type="checkbox"></td>
-                                                                                <td name="item" id="checkbox169"><input type="checkbox"></td>
+                                                                                <td name="item" id="checkbox237"><input name="permission[]" value="85" {{ in_array('View_Email',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <td name="item" id="checkbox238"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox239"><input name="permission[]" value="86" {{ in_array('Edit_Email',$permissions) ? 'checked' : '' }} type="checkbox"></td>
+                                                                                <td name="item" id="checkbox240"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
 
                                                                             </tr>
 
@@ -921,236 +902,15 @@
                                             </div>
 
 
-
                                         </div>
                                         <!-- Button trigger modal -->
 
 
                                         <!-- Modal account start -->
-                                        <form action="">
-                                            <div class="modal fade" id="modalaccount" tabindex="-1" aria-labelledby="modalaccount" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                                    <div class="modal-content" style="padding: 0px">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Tambah Akun</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                <div class="field-wrapper">
-                                                                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12">
-                                                                        <div class="text-radio">Jenis<span class="text-danger">*</span></div>
-                                                                    </div>
-                                                                    <div class="half-width-container">
 
-                                                                        <input type="radio" name="option" id="option1" value="Option 1" checked>
-                                                                        <label class="label" for="option1">Bank</label>
+                                     
 
-                                                                        <input type="radio" name="option" id="option2" value="Option 2">
-                                                                        <label class="label" for="option2">Kartu Kredit</label>
-                                                                    </div>
-                                                                </div>
-
-                                                                <!-- Field wrapper start -->
-
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <input class="form-control" type="text" placeholder="Masukkan Nama Akun">
-                                                                    <div class="field-placeholder">Nama<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <input class="form-control" type="text" placeholder="Masukkan E-mail Akun">
-                                                                    <div class="field-placeholder">Nomor Rekening<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <input class="form-control" type="text" placeholder="Masukkan Nomor Telepone Akun">
-                                                                    <div class="field-placeholder">Mata Uang<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <input class="form-control" type="text" placeholder="Masukkan NPWP Akun">
-                                                                    <div class="field-placeholder">Saldo Awal<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Simpan</button>
-                                                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <!-- Modal account end -->
-
-                                        <!-- Modal category start -->
-                                        <form action="">
-                                            <div class="modal fade" id="modalcategory" tabindex="-1" aria-labelledby="modalcategory" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                                    <div class="modal-content" style="padding: 0px">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Tambah Kategori</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <input class="form-control" type="text" placeholder="Masukkan Nama Kategori">
-                                                                    <div class="field-placeholder">Nama<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <div class="d-flex">
-                                                                        <input class="form-control" type="text" placeholder="Masukkan Warna">
-                                                                        <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
-                                                                    </div>
-                                                                    <div class="field-placeholder">Warna<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-
-
-
-
-
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Simpan</button>
-                                                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <!-- Modal category end -->
-
-                                        <!-- Modal customer start -->
-                                        <form action="">
-                                            <div class="modal fade" id="modalcustomer" tabindex="-1" aria-labelledby="modalcustomer" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                                    <div class="modal-content" style="padding: 0px">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Tambah Pelanggan</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <input class="form-control" type="text" placeholder="Masukkan Nama Pelanggan">
-                                                                    <div class="field-placeholder">Nama<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <input class="form-control" type="email" placeholder="Masukkan E-mail Pelanggan">
-                                                                    <div class="field-placeholder">Email<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <input class="form-control" type="text" placeholder="Masukkan Nomor Telepone Pelanggan">
-                                                                    <div class="field-placeholder">Telepone<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <input class="form-control" type="text" placeholder="Masukkan NPWP Pelanggan">
-                                                                    <div class="field-placeholder">NPWP<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <input class="form-control" type="text" placeholder="Masukkan Mata Uang Pelanggan">
-                                                                    <div class="field-placeholder">Mata Uang<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <input class="form-control" type="text" placeholder="Masukkan Negara Pelanggan">
-                                                                    <div class="field-placeholder">Negara<span class="text-danger">*</span></div>
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                                <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <textarea class="form-control1" rows="2" placeholder="Masukkan Alamat Pelanggan"></textarea>
-                                                                    <div class="field-placeholder">Alamat<span class="text-danger">*</span></div>
-
-                                                                </div>
-                                                                <!-- Field wrapper end -->
-
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Simpan</button>
-                                                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <!-- Modal customer end -->
+                                       
 
 
                                         <!-- Row end -->
@@ -1159,8 +919,8 @@
                                 </div>
                                 <!-- Card end -->
 
+                            </form>
                         </div>
-                        </form>
                     </div>
                 </div>
                 <!-- Row end -->

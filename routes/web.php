@@ -65,7 +65,7 @@ Route::get('import', function () {
 });
 Route::get('/itemindex',[ItemController::class,'itemindex'])->Name('item-index');
 Route::get('/add-item',[ItemController::class,'additem'])->Name('item-add');
-Route::get('/edit-item',[ItemController::class,'edititem'])->Name('item-edit');
+Route::get('/edit-item/{id}',[ItemController::class,'edititem'])->Name('item-edit');
 
 Route::get('tambah_pemasok', function () {
     return view('pembelian.pembelian_tambah_pemasok');
@@ -77,7 +77,7 @@ Route::get('edit_pemasok', function () {
 //supplier
 Route::get('supplier', [SupplierController::class, 'supplier'])->name('supplier');
 Route::get('add_supplier', [SupplierController::class, 'add'])->name('add_supplier');
-Route::get('edit_supplier', [SupplierController::class, 'edit'])->name('edit_supplier');
+Route::get('/edit_supplier/{id}', [SupplierController::class, 'edit'])->name('edit_supplier');
 Route::get('details_supplier', [SupplierController::class, 'details'])->name('details_supplier');
 
 Route::get('icons', function () {
@@ -117,11 +117,8 @@ Route::get('details', [InvoiceController::class, 'details'])->name('details_inv'
 //cos
 Route::get('add_costumers', [CostumersController::class, 'add_cos'])->name('add_costumers');
 Route::get('costumer', [CostumersController::class, 'costumers'])->name('costumers');
-Route::get('show_cos', [CostumersController::class, 'show_cos'])->name('show_cos');
-Route::get('edit_cos', [CostumersController::class, 'edit_cos'])->name('edit_cos');
-
-Route::get('costumer', [InvoiceController::class, 'costumers'])->name('costumers');
-Route::get('add_costumers', [InvoiceController::class, 'add_cos'])->name('add_costumers');
+Route::get('/show_cos/{id}', [CostumersController::class, 'show_cos'])->name('show_cos');
+Route::get('/edit_cos/{id}', [CostumersController::class, 'edit_cos'])->name('edit_cos');
 
 
 
@@ -129,9 +126,11 @@ Route::get('/setting-invoice',[InvoiceController::class,'setting_invoice'])->nam
 
 //role
 Route::get('/role', [RoleController::class, 'index'])->name('role');
-
+Route::post('add-role-permission',[RoleController::class,'addRolePermission'])->name('addRolePermission')->middleware('permission:Create_Role');
 Route::get('/add_role', [RoleController::class, 'add_role'])->name('add_role');
-Route::get('/edit_role', [RoleController::class, 'edit_role'])->name('edit_role');
+Route::get('/edit_role/{id}', [RoleController::class, 'edit_role'])->name('edit_role');
+Route::put('/edit/{id}', [RoleController::class, 'edit'])->name('edit-role');
+Route::get('/delete_role/{id}', [RoleController::class, 'delete_role'])->name('delete_role');
 
 //transaksi
 Route::get('/transaksi', [TransaksiController::class, 'transaksi'])->name('transaksi');
@@ -162,7 +161,7 @@ Route::get('/laporan',[LaporanController::class, 'laporan'])->name('laporan');
 //category
 Route::get('/category',[CategoryController::class,'category_index'])->name('index-category');
 Route::get('/add-category',[CategoryController::class,'category_add'])->name('add-category');
-Route::get('/add-edit',[CategoryController::class,'category_edit'])->name('edit-category');
+Route::get('/edit-category/{id}',[CategoryController::class,'category_edit'])->name('edit-category');
 
 //bill
 Route::get('bill', [BillController::class, 'bill'])->name('bill');
@@ -219,3 +218,5 @@ Route::get('copytext', [CopyTextController::class, 'CopyText'])->name('copytext'
 
 
 require  __DIR__."/reno.php";
+require __DIR__."/alfa.php";
+require __DIR__. "/gmbs.php";
