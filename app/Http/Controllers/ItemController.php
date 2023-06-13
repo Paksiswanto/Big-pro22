@@ -25,26 +25,18 @@ class ItemController extends Controller
     }
     public function additem()
     {
+      $category= Category::all();
       $tax = Tax::all();
 
-      return view('item.add', compact('tax'));
+      return view('item.add', compact('tax','category'));
     }
     public function create_items(Request $request)
     {
     // Validasi data yang dikirim dari form
-    $validatedData = $request->validate([
-        'name' => 'required',
-        'type' => 'required',
-        'active' => 'nullable',
-        'description' => 'required',
-        'category' => 'required',
-        'purchase_price' => 'required',
-        'selling_price' => 'required',
-        'tax_id' => 'required',
-    ]);
+   
 
     // Simpan data item ke database menggunakan model
-    Item::create($validatedData);
+    Item::create($request->all());
 
     // Redirect ke halaman yang sesuai dengan pesan sukses
     return redirect('/itemindex')->with('success', 'Item berhasil ditambahkan.');
@@ -52,25 +44,24 @@ class ItemController extends Controller
 
     public function edititem($id)
     {
-      $item = Item::find(1);
+      $item = Item::find($id);
       $tax = Tax::all();
-      $category = Category::all();
-      return view('item.edit', compact('item','tax','category'));
+      $categories = Category::all();
+      return view('item.edit', compact(['item','tax','categories']));
     }
     public function edits(Request $request, $id)
     {
-        $items = Item::find($id);
-        $items->update([
-          'name' => $request -> name,
-          'description' => $request -> description,
-          'category' => $request -> category,
-          'tax_id' => $request -> tax_id,
-          'active' => $request -> active,
-          'type' => $request -> type,
-          'purchase_price' => $request -> purchase_price,
-          'selling_price' => $request -> selling_price,
+        $item = Item::find($id);
+        $item->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'category' => $request->category,
+            'tax_id' => $request->tax_id,
+            'purchase_price' => $request->purchase_price,
+            'selling_price' => $request->selling_price,
         ]);
-        $items->update($items);
-        return redirect('/itemindex')->with('success', 'item berhasil di update');
+
+        return redirect('/itemindex')->with('success', 'Item berhasil diupdate');
     }
+
 }
