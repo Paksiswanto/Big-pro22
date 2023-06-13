@@ -9,9 +9,9 @@ class AccountController extends Controller
 {
     public function index(Request $request){
         $katakunci = $request->katakunci;
-        $data = Account::where('account', 'LIKE', '%'.$katakunci.'%');
-        $data = Account::all();
+        $data = Account::where('name', 'LIKE', '%'.$katakunci.'%')->get();
         return view('transactions.account.index', compact('data'));
+        
     }
 
     public function add_account(){

@@ -154,7 +154,7 @@ Route::get('/show_transfer', [TransferController::class, 'show_transfer'])->name
 Route::get('/account', [AccountController::class, 'index'])->name('account');
 
 Route::get('/add_account', [AccountController::class, 'add_account'])->name('add_account');
-Route::get('/edit_account', [AccountController::class, 'edit_account'])->name('edit_account');
+Route::get('/edit_account/{id}', [AccountController::class, 'edit_account'])->name('edit_account');
 Route::get('/show_account1', [AccountController::class, 'show_account1'])->name('show_account1');
 Route::get('/show_account2', [AccountController::class, 'show_account2'])->name('show_account2');
 
@@ -219,4 +219,5 @@ Route::get('/add-currency',[CurrencyController::class,'currency_add'])->name('cu
 Route::get('/edit-currency',[CurrencyController::class,'currency_edit'])->name('currency-edit');
 //Copy Text
 Route::get('copytext', [CopyTextController::class, 'CopyText'])->name('copytext');
-require __DIR__. "/gmbs.php";
+
+require  __DIR__. "/trisqi.php";

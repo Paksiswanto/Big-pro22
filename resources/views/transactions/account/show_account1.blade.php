@@ -392,10 +392,10 @@
 
                                                 <ul class="dropdown-menu dropdown-menu-lg-end" style="z-index: 100;">
                                                     <li><a class="dropdown-item" style="margin-top: 4%;" href="{{url('add_income')}}">Tambah Pendapatan</a></li>
-                                                    <li><a class="dropdown-item" href="{{url('add_income')}}">Tambah Pengeluaran</a></li>
-                                                    <li><a class="dropdown-item-bt" href="{{url('add_income')}}">Tambah Transfer</a></li>
-                                                    <li><a class="dropdown-item" href="{{url('add_income')}}">Sunting</a></li>
-                                                    <li><a class="dropdown-item-bt" href="{{url('ad_income')}}">Hapus</a></li>
+                                                    <li><a class="dropdown-item" href="{{url('add_expenditure')}}">Tambah Pengeluaran</a></li>
+                                                    <li><a class="dropdown-item-bt" href="{{url('add_transfer')}}">Tambah Transfer</a></li>
+                                                    <li><a class="dropdown-item" href="{{ route('edit_account', ['id' => $data->id]) }},">Sunting</a></li>
+                                                    <li><a class="dropdown-item-bt" href="{{ route('delete_account', ['id' => $data->id]) }},">Hapus</a></li>
                                                     <li><a class="dropdown-item" href="#">Cetak</a></li>
                                                     <li><a class="dropdown-item" href="#">Unduh PDF</a></li>
 

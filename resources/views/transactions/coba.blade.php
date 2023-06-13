@@ -305,7 +305,7 @@
                                 <div class="d-flex">
                                     <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
                                         <div class="card-title">
-                                            <h3 class="card-tittle">Akun<button type="button" style="border: none; background:transparent;">☆</button></h3>
+                                            <h3 class="card-tittle">Coba<button type="button" style="border: none; background:transparent;">☆</button></h3>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">
@@ -317,97 +317,35 @@
                                     </div>
                                 </div>
 
+                                <p>Nilai uang dalam Rupiah: Rp {{ $data }}</p>
 
-                                <div class="content">
-                                    <div class="searchcontainer">
-                                        <form action="{{ url('account') }}" method="get">
-                                            <i class="icon-search"></i><input class="search " name="katakunci" value="{{ Request::get('katakunci') }}" type="text" placeholder="Cari Disini..." style="
-                                              margin-bottom: 2%; font-size:10pt " />
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <div class="hidden-menu" style="display: none; background-color: #f2f2f2; font-size: 12pt; padding: 10px;">
-                                            <p style="display: inline" id="count-display">&emsp;</p>
-                                            &emsp;<a href="#" title="Hapus" data-bs-toggle="modal" data-bs-target="#deleteallaccount"> <i class="icon-trash-2"></i> </a>
-                                        </div>
-                                        <thead>
-                                            <tr>
-                                                <th scope="col"> <input type="checkbox" id="select-all-checkbox"></th>
-                                                <th scope="col">Nama</th>
-                                                <th scope="col">Nomor Rekening</th>
-                                                <th scope="col">Nama Bank</th>
-                                                <th scope="col">Telepon</th>
-                                                <th scope="col">Saldo Saat Ini</th>
-                                                <th scope="col">Aksi</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($data as $row)
-                                            <tr>
-                                                <td name="item"><input type="checkbox" class="other-checkbox"></td>
-                                                <td>{{ $row->name }}</th>
-                                                <td>{{ $row->rekening_number }}</td>
-                                                <td>{{ $row->name_bank }}</td>
-                                                <td>{{ $row->bank_telephone }}</td>
-                                                <td>Rp{{ $row->balance }}</td>
-                                                <th>
-                                                    <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{ route('edit_account', ['id' => $row->id]) }}," class="menu-icon icon-edit-2"></a>
-                                                        <a href="" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteaccount"></a>
-                                                        <a href="{{ route('show_account1', ['id' => $row->id]) }}," class="menu-icon icon-eye1"></a>
-                                                    </div>
-                                                </th>
-                                                @endforeach
-                                        </tbody>
-                                    </table>
-
-                                </div>
+                                <!-- Tombol konversi ke Dolar Amerika -->
+                                <form action="{{ route('convert-currency') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="amount" value="{{ $data }}">
+                                    <button type="submit">Convert to USD</button>
+                                </form>
                             </div>
                         </div>
                         <!-- Card start -->
-                        <div class="card">
-                            <div class="card-body col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination" style="float: right;">
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-
-                            </div>
-                        </div>
                         <!-- Card end -->
 
                         <!-- Modal start -->
-                        <div class="modal fade" id="deleteaccount{{ $data->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteaccount{{ $data->id }}" aria-hidden="true">
+                        <div class="modal fade" id="deleteaccount" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteaccount" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content" style="padding: 0px">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Hapus Peran</h5>
+                                        <h5 class="modal-title" id="staticBackdropLabel">Hapus Akun</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Anda Yakin Ingin Menghapus Peran Ini?</p>
+                                        <p>Anda Yakin Ingin Menghapus Akun Ini?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <form action="/delete_account/{{ $data->id }}">
-                                            <button type="submit" class="btn btn-danger" id="deleteButton">Hapus</button>
-                                        </form>
+                                        @isset($row)
+                                        <a href="{{ route('delete_account', ['id' => $row->id]) }}"><button type="button" class="btn btn-danger" id="deleteButton">Hapus</button></a>
+                                        @endisset
                                     </div>
                                 </div>
                             </div>
