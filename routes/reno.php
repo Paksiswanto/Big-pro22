@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('kelogin', [AuthController::class, 'login'])->name('kelogin');
@@ -22,7 +23,4 @@ Route::middleware([
 ])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('add_company', function () {
-        return view('add_company');
-    });
 });

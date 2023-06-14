@@ -16,11 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('npwp')->nullable();
-            $table->string('addtelephoneress');
-            $table->string('city');
-            $table->string('postal_code');
-            $table->string('province');
+            $table->string('addtelephoneress')->nullable();
+            $table->string('city')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('province')->nullable();
             $table->string('logo');
+            $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

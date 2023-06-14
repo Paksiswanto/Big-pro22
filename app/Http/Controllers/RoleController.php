@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RoleHasPermission;
 use Illuminate\Http\Request;
+use App\Models\RoleHasPermission;
 use Spatie\Permission\Models\Role;
+use Yoeunes\Toastr\Facades\Toastr;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
@@ -34,8 +35,9 @@ class RoleController extends Controller
         if ($request->has('permission')) {
             $permissionIds = $request->input('permission', []);
             $role->syncPermissions($permissionIds);
-                        }
-        
+             }
+           Toastr::success('Succsess','Data Berhasil Ditambahkan');
+
         return redirect('/role');
         
     }
@@ -63,7 +65,6 @@ class RoleController extends Controller
 
     $permissionIds = $validatedData['permission'];
     $data->syncPermissions($permissionIds);
-
     return redirect('role');
 }
 
