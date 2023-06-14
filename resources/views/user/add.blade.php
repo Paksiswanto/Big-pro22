@@ -15,8 +15,51 @@
 
 	<!-- Title -->
 	<title>Uni Pro Admin Template - Admin Dashboard</title>
-
-
+	<style>
+	.drop-zone {
+        max-width: 200px; /*max to make it responsive*/
+        height: 150px;
+        padding: 25px;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        text-align: center;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 500;
+        font-size: 15px;
+        cursor: pointer;
+        color: lightgrey;
+        border: 4px dashed black;
+        border-radius: 10px;
+      }
+      .drop-zone--over {
+        border-style: solid;
+      }
+      .drop-zone__input {
+        display: none;
+      }
+      .drop-zone__thumb {
+        width: 100px;
+        height: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: #ccc;
+        background-size: cover;
+        position: relative;
+      }
+      .drop-zone__thumb::after {
+        content: attr(data-label); /*  displays text of data-lable*/
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 5px 0;
+        color: white;
+        background: rgba(0, 0, 0, 0.75);
+        text-align: center;
+        font-size: 14px;
+      }
+</style>
 	<!-- *************
 			************ Common Css Files *************
 		************ -->
@@ -94,8 +137,8 @@
 
 				<!-- Content wrapper start -->
 				<div class="content-wrapper">
-
-					<!-- Row start -->
+					<form action="/add-user" method="POST">
+						@csrf					<!-- Row start -->
 					<div class="row gutters">
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
@@ -119,11 +162,11 @@
 											</div>
 
 										</div>
-										<div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+										<div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12">
 
 											<!-- Field wrapper start -->
 											<div class="field-wrapper">
-												<input class="form-control" type="text" placeholder=" Masukan Nama">
+												<input class="form-control" name="name" type="text" placeholder=" Masukan Nama">
 												<div class="field-placeholder">Nama <span class="text-danger">*</span></div>
 												<div class="form-text">
 
@@ -132,7 +175,7 @@
 											<!-- Field wrapper end -->
 											<!-- Field wrapper start -->
 											<div class="field-wrapper">
-												<input class="form-control" type="email" placeholder=" Masukan Email">
+												<input class="form-control" name="email" type="email" placeholder=" Masukan Email">
 												<div class="field-placeholder">Email <span class="text-danger">*</span></div>
 												<div class="form-text">
 
@@ -140,17 +183,15 @@
 											</div>
 											<!-- Field wrapper end -->
 										</div>
-										<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" style="margin-top:-1%">
-											<!-- Field wrapper start -->
-											<div id="dropzone">
-												<label for="judul" class="field-label">Foto<span class="text-danger">*</span></label>
-												<form action="https://www.kodingwife.com/upload" class="dropzone needsclick dz-clickable" id="demo-upload">
-													<div class="dz-message needsclick">
-														<button type="button" class="dz-button">Seret berkas disini untuk mengunggah</button><br>
-													</div>
-												</form>
-											</div>
-											<!-- Field wrapper end -->
+										<div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12" style="margin-top:-1%">
+											
+												<div class="drop-zone">
+													<span class="drop-zone__prompt">klik disini untuk upload foto</span>
+													<!-- <div class="drop-zone__thumb" data-label="myfile.txt"></div> -->
+													<input type="file" name="myFile" class="drop-zone__input" />
+													<!-- add multiple attribute to input to support uploading more than one file-->
+												</div>
+											
 										</div>
 										<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12" style="margin-top: -20%">
 
@@ -168,14 +209,16 @@
 											<!-- Field wrapper start -->
 											<div class="field-wrapper-group">
                                             <div class="field-wrapper">
-                                                <select class="select-multiple js-states" multiple title="Select Product Category">
-                                                    <option>Unknown Company</option>
+                                                <select class="select-multiple js-states" name="company_id"  title="Select Product Category">
+													@foreach ( $company as $item ) 
+                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+													@endforeach
 
 
                                                 </select>
                                                 <div class="field-placeholder">Perusahaan<span class="text-danger">*</span></div>
                                             </div>
-
+<input type="hidden" name="password" value="123">
                                         </div>
 											<!-- Field wrapper end -->
 
@@ -185,8 +228,10 @@
 											<!-- Field wrapper start -->
 											<div class="field-wrapper-group">
                                             <div class="field-wrapper">
-                                                <select class="select-multiple js-states" title="Select Product Category">
-                                                    <option>Accountant</option>
+                                                <select class="select-multiple js-states" name="role" title="Select Product Category">
+													@foreach ($role as $item)
+                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+													@endforeach
 
 
                                                 </select>
@@ -200,81 +245,16 @@
 										</div>
 										<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom: 1%;">
 
-											<div style="border-bottom: solid grey 1px;margin-bottom:1%">
-												<h6>Preferensi</h6>
-												<p>Pilih bahasa default untuk pengguna. Anda juga bisa tentukan untuk halaman muka setelah pengguna berhasil masuk</p>
-											</div>
-
-										</div>
-										<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-											<!-- Field wrapper start -->
-
-                                            <div class="field-wrapper">
-                                                <select class="select-multiple js-states" title="Select Product Category">
-												<option>Akun</option>
-													<option>Dasbor</option>
-													<option>Faktur</option>
-													<option>Item</option>
-													<option>Laporan</option>
-													<option>PayPal Standard</option>
-													<option>Pelanggan</option>
-													<option>Pemasok</option>
-													<option>Pembayaran Offline</option>
-													<option>Penyesuaian</option>
-													<option>Tagihan</option>
-													<option>Transaksi</option>
-													<option>Transfer</option>
-
-
-                                                </select>
-                                                <div class="field-placeholder">Halaman Muka<span class="text-danger">*</span></div>
-                                            </div>
-
-                                        </div>
-
-											<!-- Field wrapper end -->
-
-
-										<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-											<!-- Field wrapper start -->
-											<div class="field-wrapper">
-                                                <select class="select-multiple js-states" title="Select Product Category">
-												<option>Azərbaycan</option>
-													<option>Bahasa Indonesia</option>
-													<option>Bahasa Melayu</option>
-													<option>Bosanski</option>
-													<option>Català</option>
-													<option>Dansk</option>
-													<option>Duetsch</option>
-													<option>Esti</option>
-													<option>English (AU)</option>
-													<option>English (GB)</option>
-													<option>English (US)</option>
-													<option>Espanol</option>
-													<option>Espanol de Argentina</option>
-													<option>Espanol de mexico</option>
-													<option>Francais</option>
-													<option>Italiano</option>
-
-                                                </select>
-                                                <div class="field-placeholder">Bahasa<span class="text-danger">*</span></div>
-                                            </div>
-
-											<!-- Field wrapper end -->
-
-										</div>
 
 										<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
 											<div class="d-flex justify-content-end mt-4">
 												<button class="btn btn-outline-secondary1" type="submit" style="border-radius: 2px; margin-right: 1%" href="#">Batal</button>
-												<a href="{{ url('confirm_password') }}"><button class="btn btn-primary" type="submit" style="border-radius: 2px" >Simpan</button></a>
+												<button class="btn btn-primary" type="submit" style="border-radius: 2px" >Simpan</button>
 											</div>
 										</div>
 									</div>
 									<!-- Row end -->
-
+								</form>
 								</div>
 							</div>
 							<!-- Card end -->
@@ -334,20 +314,78 @@
 	<script src="{{ asset ("Gmbslagi/js/main.js")}}"></script>
 	<script src="{{ asset ("Gmbslagi/vendor/dropzone/dropzone.min.js")}}"></script>
 	<script>
-		// Inisialisasi Dropzone
-		Dropzone.autoDiscover = false;
-		var myDropzone = new Dropzone("#demo-upload", {
-			maxFiles: 1, // Hanya boleh mengupload satu file
-			init: function() {
-				this.on("addedfile", function(file) {
-					// Menghapus file sebelumnya saat ada file baru yang diupload
-					if (this.files.length > 1) {
-						this.removeFile(this.files[0]);
-					}
-				});
-			}
-		});
-	</script>
+		document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+		 const dropZoneElement = inputElement.closest(".drop-zone");
+
+		 dropZoneElement.addEventListener("click", (event) => {
+			 inputElement.click(); /*clicking on input element whenever the dropzone is clicked so file browser is opened*/
+		 });
+
+		 inputElement.addEventListener("change", (event) => {
+			 if (inputElement.files.length) {
+				 updateThumbnail(dropZoneElement, inputElement.files[0]);
+			 }
+		 });
+
+		 dropZoneElement.addEventListener("dragover", (event) => {
+			 event.preventDefault(); /*this along with prevDef in drop event prevent browser from opening file in a new tab*/
+			 dropZoneElement.classList.add("drop-zone--over");
+		 });
+		 ["dragleave", "dragend"].forEach((type) => {
+			 dropZoneElement.addEventListener(type, (event) => {
+				 dropZoneElement.classList.remove("drop-zone--over");
+			 });
+		 });
+		 dropZoneElement.addEventListener("drop", (event) => {
+			 event.preventDefault();
+			 console.log(
+				 event.dataTransfer.files
+			 ); /*if you console.log only event and check the same data location, you won't see the file due to a chrome bug!*/
+			 if (event.dataTransfer.files.length) {
+				 inputElement.files =
+					 event.dataTransfer.files; /*asigns dragged file to inputElement*/
+
+				 updateThumbnail(
+					 dropZoneElement,
+					 event.dataTransfer.files[0]
+				 ); /*thumbnail will only show first file if multiple files are selected*/
+			 }
+			 dropZoneElement.classList.remove("drop-zone--over");
+		 });
+	 });
+
+	 function updateThumbnail(dropZoneElement, file) {
+		 let thumbnailElement = dropZoneElement.querySelector(
+			 ".drop-zone__thumb"
+		 );
+		 /*remove text prompt*/
+		 if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+			 dropZoneElement.querySelector(".drop-zone__prompt").remove();
+		 }
+
+		 /*first time there won't be a thumbnailElement so it has to be created*/
+		 if (!thumbnailElement) {
+			 thumbnailElement = document.createElement("div");
+			 thumbnailElement.classList.add("drop-zone__thumb");
+			 dropZoneElement.appendChild(thumbnailElement);
+		 }
+		 thumbnailElement.dataset.label =
+			 file.name; /*takes file name and sets it as dataset label so css can display it*/
+
+		 /*show thumbnail for images*/
+		 if (file.type.startsWith("image/")) {
+			 const reader = new FileReader(); /*lets us read files to data URL*/
+			 reader.readAsDataURL(file); /*base 64 format*/
+			 reader.onload = () => {
+				 thumbnailElement.style.backgroundImage = `url('${reader.result}')`; /*asynchronous call. This function runs once reader is done reading file. reader.result is the base 64 format*/
+				 thumbnailElement.style.backgroundPosition = "center";
+			 };
+		 } else {
+			 thumbnailElement.style.backgroundImage = null; /*plain background for non image type files*/
+		 }
+	 }
+   </script>
+
 
 </body>
 

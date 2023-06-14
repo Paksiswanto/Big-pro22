@@ -150,6 +150,7 @@
                             </div>
 
                             <!-- Modal start -->
+                           
                             <div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true" data-bs-backdrop="static">
                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                     <div class="modal-content">
@@ -157,14 +158,17 @@
                                             <h5 class="modal-title1 mt-3" id="exampleModalCenteredScrollableTitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inputkan Data Perusahaan</h5>
                                         </div>
                                         <div class="modal-body">
-                                            <div class="d-flex row ">
+                                          <form action="/add_company/add" method="POST" >
+                                            <div class="d-flex row ">                                      
+                                                @csrf
+                                                @dd(Auth::user()->id)
                                                 <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                         <!-- Field wrapper start -->
                                                         <div class="field-wrapper">
                                                             <label class="">Nama Perusahaan<span class="text-danger"></span></label>
-                                                            <input class="form-control" type="text" placeholder="Masukan Nama Perusahaan">
+                                                            <input class="form-control" name="name" type="text" placeholder="Masukan Nama Perusahaan">
                                                         </div>
                                                         <!-- Field wrapper end -->
                                                     </div>
@@ -173,39 +177,45 @@
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
                                                         <label class="">Email <span class="text-danger"></span></label>
-                                                        <input class="form-control" type="email" placeholder="Masukan Email">
+                                                        <input class="form-control" name="email" type="email" placeholder="Masukan Email">
+                                                    </div>
+                                                    <div style="visibility: hidden" class="field-wrapper">
+                                                        <label class="">Email <span class="text-danger"></span></label>
+                                                        <input class="form-control" name="user_id" value="{{ Auth::user()->id }}" type="email" placeholder="Masukan Email">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
                                                     <!-- Field wrapper start -->
 
                                                     <!-- Example of a form that Dropzone can take over -->
-                                                    <form action="">
+                                                    <form action="add_company_id" method="POST">
+                                                      @csrf
                                                         <div class="drop-zone">
                                                             <span class="drop-zone__prompt">klik disini untuk upload foto</span>
                                                             <!-- <div class="drop-zone__thumb" data-label="myfile.txt"></div> -->
-                                                            <input type="file" name="myFile" class="drop-zone__input" />
+                                                            <input type="file" name="logo" class="drop-zone__input" />
                                                             <!-- add multiple attribute to input to support uploading more than one file-->
                                                         </div>
                                                     </form>
                                                 </div>
                                                 <div class="field-wrapper">
                                                     <label>Telepon</label>
-                                                    <input class="form-control" type="text" placeholder="Masukan Nomor Telepon">
+                                                    <input class="form-control" name="addtelephoneress" type="text" placeholder="Masukan Nomor Telepon">
                                                 </div>
                                                 <!-- Field wrapper end -->
                                                 <div class="field-wrapper">
                                                     <label class="">NPWP</label>
-                                                    <input class="form-control" type="number" placeholder="Masukan Nomor NPWP">
+                                                    <input class="form-control" name="npwp" type="number" placeholder="Masukan Nomor NPWP">
                                                 </div>
 
 
                                             </div>
                                         </div>
                                         <div class="modal-footer" style="text-align: center;">
-                                            <button type="button" class="btn btn-primary">Registrasi</button>
+                                            <button type="submit" class="btn btn-primary">Registrasi</button>
+                                          </div>
                                         </div>
-                                    </div>
+                                      </form>
                                 </div>
                             </div>
                         </div>

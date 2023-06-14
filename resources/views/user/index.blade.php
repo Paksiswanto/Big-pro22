@@ -225,8 +225,30 @@
                                                     <td>{{ $item->email }}</td>
                                                     <td>
                                                         @foreach ($item->roles as $role)
-                                                        <p>{{ $role->name }}</p>
-                                                    @endforeach          
+                                                            <p>{{ $role->name }}</p>
+                                                         @endforeach          
+                                                     </td>
+                                                    <td>
+                                                        <div class="menu-icons" style="font-size: 15px;">
+                                                            <a href="{{url('edit_users')}}" class="menu-icon icon-edit-2"></a>
+                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                                @foreach ($userregister as $item )                                                    
+                                                <tr class="table-row">
+                                                    <td><input type="checkbox" class="other-checkbox"></td>
+                                                    <td>
+                                                        <div class="d-flex">
+                                                            <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%">&emsp; {{ $item->email }}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td>{{ $item->email }}</td>
+                                                    <td>
+                                                        @foreach ($item->roles as $role)
+                                                            <p>{{ $role->name }}</p>
+                                                         @endforeach          
                                                      </td>
                                                     <td>
                                                         <div class="menu-icons" style="font-size: 15px;">

@@ -58,6 +58,8 @@ Route::get('confirm_password', function () {
     return view('confirm_password');
 });
 
+Route::get('add_company',[CompanyController::class,'add_company'])->name('add_company');
+Route::get('add_company/add',[CompanyController::class,'add_company_id'])->name('add_company_id');
 Route::get('import', function () {
     return view('import');
 });
@@ -124,7 +126,7 @@ Route::get('/setting-invoice',[InvoiceController::class,'setting_invoice'])->nam
 
 //role
 Route::get('/role', [RoleController::class, 'index'])->name('role');
-Route::post('add-role-permission',[RoleController::class,'addRolePermission'])->name('addRolePermission')->middleware('permission:Create_Role');
+Route::post('add-role-permission',[RoleController::class,'addRolePermission'])->name('addRolePermission');
 Route::get('/add_role', [RoleController::class, 'add_role'])->name('add_role');
 Route::get('/edit_role/{id}', [RoleController::class, 'edit_role'])->name('edit_role');
 Route::put('/edit/{id}', [RoleController::class, 'edit'])->name('edit-role');
@@ -192,6 +194,7 @@ Route::get('transaksi', function () {
 //Users
 Route::get('/users',[UsersController::class,'usersindex'])->name('users-index');
 Route::get('/add_users',[UsersController::class,'add_users'])->name('add_users');
+Route::Post('/add-user',[UsersController::class,'add_user'])->name('add-user');
 Route::get('/edit_users',[UsersController::class,'edit_users'])->name('edit_users');
 //Users
 Route::get('/profile',[ProfileController::class,'profile'])->name('profile');

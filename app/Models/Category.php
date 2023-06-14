@@ -15,4 +15,8 @@ class Category extends Model
     {
         return $this->belongsTo(category_type::class);
     }
+    function item()
+    {
+        return $this->belongsTo(item::class);
+    }
 }
