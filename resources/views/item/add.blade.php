@@ -211,22 +211,14 @@ label {
                                         <!-- Row start -->
                                         <div class="row gutters">
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
                                                 <div class="half-width-container">
-
                                                     <input type="radio" name="type" id="option1" value="Produk" checked>
-                                                    <label style="border-radius: 2px" class="label" for="Produk">Produk</label>
-
+                                                    <label style="border-radius: 2px" class="label" for="option1">Produk</label>
                                                     <input type="radio" name="type" id="option2" value="Layanan">
-                                                    <label style="border-radius: 2px" class="label" for="Layanan">Layanan</label>
+                                                    <label style="border-radius: 2px" class="label" for="option2">Layanan</label>
                                                 </div>
-
-                                                <!-- Field wrapper start -->
-
-                                                <!-- Field wrapper end -->
-
                                             </div>
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">

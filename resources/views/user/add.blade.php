@@ -136,9 +136,10 @@
 			<div class="content-wrapper-scroll">
 
 				<!-- Content wrapper start -->
+				<form action="{{ route('add-user') }}" method="POST" enctype="multipart/form-data">
+				@csrf	
+				<!-- Row start -->
 				<div class="content-wrapper">
-					<form action="/add-user" method="POST">
-						@csrf					<!-- Row start -->
 					<div class="row gutters">
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
@@ -162,7 +163,7 @@
 											</div>
 
 										</div>
-										<div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12">
+										<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 
 											<!-- Field wrapper start -->
 											<div class="field-wrapper">
@@ -172,6 +173,9 @@
 
 												</div>
 											</div>
+										</div>
+										<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+
 											<!-- Field wrapper end -->
 											<!-- Field wrapper start -->
 											<div class="field-wrapper">
@@ -183,17 +187,12 @@
 											</div>
 											<!-- Field wrapper end -->
 										</div>
-										<div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12" style="margin-top:-1%">
-											
-												<div class="drop-zone">
-													<span class="drop-zone__prompt">klik disini untuk upload foto</span>
-													<!-- <div class="drop-zone__thumb" data-label="myfile.txt"></div> -->
-													<input type="file" name="myFile" class="drop-zone__input" />
-													<!-- add multiple attribute to input to support uploading more than one file-->
-												</div>
-											
+										<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+											<div class="field-wrapper">
+												<input class="form-control" type="file" name="picture" id="picture" required>
+											</div>
 										</div>
-										<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12" style="margin-top: -20%">
+										<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12" style="">
 
 										</div>
 										<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom: 1%;">
@@ -218,7 +217,6 @@
                                                 </select>
                                                 <div class="field-placeholder">Perusahaan<span class="text-danger">*</span></div>
                                             </div>
-<input type="hidden" name="password" value="123">
                                         </div>
 											<!-- Field wrapper end -->
 
