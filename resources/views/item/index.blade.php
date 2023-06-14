@@ -184,43 +184,24 @@
 													</tr>
 												</thead>
 												<tbody>
+													@foreach ($items as $item)														
 													<!-- Data 1 -->
 													<tr class="table-row">
 														<td><input type="checkbox" class="other-checkbox"></td>
-														<td>Anjso</td>
-														<td>Makanan sehat dan bergizi</td>
-														<td>Makanan</td>
-														<td>N/A</td>
-														<td>Rp. 20000</td>
-														<td>Rp. 21000</td>
+														<td>{{$item->name}}</td>
+														<td>{{$item->description}}</td>
+														<td>{{$item->category}}</td>
+														<td>{{$item->tax->name}}</td>
+														<td>{{$item->purchase_price}}</td>
+														<td>{{$item->selling_price}}</td>
 														<td>
 															<div class="menu-icons" style="font-size: 15px;">
-																<a href="{{route('item-edit')}}" class="menu-icon icon-edit-2"></a>
-
-
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-
+																<a href="/edit-item/{{$item->id}}" class="menu-icon icon-edit-2"></a>
+                                                            <a href="delete-items/{{$item->id}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
 															</div>
 														</td>
 													</tr>
-													<!-- Data 2 -->
-													<tr class="table-row">
-														<td><input type="checkbox" class="other-checkbox"></td>
-														<td>Anjso</td>
-														<td>Makanan sehat dan bergizi</td>
-														<td>Makanan</td>
-														<td>N/A</td>
-														<td>Rp. 20000</td>
-														<td>Rp. 21000</td>
-														<td>
-															<div class="menu-icons" style="font-size: 15px;">
-																<a href="{{route('item-edit')}}" class="menu-icon icon-edit-2"></a>
-
-
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-															</div>
-														</td>
-													</tr>
+													@endforeach
 
 												</tbody>
 											</table>

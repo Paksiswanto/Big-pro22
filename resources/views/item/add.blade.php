@@ -201,7 +201,8 @@ label {
                                             <label for="toggle" class="toggle-label custom-bg " style="float: right;"></label>
                                         </div>
                                     </div>
-
+                                    <form method="POST" action="{{ route('create_item') }}">
+                                        @csrf
                                     <div class="">
                                         <div style="border-bottom: solid black 1px; margin-bottom: 2%; margin-top: 2%;">
                                             <h6>Umum</h6>
@@ -213,11 +214,11 @@ label {
 
                                                 <div class="half-width-container">
 
-                                                    <input type="radio" name="option" id="option1" value="Option 1" checked>
-                                                    <label style="border-radius: 2px" class="label" for="option1">Produk</label>
+                                                    <input type="radio" name="type" id="option1" value="Produk" checked>
+                                                    <label style="border-radius: 2px" class="label" for="Produk">Produk</label>
 
-                                                    <input type="radio" name="option" id="option2" value="Option 2">
-                                                    <label style="border-radius: 2px" class="label" for="option2">Layanan</label>
+                                                    <input type="radio" name="type" id="option2" value="Layanan">
+                                                    <label style="border-radius: 2px" class="label" for="Layanan">Layanan</label>
                                                 </div>
 
                                                 <!-- Field wrapper start -->
@@ -229,7 +230,7 @@ label {
 
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <input class="form-control" type="text" placeholder=" Masukan nama">
+                                                    <input class="form-control" name="name" type="text" placeholder=" Masukan nama">
                                                     <div class="field-placeholder">Nama <span class="text-danger">*</span></div>
                                                     <div class="form-text">
 
@@ -242,7 +243,7 @@ label {
 
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <select class="select-multiple js-states" title="Select Product Category">
+                                                    <select class="select-multiple js-states" name="category" title="Select Product Category">
                                                         <option disabled selected>Pilih Salah Satu</option>
                                                         <option>Makanan</option>
                                                         <option>Minuman</option>
@@ -259,10 +260,9 @@ label {
 
                                                 <!-- Field wrapper start -->
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <textarea class="form-control" rows="2"></textarea>
+                                                        <textarea class="form-control" name="description" rows="2"></textarea>
                                                         <div class="field-placeholder">Deskripsi <span class="text-danger">*</span></div>
                                                         <div class="form-text">
                                                             Silakan masukkan Deskripsi.
@@ -298,7 +298,7 @@ label {
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <input class="form-control" type="number" id="inputField1" name="inputField1" disabled>
+                                                    <input class="form-control" type="number" id="inputField1" name="selling_price" disabled>
                                                     <div class="field-placeholder">Harga Jual</div>
                                                 </div>
                                                 <!-- Field wrapper end -->
@@ -307,7 +307,7 @@ label {
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <input class="form-control" type="text" id="inputField2" name="inputField2" disabled>
+                                                    <input class="form-control" type="text" id="inputField2" name="purchase_price" disabled>
                                                     <div class="field-placeholder">Harga Beli</div>
                                                 </div>
                                                 <!-- Field wrapper end -->
@@ -316,10 +316,11 @@ label {
 
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <select class="select-multiple js-states" title="Select Product Category">
+                                                    <select class="select-multiple js-states" name="tax_id" title="Select Product Category">
                                                         <option disabled selected>Pilih Salah Satu</option>
-                                                        <option>PPn</option>
-                                                        <option>PPh</option>
+                                                        @foreach ($tax as $item)                                                       
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                        @endforeach
                                                     </select>
                                                     <div class="field-placeholder">Pajak<span class="text-danger">*</span></div>
                                                 </div>
@@ -336,7 +337,7 @@ label {
                                             </div>
                                         </div>
                                         <!-- Row end -->
-
+                                    </form>
                                     </div>
                                 </div>
                                 <!-- Card end -->

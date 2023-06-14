@@ -176,6 +176,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <form action="/edit_category/{{$category->id}}" method="POST">
+                                        @csrf
+                                        @method('PUT')
                                     <div class="">
                                         <div style="border-bottom: solid grey 1px;margin-bottom:1%; margin-bottom: 2%; margin-top: 2%;">
                                             <h6>Umum</h6>
@@ -188,7 +191,7 @@
 
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <input class="form-control" type="text" placeholder=" Masukan Nama">
+                                                    <input class="form-control" value="{{$category->name}}" name="name" type="text" placeholder=" Masukan Nama">
                                                     <div class="field-placeholder">Nama <span class="text-danger">*</span></div>
                                                     <div class="form-text">
 
@@ -202,15 +205,8 @@
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
                                                     <div class="color-input-container">
-                                                        
-                                                
-
-                                                       
-                                                            <input class="form-control" type="text" placeholder="Masukkan Warna Kategori">
-                                                      
-                                                      
-                                                            <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
-                                                        
+                                                        <input class="form-control" name="color" type="text" value="{{$category->color}}" placeholder="Masukkan Warna Kategori" id="hex-input">
+                                                        <input type="color" class="form-control form-control-color" name="color" id="exampleColorInput" value="{{$category->color}}" title="Choose your color">                                                        
                                                         <div class="field-placeholder">Warna <span class="text-danger">*</span></div>
                                                         <!-- <input type="color" style="width: 14%;background:transparent" id="color-picker">
                                                         <input type="text" id="hex-input" disabled> -->
@@ -224,16 +220,14 @@
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper-group">
                                                     <div class="field-wrapper">
-                                                        <select class="select-multiple js-states" title="Select Product Category">
-                                                            <option>Pilihan 1</option>
-                                                            <option>Pilihan 2</option>
-                                                            <option>Pilihan 3</option>
-                                                            <option>Pilihan 4</option>
-
+                                                        <select class="select-multiple js-states" value="{{$category->category_type}}" name="category_type" title="Select Product Category">
+                                                            <option disabled>Pilih Salah Satu</option>
+                                                            @foreach ($categoryTypes as $type)
+                                                            <option value="{{ $type->id }}" {{ old('category_type') == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                                                            @endforeach                                                    
                                                         </select>
                                                         <div class="field-placeholder">Kategori<span class="text-danger">*</span></div>
                                                     </div>
-
                                                 </div>
                                                 <!-- Field wrapper end -->
 
@@ -247,6 +241,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                </form>
                                 </div>
                                 <!-- Card end -->
 
@@ -306,12 +301,12 @@
     <script src="{{ asset('Gmbslagi/js/main.js') }}"></script>
 
     <script>
-        const colorPicker = document.getElementById('color-picker');
+        const colorPicker = document.getElementById('exampleColorInput');
         const hexInput = document.getElementById('hex-input');
-
+      
         colorPicker.addEventListener('input', (event) => {
-            const color = event.target.value;
-            hexInput.value = color;
+          const color = event.target.value;
+          hexInput.value = color;
         });
     </script>
 </body>
