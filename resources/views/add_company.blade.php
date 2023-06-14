@@ -161,19 +161,11 @@
 												  <h5 class="modal-title" id="exampleModalLongTitle">Inputkan Data Perusahaan</h5>
                                         </div>
                                         <div class="modal-body">
-                                                <div class="d-flex row ">
-                                                    @csrf
-                                                    <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
-                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                            <!-- Field wrapper start -->
-                                                            <div class="field-wrapper">
-                                                                <label class="">Nama Perusahaan<span class="text-danger"></span></label>
-                                                                <input class="form-control" name="name" type="text" placeholder="Masukan Nama Perusahaan">
-                                                            </div>
-                                                            <!-- Field wrapper end -->
-                                                        </div>
-
+                                          <form action="/add_company/add" method="POST" >
+                                            <div class="d-flex row ">                                      
+                                                @csrf
+                                                <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                         <!-- Field wrapper start -->
                                                         <div class="field-wrapper">
@@ -199,10 +191,9 @@
                                                         <label>Telepon</label>
                                                         <input class="form-control" name="addtelephoneress" type="text" placeholder="Masukan Nomor Telepon">
                                                     </div>
-                                                    <!-- Field wrapper end -->
-                                                    <div class="field-wrapper">
-                                                        <label class="">NPWP</label>
-                                                        <input class="form-control" name="npwp" type="number" placeholder="Masukan Nomor NPWP">
+                                                    <div style="visibility: hidden" class="field-wrapper">
+                                                        <label class="">Email <span class="text-danger"></span></label>
+                                                        <input class="form-control" name="user_id" value="" type="email" placeholder="Masukan Email">
                                                     </div>
 
 
