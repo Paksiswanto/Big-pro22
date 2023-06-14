@@ -317,7 +317,7 @@
                                     </div>
                                 </div>
 
-
+                                
                                 <div class="content">
                                     <div class="searchcontainer">
                                         <form action="{{ url('account') }}" method="get">

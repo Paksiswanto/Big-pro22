@@ -157,8 +157,8 @@
 										<!-- Row end -->
 										<div class="content">
 											<div class="searchcontainer">
-												<i class="icon-search"></i><input class="search" id="searchInput" type="text" placeholder="Cari Disini..." style="
-                                              margin-bottom: 2%; font-size:10pt " />
+												<i class="icon-search"></i><input class="search " type="text" placeholder="Cari Disini..." style="
+                                              margin-bottom: 2%; font-size:10pt"/>
 											</div>
 										</div>
 										<div class="table-responsive">
@@ -186,42 +186,21 @@
 												<tbody>
 													@foreach ($items as $item)														
 													<!-- Data 1 -->
-													<tr class="table-row">
+													<tr class="table-row item">
 														<td><input type="checkbox" class="other-checkbox"></td>
 														<td>{{$item->name}}</td>
 														<td>{{$item->description}}</td>
 														<td>{{$item->category->name}}</td>
-														<td>{{$item->tax->name}} {{$item->tax->tax_amount}}%</td>
+														<td>{{$item->tax->name}}</td>
 														<td>{{$item->purchase_price}}</td>
 														<td>{{$item->selling_price}}</td>
 														<td>
 															<div class="menu-icons" style="font-size: 15px;">
 																<a href="/edit-item/{{$item->id}}" class="menu-icon icon-edit-2"></a>
-																<a href="delete-items/{{$item->id}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole{{ $item->id }}"></a>
+                                                            <a href="delete-items/{{$item->id}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
 															</div>
 														</td>
 													</tr>
-													 <!-- Modal start -->
-													<div class="modal fade" id="deleterole{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole{{ $item->id }}" aria-hidden="true">
-														<div class="modal-dialog">
-															<div class="modal-content" style="padding: 0px">
-																<div class="modal-header">
-																	<h5 class="modal-title" id="staticBackdropLabel">Hapus Peran</h5>
-																	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-																</div>
-																<div class="modal-body">
-																	<p>Anda Yakin Ingin Menghapus Peran Ini?</p>
-																</div>
-																<div class="modal-footer">
-																<form action="/delete-items/{{ $item->id }}" method="POST">
-																	@csrf
-																	<button type="submit" class="btn btn-danger" id="deleteButton">Hapus</button>
-																</form>
-																</div>
-															</div>
-														</div>
-													</div>
-													<!-- Modal end -->
 													@endforeach
 
 												</tbody>
@@ -282,7 +261,25 @@
 											</div>
 										</div>
 										<!-- Modal end -->
-										 
+										  <!-- Modal start -->
+										  <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content" style="padding: 0px">
+													<div class="modal-header">
+														<h5 class="modal-title" id="staticBackdropLabel">Hapus Item</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<div class="modal-body">
+														<p>Anda Yakin Ingin Menghapus Item Ini?</p>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
+		
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Modal end -->
 									</div>
 								</div>
 								<!-- Card end -->
@@ -418,8 +415,40 @@
 			}
 		});
 	</script>
+	<script>
+		function cari() {
+		var input = document.querySelector('.search');
+		var keyword = input.value.trim().toLowerCase();
 
+		var rows = document.querySelectorAll('.table-row');
 
+		rows.forEach(function(row) {
+			var name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+			var description = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+			var category = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+			var tax = row.querySelector('td:nth-child(5)').textContent.toLowerCase();
+			var purchasePrice = row.querySelector('td:nth-child(6)').textContent.toLowerCase();
+			var sellingPrice = row.querySelector('td:nth-child(7)').textContent.toLowerCase();
+
+			if (
+			name.includes(keyword) ||
+			description.includes(keyword) ||
+			category.includes(keyword) ||
+			tax.includes(keyword) ||
+			purchasePrice.includes(keyword) ||
+			sellingPrice.includes(keyword)
+			) {
+			row.style.display = 'table-row';
+			} else {
+			row.style.display = 'none';
+			}
+		});
+		}
+
+		var searchInput = document.querySelector('.search');
+		searchInput.addEventListener('input', cari);
+
+	</script>
 </body>
 
 <!-- Mirrored from www.kodingwife.com/demos/unipro/v1-x/05-design-violet/data-tables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 May 2023 03:02:54 GMT -->
