@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function category_index()
     {
-        $category = Category::all();
+        $category = Category::with('categoryType')->get();
         return view('category.index', compact('category'));
     }
     public function category_add()
@@ -32,7 +32,7 @@ class CategoryController extends Controller
         $categoryTypes = CategoryType::all();
         return view('category.edit', compact('category', 'categoryTypes'));
     }
-    
+
     public function edit_category(Request $request, $id)
     {
         $category = Category::find($id);
@@ -42,9 +42,9 @@ class CategoryController extends Controller
             'color' => $request->input('color'),
             'category_type_id' => $request->input('category_type'),
         ]);
-    
+
         return redirect('/category')->with('success', 'Kategori berhasil diperbarui');
-    }    
+    }
     public function delete_category($id)
     {
         $category = Category::find($id);

@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/datatables/dataTables.bs4-custom.css') }}" />
     <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/datatables/buttons.bs.css') }}" />
     <style>
-       
+
 
         .hidden-menu {
             display: none;
@@ -190,7 +190,7 @@
                                                 <tr class="table-row">
                                                     <td><input type="checkbox" class="other-checkbox"></td>
                                                     <td>{{$category->name}}</td>
-                                                    <td>{{$category->category_type}}</td>
+                                                    <td>{{ $category->categoryType->name }}</td>
                                                     <td>
                                                         <div class="circle" style="
                                                                 width: 20px;

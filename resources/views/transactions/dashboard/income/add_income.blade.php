@@ -153,7 +153,7 @@
                     <!-- Row start -->
                     <div class="card-body">
                         <div class="row gutters">
-                            <form action="">
+                            <!-- <form action=""> -->
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                     <!-- Card start -->
@@ -166,7 +166,7 @@
                                         <div class="">
 
                                             <!-- Row start -->
-                                            <form action="/insert_supplier" method="POST" enctype="multipart/form-data">
+                                            <form action="/insert_income" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="row gutters">
 
@@ -276,10 +276,10 @@
                                                         <div class="field-wrapper-group">
                                                             <div class="field-wrapper">
                                                                 <select class="select-multiple js-states" title="Select Product Category" name="category_id" id="category_id">
-                                                                    <option>Pendapatan</option>
-                                                                    <option>Pengeluaran</option>
-                                                                    <option>Transfer</option>
-                                                                    <option>Fatur</option>
+                                                                    @foreach ($category as $row)
+                                                                    <option>{{ $row->name }}</option>
+                                                                    @endforeach
+
 
                                                                 </select>
                                                                 <div class="field-placeholder">Kategori<span class="text-danger">*</span></div>
@@ -297,10 +297,10 @@
                                                         <div class="field-wrapper-group">
                                                             <div class="field-wrapper">
                                                                 <select class="select-multiple js-states" style="border-radius: 10px ;" title="Select Product Category" name="customer" id="customer">
-                                                                    <option>Pendapatan</option>
-                                                                    <option>Pengeluaran</option>
-                                                                    <option>Transfer</option>
-                                                                    <option>Fatur</option>
+                                                                    @foreach ($customer as $row)
+                                                                    <option>{{ $row->name }}</option>
+
+                                                                    @endforeach
 
                                                                 </select>
                                                                 <div class="field-placeholder">Pelanggan<span class="text-danger">*</span></div>
@@ -587,7 +587,7 @@
 
                         </div>
                     </div>
-                    </form>
+                    <!-- </form> -->
                 </div>
                 <!-- Row end -->
 

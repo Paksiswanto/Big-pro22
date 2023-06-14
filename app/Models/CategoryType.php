@@ -10,9 +10,9 @@ class CategoryType extends Model
     use HasFactory;
     protected $table = "category_type";
     protected $fillable = ['name'];
-    
+
     function category()
     {
-        return $this->hasMany(category::class);
+        return $this->hasMany(Category::class);
     }
 }

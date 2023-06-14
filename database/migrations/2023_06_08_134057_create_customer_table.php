@@ -21,7 +21,10 @@ return new class extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('province');
+            $table->string('country');
+            $table->string('currency');
             $table->string('postal_code');
+            $table->string('photo');
             $table->string('phone_number');
             $table->foreignId('company_id')->references('id')->on('company')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

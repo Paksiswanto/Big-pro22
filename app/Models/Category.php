@@ -11,8 +11,8 @@ class Category extends Model
     protected $table = "category";
     protected $fillable = ['name','color','parent', 'category_type'];
 
-    function category_type()
+    function categoryType()
     {
-        return $this->belongsTo(category_type::class);
+        return $this->belongsTo(CategoryType::class , 'category_type');
     }
 }

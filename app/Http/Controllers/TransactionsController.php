@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Customer;
+use App\Models\Income;
 use Illuminate\Http\Request;
 
 class TransactionsController extends Controller
@@ -9,13 +12,16 @@ class TransactionsController extends Controller
     //transactions
     public function transactions()
     {
-        return view('transactions.dashboard.index');
+        $data = Income::all();
+        return view('transactions.dashboard.index',compact('data'));
     }
 
     //income
     public function add_income()
     {
-        return view('transactions.dashboard.income.add_income');
+        $category = Category::all();
+        $customer = Customer::all();
+        return view('transactions.dashboard.income.add_income',compact('category','customer'));
     }
 
     public function edit_income()
@@ -26,6 +32,24 @@ class TransactionsController extends Controller
     public function show_income()
     {
         return view('transactions.dashboard.income.show_income');
+    }
+    public function insert_income(Request $request)
+    {
+        $date = date("Y-m-d", strtotime(str_replace('/','-',$request->date)));
+        Income::create([
+            'date' => $date,
+            'payment_method' => $request->payment_method,
+            'amount' => $request->amount,
+            'description' => $request->description,
+            'income_number' => $request->income_number,
+            'reference' => $request->reference,
+            'attachment' => $request->attachment,
+            'account_id' => 1,
+            'category_id' => 1,
+            'customer_id' => 1,
+            'company_id' => 1,
+        ]);
+        return redirect()->route('transactions');
     }
 
     //expenditure
@@ -44,7 +68,7 @@ class TransactionsController extends Controller
         return view('transactions.dashboard.expenditure.show_expenditure');
     }
 
-    //recurring transactions 
+    //recurring transactions
     public function recurring_transactions()
     {
         return view('transactions.recurring_transactions.index');
@@ -92,7 +116,7 @@ class TransactionsController extends Controller
         return view('transactions.dashboard.receipt.receipt_bill');
     }
 
-    
 
-    
+
+
 }
