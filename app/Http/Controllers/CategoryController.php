@@ -11,8 +11,8 @@ class CategoryController extends Controller
 {
     public function category_index()
     {
-        $category = Category::with('categoryType')->get();
-        return view('category.index', compact('category'));
+        $categories = Category::all();
+        return view('category.index', compact('categories'));
     }
     public function category_add()
     {
@@ -24,7 +24,7 @@ class CategoryController extends Controller
     {
         Category::create($request->all());
 
-        return redirect('/category')->with('success', 'Item berhasil ditambahkan.');
+        return redirect('/category')->with('success', 'Data berhasil ditambahkan.');
     }
     public function category_edit($id)
     {
@@ -42,13 +42,13 @@ class CategoryController extends Controller
             'color' => $request->input('color'),
             'category_type_id' => $request->input('category_type'),
         ]);
-
-        return redirect('/category')->with('success', 'Kategori berhasil diperbarui');
-    }
+    
+        return redirect('/category')->with('success', 'Data berhasil diperbarui');
+    }    
     public function delete_category($id)
     {
         $category = Category::find($id);
         $category->delete();
-        return redirect()->back()->with('success, categori berhasil dihapus');
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }
