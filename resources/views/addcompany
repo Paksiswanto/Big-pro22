@@ -34,7 +34,7 @@
     <!-- *************
 			************ Vendor Css Files *************
 		************ -->
-		<link rel="stylesheet" href="{{ asset("Gmbslagi/vendor/daterange/daterange.css") }}">
+    <link rel="stylesheet" href="{{ asset("Gmbslagi/vendor/daterange/daterange.css") }}">
 
     <!-- Mega Menu -->
     <link rel="stylesheet" href="{{ asset("Gmbslagi/vendor/megamenu/css/megamenu.css") }}">
@@ -42,6 +42,7 @@
     <!-- Search Filter JS -->
     <link rel="stylesheet" href="{{ asset("Gmbslagi/vendor/search-filter/search-filter.css") }}">
     <link rel="stylesheet" href="{{ asset("Gmbslagi/vendor/search-filter/custom-search-filter.css") }}">
+    <link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/dropzone/dropzone.min.css") }}" />
     <style>
         .drop-zone {
             max-width: 200px;
@@ -153,16 +154,20 @@
 
                                 </div>
                             </div>
-                            <div class="modal fade" id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-bs-backdrop="static">
-											<div class="modal-dialog">
-                                            <form action="/add_company/add" method="POST">
-											  <div class="modal-content">
-												<div class="modal-header">
-												  <h5 class="modal-title" id="exampleModalLongTitle">Inputkan Data Perusahaan</h5>
+
+                            <!-- Modal start -->
+
+                            <div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true" data-bs-backdrop="static">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                    <form action="/add_company/add" method="POST">
+                                    <div class="modal-content">
+                                        <div class="modal-header1">
+                                            <h5 class="modal-title1 mt-3" id="exampleModalCenteredScrollableTitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inputkan Data Perusahaan</h5>
                                         </div>
                                         <div class="modal-body">
                                                 <div class="d-flex row ">
                                                     @csrf
+                                                    @dd(Auth::user()->id)
                                                     <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
                                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
@@ -179,6 +184,10 @@
                                                         <div class="field-wrapper">
                                                             <label class="">Email <span class="text-danger"></span></label>
                                                             <input class="form-control" name="email" type="email" placeholder="Masukan Email">
+                                                        </div>
+                                                        <div style="visibility: hidden" class="field-wrapper">
+                                                            <label class="">Email <span class="text-danger"></span></label>
+                                                            <input class="form-control" name="user_id" value="{{ Auth::user()->id }}" type="email" placeholder="Masukan Email">
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
@@ -226,15 +235,15 @@
                         <br>
                         <div class="d-flex flex-column flex-sm-row">
                             <div class=" col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12 mb-3">
-                                <h6>Laba Rugi</h6>
-                                <p>Pendapatan dan pengeluaran termasuk faktur dan tagihan belum dibayar</p>
+                                <h6>Arus kas</h6>
+                                <p>Uang masuk dan keluar dari bisnis Anda</p>
                                 <hr>
                                 <div id="chart2"></div>
                             </div>
                             <div class="col-2"></div>
                             <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12 mb-3">
-                                <h6>Pengeluaran Berdasarkan Kategori</h6>
-                                <p>Pengeluaran terbesar di berbagai kategori</p>
+                                <h6>Arus kas</h6>
+                                <p>Uang masuk dan keluar dari bisnis Anda</p>
                                 <hr>
                                 <div id="chart3"></div>
                             </div>
@@ -242,7 +251,7 @@
                         <div class="d-flex flex-column flex-sm-row">
                             <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12">
                                 <h6>Hutang</h6>
-                                <p>Jumlah yang belum di bayarkan</p>
+                                <p>Uang masuk dan keluar dari bisnis Anda</p>
                                 <hr>
                                 <p id="debtAmount">Total Hutang: $0</p>
                                 <p id="remainingDebtAmount">Sisa Hutang: $0</p>
@@ -256,7 +265,7 @@
                             </div>
                             <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12">
                                 <h6>Piutang</h6>
-                                <p>Jumlah yang belum di bayarkan</p>
+                                <p>Uang masuk dan keluar dari bisnis Anda</p>
                                 <hr>
                                 <p id="receivableAmount">Total Piutang: $1000</p>
                                 <p id="remainingReceivableAmount">Sisa Piutang: $500</p>
@@ -289,6 +298,7 @@
 			************* -->
 
         </div>
+    </div>
         <!-- Page wrapper end -->
 
         <!-- *************
@@ -325,9 +335,9 @@
         <script src="{{ asset("Gmbslagi/vendor/apex/custom/home/visitorsGraph.js") }}"></script>
         <script src="{{ asset("Gmbslagi/vendor/apex/custom/home/customersGraph.js") }}"></script>
         <script src="{{ asset("Gmbslagi/vendor/apex/custom/home/sparkline.js") }}"></script>
-		<!-- Date Range JS -->
-		<script src="{{ asset("Gmbslagi/vendor/daterange/daterange.js") }}"></script>
-		<script src="{{ asset("Gmbslagi/vendor/daterange/custom-daterange.js") }}"></script>
+        <!-- Date Range JS -->
+        <script src="{{ asset("Gmbslagi/vendor/daterange/daterange.js") }}"></script>
+        <script src="{{ asset("Gmbslagi/vendor/daterange/custom-daterange.js") }}"></script>
         <!-- Circleful Charts -->
         <script src="{{ asset("Gmbslagi/vendor/circliful/circliful.min.js") }}"></script>
         <script src="{{ asset("Gmbslagi/vendor/circliful/circliful.custom.js") }}"></script>
@@ -335,7 +345,6 @@
         <!-- Date Range JS -->
         <!-- Main Js Required -->
         <script src="{{ asset("Gmbslagi/js/main.js") }}"></script>
-
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
@@ -361,7 +370,7 @@
 
             });
             $(document).ready(function() {
-                $('#exampleModalLong').modal('show');
+                $('#exampleModalCenteredScrollable').modal('show');
             });
             //dropzone
             document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
