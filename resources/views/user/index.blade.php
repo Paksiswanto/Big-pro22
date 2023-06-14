@@ -214,65 +214,50 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <!-- Data 1 -->
+                                                @foreach ($data as $item )                                                    
                                                 <tr class="table-row">
                                                     <td><input type="checkbox" class="other-checkbox"></td>
                                                     <td>
-                                                         <div class="d-flex">
-                                                            <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%">&emsp;Adii Suharja</p>
+                                                        <div class="d-flex">
+                                                            <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%">&emsp; {{ $item->email }}</p>
                                                         </div>
                                                     </td>
-                                                    <td>aby.prass1@gmail.com</td>
+                                                    <td>{{ $item->email }}</td>
                                                     <td>
-                                                        <p class="">Manager</p>
-                                                    </td>
+                                                        @foreach ($item->roles as $role)
+                                                            <p>{{ $role->name }}</p>
+                                                         @endforeach          
+                                                     </td>
                                                     <td>
-                                                    <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{url('edit_users')}}" class="menu-icon icon-edit-2"></a>
+                                                        <div class="menu-icons" style="font-size: 15px;">
+                                                            <a href="{{url('edit_users')}}" class="menu-icon icon-edit-2"></a>
                                                             <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                    </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
-
-                                                <!-- Data 2 -->
+                                                @endforeach
+                                                @foreach ($userregister as $item )                                                    
                                                 <tr class="table-row">
                                                     <td><input type="checkbox" class="other-checkbox"></td>
                                                     <td>
-                                                         <div class="d-flex">
-                                                            <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%">&emsp;Adii Suharja</p>
+                                                        <div class="d-flex">
+                                                            <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%">&emsp; {{ $item->email }}</p>
                                                         </div>
                                                     </td>
-                                                    <td>aby.prass1@gmail.com</td>
+                                                    <td>{{ $item->email }}</td>
                                                     <td>
-                                                        <p class="">Manager</p>
-                                                    </td>
+                                                        @foreach ($item->roles as $role)
+                                                            <p>{{ $role->name }}</p>
+                                                         @endforeach          
+                                                     </td>
                                                     <td>
-                                                    <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{url('edit_users')}}" class="menu-icon icon-edit-2"></a>
+                                                        <div class="menu-icons" style="font-size: 15px;">
+                                                            <a href="{{url('edit_users')}}" class="menu-icon icon-edit-2"></a>
                                                             <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                    </div>
-                                                    </td>
-                                                </tr>
-
-                                                <!-- Data 3 -->
-                                                <tr class="table-row">
-                                                    <td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>
-                                                         <div class="d-flex">
-                                                            <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%">&emsp;Adii Suharja</p>
                                                         </div>
                                                     </td>
-                                                    <td>aby.prass1@gmail.com</td>
-                                                    <td>
-                                                        <p class="">Manager</p>
-                                                    </td>
-                                                    <td>
-                                                    <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{url('edit_users')}}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                    </div>
-                                                    </td>
                                                 </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

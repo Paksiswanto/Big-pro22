@@ -243,10 +243,10 @@ label {
 
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <select class="select-multiple js-states" name="category" title="Select Product Category">
-                                                        <option disabled selected>Pilih Salah Satu</option>
-                                                        <option>Makanan</option>
-                                                        <option>Minuman</option>
+                                                    <select class="select-multiple js-states" name="category_id" title="Select Product Category">
+                                                        @foreach ( $category as $item )                                                            
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                        @endforeach
                                                     </select>
                                                     <div class="field-placeholder">Kategori<span class="text-danger">*</span></div>
                                                 </div>

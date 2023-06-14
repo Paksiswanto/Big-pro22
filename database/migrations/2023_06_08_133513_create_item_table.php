@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('description');
             $table->boolean('active')->default(false);
             $table->string('type');
-            $table->string('category');
+            $table->foreignId('category_id')->references('id')->on('category')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('selling_price')->nullable();
             $table->integer('purchase_price')->nullable();
             $table->foreignId('tax_id')->references('id')->on('tax')->onUpdate('cascade')->onDelete('cascade');

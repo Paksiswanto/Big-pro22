@@ -29,9 +29,9 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TaxController;
-use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Stmt\Return_;
 
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,31 +42,24 @@ use PhpParser\Node\Stmt\Return_;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/',[DashboardController::class,'index'])->name('dashboard');
 
 
 Route::get('kalender', function () {
     return view('kalender');
 });
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
+
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('register', function () {
-    return view('register');
-});
-Route::get('register', function () {
-    return view('register');
-});
+
 Route::get('reset_password', function () {
     return view('reset_password');
 });
 Route::get('confirm_password', function () {
     return view('confirm_password');
 });
-Route::get('add_company', function () {
-    return view('add_company');
-});
+
+Route::get('add_company',[CompanyController::class,'add_company'])->name('add_company');
+Route::get('add_company/add',[CompanyController::class,'add_company_id'])->name('add_company_id');
 Route::get('import', function () {
     return view('import');
 });
@@ -133,9 +126,11 @@ Route::get('/setting-invoice',[InvoiceController::class,'setting_invoice'])->nam
 
 //role
 Route::get('/role', [RoleController::class, 'index'])->name('role');
-
+Route::post('add-role-permission',[RoleController::class,'addRolePermission'])->name('addRolePermission');
 Route::get('/add_role', [RoleController::class, 'add_role'])->name('add_role');
-Route::get('/edit_role', [RoleController::class, 'edit_role'])->name('edit_role');
+Route::get('/edit_role/{id}', [RoleController::class, 'edit_role'])->name('edit_role');
+Route::put('/edit/{id}', [RoleController::class, 'edit'])->name('edit-role');
+Route::get('/delete_role/{id}', [RoleController::class, 'delete_role'])->name('delete_role');
 
 //transaksi
 Route::get('/transaksi', [TransaksiController::class, 'transaksi'])->name('transaksi');
@@ -154,7 +149,7 @@ Route::get('/show_transfer', [TransferController::class, 'show_transfer'])->name
 Route::get('/account', [AccountController::class, 'index'])->name('account');
 
 Route::get('/add_account', [AccountController::class, 'add_account'])->name('add_account');
-Route::get('/edit_account', [AccountController::class, 'edit_account'])->name('edit_account');
+Route::get('/edit_account/{id}', [AccountController::class, 'edit_account'])->name('edit_account');
 Route::get('/show_account1', [AccountController::class, 'show_account1'])->name('show_account1');
 Route::get('/show_account2', [AccountController::class, 'show_account2'])->name('show_account2');
 
@@ -199,6 +194,7 @@ Route::get('transaksi', function () {
 //Users
 Route::get('/users',[UsersController::class,'usersindex'])->name('users-index');
 Route::get('/add_users',[UsersController::class,'add_users'])->name('add_users');
+Route::Post('/add-user',[UsersController::class,'add_user'])->name('add-user');
 Route::get('/edit_users',[UsersController::class,'edit_users'])->name('edit_users');
 //Users
 Route::get('/profile',[ProfileController::class,'profile'])->name('profile');
@@ -220,5 +216,9 @@ Route::get('/edit-currency',[CurrencyController::class,'currency_edit'])->name('
 //Copy Text
 Route::get('copytext', [CopyTextController::class, 'CopyText'])->name('copytext');
 
+require  __DIR__. "/trisqi.php";
+
+
+require  __DIR__."/reno.php";
 require __DIR__."/alfa.php";
 require __DIR__. "/gmbs.php";

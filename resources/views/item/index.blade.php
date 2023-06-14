@@ -190,7 +190,7 @@
 														<td><input type="checkbox" class="other-checkbox"></td>
 														<td>{{$item->name}}</td>
 														<td>{{$item->description}}</td>
-														<td>{{$item->category}}</td>
+														<td>{{$item->category->name}}</td>
 														<td>{{$item->tax->name}}</td>
 														<td>{{$item->purchase_price}}</td>
 														<td>{{$item->selling_price}}</td>

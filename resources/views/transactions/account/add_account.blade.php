@@ -232,9 +232,6 @@
                                                             </select>
                                                             <div class="field-placeholder">Mata Uang<span class="text-danger">*</span></div>
                                                         </div>
-                                                        <button type="button" class="input-icon-block btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalmoney">
-                                                            <i class="icon-plus1"></i>
-                                                        </button>
                                                     </div>
 
                                                 </div>
@@ -297,7 +294,7 @@
 
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
                                                     <div class="d-flex justify-content-end mt-4">
-                                                        <button class="btn btn-outline-secondary1" type="submit" style="border-radius: 2px; margin-right: 1%" href="#">Batal</button>
+                                                        <a href="{{ url('account') }}" class="btn btn-outline-secondary1" style="border-radius: 2px; margin-right: 1%" >Batal</a>
                                                         <button class="btn btn-primary" type="submit" style="border-radius: 2px">Simpan</button>
                                                     </div>
                                                 </div>
@@ -310,141 +307,7 @@
                                     <!-- Button trigger modal -->
 
 
-                                    <!-- Modal account start -->
-                                    <form action="">
-                                        <div class="modal fade" id="modalmoney" tabindex="-1" aria-labelledby="modalmoney" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="margin-top: -20px;">
-                                                <div class="modal-content" style="padding: 0px">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Tambah Mata Uang</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                            <!-- Field wrapper start -->
-                                                            <div class="field-wrapper">
-                                                                <label style="float: left;">Nama</label>
-                                                                <input class="form-control" type="text" placeholder="Masukkan Nama Akun">
-
-                                                            </div>
-                                                            <!-- Field wrapper end -->
-
-                                                        </div>
-                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                            <!-- Field wrapper start -->
-
-                                                            <div class="field-wrapper-group">
-                                                                <div class="field-wrapper">
-                                                                    <label style="float: left;">Mata Uang</label>
-                                                                    <select class="select-multiple js-states" title="Select Product Category">
-                                                                        <option>AED</option>
-                                                                        <option>AFN</option>
-                                                                        <option>ALL</option>
-                                                                        <option>AMD</option>
-                                                                        <option>ANG</option>
-                                                                        <option>AOA</option>
-                                                                        <option>ARS</option>
-                                                                        <option>AUD</option>
-                                                                        <option>AWG</option>
-                                                                        <option>AZN</option>
-                                                                        <option>BAM</option>
-                                                                        <option>BBD</option>
-                                                                        <option>BDT</option>
-                                                                        <option>BGN</option>
-                                                                        <option>BHD</option>
-                                                                        <option>BIF</option>
-                                                                        <option>BMD</option>
-                                                                        <option>BND</option>
-                                                                        <option>BOB</option>
-                                                                        <option>BRL</option>
-                                                                        <option>BSD</option>
-                                                                        <option>BTC</option>
-                                                                        <option>BTN</option>
-                                                                        <option>BWP</option>
-                                                                        <option>BYN</option>
-                                                                        <option>BZD</option>
-                                                                        <option>CAD</option>
-                                                                        <option>CDF</option>
-                                                                        <option>CHF</option>
-                                                                        <option>CLF</option>
-                                                                        <option>CLP</option>
-                                                                        <option>CNH</option>
-                                                                        <option>CNY</option>
-                                                                        <option>COP</option>
-                                                                        <option>CRC</option>
-                                                                        <option>CUC</option>
-                                                                        <option>CUP</option>
-                                                                        <option>CVE</option>
-                                                                        <option>CZK</option>
-                                                                        <option>DJF</option>
-                                                                        <option>DKK</option>
-                                                                        <option>DOP</option>
-                                                                        <option>DZD</option>
-                                                                        <option>EGP</option>
-                                                                        <option>ERN</option>
-                                                                        <option>ETB</option>
-                                                                        <option>EUR</option>
-                                                                        <option>FJD</option>
-                                                                        <option>FKP</option>
-                                                                        <option>GBP</option>
-                                                                        <option>GEL</option>
-                                                                        <option>GGP</option>
-                                                                        <option>GHS</option>
-                                                                        <option>GIP</option>
-                                                                        <option>GMD</option>
-                                                                        <option>GNF</option>
-                                                                        <option>GTQ</option>
-                                                                        <option>GYD</option>
-                                                                        <option>HKD</option>
-                                                                        <option>HNL</option>
-                                                                        <option>HRK</option>
-                                                                        <option>HTG</option>
-                                                                        <option>HUF</option>
-                                                                        <option>IDR</option>
-                                                                        <option>ILS</option>
-                                                                        <option>IMP</option>
-                                                                        <option>INR</option>
-                                                                        <option>IQD</option>
-
-                                                                    </select>
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                            <!-- Field wrapper start -->
-                                                            <div class="field-wrapper">
-                                                                <label style="float: left;">Kurs</label>
-                                                                <input class="form-control" type="text" placeholder="Masukkan Nomor Telepone Akun">
-                                                            </div>
-                                                            <!-- Field wrapper end -->
-
-                                                        </div>
-                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                            <!-- Field wrapper start -->
-                                                            <div class="field-wrapper">
-                                                                <label style="float: left;">Saldo Awal</label>
-                                                                <input class="form-control" type="text" placeholder="Masukkan NPWP Akun">
-                                                            </div>
-                                                            <!-- Field wrapper end -->
-
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Simpan</button>
-                                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <!-- Modal account end -->
+                                   
 
 
 
