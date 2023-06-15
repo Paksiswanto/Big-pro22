@@ -190,7 +190,7 @@
                                                         <!-- Field wrapper start -->
                                                         <div class="field-wrapper">
                                                             <div class="input-group">
-                                                                <input type="text" class="form-control datepicker" name="date" id="date">
+                                                                <input type="text" style="z-index:auto" class="form-control datepicker" name="date" id="date">
                                                                 <span class="input-group-text">
                                                                     <i class="icon-calendar1"></i>
                                                                 </span>
@@ -224,11 +224,9 @@
                                                         <div class="field-wrapper-group">
                                                             <div class="field-wrapper">
                                                                 <select class="select-multiple js-states" title="Select Product Category" name="account_id" id="account_id">
-                                                                    <option>Pendapatan</option>
-                                                                    <option>Pengeluaran</option>
-                                                                    <option>Transfer</option>
-                                                                    <option>Fatur</option>
-
+                                                                  @foreach ($account as $row)
+                                                                  <option value="{{ $row->id  }}">{{ $row->name }}</option>
+                                                                  @endforeach
                                                                 </select>
                                                                 <div class="field-placeholder">Akun<span class="text-danger">*</span></div>
                                                             </div>
@@ -277,10 +275,8 @@
                                                             <div class="field-wrapper">
                                                                 <select class="select-multiple js-states" title="Select Product Category" name="category_id" id="category_id">
                                                                     @foreach ($category as $row)
-                                                                    <option>{{ $row->name }}</option>
+                                                                    <option value="{{ $row->id}}">{{ $row->name }}</option>
                                                                     @endforeach
-
-
                                                                 </select>
                                                                 <div class="field-placeholder">Kategori<span class="text-danger">*</span></div>
                                                             </div>
@@ -296,9 +292,9 @@
 
                                                         <div class="field-wrapper-group">
                                                             <div class="field-wrapper">
-                                                                <select class="select-multiple js-states" style="border-radius: 10px ;" title="Select Product Category" name="customer" id="customer">
+                                                                <select class="select-multiple js-states" style="border-radius: 10px ;" title="Select Product Category" name="customer_id" id="customer_id">
                                                                     @foreach ($customer as $row)
-                                                                    <option>{{ $row->name }}</option>
+                                                                    <option value="{{ $row->id }}">{{ $row->name }}</option>
 
                                                                     @endforeach
 

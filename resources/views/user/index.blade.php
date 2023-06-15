@@ -219,7 +219,12 @@
                                                     <td><input type="checkbox" class="other-checkbox"></td>
                                                     <td>
                                                         <div class="d-flex">
+                                                            @if ($item->picture != null)
+                                                            <img src="{{ asset( $item->picture) }}" alt="Foto Profil">
+                                                            <p style="margin-left: 2%">&emsp; {{ $item->email }}</p>
+                                                            @else
                                                             <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%">&emsp; {{ $item->email }}</p>
+                                                            @endif
                                                         </div>
                                                     </td>
                                                     <td>{{ $item->email }}</td>
@@ -230,33 +235,33 @@
                                                      </td>
                                                     <td>
                                                         <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{url('edit_users')}}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
+                                                            <a href="/edit_users/{{ $item->id }}" class="menu-icon icon-edit-2"></a>
+                                                            <a href="javascript.void(0)" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole{{ $item->id }}"></a>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                @endforeach
-                                                @foreach ($userregister as $item )                                                    
-                                                <tr class="table-row">
-                                                    <td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%">&emsp; {{ $item->email }}</p>
+                                                  <!-- Modal start -->
+                                                    <div class="modal fade" id="deleterole{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" style="padding: 0px">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="staticBackdropLabel">Hapus Pengguna</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Anda Yakin Ingin Menghapus Pengguna Ini?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <form action="user_delete/{{ $item->id }}" method="POST">
+                                                                        @csrf
+                                                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                                                    </form>
+
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </td>
-                                                    <td>{{ $item->email }}</td>
-                                                    <td>
-                                                        @foreach ($item->roles as $role)
-                                                            <p>{{ $role->name }}</p>
-                                                         @endforeach          
-                                                     </td>
-                                                    <td>
-                                                        <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{url('edit_users')}}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                    </div>
+                                                    <!-- Modal end -->
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -294,25 +299,7 @@
                             </div>
                             <!-- Card end -->
                             
-                              <!-- Modal start -->
-                              <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content" style="padding: 0px">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Hapus Pengguna</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Anda Yakin Ingin Menghapus Pengguna Ini?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Modal end -->
+                            
 
                         </div>
                     </div>

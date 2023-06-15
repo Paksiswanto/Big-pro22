@@ -10,4 +10,17 @@ class Income extends Model
     use HasFactory;
     protected $guarded =[];
     protected $table ='income';
+
+    function category()
+    {
+        return $this->belongsTo(Category::class,'category_id');
+    }
+    function customer()
+    {
+        return $this->belongsTo(Customer::class,'customer_id');
+    }
+    function account()
+    {
+        return $this->belongsTo(Account::class,'account_id');
+    }
 }

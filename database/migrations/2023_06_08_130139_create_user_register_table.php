@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password')->nullable();
-            $table->string('picture')->default('null');
+            $table->string('picture')->nullable();
             $table->foreignId('company_id')->references('id')->on('company')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

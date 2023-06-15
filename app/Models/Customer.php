@@ -10,4 +10,9 @@ class Customer extends Model
     use HasFactory;
     protected $guarded =[];
     protected $table ='customer';
+
+    public function incomes()
+    {
+        return $this->hasMany(Income::class);
+    }
 }

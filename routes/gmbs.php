@@ -14,3 +14,7 @@ Route::post('update_supplier/{id}', [SupplierController::class, 'update_supplier
 Route::get('delete_supplier/{id}', [SupplierController::class, 'delete_supplier'])->name('delete_supplier');
 
 Route::post('/insert_income', [TransactionsController::class, 'insert_income'])->name('insert_income');
+Route::post('/update_income/{id}', [TransactionsController::class, 'update_income'])->name('update_income');
+
+Route::post('/insert_expenditure', [TransactionsController::class, 'insert_expenditure'])->name('insert_expenditure');
+Route::post('/update_expenditure', [TransactionsController::class, 'update_expenditure'])->name('update_expenditure');

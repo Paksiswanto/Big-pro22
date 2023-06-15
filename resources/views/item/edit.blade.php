@@ -227,15 +227,11 @@
 
                                                     <div class="half-width-container">
 
-                                                        <input type="radio" name="option" id="option1"
-                                                            value="Option 1" checked>
-                                                        <label style="border-radius: 2px" class="label"
-                                                            for="option1">Produk</label>
+                                                        <input type="radio" name="option" id="option1" value="Option 1" checked>
+                                                        <label style="border-radius: 2px" class="label" for="option1">Produk</label>
 
-                                                        <input type="radio" name="option" id="option2"
-                                                            value="Option 2">
-                                                        <label style="border-radius: 2px" class="label"
-                                                            for="option2">Layanan</label>
+                                                        <input type="radio" name="option" id="option2" value="Option 2">
+                                                        <label style="border-radius: 2px" class="label" for="option2">Layanan</label>
                                                     </div>
 
                                                     <!-- Field wrapper start -->
@@ -356,7 +352,8 @@
                                                             @foreach ($tax as $item)
                                                                 <option value="{{ $item->id }}"
                                                                     {{ old('tax_id') == $item->id ? 'selected' : '' }}>
-                                                                    {{ $item->name }}</option>
+                                                                    {{ $item->name }} {{ $item->tax_amount }}%
+                                                                </option>
                                                             @endforeach
                                                         </select>
                                                         <div class="field-placeholder">Pajak<span
@@ -369,11 +366,8 @@
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
                                                 <div class="d-flex justify-content-end mt-4">
-                                                    <button class="btn btn-outline-secondary1" type="submit"
-                                                        style="border-radius: 2px; margin-right: 1%"
-                                                        href="#">Batal</button>
-                                                    <button class="btn btn-primary" type="submit"
-                                                        style="border-radius: 2px">Simpan</button>
+                                                    <a href="{{url('itemindex')}}" class="btn btn-outline-secondary1" type="reset" style="border-radius: 2px; margin-right: 1%">Batal</a>
+                                                    <button class="btn btn-primary" type="submit"style="border-radius: 2px">Simpan</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -444,7 +438,7 @@
             } else {
                 $("#inputField1").prop("readonly", true);
             }
-           
+
         })
 
         $('#checkbox2').change((e) => {
@@ -453,8 +447,7 @@
             } else {
                 $("#inputField2").prop("readonly", true);
             }
-           
+
         })
-       
     </script>
 </body>

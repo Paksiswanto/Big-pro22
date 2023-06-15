@@ -152,283 +152,293 @@
 
                     <!-- Row start -->
                     <div class="card-body">
-                    <div class="row gutters">
-                        <form action="">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="row gutters">
+                            <form action="">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                            <!-- Card start -->
-                            <div class="" style="">
-                                <div class="row">
-                                    <div class="card-title">
-                                        <h3>Tambah Pendapatan Rutin<button type="button" style="border: none; background:none;">☆</button></h3>
-                                    </div>
-                                </div>
-                                <div class="">
-
-                                    <!-- Row start -->
-                                    <div class="row gutters">
-
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom: 1%;">
-
-                                            <div style="border-bottom: solid grey 1px; margin-bottom: 2%; margin-top: 2%;">
-                                                <h6>Umum</h6>
-                                                <p>Informasi kontak penyedia Anda akan muncul di tagihan dan profil mereka. Anda dapat menambahkan informasi kontak dan logo mereka untuk digunakan dalam tagihan.</p>
+                                    <!-- Card start -->
+                                    <div class="" style="">
+                                        <div class="row">
+                                            <div class="card-title">
+                                                <h3>Tambah Pendapatan Rutin<button type="button" style="border: none; background:none;">☆</button></h3>
                                             </div>
-
                                         </div>
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="">
 
-                                            <!-- Field wrapper start -->
+                                            <!-- Row start -->
+                                            <div class="row gutters">
 
-                                            <!-- Field wrapper end -->
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom: 1%;">
 
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div style="border-bottom: solid grey 1px; margin-bottom: 2%; margin-top: 2%;">
+                                                        <h6>Umum</h6>
+                                                        <p>Informasi kontak penyedia Anda akan muncul di tagihan dan profil mereka. Anda dapat menambahkan informasi kontak dan logo mereka untuk digunakan dalam tagihan.</p>
+                                                    </div>
 
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper">
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="Dihasilkan Secara Otomatis" disabled>
-                                                    <span class="input-group-text">
-                                                        <i class="icon-calendar1"></i>
-                                                    </span>
                                                 </div>
-                                                <div class="field-placeholder">Tanggal<span class="text-danger">*</span></div>
-                                            </div>
-                                            <!-- Field wrapper end -->
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <!-- Field wrapper start -->
 
-                                            <!-- Field wrapper start -->
+                                                    <!-- Field wrapper end -->
 
-                                            <div class="field-wrapper-group">
-                                                <div class="field-wrapper">
-                                                    <select class="select-multiple js-states" title="Select Product Category" style="font-size: 5px;">
-                                                        <option>Cash</option>
-                                                        <option>Transfer Bank</option>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
-                                                    </select>
-                                                    <div class="field-placeholder">Metode Pembayaran<span class="text-danger">*</span></div>
+                                                    <!-- Field wrapper start -->
+                                                    <div class="field-wrapper">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" placeholder="Dihasilkan Secara Otomatis" disabled>
+                                                            <span class="input-group-text">
+                                                                <i class="icon-calendar1"></i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="field-placeholder">Tanggal<span class="text-danger">*</span></div>
+                                                    </div>
+                                                    <!-- Field wrapper end -->
+
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                                                    <!-- Field wrapper start -->
+
+                                                    <div class="field-wrapper-group">
+                                                        <div class="field-wrapper">
+                                                            <select class="select-multiple js-states" title="Select Product Category" style="font-size: 5px;">
+                                                                <option>Cash</option>
+                                                                <option>Transfer Bank</option>
+
+                                                            </select>
+                                                            <div class="field-placeholder">Metode Pembayaran<span class="text-danger">*</span></div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                                                    <!-- Field wrapper start -->
+
+                                                    <div class="field-wrapper-group">
+                                                        <div class="field-wrapper">
+                                                            <select class="select-multiple js-states" title="Select Product Category">
+                                                                <option>Pendapatan</option>
+                                                                <option>Pengeluaran</option>
+                                                                <option>Transfer</option>
+                                                                <option>Fatur</option>
+
+                                                            </select>
+                                                            <div class="field-placeholder">Akun<span class="text-danger">*</span></div>
+                                                        </div>
+                                                        <button type="button" class="input-icon-block btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalaccount">
+                                                            <i class="icon-plus1"></i>
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                                                    <!-- Field wrapper start -->
+                                                    <div class="field-wrapper">
+                                                        <input class="form-control" type="number" placeholder="Rp0,00" name="entry_amount" id="entrty_amount">
+                                                        <div class="field-placeholder">Jumlah<span class="text-danger">*</span></div>
+                                                    </div>
+                                                    <!-- Field wrapper end -->
+
+                                                </div>
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                                    <!-- Field wrapper start -->
+                                                    <div class="field-wrapper">
+                                                        <textarea class="form-control" rows="2" placeholder="Masukan Deskripsi Pendapatan" name="description" id="description"></textarea>
+                                                        <div class="field-placeholder">Deskripsi <span class="text-danger">*</span></div>
+                                                        <div class="form-text">
+                                                            Silakan masukkan Deskripsi pendapatan Anda.
+                                                        </div>
+                                                    </div>
+                                                    <!-- Field wrapper end -->
+
+                                                </div>
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom: 1%;">
+
+                                                    <div style="border-bottom: solid grey 1px; margin-bottom: 2%; margin-top: 1%;">
+                                                        <h6>Tetapkan</h6>
+                                                        <p>Pilih kategori dan pelanggan untuk membuat laporan Anda lebih detail.</p>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                                                    <!-- Field wrapper start -->
+
+                                                    <div class="field-wrapper-group">
+                                                        <div class="field-wrapper">
+                                                            <select class="select-multiple js-states" title="Select Product Category" name="category_id" id="category_id">
+                                                                <option>Pendapatan</option>
+                                                                <option>Pengeluaran</option>
+                                                                <option>Transfer</option>
+                                                                <option>Fatur</option>
+
+                                                            </select>
+                                                            <div class="field-placeholder">Kategori<span class="text-danger">*</span></div>
+                                                        </div>
+                                                        <button type="button" class="input-icon-block btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalcategory">
+                                                            <i class="icon-plus1"></i>
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                                                    <!-- Field wrapper start -->
+
+                                                    <div class="field-wrapper-group">
+                                                        <div class="field-wrapper">
+                                                            <select class="select-multiple js-states" title="Select Product Category" name="customer_id" id="customer_id">
+                                                                <option>Pendapatan</option>
+                                                                <option>Pengeluaran</option>
+                                                                <option>Transfer</option>
+                                                                <option>Fatur</option>
+
+                                                            </select>
+                                                            <div class="field-placeholder">Pelanggan<span class="text-danger">*</span></div>
+                                                        </div>
+                                                        <button type="button" class="input-icon-block btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalcustomer">
+                                                            <i class="icon-plus1"></i>
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom: 1%;">
+
+                                                    <div style="border-bottom: solid grey 1px; margin-bottom: 2%; margin-top: 1%;">
+                                                        <h6>Jadwal</h6>
+                                                        <p>Pilih persyaratan dan waktu mulai/berakhir untuk memastikan bahwa pelanggan menerima transaksi Anda pada hari yang tepat.</p>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                                                    <!-- Field wrapper start -->
+                                                    <div class="field-wrapper">
+                                                        <input class="form-control1" rows="2" placeholder="Masukkan Hari/Tangal"></input>
+                                                        <div class="field-placeholder">Sesuaikan<span class="text-danger" name="">*</span></div>
+                                                        <div class="form-text">
+                                                            Silakan masukkan Hari/Tanggal sesuai dengan kebutuhan Anda.
+                                                        </div>
+                                                    </div>
+                                                    <!-- Field wrapper end -->
+
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                                                    <!-- Field wrapper start -->
+                                                    <div class="field-wrapper-group">
+                                                        <div class="field-wrapper">
+                                                            <select class="select-multiple js-states" title="Select Product Category" style="font-size: 5px;" name="repeat">
+                                                                <option>Harian</option>
+                                                                <option>Mingguan</option>
+                                                                <option>Bulanan</option>
+                                                                <option>Tahunan</option>
+
+
+                                                            </select>
+                                                            <div class="field-placeholder">Setiap<span class="text-danger">*</span></div>
+                                                        </div>
+
+                                                    </div>
+                                                    <!-- Field wrapper end -->
+
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                                                    <!-- Field wrapper start -->
+
+                                                    <div class="field-wrapper">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control datepicker" placeholder="Dihasilkan Secara Otomatis" name="start_date">
+                                                            <span class="input-group-text">
+                                                                <i class="icon-calendar1"></i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="field-placeholder">Tanggal Awal<span class="text-danger">*</span></div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                                                    <!-- Field wrapper start -->
+
+                                                    <div class="field-wrapper">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control datepicker" placeholder="Dihasilkan Secara Otomatis" name="end_date">
+                                                            <span class="input-group-text">
+                                                                <i class="icon-calendar1"></i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="field-placeholder">Tanggal Akhir<span class="text-danger">*</span></div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom: 1%;">
+
+                                                    <div style="border-bottom: solid grey 1px; margin-bottom: 2%; margin-top: 1%;">
+                                                        <h6>Lainnya</h6>
+                                                        <p>Masukkan Lampiran Pendukung untuk menyimpan transaksi yang ditautkan ke catatan Anda.</p>
+                                                    </div>
+
                                                 </div>
 
-                                            </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <!-- Field wrapper start -->
+                                                    <div class="field-wrapper">
+                                                        <input class="form-control" type="text" placeholder="Dihasilkan Secara Otomatis" name="number" disabled>
+                                                        <div class="field-placeholder">Nomor<span class="text-danger">*</span></div>
+                                                    </div>
+                                                    <!-- Field wrapper end -->
 
-                                            <!-- Field wrapper start -->
-
-                                            <div class="field-wrapper-group">
-                                                <div class="field-wrapper">
-                                                    <select class="select-multiple js-states" title="Select Product Category">
-                                                        <option>Pendapatan</option>
-                                                        <option>Pengeluaran</option>
-                                                        <option>Transfer</option>
-                                                        <option>Fatur</option>
-
-                                                    </select>
-                                                    <div class="field-placeholder">Akun<span class="text-danger">*</span></div>
                                                 </div>
-                                                <button type="button" class="input-icon-block btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalaccount">
-                                                    <i class="icon-plus1"></i>
-                                                </button>
-                                            </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <!-- Field wrapper start -->
+                                                    <div class="field-wrapper">
+                                                        <input class="form-control" type="text" placeholder="Masukan Refrensi" name="reference" id="reference" required>
+                                                        <div class="field-placeholder">Refrensi</div>
+                                                    </div>
+                                                    <!-- Field wrapper end -->
 
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper">
-                                                <input class="form-control" type="number" placeholder="Rp0,00">
-                                                <div class="field-placeholder">Jumlah<span class="text-danger">*</span></div>
-                                            </div>
-                                            <!-- Field wrapper end -->
-
-                                        </div>
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper">
-                                                <textarea class="form-control" rows="2" placeholder="Masukan Deskripsi Pendapatan"></textarea>
-                                                <div class="field-placeholder">Deskripsi <span class="text-danger">*</span></div>
-                                                <div class="form-text">
-                                                    Silakan masukkan Deskripsi pendapatan Anda.
                                                 </div>
-                                            </div>
-                                            <!-- Field wrapper end -->
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                                        </div>
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom: 1%;">
+                                                    <!-- Field wrapper start -->
+                                                    <div class="field-wrapper">
+                                                        <textarea class="form-control1" rows="2" placeholder="Lampiran Tidak Wajib Diisi" name="attacment"></textarea>
+                                                        <div class="field-placeholder">Lampiran Pendukung<span class="text-danger">*</span></div>
+                                                        <div class="form-text">
+                                                            Silakan masukkan Lampiran Pendukung Anda.
+                                                        </div>
+                                                    </div>
+                                                    <!-- Field wrapper end -->
 
-                                            <div style="border-bottom: solid grey 1px; margin-bottom: 2%; margin-top: 1%;">
-                                                <h6>Tetapkan</h6>
-                                                <p>Pilih kategori dan pelanggan untuk membuat laporan Anda lebih detail.</p>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-
-                                            <div class="field-wrapper-group">
-                                                <div class="field-wrapper">
-                                                    <select class="select-multiple js-states" title="Select Product Category">
-                                                        <option>Pendapatan</option>
-                                                        <option>Pengeluaran</option>
-                                                        <option>Transfer</option>
-                                                        <option>Fatur</option>
-
-                                                    </select>
-                                                    <div class="field-placeholder">Kategori<span class="text-danger">*</span></div>
-                                                </div>
-                                                <button type="button" class="input-icon-block btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalcategory">
-                                                    <i class="icon-plus1"></i>
-                                                </button>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-
-                                            <div class="field-wrapper-group">
-                                                <div class="field-wrapper">
-                                                    <select class="select-multiple js-states" title="Select Product Category">
-                                                        <option>Pendapatan</option>
-                                                        <option>Pengeluaran</option>
-                                                        <option>Transfer</option>
-                                                        <option>Fatur</option>
-
-                                                    </select>
-                                                    <div class="field-placeholder">Pelanggan<span class="text-danger">*</span></div>
-                                                </div>
-                                                <button type="button" class="input-icon-block btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalcustomer">
-                                                    <i class="icon-plus1"></i>
-                                                </button>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom: 1%;">
-
-                                            <div style="border-bottom: solid grey 1px; margin-bottom: 2%; margin-top: 1%;">
-                                                <h6>Jadwal</h6>
-                                                <p>Pilih persyaratan dan waktu mulai/berakhir untuk memastikan bahwa pelanggan menerima transaksi Anda pada hari yang tepat.</p>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper">
-                                                <input class="form-control1" rows="2" placeholder="Masukkan Hari/Tangal"></input>
-                                                <div class="field-placeholder">Sesuaikan<span class="text-danger">*</span></div>
-                                                <div class="form-text">
-                                                    Silakan masukkan Hari/Tanggal sesuai dengan kebutuhan Anda.
-                                                </div>
-                                            </div>
-                                            <!-- Field wrapper end -->
-
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper-group">
-                                                <div class="field-wrapper">
-                                                    <select class="select-multiple js-states" title="Select Product Category" style="font-size: 5px;">
-                                                        <option>Harian</option>
-                                                        <option>Mingguan</option>
-                                                        <option>Bulanan</option>
-                                                        <option>Tahunan</option>
-
-
-                                                    </select>
-                                                    <div class="field-placeholder">Setiap<span class="text-danger">*</span></div>
                                                 </div>
 
-                                            </div>
-                                            <!-- Field wrapper end -->
-
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-
-                                            <div class="field-wrapper">
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control datepicker" placeholder="Dihasilkan Secara Otomatis">
-                                                    <span class="input-group-text">
-                                                        <i class="icon-calendar1"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="field-placeholder">Tanggal Awal<span class="text-danger">*</span></div>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-
-                                            <div class="field-wrapper">
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control datepicker" placeholder="Dihasilkan Secara Otomatis">
-                                                    <span class="input-group-text">
-                                                        <i class="icon-calendar1"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="field-placeholder">Tanggal Akhir<span class="text-danger">*</span></div>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom: 1%;">
-
-                                            <div style="border-bottom: solid grey 1px; margin-bottom: 2%; margin-top: 1%;">
-                                                <h6>Lainnya</h6>
-                                                <p>Masukkan Lampiran Pendukung untuk menyimpan transaksi yang ditautkan ke catatan Anda.</p>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper">
-                                                <input class="form-control" type="text" placeholder="Dihasilkan Secara Otomatis" disabled>
-                                                <div class="field-placeholder">Nomor<span class="text-danger">*</span></div>
-                                            </div>
-                                            <!-- Field wrapper end -->
-
-                                        </div>
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper">
-                                                <textarea class="form-control1" rows="2" placeholder="Lampiran Tidak Wajib Diisi"></textarea>
-                                                <div class="field-placeholder">Lampiran Pendukung<span class="text-danger">*</span></div>
-                                                <div class="form-text">
-                                                    Silakan masukkan Lampiran Pendukung Anda.
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
+                                                    <div class="d-flex justify-content-end mt-4">
+                                                        <button class="btn btn-outline-secondary1" type="submit" style="border-radius: 2px; margin-right: 1%" href="{{url('recurring_transactions')}}">Batal</button>
+                                                        <button class="btn btn-primary" type="submit" style="border-radius: 2px">Simpan</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <!-- Field wrapper end -->
+
+
 
                                         </div>
-
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
-                                            <div class="d-flex justify-content-end mt-4">
-                                                <button class="btn btn-outline-secondary1" type="submit" style="border-radius: 2px; margin-right: 1%" href="{{url('recurring_transactions')}}">Batal</button>
-                                                <button class="btn btn-primary" type="submit" style="border-radius: 2px">Simpan</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        <!-- Button trigger modal -->
 
 
-
-                                </div>
-                                <!-- Button trigger modal -->
-
-
-                                <!-- Modal account start -->
-                                <form action="">
+                                        <!-- Modal account start -->
+                                        <form action="">
                                             <div class="modal fade" id="modalaccount" tabindex="-1" aria-labelledby="modalaccount" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="margin-top: -20px;">
                                                     <div class="modal-content" style="padding: 0px; ">
@@ -437,7 +447,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            
+
                                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                                 <!-- Field wrapper start -->
@@ -515,16 +525,16 @@
 
                                                                 <!-- Field wrapper start -->
                                                                 <div class="field-wrapper row">
-                                                                <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-12">
-                                                                    <label class="mb-2">Warna</label>
-                                                                </div>
+                                                                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-12">
+                                                                        <label class="mb-2">Warna</label>
+                                                                    </div>
                                                                     <div class="d-flex">
-                                                                    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12">
-                                                                        <input class="form-control" type="text" placeholder="Masukkan Warna Kategori">
-                                                                    </div>
-                                                                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12">
-                                                                        <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
-                                                                    </div>
+                                                                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12">
+                                                                            <input class="form-control" type="text" placeholder="Masukkan Warna Kategori">
+                                                                        </div>
+                                                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12">
+                                                                            <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                                 <!-- Field wrapper end -->
@@ -641,13 +651,13 @@
                                         <!-- Modal customer end -->
 
 
-                                <!-- Row end -->
+                                        <!-- Row end -->
 
-                            </div>
+                                    </div>
+                                </div>
+                                <!-- Card end -->
+
                         </div>
-                        <!-- Card end -->
-
-                    </div>
                     </div>
                     </form>
                 </div>

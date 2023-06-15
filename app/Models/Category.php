@@ -9,14 +9,22 @@ class Category extends Model
 {
     use HasFactory;
     protected $table = "category";
-    protected $fillable = ['name','color','parent', 'category_type'];
+    protected $fillable = ['name','color','parent', 'category_type_id'];
 
     function categoryType()
     {
-        return $this->belongsTo(CategoryType::class , 'category_type');
+        return $this->belongsTo(CategoryType::class);
     }
     function item()
     {
         return $this->belongsTo(item::class);
+    }
+    public function incomes()
+    {
+        return $this->hasMany(Income::class);
+    }
+    public function expenditure()
+    {
+        return $this->hasMany(Expenditure::class);
     }
 }
