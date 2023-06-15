@@ -214,13 +214,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($userregister as $item )                                                    
+                                                @foreach ($data as $item )                                                    
                                                 <tr class="table-row">
                                                     <td><input type="checkbox" class="other-checkbox"></td>
                                                     <td>
                                                         <div class="d-flex">
                                                             @if ($item->picture != null)
-                                                            <img src="{{ asset('users/' . $item->picture) }}" style="border-radius: 50%;" alt="Foto Profil">
+                                                            <img src="{{ asset( $item->picture) }}" alt="Foto Profil">
                                                             <p style="margin-left: 2%">&emsp; {{ $item->email }}</p>
                                                             @else
                                                             <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%">&emsp; {{ $item->email }}</p>
@@ -235,7 +235,7 @@
                                                      </td>
                                                     <td>
                                                         <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{url('edit_users')}}" class="menu-icon icon-edit-2"></a>
+                                                            <a href="/edit_users/{{ $item->id }}" class="menu-icon icon-edit-2"></a>
                                                             <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
                                                         </div>
                                                     </td>

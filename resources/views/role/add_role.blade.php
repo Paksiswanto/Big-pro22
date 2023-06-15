@@ -743,7 +743,7 @@
 
                                                                             </tr>
                                                                             <tr>
-
+                                                                                
                                                                                 <td>Import</th>
                                                                                 <td name="item" id="checkbox161">
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
@@ -762,9 +762,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox172"><input name="permission[]" value="70" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox173"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox174"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox175"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox173"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox174"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox175"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
 
                                                                             </tr>
                                                                             <tr>

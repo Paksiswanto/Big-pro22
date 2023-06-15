@@ -161,16 +161,20 @@
 												<h6>Informasi pribadi</h6>
 												<p>Informasi kontak penyedia Anda akan muncul di tagihan dan profil mereka. Anda dapat menambahkan informasi kontak dan logo mereka untuk digunakan dalam tagihan.</p>
 											</div>
-
 										</div>
 										<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-
+											
 											<!-- Field wrapper start -->
 											<div class="field-wrapper">
-												<input class="form-control" name="name" type="text" placeholder=" Masukan Nama">
+												<input class="form-control @error('name')
+													is-invalid
+												@enderror" value="{{ old('name') }}" name="name" type="text" placeholder=" Masukan Nama">
 												<div class="field-placeholder">Nama <span class="text-danger">*</span></div>
+												<input type="hidden" name="password" value="123">
 												<div class="form-text">
-
+													@error('name')
+													<div class="invalid-feedback">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 										</div>
@@ -179,17 +183,27 @@
 											<!-- Field wrapper end -->
 											<!-- Field wrapper start -->
 											<div class="field-wrapper">
-												<input class="form-control" name="email" type="email" placeholder=" Masukan Email">
+												<input class="form-control @error('email')
+													is-invalid
+												@enderror" name="email" value="{{ old('email') }}" type="email" placeholder=" Masukan Email">
 												<div class="field-placeholder">Email <span class="text-danger">*</span></div>
 												<div class="form-text">
-
+													@error('email')
+													<div class="invalid-feedback">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 											<!-- Field wrapper end -->
 										</div>
 										<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 											<div class="field-wrapper">
-												<input class="form-control" type="file" name="picture" id="picture" required>
+												<input class="form-control
+												@error('picture')
+												is-invalid
+												@enderror" type="file" name="picture" id="picture" required>
+												@error('picture')
+													<div class="invalid-feedback">{{ $message }}</div>
+												@enderror
 											</div>
 										</div>
 										<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12" style="">

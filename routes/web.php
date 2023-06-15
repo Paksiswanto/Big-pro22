@@ -195,7 +195,8 @@ Route::get('transaksi', function () {
 Route::get('/users',[UsersController::class,'usersindex'])->name('users-index');
 Route::get('/add_users',[UsersController::class,'add_users'])->name('add_users');
 Route::Post('/add-user',[UsersController::class,'add_user'])->name('add-user');
-Route::get('/edit_users',[UsersController::class,'edit_users'])->name('edit_users');
+Route::get('/edit_users/{id}',[UsersController::class,'edit_users'])->name('edit_users');
+Route::put('/user-edit/{id}',[UsersController::class,'edit'])->name('user-edit');
 //Users
 Route::get('/profile',[ProfileController::class,'profile'])->name('profile');
 // Route::get('invoice', )

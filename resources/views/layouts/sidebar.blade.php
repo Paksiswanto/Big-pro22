@@ -353,7 +353,7 @@
                             </li>
                             <li class="mt-3">
                                 <a href="{{ url('users') }}"
-                                    class="{{ request()->routeIs('users-index') || request()->routeIs('add_users') ? 'current-page' : '' }}"><i
+                                    class="{{ request()->routeIs('users-index') || request()->routeIs('add_users') ? 'current-page' : '' }} || {{ request()->routeIs('edit_users') ? 'current-page' : ''   }}"><i
                                         class="icon-users"
                                         style=" font-size: 19px;"></i><span>&emsp;Pengguna</span></a>
                             </li>
