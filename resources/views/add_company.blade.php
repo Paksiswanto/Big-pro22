@@ -183,9 +183,10 @@
                                                     </div>
                                                     <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
                                                         <!-- Field wrapper start -->
-
+                                                        
+                                                  
                                                         <!-- Example of a form that Dropzone can take over -->
-                                                        <form action="add_company_id" method="POST">
+                                                        <form action="{{ route('add_company_id') }}" method="POST">
                                                             @csrf
                                                             <div class="drop-zone">
                                                                 <span class="drop-zone__prompt">klik disini untuk upload foto</span>
@@ -198,11 +199,13 @@
                                                     <div class="field-wrapper">
                                                         <label>Telepon</label>
                                                         <input class="form-control" name="addtelephoneress" type="text" placeholder="Masukan Nomor Telepon">
+                                                        <input type="hidden" name="user_id" value="{{Auth::User()->id}}">
                                                     </div>
                                                     <!-- Field wrapper end -->
                                                     <div class="field-wrapper">
                                                         <label class="">NPWP</label>
                                                         <input class="form-control" name="npwp" type="number" placeholder="Masukan Nomor NPWP">
+
                                                     </div>
 
 
