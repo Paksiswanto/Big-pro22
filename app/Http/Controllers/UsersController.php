@@ -5,50 +5,102 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Company;
 use Illuminate\Support\Str;
-use App\Models\UserRegister;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
     public function usersindex()
     {
-        $userregister = UserRegister::all();
-        return view('user.index',compact('userregister'));
+        $data = User::all()->where('company_id',1);
+        return view('user.index',compact('data'));
     }
     public function add_users()
     {
+        
         $company = Company::all();
         $role = Role::all();
         return view('user.add',compact('company','role'));
     }
     public function add_user(Request $request)
     {
-            // Mendapatkan file foto yang diunggah dari permintaan pengguna
+        $request->validate([
+            'name' => 'required',
+            'picture'=> 'required|mimes:jpeg,png,jpg,jfif|max:2048',
+            'email'=> 'required|unique:users'
+        ]);
+        
+        if ($request->hasFile('picture')) {
+            $photo = $request->file('picture');
+            $destinationPath = 'public/users';
+            $filePath = $photo->store($destinationPath);
+        
+            // Memastikan file gambar berhasil diunggah sebelum menyimpannya ke database
+            if ($filePath) {
+                $data = User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'company_id' => $request->company_id,
+                    'password' => $request->password,
+                    'picture' => $filePath,
+                ]);
+        
+                $role = $request->role;
+                $data->assignRole($role);
+        
+                return redirect('users')->with('success', 'Data pengguna berhasil disimpan.');
+        
+            }
+        }
+    }
+    public function edit_users($id)
+    {
+        $data = User::find($id);
+        $company = Company::all();
+        $role = Role::all();
+        return view('user.edit',compact('company','role','data'));
+    }
+    public function edit(Request $request,$id)
+    {
+       // Validasi input form
+    $request->validate([
+        'name' => 'required',
+        'picture' => 'image|mimes:jpeg,png,jpg|max:2048',
+        'email' => 'required|unique:users,email,' . $id
+    ]);
+
+    // Ambil data pengguna yang akan diupdate
+    $user = User::findOrFail($id);
+
+    // Update nama dan email
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->company_id = $request->company_id;
+
+    // Update gambar profil jika ada
+    if ($request->hasFile('picture')) {
         $photo = $request->file('picture');
-
-        // Menentukan path atau direktori tujuan untuk menyimpan file foto di dalam storage
         $destinationPath = 'public/users';
-
-        // Menyimpan file foto ke direktori tujuan dengan nama yang dihasilkan dan mengembalikan path-nya
         $filePath = $photo->store($destinationPath);
 
-        // Menyimpan data customer beserta path foto ke dalam database
-        $data = UserRegister::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'company_id' => $request->company_id,
-            'picture' => $filePath, // Menyimpan path file foto
-        ]);
+        // Hapus gambar lama jika ada
+        if ($user->picture) {
+            Storage::delete($user->picture);
+        }
 
+        // Simpan path gambar baru
+        $user->picture = $filePath;
+    }
 
-        $role = $request->role;
-        $data->assignRole($role); // menugaskan peran ke instansi model `UserRegister`
-        
-        return redirect('users');   
-    }
-    public function edit_users()
-    {
-        return view('user.edit');
-    }
+    // Simpan perubahan pada model pengguna
+    $user->save();
+
+    $role = $request->role;
+    $user->assignRole($role);
+    // Redirect atau kembali ke halaman pengguna
+    return redirect()->route('users-index')->with('success', 'Data pengguna berhasil diperbarui.');     
+            }
 }
