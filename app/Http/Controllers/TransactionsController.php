@@ -24,9 +24,13 @@ class TransactionsController extends Controller
         return view('transactions.dashboard.income.add_income',compact('category','customer'));
     }
 
-    public function edit_income()
+    public function edit_income($id)
     {
-        return view('transactions.dashboard.income.edit_income');
+        $income = Income::find($id);
+        $come = Income::all();
+        $category = Category::all();
+        $customer = Customer::all();
+        return view('transactions.dashboard.income.edit_income',compact('category','customer','income','come'));
     }
 
     public function show_income()
@@ -45,10 +49,32 @@ class TransactionsController extends Controller
             'reference' => $request->reference,
             'attachment' => $request->attachment,
             'account_id' => 1,
-            'category_id' => 1,
-            'customer_id' => 1,
+            'category_id' => $request->category_id,
+            'customer_id' => $request->customer_id,
             'company_id' => 1,
         ]);
+        return redirect()->route('transactions');
+    }
+    public function update_income(Request $request, $id)
+    {
+        $date = date("Y-m-d", strtotime(str_replace('/','-',$request->date)));
+
+        $income = Income::find($id);
+
+        $income->date = $date;
+        $income->payment_method = $request->payment_method;
+        $income->amount = $request->amount;
+        $income->description = $request->description;
+        $income->income_number = $request->income_number;
+        $income->reference = $request->reference;
+        $income->attachment = $request->attachment;
+        $income->account_id = 1;
+        $income->category_id = $request->category_id;
+        $income->customer_id = 1;
+        $income->company_id = 1;
+
+        $income->save();
+
         return redirect()->route('transactions');
     }
 

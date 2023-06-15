@@ -19,4 +19,8 @@ class Category extends Model
     {
         return $this->belongsTo(item::class);
     }
+    public function incomes()
+    {
+        return $this->hasMany(Income::class);
+    }
 }

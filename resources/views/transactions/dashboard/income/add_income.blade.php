@@ -277,7 +277,7 @@
                                                             <div class="field-wrapper">
                                                                 <select class="select-multiple js-states" title="Select Product Category" name="category_id" id="category_id">
                                                                     @foreach ($category as $row)
-                                                                    <option>{{ $row->name }}</option>
+                                                                    <option value="{{ $row->id}}">{{ $row->name }}</option>
                                                                     @endforeach
 
 
@@ -296,9 +296,9 @@
 
                                                         <div class="field-wrapper-group">
                                                             <div class="field-wrapper">
-                                                                <select class="select-multiple js-states" style="border-radius: 10px ;" title="Select Product Category" name="customer" id="customer">
+                                                                <select class="select-multiple js-states" style="border-radius: 10px ;" title="Select Product Category" name="customer_id" id="customer_id">
                                                                     @foreach ($customer as $row)
-                                                                    <option>{{ $row->name }}</option>
+                                                                    <option value="{{ $row->id }}">{{ $row->name }}</option>
 
                                                                     @endforeach
 

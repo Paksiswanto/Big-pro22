@@ -235,8 +235,7 @@
                                             <p style="font-size: 12pt;">Dibuat</p>
                                         </div>
                                         <p style="font-size: 10pt; margin-bottom: 3%;">Jayaabadi memebuat transaksi pada 13 Mei 2023</p>
-                                        <a href="{{ route('edit_income') }}">
-                                            <button style="background-color: #9a99e2;border-radius:2px;width:80px;border:transparent;height:25px;color:#ffffff">Sunting</button></a>
+                                            <button style="background-color: #9a99e2;border-radius:2px;width:80px;border:transparent;height:25px;color:#ffffff">Sunting</button>     
                                         <hr>
 
                                         <!-- Row start -->

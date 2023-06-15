@@ -193,8 +193,6 @@
             width: 15px;
             height: 15px;
             border-radius: 50%;
-            background-color: red;
-
         }
 
         .lingkaran-warna2 {
@@ -620,7 +618,7 @@
                                             &emsp;<a href="#" title="Hapus"> <i class="icon-trash-2"></i> </a>
                                         </div>
                                         <table class="table table-hover">
-
+                                            
                                             <thead>
                                                 <tr>
 
@@ -637,16 +635,16 @@
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
+                                            @foreach ($data as $row)
                                             <tbody>
-                                                @foreach ($data as $row)
                                                 <tr>
                                                     <td name="item" id="checkbox1"><input type="checkbox" class="other-checkbox"></td>
                                                     <td>{{ $row->date }}</th>
                                                     <td>TRA-{{ $row->income_number }}</td>
                                                     <td>{{ $row->category_id }}</td>
                                                     <td>
-                                                        <div class="lingkaran-warna1">
-                                                            &emsp;&emsp;{{ $row->category_id }}
+                                                        <div class="lingkaran-warna1" style="background-color: {{ $row->category->color }};">
+                                                            &emsp;&emsp;{{ $row->category->name }}
                                                         </div>
                                                     </td>
                                                     <td></td>
@@ -655,14 +653,13 @@
                                                     <td>Rp{{ $row->amount }}</td>
                                                     <th>
                                                         <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{url('edit_income')}}" class="menu-icon icon-edit-2"></a>
+                                                            <a href="{{route('edit_income',['id' => $row->id])}}" class="menu-icon icon-edit-2"></a>
                                                             <a href="{{url('delete_income')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteincome"></a>
                                                             <a href="{{route('show_expenditure')}}" class="menu-icon icon-eye1"></a>
                                                         </div>
                                                     </th>
                                                 </tr>
-                                                @endforeach
-
+                                                
                                                 <!-- <div id="myModal">
                                                     <div class="modal-content">
                                                         <span class="close">&times;</span>
@@ -723,7 +720,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                               
+
                                                 <div id="myModal">
                                                     <div class="modal-content">
                                                         <div class="card" style="background-color:  #eaeaff;">
@@ -779,6 +776,7 @@
                                                 </div>
 
                                             </tbody>
+                                            @endforeach
                                         </table>
 
                                         <!-- Card end -->

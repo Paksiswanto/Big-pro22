@@ -88,7 +88,7 @@ Route::get('icons', function () {
 Route::get('/transactions', [TransactionsController::class, 'transactions'])->name('transactions');
 
 Route::get('/add_income', [TransactionsController::class, 'add_income'])->name('add_income');
-Route::get('/edit_income', [TransactionsController::class, 'edit_income'])->name('edit_income');
+Route::get('/edit_income/{id}', [TransactionsController::class, 'edit_income'])->name('edit_income');
 Route::get('/show_income', [TransactionsController::class, 'show_income'])->name('show_income');
 
 Route::get('/add_expenditure', [TransactionsController::class, 'add_expenditure'])->name('add_expenditure');
