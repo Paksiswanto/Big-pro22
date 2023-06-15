@@ -516,6 +516,7 @@
                                           
                                           </div>
                                           <!-- Row end -->
+                                          <div class="accordion" id="faqAccordion">
                                           <div class="accordion-item" style="margin-top: 1%">
                                             <h2 class="accordion-header" id="headingTwo">
                                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -559,6 +560,7 @@
                                               
                                             </div>
                                         </div>
+                                        </div>
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
                                           <div class="d-flex justify-content-end mt-4">
                                               <button class="btn btn-outline-secondary1" type="submit" style="border-radius: 2px; margin-right: 1%" href="#">Batal</button>
@@ -571,55 +573,56 @@
 
                                     </div>
                                 </div>
-								<!-- Card end -->
-  <!-- Modal start -->
-  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content" style="margin-top: -20%;">
-    <div class="modal-header" style="margin-bottom: -1%">
-        <h5 class="modal-title" id="exampleModalLabel" >Edit Kolom</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-         <div class="field-wrapper m-0">
-          <label for="nama">Nama Item</label>
-            <select class="select-single js-states" title="Select Product Category" data-live-search="true">
-              <option>Item</option>
-              <option>Layanan</option>
-              <option>Produk</option>
-            </select>
-          
-         </div>
-<!--  -->                                                  <div class="field-wrapper m-0">
-          <label for="nama">Nama Harga</label>
-          <select class="select-single js-states" title="Select Product Category" data-live-search="true">
-            <option>Harga</option>
-            <option>Tarif</option>
-          </select>
+								            <!-- Card end -->
+                            <!-- Modal start -->
+                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content" style="margin-top: -20%;">
+                              <div class="modal-header" style="margin-bottom: -1%">
+                                  <h5 class="modal-title" id="exampleModalLabel" >Edit Kolom</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <form>
+                                  <div class="field-wrapper m-0">
+                                    <label for="nama">Nama Item</label>
+                                      <select class="select-single js-states" title="Select Product Category" data-live-search="true">
+                                        <option>Item</option>
+                                        <option>Layanan</option>
+                                        <option>Produk</option>
+                                      </select>
+                                    
+                                  </div>
+                                 <!--  -->  
+                                  <div class="field-wrapper m-0">
+                                    <label for="nama">Nama Harga</label>
+                                    <select class="select-single js-states" title="Select Product Category" data-live-search="true">
+                                      <option>Harga</option>
+                                      <option>Tarif</option>
+                                    </select>
 
-        </div>
-        <label for="nama">Nama Kuantitas</label>
-        <div class="field-wrapper m-0" style="display: flex; flex-direction: row;">
-          <select class="select-single js-states" title="Select Product Category" onchange="showInputField(this)">
-            <option>Kuantitas</option>
-            <option>Khusus</option>
-          </select>
-          <div id="customInput" style="display: none; margin-left: 10px;">
-            <input type="text" class="" placeholder="Masukan">
-          </div>
-        </div>
-        
-          
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal end -->
+                                  </div>
+                                  <label for="nama">Nama Kuantitas</label>
+                                  <div class="field-wrapper m-0" style="display: flex; flex-direction: row;">
+                                    <select class="select-single js-states" title="Select Product Category" onchange="showInputField(this)">
+                                      <option>Kuantitas</option>
+                                      <option>Khusus</option>
+                                    </select>
+                                    <div id="customInput" style="display: none; margin-left: 10px;">
+                                      <input type="text" class="" placeholder="Masukan">
+                                    </div>
+                                  </div>
+                                  
+                                    
+                                  </form>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Modal end -->
 							</div>
 						</div>
 						<!-- Row end -->

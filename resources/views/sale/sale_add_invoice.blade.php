@@ -497,6 +497,7 @@
                                             
                                           </div>
                                           <!-- Row end -->
+                                          <div class="accordion" id="faqAccordion">
                                           <div class="accordion-item" style="margin-top: 1%">
                                             <h2 class="accordion-header" id="headingTwo">
                                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -539,6 +540,7 @@
                                                 </div>
                                               
                                             </div>
+                                        </div>
                                         </div>
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
                                           <div class="d-flex justify-content-end mt-4">

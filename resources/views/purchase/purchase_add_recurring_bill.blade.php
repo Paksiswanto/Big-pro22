@@ -536,6 +536,7 @@
 
                                     </div>
                                     <!-- Row end -->
+                                    <div class="accordion" id="faqAccordion">
                                     <div class="accordion-item" style="margin-top: 1%">
                                         <h2 class="accordion-header" id="headingTwo">
                                             <button class="accordion-button collapsed" type="button"
@@ -592,6 +593,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                     </div>
 
                                 </div>
