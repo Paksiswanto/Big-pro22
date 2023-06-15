@@ -60,7 +60,7 @@ Route::get('confirm_password', function () {
 });
 
 Route::get('add_company',[CompanyController::class,'add_company'])->name('add_company');
-Route::get('add_company/add',[CompanyController::class,'add_company_id'])->name('add_company_id');
+Route::post('add_company/add',[CompanyController::class,'add_company_id'])->name('add_company_id');
 Route::get('import', function () {
     return view('import');
 });

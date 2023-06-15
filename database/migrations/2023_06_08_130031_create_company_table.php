@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
+            $table->string('_token');
             $table->string('npwp')->nullable();
             $table->string('addtelephoneress')->nullable();
             $table->string('city')->nullable();

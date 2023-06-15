@@ -186,7 +186,13 @@
                                                     <div class="field-wrapper">
                                                         <label>Telepon</label>
                                                         <input class="form-control" name="addtelephoneress" type="text" placeholder="Masukan Nomor Telepon">
+                                                        <input type="hidden" name="user_id" value="{{Auth::User()->id}}">
                                                     </div>
+                                                    <!-- Field wrapper end -->
+                                                    <div class="field-wrapper">
+                                                        <label class="">NPWP</label>
+                                                        <input class="form-control" name="npwp" type="number" placeholder="Masukan Nomor NPWP">
+
                                                     <div style="visibility: hidden" class="field-wrapper">
                                                         <label class="">Email <span class="text-danger"></span></label>
                                                         <input class="form-control" name="user_id" value="" type="email" placeholder="Masukan Email">

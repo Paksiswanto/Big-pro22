@@ -3,13 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
     public function login(){
         return view('auth.login');
+    }
+
+    public function p_login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Jika login berhasil
+            return redirect()->intended('/');
+        } else {
+            // Jika login gagal
+            return redirect()->back()->withErrors(['email' => 'Email atau password salah']);
+        }
     }
 
     public function register(){
