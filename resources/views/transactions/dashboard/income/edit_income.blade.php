@@ -224,10 +224,9 @@
                                                         <div class="field-wrapper-group">
                                                             <div class="field-wrapper">
                                                                 <select class="select-multiple js-states" title="Select Product Category" name="account_id" id="account_id">
-                                                                    <option>Pendapatan</option>
-                                                                    <option>Pengeluaran</option>
-                                                                    <option>Transfer</option>
-                                                                    <option>Fatur</option>
+                                                                @foreach ($come as $row)
+                                                                    <option value="{{ $row->account_id }}" {{ $row->account_id == $income->account_id ? 'selected' : ''}}>{{ $row->account->name }}</option>
+                                                                    @endforeach
 
                                                                 </select>
                                                                 <div class="field-placeholder">Akun<span class="text-danger">*</span></div>
@@ -296,9 +295,9 @@
 
                                                         <div class="field-wrapper-group">
                                                             <div class="field-wrapper">
-                                                                <select class="select-multiple js-states" style="border-radius: 10px ;" title="Select Product Category" name="customer" id="customer">
-                                                                    @foreach ($customer as $row)
-                                                                    <option>{{ $row->name }}</option>
+                                                                <select class="select-multiple js-states" style="border-radius: 10px ;" title="Select Product Category" name="customer_id" id="customer_id">
+                                                                    @foreach ($come as $row)
+                                                                    <option value="{{ $row->customer_id }}" {{ $row->customer_id == $income->customer_id ? 'selected' : '' }}>{{ $row->customer->name }}</option>
 
                                                                     @endforeach
 

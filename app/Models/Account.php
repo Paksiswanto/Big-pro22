@@ -11,4 +11,13 @@ class Account extends Model
 
     protected $guarded = [];
     protected $table = 'account' ;
+
+    public function incomes()
+    {
+        return $this->hasMany(Income::class);
+    }
+    public function expenditure()
+    {
+        return $this->hasMany(Expenditure::class);
+    }
 }

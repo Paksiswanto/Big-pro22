@@ -52,7 +52,7 @@
             min-width: 60px;
             background: #D8D7FF;
             color: #030179;
-            
+
         }
          .badge-finish {
             border-radius: 2px;
@@ -443,11 +443,11 @@
                                                 <th scope="col"> <input type="checkbox" id="select-all" onchange="toggleCheckbox()"></th>
                                                 <th scope="col">Tanggal Mulai</th>
                                                 <th scope="col">Tanggal Akhir</th>
-                                                <th scope="col">Kategori</th>
                                                 <th scope="col">Jenis</th>
+                                                <th scope="col">Kategori</th>
                                                 <th></th>
                                                 <th></th>
-                                                
+
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Saldo</th>
                                                 <th scope="col">Aksi</th>
@@ -466,7 +466,7 @@
                                                 </td>
                                                 <td></td>
                                                 <td></td>
-                                                
+
                                                 <td><span class="badge-finish">Selesai</span></td>
                                                 <td>Rp900.000.000</td>
                                                 <th>
@@ -572,7 +572,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -615,7 +615,7 @@
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
-													
+
 												</div>
 												</div>
 											</div>
