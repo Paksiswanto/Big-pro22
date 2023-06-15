@@ -8,10 +8,8 @@ use Illuminate\Http\Request;
 class AccountController extends Controller
 {
     public function index(Request $request){
-        $katakunci = $request->katakunci;
-        $data = Account::where('name', 'LIKE', '%'.$katakunci.'%')->get();
+        $data = Account::paginate(10)->withQueryString();
         return view('transactions.account.index', compact('data'));
-        
     }
 
     public function add_account(){
@@ -19,6 +17,15 @@ class AccountController extends Controller
     }
 
     public function insert_account(Request $request){
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'rekening_number' => 'required|numeric',
+            'currency' => 'required',
+            'balance' => 'required',
+            'name_bank' => 'required',
+            'bank_telephone' => 'required|numeric',
+            'bank_address' => 'required'
+        ]);
         Account::create([
             'name' => $request->name,
             'rekening_number' => $request->rekening_number,
@@ -30,7 +37,7 @@ class AccountController extends Controller
             'company_id' => 1,
         ]);
 
-        return redirect()->route('account');
+        return redirect()->route('account')->withErrors($validatedData)->withInput();
     }
 
     public function edit_account($id){
@@ -39,6 +46,15 @@ class AccountController extends Controller
     }
 
     public function update_account(Request $request, $id){
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'rekening_number' => 'required|numeric',
+            'currency' => 'required',
+            'balance' => 'required',
+            'name_bank' => 'required',
+            'bank_telephone' => 'required|numeric',
+            'bank_address' => 'required'
+        ]);
         $data = Account::find($id);
         $data->update([
             'name' => $request->name,
@@ -51,7 +67,7 @@ class AccountController extends Controller
             'company_id' => 1,
         ]);
 
-        return redirect()->route('account');
+        return redirect()->route('account')->withErrors($validatedData)->withInput();
     }
 
     public function delete_account($id)

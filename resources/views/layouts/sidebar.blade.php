@@ -413,8 +413,8 @@
                                 </div>
                             </li>
                             <li class="mt-3">
-                                <a href="{{ url('icons') }}"
-                                    class="{{ request()->routeIs('icons') ? 'current-page' : '' }}">Icons</a>
+                                <a href="{{ url('coba') }}"
+                                    class="{{ request()->routeIs('coba') ? 'current-page' : '' }}">Icons</a>
                             </li>
                         </ul>
                     </div>

@@ -195,8 +195,13 @@
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control" style="z-index: auto" name="name" id="name" placeholder="Masukan nama" value="{{ old('name') }}" required>
+                                                            <input type="text" class="form-control @error('name')
+													is-invalid
+												@enderror" style="z-index: auto" name="name" id="name" placeholder="Masukan nama" value="{{ old('name') }}">
                                                         </div>
+                                                        @error('name')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
                                                         <div class="field-placeholder">Nama<span class="text-danger">*</span></div>
                                                     </div>
                                                     <!-- Field wrapper end -->
@@ -208,9 +213,14 @@
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
                                                         <div class="input-group">
-                                                            <input name="rekening_number" id="rekening_number" type="text" class="form-control" style="z-index: auto" placeholder="Masukan Nomor Rekening" value="{{ old('rekening_number') }}" required>
+                                                            <input name="rekening_number" id="rekening_number" type="text" class="form-control @error('rekening_number')
+													is-invalid
+												@enderror" style="z-index: auto" placeholder="Masukan Nomor Rekening" value="{{ old('rekening_number') }}">
 
                                                         </div>
+                                                        @error('rekening_number')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
                                                         <div class="field-placeholder">Nomor Rekening<span class="text-danger">*</span></div>
                                                     </div>
                                                     <!-- Field wrapper end -->
@@ -223,13 +233,16 @@
 
                                                     <div class="field-wrapper-group">
                                                         <div class="field-wrapper">
-                                                            <select name="currency" id="currency" class="select-multiple js-states" title="Select Product Category" required>
-                                                                <option value="">Pilih Mata Uang</option>
+                                                            <select name="currency" id="currency" class="select-multiple js-states @error('currency')
+													is-invalid
+												@enderror" title="Select Product Category">
+
                                                                 <option value="Rupiah" {{ old('currency') === 'Rupiah' ? 'selected' : '' }}>Rupiah</option>
                                                                 <option value="Dollar" {{ old('currency') === 'Dollar' ? 'selected' : '' }}>Dollar</option>
-                                                                
-
                                                             </select>
+                                                            @error('currency')
+                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                            @enderror
                                                             <div class="field-placeholder">Mata Uang<span class="text-danger">*</span></div>
                                                         </div>
                                                     </div>
@@ -239,16 +252,18 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input name="balance" id="balance" class="form-control" type="number" placeholder="Rp0,00" value="{{ old('balance') }}" required>
+                                                        <input name="balance" class="form-control @error('balance')
+													is-invalid
+												@enderror " type="text" placeholder="Masukkan Jumlah" value="{{ old('balance') }}" id="input-numeral-thousand">
+                                                        @error('balance')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
                                                         <div class="field-placeholder">Saldo Saat Ini<span class="text-danger">*</span></div>
                                                     </div>
                                                     <!-- Field wrapper end -->
 
                                                 </div>
-
-
-
-
+                                                
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style=" margin-bottom: 2%; margin-top: 1%;">
 
                                                     <div style="border-bottom: solid grey 1px;margin-bottom:1%">
@@ -262,7 +277,12 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input name="name_bank" id="name_bank" class="form-control" type="text" placeholder="Masukkan Nama Bank" value="{{ old('name_bank') }}" required>
+                                                        <input name="name_bank" id="name_bank" class="form-control @error('name_bank')
+													is-invalid
+												@enderror" type="text" placeholder="Masukkan Nama Bank" value="{{ old('name_bank') }}">
+                                                        @error('name_bank')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
                                                         <div class="field-placeholder">Nama Bank<span class="text-danger">*</span></div>
                                                     </div>
                                                     <!-- Field wrapper end -->
@@ -272,7 +292,12 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input name="bank_telephone" id="bank_telephone" class="form-control" type="text" placeholder="Masukkan Telepon Bank" value="{{ old('bank_telephone') }}" required>
+                                                        <input name="bank_telephone" id="bank_telephone" class="form-control @error('bank_telephone')
+													is-invalid
+												@enderror" type="text" placeholder="Masukkan Telepon Bank" value="{{ old('bank_telephone') }}">
+                                                        @error('bank_telephone')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
                                                         <div class="field-placeholder">Telepon Bank<span class="text-danger">*</span></div>
                                                     </div>
                                                     <!-- Field wrapper end -->
@@ -282,7 +307,12 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <textarea  name="bank_address" id="bank_address" class="form-control1" rows="2" placeholder="Masukkan Alamat Bank" value="{{ old('bank_address') }}" required></textarea>
+                                                        <textarea name="bank_address" id="bank_address" class="form-control1 @error('bank_address')
+													is-invalid
+												@enderror" rows="2" placeholder="Masukkan Alamat Bank" value="{{ old('bank_address') }}"></textarea>
+                                                        @error('bank_address')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
                                                         <div class="field-placeholder">Alamat Bank<span class="text-danger">*</span></div>
                                                         <div class="form-text">
                                                             Silakan masukkan Alamat Bank.
@@ -294,7 +324,7 @@
 
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
                                                     <div class="d-flex justify-content-end mt-4">
-                                                        <a href="{{ url('account') }}" class="btn btn-outline-secondary1" style="border-radius: 2px; margin-right: 1%" >Batal</a>
+                                                        <a href="{{ url('account') }}" class="btn btn-outline-secondary1" style="border-radius: 2px; margin-right: 1%">Batal</a>
                                                         <button class="btn btn-primary" type="submit" style="border-radius: 2px">Simpan</button>
                                                     </div>
                                                 </div>
@@ -307,7 +337,7 @@
                                     <!-- Button trigger modal -->
 
 
-                                   
+
 
 
 
@@ -376,6 +406,15 @@
     <script src=" {{ asset ("Gmbslagi/vendor/daterange/daterange.js")}}"></script>
     <script src="{{ asset ("Gmbslagi/vendor/daterange/custom-daterange.js")}}"></script>
 
+    <!-- Input Mask JS -->
+    <script src="{{asset("Gmbslagi/vendor/input-masks/cleave.min.js")}}></script>
+		<script src=" {{asset("Gmbslagi/vendor/input-masks/cleave-phone.js")}}"></script>
+    <script src="{{asset("Gmbslagi/vendor/input-masks/cleave-custom.js")}}"></script>
+    <script src="{{ asset('Gmbslagi/vendor/input-masks/cleave.min.js') }}"></script>
+    <script src="{{ asset('Gmbslagi/vendor/input-masks/cleave-custom.js') }}"></script>
+
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script> -->
@@ -416,6 +455,14 @@
             var modal = document.getElementById("myModal");
             modal.style.display = "none";
         }
+    </script>
+    <script>
+        // Membuat instance Cleave dengan format ribuan
+        var inputNumeral = document.getElementById('input-numeral-thousand');
+        new Cleave(inputNumeral, {
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand'
+        });
     </script>
 
 
