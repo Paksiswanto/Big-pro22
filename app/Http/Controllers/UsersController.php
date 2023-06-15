@@ -15,7 +15,7 @@ class UsersController extends Controller
 {
     public function usersindex()
     {
-        $data = User::all()->where('company_id',1);
+        $data = User::all();
         return view('user.index',compact('data'));
     }
     public function add_users()
@@ -103,4 +103,9 @@ class UsersController extends Controller
     // Redirect atau kembali ke halaman pengguna
     return redirect()->route('users-index')->with('success', 'Data pengguna berhasil diperbarui.');     
             }
+    function delete($id)  {
+        $data = User::find($id);
+        $data ->delete();
+        return redirect()->back()->with('Succsess','Data Berhasi Dihapus');
+    }
 }
