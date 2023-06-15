@@ -211,22 +211,14 @@ label {
                                         <!-- Row start -->
                                         <div class="row gutters">
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
                                                 <div class="half-width-container">
-
                                                     <input type="radio" name="type" id="option1" value="Produk" checked>
-                                                    <label style="border-radius: 2px" class="label" for="Produk">Produk</label>
-
+                                                    <label style="border-radius: 2px" class="label" for="option1">Produk</label>
                                                     <input type="radio" name="type" id="option2" value="Layanan">
-                                                    <label style="border-radius: 2px" class="label" for="Layanan">Layanan</label>
+                                                    <label style="border-radius: 2px" class="label" for="option2">Layanan</label>
                                                 </div>
-
-                                                <!-- Field wrapper start -->
-
-                                                <!-- Field wrapper end -->
-
                                             </div>
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
@@ -319,7 +311,7 @@ label {
                                                     <select class="select-multiple js-states" name="tax_id" title="Select Product Category">
                                                         <option disabled selected>Pilih Salah Satu</option>
                                                         @foreach ($tax as $item)                                                       
-                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                        <option value="{{$item->id}}">{{$item->name}} {{$item->tax_amount}}%</option>
                                                         @endforeach
                                                     </select>
                                                     <div class="field-placeholder">Pajak<span class="text-danger">*</span></div>
@@ -331,7 +323,7 @@ label {
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
                                                 <div class="d-flex justify-content-end mt-4">
-                                                    <button class="btn btn-outline-secondary1" type="submit" style="border-radius: 2px; margin-right: 1%" href="#">Batal</button>
+                                                    <a href="{{url('itemindex')}}" class="btn btn-outline-secondary1" type="reset" style="border-radius: 2px; margin-right: 1%">Batal</a>
                                                     <button class="btn btn-primary" type="submit" style="border-radius: 2px">Simpan</button>
                                                 </div>
                                             </div>

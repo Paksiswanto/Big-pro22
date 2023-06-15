@@ -158,7 +158,7 @@
 										<div class="content">
 											<div class="searchcontainer">
 												<i class="icon-search"></i><input class="search " type="text" placeholder="Cari Disini..." style="
-                                              margin-bottom: 2%; font-size:10pt " />
+                                              margin-bottom: 2%; font-size:10pt"/>
 											</div>
 										</div>
 										<div class="table-responsive">
@@ -186,7 +186,7 @@
 												<tbody>
 													@foreach ($items as $item)														
 													<!-- Data 1 -->
-													<tr class="table-row">
+													<tr class="table-row item">
 														<td><input type="checkbox" class="other-checkbox"></td>
 														<td>{{$item->name}}</td>
 														<td>{{$item->description}}</td>
@@ -415,8 +415,40 @@
 			}
 		});
 	</script>
+	<script>
+		function cari() {
+		var input = document.querySelector('.search');
+		var keyword = input.value.trim().toLowerCase();
 
+		var rows = document.querySelectorAll('.table-row');
 
+		rows.forEach(function(row) {
+			var name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+			var description = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+			var category = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+			var tax = row.querySelector('td:nth-child(5)').textContent.toLowerCase();
+			var purchasePrice = row.querySelector('td:nth-child(6)').textContent.toLowerCase();
+			var sellingPrice = row.querySelector('td:nth-child(7)').textContent.toLowerCase();
+
+			if (
+			name.includes(keyword) ||
+			description.includes(keyword) ||
+			category.includes(keyword) ||
+			tax.includes(keyword) ||
+			purchasePrice.includes(keyword) ||
+			sellingPrice.includes(keyword)
+			) {
+			row.style.display = 'table-row';
+			} else {
+			row.style.display = 'none';
+			}
+		});
+		}
+
+		var searchInput = document.querySelector('.search');
+		searchInput.addEventListener('input', cari);
+
+	</script>
 </body>
 
 <!-- Mirrored from www.kodingwife.com/demos/unipro/v1-x/05-design-violet/data-tables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 May 2023 03:02:54 GMT -->

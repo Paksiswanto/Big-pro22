@@ -21,7 +21,7 @@ class ItemController extends Controller
       $items = Item::find($id);
 
       $items->delete();
-      return redirect()->back()->with('success', 'Item berhasil dihapus.');
+      return redirect()->back()->with('success', 'Data berhasil dihapus.');
     }
     public function additem()
     {
@@ -39,7 +39,7 @@ class ItemController extends Controller
     Item::create($request->all());
 
     // Redirect ke halaman yang sesuai dengan pesan sukses
-    return redirect('/itemindex')->with('success', 'Item berhasil ditambahkan.');
+    return redirect('/itemindex')->with('success', 'Data berhasil ditambahkan.');
     }
 
     public function edititem($id)
@@ -61,7 +61,7 @@ class ItemController extends Controller
             'selling_price' => $request->selling_price,
         ]);
 
-        return redirect('/itemindex')->with('success', 'Item berhasil diupdate');
+        return redirect('/itemindex')->with('success', 'Data berhasil diupdate');
     }
 
 }

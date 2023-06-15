@@ -164,8 +164,8 @@
                                     <!-- Row end -->
                                     <div class="content">
                                         <div class="searchcontainer">
-                                            <i class="icon-search"></i><input class="search " type="text" placeholder="Cari Disini..." style="
-                                              margin-bottom: 2%; font-size:10pt " />
+                                            <i class="icon-search"></i>
+                                            <input class="search" type="text" placeholder="Cari Disini..." style="margin-bottom: 2%; font-size:10pt" />
                                         </div>
                                     </div>
                                     <div class="table-responsive">
@@ -186,26 +186,42 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($category as $category)
+                                                @foreach ($categories as $category)
                                                 <tr class="table-row">
                                                     <td><input type="checkbox" class="other-checkbox"></td>
                                                     <td>{{$category->name}}</td>
                                                     <td>{{ $category->categoryType->name }}</td>
                                                     <td>
-                                                        <div class="circle" style="
-                                                                width: 20px;
-                                                                height: 20px;
-                                                                border-radius: 50%;
-                                                                background-color: {{$category->color}};">
-                                                        </div>
+                                                        <div class="circle" style="width: 20px; height: 20px; border-radius: 50%; background-color: {{$category->color}};"></div>
                                                     </td>
                                                     <td>
                                                         <div class="menu-icons" style="font-size: 15px;">
                                                             <a href="edit-category/{{$category->id}}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="delete_category{{$category->id}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
+                                                            <a href="/delete_category/{{$category->id}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole{{ $category->id }}"></a>
                                                         </div>
                                                     </td>
                                                 </tr>
+                                                <!-- Modal start -->
+                                                <div class="modal fade" id="deleterole{{ $category->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole{{ $category->id }}" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content" style="padding: 0px">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="staticBackdropLabel">Hapus Peran</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Anda Yakin Ingin Menghapus Peran Ini?</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <form action="/delete_category/{{ $category->id }}" method="POST">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-danger" id="deleteButton">Hapus</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal end -->
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -234,25 +250,6 @@
                                             </div>
                                         </div>
                                         <!-- Card end -->
-                                          <!-- Modal start -->
-                                <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content" style="padding: 0px">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="staticBackdropLabel">Hapus Kategori</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Anda Yakin Ingin Menghapus Kategori Ini?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Modal end -->
                                     </div>
                                 </div>
                             </div>
@@ -374,7 +371,27 @@
                 updateCountDisplay(); // Update the count display
             });
         </script>
-
+        <script>
+            function cari() {
+                var keyword = document.querySelector('.search').value.toLowerCase();
+                var rows = document.querySelectorAll('.table-row');
+        
+                rows.forEach(function(row) {
+                    var nama = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                    var jenis = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                    var warna = row.querySelector('.circle').style.backgroundColor;
+        
+                    if (nama.includes(keyword) || jenis.includes(keyword) || warna.includes(keyword)) {
+                        row.style.display = 'table-row';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+        
+            var searchInput = document.querySelector('.search');
+            searchInput.addEventListener('input', cari);
+        </script>
 </body>
 
 <!-- Mirrored from www.kodingwife.com/demos/unipro/v1-x/05-design-violet/data-tables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 May 2023 03:02:54 GMT -->

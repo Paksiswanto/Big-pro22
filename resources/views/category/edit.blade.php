@@ -236,7 +236,7 @@
                                         <!-- Row end -->
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
                                             <div class="d-flex justify-content-end mt-4">
-                                                <button class="btn btn-outline-secondary1" type="submit" style="border-radius: 2px; margin-right: 1%" href="{{url('category')}}">Batal</button>
+                                                <a href="{{url('category')}}" class="btn btn-outline-secondary1" type="reset" style="border-radius: 2px; margin-right: 1%">Batal</a>
                                                 <button class="btn btn-primary" type="submit" style="border-radius: 2px">Simpan</button>
                                             </div>
                                         </div>

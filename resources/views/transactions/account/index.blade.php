@@ -356,10 +356,31 @@
                                                 <th>
                                                     <div class="menu-icons" style="font-size: 15px;">
                                                         <a href="{{ route('edit_account', ['id' => $row->id]) }}," class="menu-icon icon-edit-2"></a>
-                                                        <a href="" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteaccount"></a>
+                                                        <a href="{{url('delete_account')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteaccount{{ $row->id }}"></a>
                                                         <a href="{{ route('show_account1', ['id' => $row->id]) }}," class="menu-icon icon-eye1"></a>
                                                     </div>
                                                 </th>
+                                                <!-- Modal start -->
+                                                <div class="modal fade" id="deleteaccount{{ $row->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteaccount{{ $row->id }}" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content" style="padding: 0px">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="staticBackdropLabel">Hapus Akun</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Anda Yakin Ingin Menghapus Akun Ini?</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <form action="/delete_account/{{ $row->id }}" method="post">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-danger" id="deleteButton">Hapus</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal end -->
                                                 @endforeach
                                         </tbody>
                                     </table>
@@ -393,26 +414,7 @@
                         </div>
                         <!-- Card end -->
 
-                        <!-- Modal start -->
-                        <div class="modal fade" id="deleteaccount{{ $data->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteaccount{{ $data->id }}" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content" style="padding: 0px">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Hapus Peran</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Anda Yakin Ingin Menghapus Peran Ini?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <form action="/delete_account/{{ $data->id }}">
-                                            <button type="submit" class="btn btn-danger" id="deleteButton">Hapus</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Modal end -->
+
                         <!-- Modal start -->
                         <div class="modal fade" id="deleteallaccount" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteallaccount" aria-hidden="true">
                             <div class="modal-dialog">
