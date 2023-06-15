@@ -6,7 +6,9 @@ use App\Models\User;
 use App\Models\Company;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Mail\InvitationEmail;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -50,7 +52,9 @@ class UsersController extends Controller
         
                 $role = $request->role;
                 $data->assignRole($role);
-        
+                
+        $invitationLink = route('users.setPassword', $data->id);
+        Mail::to($data->email)->send(new InvitationEmail($invitationLink));
                 return redirect('users')->with('success', 'Data pengguna berhasil disimpan.');
         
             }

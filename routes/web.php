@@ -1,37 +1,38 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ItemController;
 use Faker\Guesser\Name;
+use PhpParser\Node\Stmt\Return_;
+use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\TransactionsController;
-use App\Http\Controllers\TransferController;
-use App\Http\Controllers\CostumersController;
-use App\Http\Controllers\AccountController;
+use App\Http\Controllers\TaxController;
 use App\Http\Controllers\BillController;
-use App\Http\Controllers\LaporanController;
-use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ChartController;
-use App\Http\Controllers\EditEmailController;
-use App\Http\Controllers\Show_reportController;
-use App\Http\Controllers\Show_report2Controller;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CopyTextController;
 use App\Http\Controllers\CurrencyController;
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SupplierController;
-use App\Http\Controllers\TaxController;
-use PhpParser\Node\Stmt\Return_;
+use App\Http\Controllers\TransferController;
+use App\Http\Controllers\CostumersController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EditEmailController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\Show_reportController;
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Show_report2Controller;
+use App\Http\Controllers\TransactionsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -217,6 +218,9 @@ Route::get('/add-currency',[CurrencyController::class,'currency_add'])->name('cu
 Route::get('/edit-currency',[CurrencyController::class,'currency_edit'])->name('currency-edit');
 //Copy Text
 Route::get('copytext', [CopyTextController::class, 'CopyText'])->name('copytext');
+Route::get('/users/set-password/{user}', [PasswordController::class, 'setPassword'])->name('users.setPassword');
+Route::post('/users/update-password/{user}', [PasswordController::class, 'updatePassword'])->name('users.updatePassword');
+
 
 require  __DIR__. "/trisqi.php";
 
