@@ -166,7 +166,7 @@
                                                 @csrf
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
+                                                        
                                                         <!-- Field wrapper start -->
                                                         <div class="field-wrapper">
                                                             <label class="">Name <span class="text-danger"></span></label>
@@ -186,7 +186,7 @@
                                                     <div class="field-wrapper">
                                                         <label>Telepon</label>
                                                         <input class="form-control" name="addtelephoneress" type="text" placeholder="Masukan Nomor Telepon">
-                                                        <input type="hidden" name="user_id" value="{{Auth::User()->id}}">
+                                                        <input type="text" name="user_id" value="{{Auth::User()->id}}">
                                                     </div>
                                                     <!-- Field wrapper end -->
                                                     <div class="field-wrapper">

@@ -20,6 +20,17 @@ class CompanyController extends Controller
     public function add_company_id(Request $request)
     {
          
-        return view('dashboard');
+    
+        // simpan data yang telah diisi
+        $user = new Company();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->logo = $request->input('logo');
+        $user->addtelephoneress = $request->input('addtelephoneress');
+        $user->npwp = $request->input('npwp');
+        $user->user_id = $request->input('user_id');
+        $user->save();
+        return redirect()->route('/');
     }
+    
 }

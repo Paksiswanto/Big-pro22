@@ -17,4 +17,9 @@ class Company extends Model
         'phone',
         '_token'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
