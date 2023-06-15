@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('regular_incomes', function (Blueprint $table) {
             $table->id();
             $table->integer('entry_amount');
-            $table->string('account');
+            $table->string('description');
+            $table->foreignId('account_id')->references('id')->on('account')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('category_id')->references('id')->on('category')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('customer_id')->references('id')->on('customer')->onUpdate('cascade')->onDelete('cascade');
             $table->date('repeat');
             $table->date('start_date');
             $table->date('end_date');
-            $table->boolean('send');
             $table->integer('number');
             $table->string('reference');
             $table->string('attacment');

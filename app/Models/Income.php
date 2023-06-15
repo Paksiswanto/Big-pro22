@@ -13,10 +13,14 @@ class Income extends Model
 
     function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'category_id');
     }
-    function customers()
+    function customer()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class,'customer_id');
+    }
+    function account()
+    {
+        return $this->belongsTo(Account::class,'account_id');
     }
 }
