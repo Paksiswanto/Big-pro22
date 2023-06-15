@@ -193,10 +193,6 @@
                                                         <label class="">NPWP</label>
                                                         <input class="form-control" name="npwp" type="number" placeholder="Masukan Nomor NPWP">
 
-                                                    <div style="visibility: hidden" class="field-wrapper">
-                                                        <label class="">Email <span class="text-danger"></span></label>
-                                                        <input class="form-control" name="user_id" value="" type="email" placeholder="Masukan Email">
-                                                    </div>
 
 
                                                 </div>

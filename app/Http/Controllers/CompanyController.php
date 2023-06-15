@@ -30,7 +30,7 @@ class CompanyController extends Controller
         $user->npwp = $request->input('npwp');
         $user->user_id = $request->input('user_id');
         $user->save();
-        return redirect()->route('/');
+        return redirect()->route('dashboard');
     }
     
 }
