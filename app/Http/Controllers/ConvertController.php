@@ -42,22 +42,22 @@ class ConvertController extends Controller
     //     ]);
     // }
 
-    public function convertCurrency()
-    {
-        $baseCurrency = 'USD';
-        $targetCurrency = 'IDR';
-        $amount = 100;
+    // public function convertCurrency()
+    // {
+    //     $baseCurrency = 'USD';
+    //     $targetCurrency = 'IDR';
+    //     $amount = 100;
 
-        $apiKey = env('EXCHANGERATESAPI_KEY');
-        $url = "https://api.exchangeratesapi.io/convert?access_key=$apiKey&from=$baseCurrency&to=$targetCurrency&amount=$amount";
+    //     $apiKey = env('EXCHANGERATESAPI_KEY');
+    //     $url = "https://api.exchangeratesapi.io/convert?access_key=$apiKey&from=$baseCurrency&to=$targetCurrency&amount=$amount";
 
-        $response = Http::get($url);
-        $data = $response->json();
+    //     $response = Http::get($url);
+    //     $data = $response->json();
 
-        $result = $data['result'];
+    //     $result = $data['result'];
 
-        return redirect()->route('currency')->with(compact('amount', 'baseCurrency', 'result', 'targetCurrency'));
-    }
+    //     return redirect()->route('currency')->with(compact('amount', 'baseCurrency', 'result', 'targetCurrency'));
+    // }
 
     // public function index()
     // {

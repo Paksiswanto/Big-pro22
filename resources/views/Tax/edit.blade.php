@@ -186,7 +186,9 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input class="form-control" name="name" id="name" type="text" value="{{ $data->name }}">
+                                                        <input class="form-control @error('name')
+													is-invalid
+												@enderror" name="name" id="name" type="text" value="{{ $data->name }}">
                                                         @error('name')
                                                         <div class="invalid-feedback">{{ $message }}</div>
                                                         @enderror
@@ -203,7 +205,9 @@
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper-group">
                                                         <div class="field-wrapper">
-                                                            <select name="type" id="type" class="select-multiple js-states" title="Select Product Category">
+                                                            <select name="type" id="type" class="select-multiple js-states @error('name')
+													is-invalid
+												@enderror" title="Select Product Category">
                                                                 <option value="Gabungan" <?php echo ($data['type'] == 'Gabungan') ? 'selected="selected"' : '' ?>>Gabungan</option>
                                                                 <option value="Inklusif" <?php echo ($data['type'] == 'Inklusif') ? 'selected="selected"' : '' ?>>Inklusif</option>
                                                                 <option value="Normal" <?php echo ($data['type'] == 'Normal') ? 'selected="selected"' : '' ?>>Normal</option>
@@ -212,6 +216,9 @@
 
 
                                                             </select>
+                                                            @error('type')
+                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                            @enderror
                                                             <div class="field-placeholder">Jenis<span class="text-danger">*</span></div>
                                                         </div>
 
@@ -223,7 +230,12 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input name="tax_amount" id="tax_amount" class="form-control" type="number" value="{{ $data->tax_amount }}">
+                                                        <input name="tax_amount" id="tax_amount" class="form-control @error('tax_amount')
+													is-invalid
+												@enderror" type="number" value="{{ $data->tax_amount }}">
+                                                        @error('tax_amount')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
                                                         <div class="field-placeholder">Tarif (%) <span class="text-danger">*</span></div>
                                                         <div class="form-text">
 
@@ -236,7 +248,7 @@
                                             <!-- Row end -->
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
                                                 <div class="d-flex justify-content-end mt-4">
-                                                    <a href="{{url('tax')}}"><button class="btn btn-outline-secondary1" type="submit" style="border-radius: 2px; margin-right: 1%" >Batal</button></a>
+                                                    <a href="{{url('tax')}}"><button class="btn btn-outline-secondary1" type="submit" style="border-radius: 2px; margin-right: 1%">Batal</button></a>
                                                     <button class="btn btn-primary" type="submit" style="border-radius: 2px">Simpan</button>
                                                 </div>
                                             </div>

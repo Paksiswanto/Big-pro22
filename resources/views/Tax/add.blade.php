@@ -181,13 +181,15 @@
 
                                             <!-- Row start -->
                                             <div class="row gutters">
-                                            
+
 
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input class="form-control" name="name" id="inputPwd" type="text" value="{{ old('name') }}" placeholder=" Masukan Nama" required>
+                                                        <input class="form-control @error('name')
+													is-invalid
+												@enderror" name="name" id="inputPwd" type="text" value="{{ old('name') }}" placeholder=" Masukan Nama">
                                                         @error('name')
                                                         <div class="invalid-feedback">{{ $message }}</div>
                                                         @enderror
@@ -206,14 +208,18 @@
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper-group">
                                                         <div class="field-wrapper">
-                                                            <select name="type" id="type" class="select-multiple js-states" title="Select Product Category" required>
-                                                                <option value="">Pilih Jenis</option>
+                                                            <select name="type" id="type" class="select-multiple js-states @error('name')
+													is-invalid
+												@enderror" title="Select Product Category">
                                                                 <option value="Gabungan" {{ old('type') === 'Gabungan' ? 'selected' : '' }}>Gabungan</option>
                                                                 <option value="Inklusif" {{ old('type') === 'Inklusif' ? 'selected' : '' }}>Inklusif</option>
                                                                 <option value="Normal" {{ old('type') === 'Normal' ? 'selected' : '' }}>Normal</option>
                                                                 <option value="Pemotongan" {{ old('type') === 'Pemotongan' ? 'selected' : '' }}>Pemotongan</option>
                                                                 <option value="Tetap" {{ old('type') === 'Tetap' ? 'selected' : '' }}>Tetap</option>
                                                             </select>
+                                                            @error('type')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
                                                             <div class="field-placeholder">Jenis<span class="text-danger">*</span></div>
                                                         </div>
                                                     </div>
@@ -225,7 +231,12 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input name="tax_amount" id="tax_amount" class="form-control" type="number" value="{{ old('tax_amount') }}" placeholder=" Masukan Tarif (%)" required>
+                                                        <input name="tax_amount" id="tax_amount" class="form-control @error('tax_amount')
+													is-invalid
+												@enderror" type="number" value="{{ old('tax_amount') }}" placeholder=" Masukan Tarif (%)" >
+                                                @error('tax_amount')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
                                                         <div class="field-placeholder">Tarif (%) <span class="text-danger">*</span></div>
                                                         <div class="form-text">
 

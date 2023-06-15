@@ -9,7 +9,7 @@ class TaxController extends Controller
 {
     public function tax_index()
     {
-        $data = Tax::all();
+        $data = Tax::paginate(10)->withQueryString();
         return  view('Tax.index', compact('data'));
     }
 
@@ -22,6 +22,8 @@ class TaxController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:80|unique:tax,name,',
+            'tax_amount' => 'required',
+            'type' => 'required'
         ], [
             'name.unique' => 'Nama Pajak Sudah Tersedia',
             'name.max' => 'Judul Maksimal 80 Karakter',
@@ -114,6 +116,8 @@ class TaxController extends Controller
         return redirect()->route('tax');
         $validatedData = $request->validate([
             'name' => 'required|max:80|unique:tax,name,' . $data->id,
+            'tax_amount' => 'required',
+            'type' => 'required'
         ], [
             'name.unique' => 'Nama Pajak Sudah Tersedia',
             'name.max' => 'Judul Maksimal 80 Karakter',
