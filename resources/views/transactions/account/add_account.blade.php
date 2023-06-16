@@ -252,12 +252,7 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input name="balance" class="form-control @error('balance')
-													is-invalid
-												@enderror " type="text" placeholder="Masukkan Jumlah" value="{{ old('balance') }}" id="input-numeral-thousand">
-                                                        @error('balance')
-                                                        <div class="invalid-feedback">{{ $message }}</div>
-                                                        @enderror
+                                                        <input type="text" name="balance" id="balance-input" oninput="formatBalanceInput(this)">
                                                         <div class="field-placeholder">Saldo Saat Ini<span class="text-danger">*</span></div>
                                                     </div>
                                                     <!-- Field wrapper end -->
@@ -407,11 +402,11 @@
     <script src="{{ asset ("Gmbslagi/vendor/daterange/custom-daterange.js")}}"></script>
 
     <!-- Input Mask JS -->
-    <script src="{{asset("Gmbslagi/vendor/input-masks/cleave.min.js")}}></script>
+    {{-- <script src="{{asset("Gmbslagi/vendor/input-masks/cleave.min.js")}}></script>
 		<script src=" {{asset("Gmbslagi/vendor/input-masks/cleave-phone.js")}}"></script>
     <script src="{{asset("Gmbslagi/vendor/input-masks/cleave-custom.js")}}"></script>
     <script src="{{ asset('Gmbslagi/vendor/input-masks/cleave.min.js') }}"></script>
-    <script src="{{ asset('Gmbslagi/vendor/input-masks/cleave-custom.js') }}"></script>
+    <script src="{{ asset('Gmbslagi/vendor/input-masks/cleave-custom.js') }}"></script> --}}
 
 
 
@@ -441,6 +436,21 @@
         });
     </script> -->
     <script>
+        function formatBalanceInput(input) {
+          // Mengambil nilai input
+          let value = input.value;
+        
+          // Menghapus semua tanda koma dari nilai input
+          let cleanedValue = value.replace(/,/g, '');
+        
+          // Memformat nilai input dengan tanda koma sebagai pemisah ribuan
+          let formattedValue = Number(cleanedValue).toLocaleString();
+        
+          // Mengganti nilai input dengan nilai yang telah diformat
+          input.value = formattedValue;
+        }
+        </script>
+    <script>
         function openModal() {
             var select = document.getElementById("select");
             var selectedValue = select.value;
@@ -456,14 +466,14 @@
             modal.style.display = "none";
         }
     </script>
-    <script>
+    {{-- <script>
         // Membuat instance Cleave dengan format ribuan
         var inputNumeral = document.getElementById('input-numeral-thousand');
         new Cleave(inputNumeral, {
             numeral: true,
             numeralThousandsGroupStyle: 'thousand'
         });
-    </script>
+    </script> --}}
 
 
 </body>

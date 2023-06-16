@@ -350,7 +350,7 @@
                                                 <td>{{ $row->rekening_number }}</td>
                                                 <td>{{ $row->name_bank }}</td>
                                                 <td>{{ $row->bank_telephone }}</td>
-                                                <td>Rp{{ $row->balance }}</td>
+                                                <td>Rp{{ number_format($row->balance, 0, ',', '.')  }}</td>
                                                 <th>
                                                     <div class="menu-icons" style="font-size: 15px;">
                                                         <a href="{{ route('edit_account', ['id' => $row->id]) }}" class="menu-icon icon-edit-2"></a>

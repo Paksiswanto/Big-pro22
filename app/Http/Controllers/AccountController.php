@@ -17,6 +17,7 @@ class AccountController extends Controller
     }
 
     public function insert_account(Request $request){
+        
         $validatedData = $request->validate([
             'name' => 'required',
             'rekening_number' => 'required|numeric',
@@ -26,11 +27,13 @@ class AccountController extends Controller
             'bank_telephone' => 'required|numeric',
             'bank_address' => 'required'
         ]);
+        $balance = $request->balance;
+        $cleanedBalance = str_replace(',', '', $balance);
         Account::create([
             'name' => $request->name,
             'rekening_number' => $request->rekening_number,
             'currency' => $request->currency,
-            'balance' => $request->balance,
+            'balance' => $cleanedBalance,
             'name_bank' => $request->name_bank,
             'bank_telephone' => $request->bank_telephone,
             'bank_address' => $request->bank_address,
