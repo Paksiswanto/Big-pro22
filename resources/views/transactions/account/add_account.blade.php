@@ -249,16 +249,18 @@
 
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
                                                         <input type="text" name="balance" id="balance-input" oninput="formatBalanceInput(this)">
+                                                        <input name="balance" class="form-control @error('balance') is-invalid @enderror" type="text" placeholder="Masukkan Jumlah" value="{{ old('balance') }}" data-inputmode="numeric">
+                                                        @error('balance')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
                                                         <div class="field-placeholder">Saldo Saat Ini<span class="text-danger">*</span></div>
                                                     </div>
                                                     <!-- Field wrapper end -->
-
                                                 </div>
-                                                
+
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style=" margin-bottom: 2%; margin-top: 1%;">
 
                                                     <div style="border-bottom: solid grey 1px;margin-bottom:1%">
@@ -411,6 +413,13 @@
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+    <script>
+        var cleaveG = new Cleave('input[name="balance"]', {
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand'
+        });
+    </script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script> -->
     <!-- <script src="path/to/select2.js"></script> -->

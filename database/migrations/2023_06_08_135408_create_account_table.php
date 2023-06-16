@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('rekening_number');
             $table->string('currency');
-            $table->decimal('balance', 11, 2);
+            $table->decimal('balance', 10, 2);
             $table->string('name_bank');
             $table->string('bank_telephone');
             $table->string('bank_address');
