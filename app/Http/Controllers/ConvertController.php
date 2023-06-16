@@ -12,18 +12,19 @@ class ConvertController extends Controller
     public function coba()
     {
         $baseCurrency = 'USD';
-        $targetCurrency = 'EUR';
+        $targetCurrency = 'IDR';
         $amount = 100;
+        $amount1 = 10;
 
-        $apiKey = env('EXCHANGERATESAPI_KEY');
-        $url = "https://api.exchangeratesapi.io/convert?access_key=$apiKey&from=$baseCurrency&to=$targetCurrency&amount=$amount";
+        // $apiKey = env('EXCHANGERATESAPI_KEY');
+        // $url = "https://api.exchangeratesapi.io/convert?access_key=$apiKey&from=$baseCurrency&to=$targetCurrency&amount=$amount";
 
-        $response = Http::get($url);
-        $data = $response->json();
+        // $response = Http::get($url);
+        // $data = $response->json();
 
-        $result = $data['result'];
+        // $result = $data['result'];
 
-        return view('transactions.coba', compact('amount', 'baseCurrency', 'result', 'targetCurrency'));
+        return view('transactions.coba', compact('amount', 'baseCurrency', 'targetCurrency', 'amount1'));
         // $amount = request()->input('amount');
         // $baseCurrency = request()->input('baseCurrency');
         // $result = request()->input('result');
