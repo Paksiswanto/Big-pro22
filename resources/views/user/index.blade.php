@@ -46,6 +46,12 @@
     <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/datatables/dataTables.bs4-custom.css') }}" />
     <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/datatables/buttons.bs.css') }}" />
     <style>
+          .badge-sent{
+            border-radius: 2px;
+            padding: .35rem .5rem;
+            background: #ffd7d7;
+            color: #df0000;
+        }
         .kotak{
             background-color: #00D1FF;
             color:#fff;
@@ -219,11 +225,24 @@
                                                     <td><input type="checkbox" class="other-checkbox"></td>
                                                     <td>
                                                         <div class="d-flex">
+                                                            @if ($item->email_verified_at != null)                                                             
                                                             @if ($item->picture != null)
                                                             <img src="{{ asset( $item->picture) }}" alt="Foto Profil">
-                                                            <p style="margin-left: 2%">&emsp; {{ $item->email }}</p>
+                                                            <p style="margin-left: 2%">&emsp; {{ $item->name }}</p>
                                                             @else
-                                                            <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%">&emsp; {{ $item->email }}</p>
+                                                            <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%">&emsp; {{ $item->name }}</p>
+                                                            @endif
+                                                            @else
+                                                            @if ($item->picture != null)
+                                                            <img src="{{ asset( $item->picture) }}" alt="Foto Profil">
+                                                            <p style="margin-left: 2%;margin-right:3%">&emsp; {{ $item->name }}</p><span class="badge-sent" style="width: 30%; text-align: center;">
+                                                                <p style="font-size: 10px; margin: 0;">Undangan Tertunda</p>
+                                                            @else
+                                                            <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%;margin-right:3%">&emsp; {{ $item->name }}</p>  <span class="badge-sent" style="width: 30%; text-align: center;">
+                                                                <p style="font-size: 10px; margin: 0;">Undangan Tertunda</p>
+                                                            </span>
+                                                            
+                                                            @endif
                                                             @endif
                                                         </div>
                                                     </td>

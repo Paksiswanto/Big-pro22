@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('category_id')->references('id')->on('category')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('selling_price')->nullable();
             $table->integer('purchase_price')->nullable();
-            $table->foreignId('tax_id')->references('id')->on('tax')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('tax_id')->nullable()->references('id')->on('tax')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
