@@ -18,3 +18,4 @@ Route::post('delete_category/{id}', [CategoryController::class, 'delete_category
 Route::put('edit_category/{id}', [CategoryController::class, 'edit_category'])->name('edit_category');
 Route::post('create_invoice', [InvoiceController::class, 'create_invoice'])->name('create_invoice');
 Route::get('get-item/{itemId}', [InvoiceController::class, 'getItem'])->name('get-item');
+Route::post('create_settingInvoice', [InvoiceController::class, 'update_invSetting'])->name('create_settingInvoice');

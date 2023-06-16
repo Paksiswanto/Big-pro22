@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('prefix');
             $table->integer('digit_number');
             $table->integer('next_number');
-            $table->integer('due_date');
+            $table->string('due_date');
             $table->string('title');
             $table->string('subtitle');
             $table->string('footer');
