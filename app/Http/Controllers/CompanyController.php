@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,6 +31,9 @@ class CompanyController extends Controller
         $user->npwp = $request->input('npwp');
         $user->user_id = $request->input('user_id');
         $user->save();
+        $data = User::find($request->user_id);
+        $data->company_id = $user->id;
+        $data ->save();
         return redirect()->route('dashboard');
     }
     

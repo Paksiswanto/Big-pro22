@@ -10,6 +10,7 @@ use App\Mail\InvitationEmail;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,7 +18,8 @@ class UsersController extends Controller
 {
     public function usersindex()
     {
-        $data = User::all();
+        $id=Auth::user()->company_id;
+        $data = User::all()->where('company_id',$id);
         return view('user.index',compact('data'));
     }
     public function add_users()
@@ -55,7 +57,7 @@ class UsersController extends Controller
                 
         $invitationLink = route('users.setPassword', $data->id);
         Mail::to($data->email)->send(new InvitationEmail($invitationLink));
-                return redirect('users')->with('success', 'Data pengguna berhasil disimpan.');
+                return redirect('users')->with('success', 'Data pengguna berhasil diundang.');
         
             }
         }
@@ -65,7 +67,7 @@ class UsersController extends Controller
         $data = User::find($id);
         $company = Company::all();
         $role = Role::all();
-        return view('user.edit',compact('company','role','data'));
+        return view('user.edit',compact('company','role','data'))->with('success','Pergguana berhasu');
     }
     public function edit(Request $request,$id)
     {
