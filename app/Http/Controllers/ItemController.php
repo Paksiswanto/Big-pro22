@@ -25,7 +25,7 @@ class ItemController extends Controller
     }
     public function additem()
     {
-      $category= Category::all();
+      $category = Category::all();
       $tax = Tax::all();
 
       return view('item.add', compact('tax','category'));
