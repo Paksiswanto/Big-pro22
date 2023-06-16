@@ -201,6 +201,7 @@ Route::put('/user-edit/{id}',[UsersController::class,'edit'])->name('user-edit')
 Route::post('/user_delete/{id}',[UsersController::class,'delete'])->name('user-delete');
 //Users
 Route::get('/profile',[ProfileController::class,'profile'])->name('profile');
+Route::put('/update-profile',[ProfileController::class,'update_users'])->name('update-profile');
 // Route::get('invoice', )
 //Tax
 Route::get('/tax',[TaxController::class,'tax_index'])->name('tax');

@@ -131,7 +131,9 @@
 										<div class="row gutters">
 
 											<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom: 1%;">
-
+												<form action="{{ route('update-profile') }}" method="POST" enctype="multipart/form-data">
+													@method('PUT')
+													@csrf
 												<div style="border-bottom: solid grey 1px;margin-bottom:1%">
 													<h6>Umum</h6>
 													<p>Informasi ini terlihat dalam rekaman yang Anda buat.</p>
@@ -139,43 +141,59 @@
 
 											</div>
 
-											<div class="d-flex row ">
-											<div class="col-xl-10 col-lg-12 col-md-12 col-sm-12" >
-											<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+											<div class="row ">
+											<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 row" >
+											<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 
 												<!-- Field wrapper start -->
 												<div class="field-wrapper">
-													<input class="form-control" type="text" placeholder="Masukan Nama">
+													<input class="form-control @error('name')
+														is-invalid
+													@enderror" name="name" value="{{ $data->name }}" type="text" placeholder="Masukan Nama">
 													<div class="field-placeholder">Nama <span class="text-danger">*</span></div>
 													<div class="form-text">
 														Silakan masukkan nama lengkap Anda.
 													</div>
+													@error('name')
+														<div class="invalid-feedback">
+															{{ $message }}
+														</div>
+													@enderror
 												</div>
 												<!-- Field wrapper end -->
 											</div>
 
-
+											<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 												<!-- Field wrapper start -->
 												<div class="field-wrapper">
-													<input class="form-control" type="email" placeholder="Masukan Email">
+													<input class="form-control @error('email')
+														is-invalid
+													@enderror" name="email" value="{{ $data->email }}" type="email" placeholder="Masukan Email">
 													<div class="field-placeholder">Email <span class="text-danger">*</span></div>
 													<div class="form-text">
 														Kami tidak akan pernah membagikan email Anda kepada siapa pun.
 													</div>
+													@error('email')
+														<div class="invalid-feedback">
+															{{ $message }}
+														</div>
+													@enderror
 											</div>
 											</div>
-											<div class="col-xl-2 col-lg-12 col-md-12 col-sm-12">
+											<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 												<!-- Field wrapper start -->
 
 												<!-- Example of a form that Dropzone can take over -->
-                                                <form action="">
-                                                        <div class="drop-zone">
-                                                            <span class="drop-zone__prompt">klik disini untuk upload foto</span>
-                                                            <!-- <div class="drop-zone__thumb" data-label="myfile.txt"></div> -->
-                                                            <input type="file" name="myFile" class="drop-zone__input" />
-                                                            <!-- add multiple attribute to input to support uploading more than one file-->
-                                                        </div>
-                                                    </form>
+                                                <div class="field-wrapper">
+													<input type="file" name="picture" value="{{ $data->piture }}" id="" class="form-control @error('picture')
+														is-invalid
+													@enderror">
+												</div>
+												@error('picture')
+													<div class="invalid-feedback">
+														{{ $message }}
+													</div>
+												@enderror
 											</div>
 
 
@@ -199,8 +217,15 @@
 
 												<!-- Field wrapper start -->
 												<div class="field-wrapper">
-													<input class="form-control" type="password" placeholder="Masukan kata sandi lama">
+													<input class="form-control @error('old_password')
+														is-invalid
+													@enderror" name="old_password" type="password" placeholder="Masukan kata sandi lama">
 													<div class="field-placeholder">Kata sandi lama</div>
+													@error('old_password')
+													<div class="invalid-feedback">
+														{{ $message }}
+													</div>
+													@enderror
 												</div>
 												<!-- Field wrapper end -->
 
@@ -209,8 +234,15 @@
 
 												<!-- Field wrapper start -->
 												<div class="field-wrapper">
-													<input class="form-control" type="password" placeholder="Masukan kata sandi baru">
+													<input class="form-control @error('password')
+														is-invalid
+													@enderror" name="password" type="password" placeholder="Masukan kata sandi baru">
 													<div class="field-placeholder">Kata sandi baru</div>
+													@error('password')
+													 <div class="invalid-feedback">
+														{{ $message }}
+													</div>
+													@enderror
 												</div>
 												<!-- Field wrapper end -->
 
@@ -219,8 +251,13 @@
 
 												<!-- Field wrapper start -->
 												<div class="field-wrapper">
-													<input class="form-control" type="password" placeholder="Masukan konfirmasi kata sandi baru">
+													<input class="form-control @error('confirm_password')
+														is-invalid
+													@enderror" name="confirm_password" type="password" placeholder="Masukan konfirmasi kata sandi baru">
 													<div class="field-placeholder">Konfirmas kata sandi baru</div>
+													@error('confirm_password')
+													{{ $message }}
+													@enderror
 												</div>
 												<!-- Field wrapper end -->
 
@@ -231,10 +268,10 @@
 													<button class="btn btn-primary" type="submit" style="border-radius: 2px">Simpan</button>
 												</div>
 											</div>
-
+											</div>
 										</div>
 										<!-- Row end -->
-
+									</form>
 									</div>
 								</div>
 								<!-- Card end -->

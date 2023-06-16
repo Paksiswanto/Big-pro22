@@ -19,6 +19,7 @@ class UsersController extends Controller
     public function usersindex()
     {
         $id=Auth::user()->company_id;
+        dd($id);
         $data = User::all()->where('company_id',$id);
         return view('user.index',compact('data'));
     }
