@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use App\Models\Category;
+use App\Models\CategoryType;
 use App\Models\Customer;
 use App\Models\Expenditure;
 use App\Models\Income;
+use App\Models\IncomeRoutine;
 use App\Models\Supplier;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 
 class TransactionsController extends Controller
@@ -22,17 +25,19 @@ class TransactionsController extends Controller
     //income
     public function add_income()
     {
+        $category_type = CategoryType::all();
+        $category = Category::all();
         $category = Category::all();
         $account = Account::all();
         $customer = Customer::all();
-        return view('transactions.dashboard.income.add_income',compact('category','customer','account'));
+        return view('transactions.dashboard.income.add_income',compact('category','customer','account','category','category_type'));
     }
 
     public function edit_income($id)
     {
         $income = Income::find($id);
         $come = Income::all();
-        return view('transactions.dashboard.income.edit_income',compact('income','come'));
+        return view('transactions.dashboard.income.edit_income',compact('income','come','category','category_type'));
     }
 
     public function show_income()
@@ -41,6 +46,19 @@ class TransactionsController extends Controller
     }
     public function insert_income(Request $request)
     {
+        $request->validate([
+            'date' => 'required',
+            'payment_method' => 'required',
+            'amount' => 'required|numeric',
+            'description' => 'required',
+            'income_number' => 'required',
+            'reference' => 'nullable',
+            'attachment' => 'nullable',
+            'account_id' => 'required',
+            'category_id' => 'required',
+            'customer_id' => 'required',
+        ]);
+
         $date = date("Y-m-d", strtotime(str_replace('/','-',$request->date)));
         Income::create([
             'date' => $date,
@@ -78,6 +96,44 @@ class TransactionsController extends Controller
         $income->save();
 
         return redirect()->route('transactions');
+    }
+    public function insert_account_income(Request $request){
+        Account::create([
+            'name' => $request->name,
+            'rekening_number' => $request->rekening_number,
+            'currency' => $request->currency,
+            'balance' => $request->balance,
+            'name_bank' => $request->name_bank,
+            'bank_telephone' => $request->bank_telephone,
+            'bank_address' => $request->bank_address,
+            'company_id' => 1,
+        ]);
+
+        return redirect()->route('add_income');
+    }
+    public function insert_category_income(Request $request){
+            Category::create($request->all());
+
+        return redirect()->route('add_income');
+    }
+    public function insert_cos_income(Request $request)
+    {
+        customer::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'website' => $request->website,
+            'reference' => $request->reference,
+            'npwp' => $request->npwp,
+            'address' => $request->address,
+            'city' => $request->city,
+            'province' => $request->province,
+            'postal_code' => $request->postal_code,
+            'country' => $request->country,
+            'currency' => $request->currency,
+            'phone_number' => $request->phone_number,
+            'company_id' => 1,
+        ]);
+        return redirect()->route('add_income');
     }
 
     //expenditure
@@ -162,7 +218,29 @@ class TransactionsController extends Controller
     {
         return view('transactions.recurring_transactions..recurring_income.show_recurring_income');
     }
-
+    public function insert_recurring_income(Request $request)
+    {
+        $date = $request->date ? date("Y-m-d", strtotime(str_replace('/','-',$request->date))) : date("Y-m-d");
+        IncomeRoutine::create([
+            'date' => $date,
+            'entry_amount' => $request->entry_amount,
+            'payment_method' => $request->payment_method,
+            'description' => $request->description,
+            'number' => $request->number,
+            'reference' => $request->reference,
+            'repeat1' => $request->repeat1,
+            'repeat2' => $request->repeat2,
+            'repeat3' => $request->repeat3,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'attachment' => $request->attachment,
+            'account_id' => 1,
+            'category_id' => 1,
+            'customer_id' => 1,
+            'company_id' => 1,
+        ]);
+        return redirect()->route('recurring_transactions');
+    }
     //recurring expenditure
 
     public function add_recurring_expenditure()

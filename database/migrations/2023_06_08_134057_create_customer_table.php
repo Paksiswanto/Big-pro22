@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('currency');
             $table->string('postal_code');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->string('phone_number');
             $table->foreignId('company_id')->references('id')->on('company')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

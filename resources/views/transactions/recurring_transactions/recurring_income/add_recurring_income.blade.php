@@ -188,7 +188,7 @@
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control" placeholder="Dihasilkan Secara Otomatis" disabled>
+                                                            <input type="text" style="z-index:auto" class="form-control" placeholder="Dihasilkan Secara Otomatis" disabled>
                                                             <span class="input-group-text">
                                                                 <i class="icon-calendar1"></i>
                                                             </span>
@@ -317,37 +317,31 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                                                    <!-- Field wrapper start -->
-                                                    <div class="field-wrapper">
-                                                        <input class="form-control1" rows="2" placeholder="Masukkan Hari/Tangal"></input>
-                                                        <div class="field-placeholder">Sesuaikan<span class="text-danger" name="">*</span></div>
-                                                        <div class="form-text">
-                                                            Silakan masukkan Hari/Tanggal sesuai dengan kebutuhan Anda.
-                                                        </div>
-                                                    </div>
-                                                    <!-- Field wrapper end -->
-
-                                                </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                                    <!-- Field wrapper start -->
                                                     <div class="field-wrapper-group">
-                                                        <div class="field-wrapper">
-                                                            <select class="select-multiple js-states" title="Select Product Category" style="font-size: 5px;" name="repeat">
+                                                        <div class="field-wrapper" style="display: flex; flex-direction: row;">
+                                                            <select class="select-single js-states" title="Select Product Category" onchange="showInputField(this)">
                                                                 <option>Harian</option>
                                                                 <option>Mingguan</option>
                                                                 <option>Bulanan</option>
                                                                 <option>Tahunan</option>
-
-
+                                                                <option>Sesuaikan</option>
                                                             </select>
-                                                            <div class="field-placeholder">Setiap<span class="text-danger">*</span></div>
+                                                            <div class="field-placeholder">Ulangi Transaksi Ini<span class="text-danger">*</span></div>
+                                                            <div id="customInput" class="col-2" style="display: none; margin-left: 10px;">
+                                                                <input type="text" class="" placeholder="Masukan">
+                                                            </div>
+                                                            <div class="col-4" id="customInput1" style="display: none; margin-left: 10px;">
+                                                                <select class="select-multiple js-states" title="Select Product Category" name="customer_id" id="customer_id">
+                                                                    <option>Harian</option>
+                                                                    <option>Mingguan</option>
+                                                                    <option>Bulanan</option>
+                                                                    <option>Tahunan</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
-
                                                     </div>
-                                                    <!-- Field wrapper end -->
 
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -356,7 +350,7 @@
 
                                                     <div class="field-wrapper">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control datepicker" placeholder="Dihasilkan Secara Otomatis" name="start_date">
+                                                            <input type="text" style="z-index:auto" class="form-control datepicker" placeholder="Dihasilkan Secara Otomatis" name="start_date">
                                                             <span class="input-group-text">
                                                                 <i class="icon-calendar1"></i>
                                                             </span>
@@ -371,7 +365,7 @@
 
                                                     <div class="field-wrapper">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control datepicker" placeholder="Dihasilkan Secara Otomatis" name="end_date">
+                                                            <input type="text" style="z-index:auto" class="form-control datepicker" placeholder="Dihasilkan Secara Otomatis" name="end_date">
                                                             <span class="input-group-text">
                                                                 <i class="icon-calendar1"></i>
                                                             </span>
@@ -716,6 +710,24 @@
     <script src="{{ asset ("Gmbslagi/vendor/daterange/custom-daterange.js")}}"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function showInputField(selectElement) {
+            var inputField = document.getElementById("customInput");
+
+            if (selectElement.value === "Sesuaikan") {
+                inputField.style.display = "block";
+            } else {
+                inputField.style.display = "none";
+            }
+            var inputField = document.getElementById("customInput1");
+
+            if (selectElement.value === "Sesuaikan") {
+                inputField.style.display = "block";
+            } else {
+                inputField.style.display = "none";
+            }
+        }
+    </script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script> -->
     <!-- <script src="path/to/select2.js"></script> -->

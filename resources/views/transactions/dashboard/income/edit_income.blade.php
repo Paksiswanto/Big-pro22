@@ -196,6 +196,10 @@
                                                                 </span>
                                                             </div>
                                                             <div class="field-placeholder">Tanggal<span class="text-danger">*</span></div>
+                                                            @error('reference')
+													<div class="invalid-feedback">{{ $message }}</div>
+													@enderror
+                                                    </div>
                                                         </div>
                                                         <!-- Field wrapper end -->
 
@@ -212,9 +216,12 @@
 
                                                                 </select>
                                                                 <div class="field-placeholder">Metode Pembayaran<span class="text-danger">*</span></div>
+                                                                @error('reference')
+                                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                                @enderror
                                                             </div>
-
                                                         </div>
+                                                    </div>
 
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -234,6 +241,10 @@
                                                             <button type="button" class="input-icon-block btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalaccount">
                                                                 <i class="icon-plus1"></i>
                                                             </button>
+                                                            @error('reference')
+													<div class="invalid-feedback">{{ $message }}</div>
+													@enderror
+                                                    </div>
                                                         </div>
 
                                                     </div>
@@ -243,6 +254,10 @@
                                                         <div class="field-wrapper">
                                                             <input class="form-control" type="number" placeholder="Rp0,00" name="amount" id="amount" value="{{$income->amount}}">
                                                             <div class="field-placeholder">Jumlah<span class="text-danger">*</span></div>
+                                                            @error('reference')
+													<div class="invalid-feedback">{{ $message }}</div>
+													@enderror
+                                                    </div>
                                                         </div>
                                                         <!-- Field wrapper end -->
 
@@ -256,6 +271,10 @@
                                                             <div class="form-text">
                                                                 Silakan masukkan Deskripsi pendapatan Anda.
                                                             </div>
+                                                            @error('reference')
+													<div class="invalid-feedback">{{ $message }}</div>
+													@enderror
+                                                    </div>
                                                         </div>
                                                         <!-- Field wrapper end -->
 
@@ -286,6 +305,10 @@
                                                             <button type="button" class="input-icon-block btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalcategory">
                                                                 <i class="icon-plus1"></i>
                                                             </button>
+                                                            @error('reference')
+													<div class="invalid-feedback">{{ $message }}</div>
+													@enderror
+                                                    </div>
                                                         </div>
 
                                                     </div>
@@ -307,6 +330,10 @@
                                                             <button type="button" class="input-icon-block btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalcustomer">
                                                                 <i class="icon-plus1"></i>
                                                             </button>
+                                                            @error('reference')
+													<div class="invalid-feedback">{{ $message }}</div>
+													@enderror
+                                                    </div>
                                                         </div>
 
                                                     </div>
@@ -325,6 +352,10 @@
                                                         <div class="field-wrapper">
                                                             <input class="form-control" type="text" placeholder="TRA-0076" name="income_number" id="income_number" value="{{ $income->income_number }}">
                                                             <div class="field-placeholder">Nomor<span class="text-danger">*</span></div>
+                                                            @error('reference')
+													<div class="invalid-feedback">{{ $message }}</div>
+													@enderror
+                                                    </div>
                                                         </div>
                                                         <!-- Field wrapper end -->
 
@@ -335,6 +366,10 @@
                                                         <div class="field-wrapper">
                                                             <input class="form-control" type="text" placeholder="Masukan Refrensi" name="reference" id="reference" value="{{ $income->reference }}" required>
                                                             <div class="field-placeholder">Refrensi</div>
+                                                            @error('reference')
+													<div class="invalid-feedback">{{ $message }}</div>
+													@enderror
+                                                    </div>
                                                         </div>
                                                         <!-- Field wrapper end -->
 
@@ -348,6 +383,10 @@
                                                             <div class="form-text">
                                                                 Silakan masukkan Lampiran Pendukung Anda.
                                                             </div>
+                                                            @error('attachment')
+													<div class="invalid-feedback">{{ $message }}</div>
+													@enderror
+                                                    </div>
                                                         </div>
                                                         <!-- Field wrapper end -->
 

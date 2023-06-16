@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CostumersController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransactionsController;
@@ -18,3 +19,7 @@ Route::post('/update_income/{id}', [TransactionsController::class, 'update_incom
 
 Route::post('/insert_expenditure', [TransactionsController::class, 'insert_expenditure'])->name('insert_expenditure');
 Route::post('/update_expenditure', [TransactionsController::class, 'update_expenditure'])->name('update_expenditure');
+
+Route::post('/insert_account_income', [TransactionsController::class, 'insert_account_income'])->name('insert_account_income');
+Route::post('/insert_category_income', [TransactionsController::class, 'insert_category_income'])->name('insert_category_income');
+Route::post('/insert_cos_income', [TransactionsController::class, 'insert_cos_income'])->name('insert_cos_income');
