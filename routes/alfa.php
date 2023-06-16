@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ItemController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,3 +16,5 @@ Route::put('edite-item/{id}', [ItemController::class, 'edits'])->name('edite-ite
 Route::post('create_category', [CategoryController::class, 'create_category'])->name('create_category');
 Route::post('delete_category/{id}', [CategoryController::class, 'delete_category'])->name('delete_category');
 Route::put('edit_category/{id}', [CategoryController::class, 'edit_category'])->name('edit_category');
+Route::post('create_invoice', [InvoiceController::class, 'create_invoice'])->name('create_invoice');
+Route::get('get-item/{itemId}', [InvoiceController::class, 'getItem'])->name('get-item');

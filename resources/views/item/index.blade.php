@@ -184,7 +184,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													@foreach ($items as $item)														
+													@foreach ($items as $item)										
 													<!-- Data 1 -->
 													<tr class="table-row item">
 														<td><input type="checkbox" class="other-checkbox"></td>

@@ -46,16 +46,16 @@
     <link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/daterange/daterange.css")}}">
         <style>
 
-.edit-icon {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 5px;
-}
+    .edit-icon {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
 
-.edit-icon svg {
-  height: 20px;
-  width: 20px;
-}
+    .edit-icon svg {
+      height: 20px;
+      width: 20px;
+    }
 
         .toggle-container {
       display: flex;
@@ -147,6 +147,26 @@
         }
       }
         </style>
+        <style>
+          .flex-row {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+          }
+        
+          .col-md-8,
+          .col-md-4 {
+            flex: 1;
+          }
+        
+          .field-wrapper {
+            margin-bottom: 10px;
+          }
+        
+          .form-control {
+            border-radius: 2px;
+          }
+        </style>    
 	</head>
 	<body>
 
@@ -178,16 +198,17 @@
 					<div class="content-wrapper">
 
 						<!-- Row start -->
+            <form action="{{route('create_invoice')}}" method="POST">
+            @csrf
 						<div class="row gutters">
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                 <!-- Card start -->
-								<div class="card">
+								                <div class="card">
                                     <div class="card-header">
-										<div class="card-title"><h3>Tambah Faktur<button type="button" style="border: none; background:none;">☆</button></h3></div>
-									</div>
+                                  <div class="card-title"><h3>Tambah Faktur<button type="button" style="border: none; background:none;">☆</button></h3></div>
+                                    </div>
                                     <div class="card-body">
-                                        
                                         <!-- Faq start -->
                                         <div class="accordion" id="faqAccordion">
                                             <div class="accordion-item">
@@ -200,34 +221,39 @@
                                                       </button>
                                                 </h2>
                                                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
-                                                    <div class="accordion-body">
-                                                        <div class="d-flex row">
-                                                            <div  class="col-xl-9 col-lg-12 col-md-12 col-sm-12">
-                                                        <div class="d-flex align-items-center">
-                                                          <div class="flex-grow-1 col-xl-8 col-lg-8 col-md-8 col-sm-12 col-8" style="margin-bottom: 15%">
+                                                  <div class="accordion-body">
+                                                    <div class="flex-row row">
+                                                      <div class="col-md-8">
+                                                        <div class="d-flex flex-column">
+                                                          <div class="field-wrapper">
+                                                            <input class="form-control" type="text" name="title" id="judul" placeholder="Masukkan Judul">
+                                                            <div class="field-placeholder">Judul</div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-8">
+                                                        <div class="d-flex flex-column">
+                                                          <div class="field-wrapper">
+                                                            <input class="form-control" type="text" name="subtitle" id="subjudul" placeholder="Masukkan Subjudul">
+                                                            <div class="field-placeholder">Subjudul</div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="flex-row">
+                                                      <div class="col-md-8">
+                                                        <div class="d-flex">
+                                                          <div class="flex-grow-1">
                                                             <div class="field-wrapper">
-                                                              <input class="form-control" type="text" id="judul" placeholder="Masukkan Judul" style="border-radius: 2px; margin-bottom: 10px;">
-                                                              <div class="field-placeholder">Judul </div>
-                                                            </div>
-                                                            <div class="field-wrapper">
-                                                              <input class="form-control" type="text" id="subjudul" placeholder="Masukkan Subjudul" style="border-radius: 2px; margin-bottom: 10px;">
-                                                              <div class="field-placeholder">Subjudul </div>
+                                                              <input class="form-control" type="file" name="logo" id="logo">
+                                                              <div class="field-placeholder">Logo</div>
                                                             </div>
                                                           </div>
                                                         </div>
-                                                            </div>
-                                                            <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12">
-                                                              <div id="dropzone" style="height:300px">
-                                                                <label for="subjudul" class="field-label">Logo</label>
-                                                                <form action="https://www.kodingwife.com/upload" class="dropzone needsclick dz-clickable" id="demo-upload">
-                                                                <div class="dz-message needsclick">
-                                                                  <button type="button" class="dz-button">Pilih berkas di sini untuk mengunggah.</button><br>
-                                                                </div>
-                                                              </form>
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>                                                                                                  
+                                                                                               
                                                     </div>
                                                       </div>                                                                                                                                                                                                                       
                                                 </div>
@@ -244,25 +270,27 @@
                                             </div>
                                             <div class="row">
                                                 <div class="field-wrapper mb-3 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" style="margin-left: initial;height: 76px;margin-right: -1%;">
-                                                  <select class="select-single js-states" title="Select Product Category" data-live-search="true">
-                                                    <option>Rudi</option>
-                                                    <option selected>Ruli</option>
-                                                    <option>Adi</option>
-                                                    <option>Daffa</option>
-                                                    <option>Gembes</option>
-                                                    <option>Reno</option>
-                                                    <option>Triski</option>
+                                                  <select class="select-single js-states" name="customer_id" title="Select Product Category" data-live-search="true">
+                                                    <option disabled selected>Pilih Salah Satu</option>
+                                                        @foreach ($customer as $data)                                                       
+                                                        <option value="{{$data->id}}">{{$data->name}}</option>
+                                                        @endforeach
                                                   </select>              
                                                   <div class="field-placeholder">Pelanggan <span class="text-danger">*</span></div>                                 
                                                 </div>
                                                 <div  class=" col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 d-flex">
                                                   <div class="col-6 ml-5 mr-5" style="margin-right:1%">
+                                                    <div class="field-wrapper">
+                                                      <div class="input-group">
+                                                          <input type="text" style="z-index:auto" class="form-control datepicker" name="start_date" id="date">
+                                                          <span class="input-group-text">
+                                                              <i class="icon-calendar1"></i>
+                                                          </span>
+                                                      </div>
+                                                      <div class="field-placeholder">Tanggal Faktur<span class="text-danger">*</span></div>
+                                                  </div>
                                                   <div class="field-wrapper mb-3">
-                                                    <input class="form-control datepicker" type="text">
-                                                    <div class="field-placeholder">Tanggal Faktur <span class="text-danger">*</span></div>
-                                                  </div>
-                                                  <div class="field-wrapper mb-3">
-                                                      <select class="select-single js-states" title="Select Product Category" data-live-search="true">
+                                                      <select class="select-single js-states" name="end_date" title="Select Product Category" data-live-search="true">
                                                           <option selected>Jatuh tempo dalam 15 hari</option>
                                                           <option>Jatuh tempo dalam 30 hari</option>
                                                           <option>Jatuh tempo dalam 45 hari</option>
@@ -275,11 +303,11 @@
                                                   </div>
                                                   <div class="col-6">
                                                   <div class="field-wrapper mb-3">
-                                                    <input class="form-control" type="number" placeholder="Masukkan Nomor Faktur">
+                                                    <input class="form-control" name="invoice_number" type="number" placeholder="Masukkan Nomor Faktur">
                                                     <div class="field-placeholder">Nomor Faktur <span class="text-danger">*</span></div>
                                                   </div>
                                                   <div class="field-wrapper mb-3">
-                                                    <input class="form-control" type="number" placeholder="Masukkan Jumlah Pesanan">
+                                                    <input class="form-control" name="order_quantity" type="number" placeholder="Masukkan Jumlah Pesanan">
                                                     <div class="field-placeholder">Jumlah Pesanan</div>
                                                   </div>
                                                   </div> 
@@ -315,48 +343,41 @@
                                                       <tr>
                                                         <td>
                                                               <div class="field-wrapper m-0">
-                                                                <select name="item[]" style="border-radius:2px" class="form-control">
-                                                                  <option value="txt">Text</option>
-                                                                  <option value="md">Markdown</option>
-                                                                  <option value="html">HTML</option>
-                                                                  <option value="php">PHP</option>
-                                                                  <option value="python">Python</option>
-                                                                  <option value="java">Java</option>
-                                                                  <option value="js" selected>JavaScript</option>
-                                                                  <option value="ruby">Ruby</option>
-                                                                  <option value="vhdl">VHDL</option>
-                                                                  <option value="verilog">Verilog</option>
-                                                                  <option value="csharp">C#</option>
+                                                                <select class="select-single js-states" id="select" name="item_id" title="Select Product Category" data-live-search="true">
+                                                                  <option disabled selected>Pilih Barang</option>
+                                                                  @foreach ($item as $data)                              
+                                                                  <option value="{{$data->id}}">{{$data->name}}</option>
+                                                                  @endforeach
                                                                 </select>
                                                               </div>
                                                             </td>
                                                         <td>
                                                           <div class="field-wrapper m-0">
-                                                            <input type="text" style="border-radius:2px" name="deskripsi[]" class="form-control">
+                                                            <input type="text" style="border-radius:2px" name="description" class="form-control">
                                                           </div>
                                                         </td>
                                                         <td>
                                                           <div class="field-wrapper m-0">
-                                                            <input type="number" style="border-radius:2px" name="kuantitas[]" class="form-control">
+                                                            <input type="number" style="border-radius:2px" name="quantity" class="form-control">
                                                           </div>
                                                         </td>
                                                         <td>
                                                           <div class="field-wrapper m-0">
-                                                            <input type="number" style="border-radius:2px" name="harga[]" class="form-control">
+                                                            <input type="number" style="border-radius:2px" name="amount" class="form-control">
                                                           </div>
                                                         </td>
                                                         <td>
                                                           <div class="field-wrapper m-0">
-                                                            <input type="number" style="border-radius:2px" name="jumlah[]" class="form-control">
+                                                            <input type="number" style="border-radius:2px" name="price" class="form-control">
                                                           </div>
                                                         </td>
                                                         <td>
                                                           <div id="pajak-wrapper">
                                                             <div class="field-wrapper m-0 mb-1 pajak-input-wrapper">
-                                                              <input type="number" style="border-radius:2px" name="pajak[]" class="form-control">
+                                                              <input type="number" style="border-radius:2px" name="tax_id" class="form-control">
                                                             </div>
                                                             <div class="add-pajak-wrapper mb-2">
-                                                              <button class="btn btn-light add-pajak" style="margin-top: 1%">
+                                                              <button class="btn btn-light add-pajak" name="tax_id" style="margin-top: 1%">
                                                                 <i class="icon-plus"></i> Tambah Pajak
                                                               </button>
                                                             </div>
@@ -383,7 +404,7 @@
                                                         <td>
                                                           <p id="subtotal" class="m-0">Rp.0.00</p>
                                                           <p id="diskon" class="m-0">   <div class="field-wrapper m-0">
-                                                            <input type="text"  style="border-radius:2px" name="deskripsi[]" class="form-control">
+                                                            <input type="text"  style="border-radius:2px" name="discount" class="form-control">
                                                           </div> </p>
                                                           <p id="total-pajak" class="m-0">Rp.0.00</p>
                                                           <h5 id="total" class="mt-2">Rp.0.00</h5>
@@ -490,7 +511,7 @@
                                               <!-- Field wrapper start -->
                                               <div class="field-wrapper">
                                                 <label for="judul" class="field-label">Catatan</label>
-                                                <textarea class="form-control" placeholder="Masukan Catatan" rows="2"></textarea>
+                                                <textarea class="form-control" name="notes" placeholder="Masukan Catatan" rows="2"></textarea>
                                               </div>
                                               <!-- Field wrapper end -->                     
                                             </div>
@@ -509,35 +530,33 @@
                                             </h2>
                                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
                                               <div class="accordion-body">
-                                                <div class="d-flex row">
-                                                  <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
-                                                    <div class="">
-                                                      <div id="dropzone" style="height:300px">
-                                                        <label for="subjudul" class="field-label">Lampiran</label>
-                                                        <form action="https://www.kodingwife.com/upload" class="dropzone needsclick dz-clickable" id="demo-upload" style="margin-right: 10%">
-                                                          <div class="dz-message needsclick">
-                                                            <button type="button" class="dz-button">Pilih berkas di sini untuk mengunggah.</button><br>
-                                                          </div>
-                                                        </form>
-                                                      </div>
+                                                <div class="d-flex flex-wrap row">
+                                                  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                                    <div class="field-wrapper" style="height: 88px">
+                                                      <input class="form-control" type="file" name="attachment" id="judul" style="border-radius: 2px; margin-bottom: 10px; margin-right: 10%">
+                                                      <div class="field-placeholder">Lampiran</div>
                                                     </div>
                                                   </div>
-                                                  <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 mt-5">
-                                                      <div class="field-wrapper mb-3">
-                                                        <select class="select-single js-states" title="Select Product Category" data-live-search="true">
-                                                            <option selected>Deposit</option>
-                                                            <option>Penjualan</option>
-                                                            <option><button type="button">Kategori Baru</button></option>
-                                                        </select>              
-                                                        <div class="field-placeholder">Kategori <span class="text-danger">*</span></div>
-                                                        </div>
-                                                        <div class="field-wrapper">
-                                                          <textarea class="form-control" placeholder="Masukan Catatan" rows="2"></textarea>
-                                                          <div class="field-placeholder">Footer</div>
-                                                        </div>
-                                                      </div>
+                                                  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                                    <div class="field-wrapper mb-3">
+                                                      <select class="select-single js-states" name="category_id" title="Select Product Category" data-live-search="true">
+                                                        <option disabled selected>Pilih Salah Satu</option>
+                                                        @foreach ($category as $data)
+                                                        <option value="{{$data->id}}">{{$data->name}}</option>
+                                                        @endforeach
+                                                        <option><button type="button">Kategori Baru</button></option>
+                                                      </select>
+                                                      <div class="field-placeholder">Kategori <span class="text-danger">*</span></div>
                                                     </div>
+                                                  </div>
+                                                  <div class="col-8" style="width: 100%; height: auto; margin-top: -8%;">
+                                                    <div class="field-wrapper" style="width: 100%; height: auto; margin-top:3%">
+                                                      <textarea class="form-control" name="footer" placeholder="Masukan Catatan" rows="2"></textarea>
+                                                      <div class="field-placeholder">Footer</div>
+                                                    </div>
+                                                  </div>
                                                 </div>
+                                              </div>                                                                                                                                     
                                               
                                             </div>
                                         </div>
@@ -551,6 +570,7 @@
                                       <div class="app-footer">© Uni Pro Admin 2021</div>
                                         </div>
                                         <!-- Faq end -->
+                                        </form>
 
                                     </div>
                                 </div>
@@ -613,9 +633,31 @@
 		<script src="{{ asset("Gmbslagi/vendor/bs-select/bs-select.min.js") }}"></script>
 		<script src="{{ asset("Gmbslagi/vendor/bs-select/bs-select-custom.js") }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dynamicrows/dist/dynamicrows.min.js"></script>
 
     <script src="{{ asset ("Gmbslagi/vendor/dropzone/dropzone.min.js")}}"></script>
+    <script>
+      $(document).ready(function() {
+        $('#select').change(function() {
+          console.log('random')
+          var rowIndex = $(this).closest('tr').index();
+          var itemID = $(this).val();
+          $.ajax({
+            url: '/get-item/' + itemID,
+            method: 'GET',
+            success: function(data) {
+              console.log(data);
+              $('input[name="deskripsi[]"]').eq(rowIndex).val(data.description);
+            },
+            error:function(error){
+              console.log(error.responseText);
+            }
+          });
+    
+          var itemName = $(this).find('option:selected').text();
+          $('input[name="deskripsi[]"]').eq(rowIndex).val(itemName);
+        });
+      });
+    </script>
     <script>
       function showInputField(selectElement) {
         var inputField = document.getElementById("customInput");

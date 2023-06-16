@@ -409,20 +409,22 @@
 												  </tr>
 												</thead>
 												<tbody>
-												  <!-- Data 1 -->
-												  <tr class="table-row">
-													<td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>12 mei 2023</td>
-                                                    <td>13 mei 2023</td>
-                                                    <td><span class="badge-sent">Terkirim</span></td>
-                                                    <td>koirul</td>
-                                                    <td>FKR-00002</td>
-                                                    <td>91.000.000,00</td>
-													<td>
-                                                       <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{ url('edit_supplier') }}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                            <a href="{{ url('details')}}" class="menu-icon icon-eye1"></a>
+                                                    @foreach ($invoice as $data)
+                                                        
+                                                    <!-- Data 1 -->
+                                                    <tr class="table-row">
+                                                        <td><input type="checkbox" class="other-checkbox"></td>
+                                                        <td>{{$data->end_date}}</td>
+                                                        <td>{{$data->start_date}}</td>
+                                                        <td><span class="badge-sent">Terkirim</span></td>
+                                                        <td>{{$data->Customer->name}}</td>
+                                                        <td>FKR-00002</td>
+                                                        <td>Rp {{$data->total_pay}}</td>
+                                                        <td>
+                                                            <div class="menu-icons" style="font-size: 15px;">
+                                                                <a href="{{ url('edit_supplier') }}" class="menu-icon icon-edit-2"></a>
+                                                                <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
+                                                                <a href="{{ url('details')}}" class="menu-icon icon-eye1"></a>
                                                             <div class="dropdown icon-dots-two-vertical">
                                                                 <span>
                                                                 <div class="dropdown-content">
@@ -446,206 +448,26 @@
                                                                     </a>
                                                                     <a href="#">
                                                                         <button type="button"
-                                                                            style="border: none; background-color: white; color:#333; background:transparent"
-                                                                            class="icon-printer">
-                                                                            Cetak
-                                                                        </button>
-                                                                    </a>
+                                                                        style="border: none; background-color: white; color:#333; background:transparent"
+                                                                        class="icon-printer">
+                                                                        Cetak
+                                                                    </button>
+                                                                </a>
                                                                     <a href="#" class="icon-x-circle"
-                                                                        style="color: #333">
-                                                                        <button type="button"
-                                                                            style="border: none; background-color: white; color:#333; background:transparent">
-                                                                            Batal</button>
-                                                                    </a>
-                                                                </div>
+                                                                    style="color: #333">
+                                                                    <button type="button"
+                                                                    style="border: none; background-color: white; color:#333; background:transparent">
+                                                                    Batal</button>
+                                                                </a>
+                                                            </div>
                                                             </span>
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
+                                            @endforeach
 
-												  <!-- Data 2 -->
-												  <tr class="table-row">
-													<td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>12 mei 2023</td>
-                                                    <td>14 mei 2023</td>
-                                                    <td><span class="badge-draft">Konsep</span></td>
-                                                    <td>choirul</td>
-                                                    <td>FKR-00001</td>
-                                                    <td>80.000.000,00</td>
-													<td>
-                                                       <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{ url('edit_supplier') }}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                            <a href="#" class="menu-icon icon-eye1"></a>
-                                                            <div class="dropdown icon-dots-two-vertical">
-                                                                <span>
-                                                                <div class="dropdown-content">
-                                                                    <a href="#">
-                                                                        <button type="button"
-                                                                            style="border: none; background:none; color:#333; background:transparent"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#payment"
-                                                                            class="icon-attach_money">
-                                                                            Bayar
-                                                                        </button>
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <button type="button"
-                                                                            style="border: none; background-color: white; color:#333; background:transparent"
-                                                                            class="icon-printer">
-                                                                            Cetak
-                                                                        </button>
-                                                                    </a>
-                                                                    <a href="#" class="icon-x-circle"
-                                                                        style="color: #333">
-                                                                        <button type="button"
-                                                                            style="border: none; background-color: white; color:#333; background:transparent">
-                                                                            Batal</button>
-                                                                    </a>
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-
-												  <!-- Data 3 -->
-												  <tr class="table-row">
-													<td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>14 mei 2023</td>
-                                                    <td>15 mei 2023</td>
-                                                    <td><span class="badge-draft">Konsep</span></td>
-                                                    <td>rudi</td>
-                                                    <td>FKR-00003</td>
-                                                    <td>100.000.000,00</td>
-													<td>
-                                                       <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{ url('edit_supplier') }}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                            <a href="#" class="menu-icon icon-eye1"></a>
-                                                            <div class="dropdown icon-dots-two-vertical">
-                                                                <span>
-                                                                <div class="dropdown-content">
-                                                                    <a href="#">
-                                                                        <button type="button"
-                                                                            style="border: none; background:none; color:#333; background:transparent"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#payment"
-                                                                            class="icon-attach_money">
-                                                                            BAyar
-                                                                        </button>
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <button type="button"
-                                                                            style="border: none; background-color: white; color:#333; background:transparent"
-                                                                            class="icon-printer">
-                                                                            Cetak
-                                                                        </button>
-                                                                    </a>
-                                                                    <a href="#" class="icon-x-circle"
-                                                                        style="color: #333">
-                                                                        <button type="button"
-                                                                            style="border: none; background-color: white; color:#333; background:transparent">
-                                                                            Batal</button>
-                                                                    </a>
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-												  <tr class="table-row">
-													<td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>15 mei 2023</td>
-                                                    <td>15 mei 2023</td>
-                                                    <td><span class="badge-start">Sebagian</span></td>
-                                                    <td>slamet</td>
-                                                    <td>FKR-00004</td>
-                                                    <td>20.000.000,00</td>
-													<td>
-                                                       <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{ url('edit_supplier') }}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                            <a href="#" class="menu-icon icon-eye1"></a>
-                                                            <div class="dropdown icon-dots-two-vertical">
-                                                                <span>
-                                                                <div class="dropdown-content">
-                                                                    <a href="#">
-                                                                        <button type="button"
-                                                                            style="border: none; background:none; color:#333; background:transparent"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#payment"
-                                                                            class="icon-attach_money">
-                                                                            Bayar
-                                                                        </button>
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <button type="button"
-                                                                            style="border: none; background-color: white; color:#333; background:transparent"
-                                                                            class="icon-printer">
-                                                                            Cetak
-                                                                        </button>
-                                                                    </a>
-                                                                    <a href="#" class="icon-x-circle"
-                                                                        style="color: #333">
-                                                                        <button type="button"
-                                                                            style="border: none; background-color: rgb(255, 255, 255); color:#333; background:transparent">
-                                                                            Batal</button>
-                                                                    </a>
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-												  <tr class="table-row">
-													<td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>25 mei 2023</td>
-                                                    <td>25 mei 2023</td>
-                                                    <td><span class="badge-finish">Dibayar</span></td>
-                                                    <td>wahyu</td>
-                                                    <td>FKR-00005</td>
-                                                    <td>45.000.000,00</td>
-													<td>
-                                                       <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{ url('edit_supplier') }}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                            <a href="#" class="menu-icon icon-eye1"></a>
-                                                            <div class="dropdown icon-dots-two-vertical">
-                                                                <span>
-                                                                <div class="dropdown-content">
-                                                                    <a href="#">
-                                                                        <button type="button"
-                                                                            style="border: none; background:none; color:#333; background:transparent"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#payment"
-                                                                            class="icon-attach_money">
-                                                                            Bayar
-                                                                        </button>
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <button type="button"
-                                                                            style="border: none; background-color: white; color:#333; background:transparent"
-                                                                            class="icon-printer">
-                                                                            Cetak
-                                                                        </button>
-                                                                    </a>
-                                                                    <a href="#" class="icon-x-circle"
-                                                                        style="color: #333">
-                                                                        <button type="button"
-                                                                            style="border: none; background-color: white; color:#333; background:transparent">
-                                                                            Batal</button>
-                                                                    </a>
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+												  
 
                                         </tbody>
                                     </table>
