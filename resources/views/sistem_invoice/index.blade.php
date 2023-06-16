@@ -175,135 +175,139 @@
                                         </p>
                                     </div>
                                     <!-- Row start -->
-                                    <div class="row gutters">
+                                    <form action="{{route('create_settingInvoice')}}" method="post">
+                                        @csrf
+                                        <div class="row gutters">
 
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper">
-                                                <input class="form-control" type="text" placeholder=" Masukan Prefiks Nomor">
-                                                <div class="field-placeholder">Prefiks Nomor</div>
-                                                <div class="form-text">
-
-                                                </div>
-                                            </div>
-                                            <!-- Field wrapper end -->
-
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper-group">
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+    
+                                                <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <select class="select-multiple js-states" title="Select Product Category">
-                                                        <option disabled selected>Ketik untuk Mencari</option>
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                        <option>6</option>
-                                                        <option>7</option>
-
-                                                    </select>
-                                                    <div class="field-placeholder">Digit Nomor</div>
+                                                    <input class="form-control" name="prefix" type="text" placeholder=" Masukan Prefiks Nomor">
+                                                    <div class="field-placeholder">Prefiks Nomor</div>
+                                                    <div class="form-text">
+    
+                                                    </div>
                                                 </div>
-
+                                                <!-- Field wrapper end -->
+    
                                             </div>
-                                        </div>
-
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper">
-                                                <input class="form-control" type="number" placeholder=" Masukan nomor">
-                                                <div class="field-placeholder">Nomor Berikutnya</div>
-                                                <div class="form-text">
-
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+    
+                                                <!-- Field wrapper start -->
+                                                <div class="field-wrapper-group">
+                                                    <div class="field-wrapper">
+                                                        <select class="select-multiple js-states" name="digit_number" title="Select Product Category">
+                                                            <option disabled selected>Ketik untuk Mencari</option>
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                            <option>6</option>
+                                                            <option>7</option>
+    
+                                                        </select>
+                                                        <div class="field-placeholder">Digit Nomor</div>
+                                                    </div>
+    
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- Field wrapper end -->
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper-group">
+    
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+    
+                                                <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
-                                                    <select class="select-multiple js-states" title="Select Product Category">
-                                                        <option disabled selected>Syarat Pembayaran</option>
-                                                        <option>Jatuh tempo dalam 15 hari</option>
-                                                        <option>Jatuh tempo dalam 30 hari</option>
-                                                        <option>Jatuh tempo dalam 45 hari</option>
-                                                        <option>Jatuh tempo dalam 60 hari</option>
-                                                        <option>Jatuh tempo dalam 75 hari</option>
-                                                        <option>Jatuh tempo dalam 90 hari</option>
-                                                        <option>Jatuh tempo saat diterima</option>
-
-                                                    </select>
-                                                    <div class="field-placeholder">Syarat Pembayaran</div>
+                                                    <input class="form-control" name="next_number" type="number" placeholder=" Masukan nomor">
+                                                    <div class="field-placeholder">Nomor Berikutnya</div>
+                                                    <div class="form-text">
+    
+                                                    </div>
                                                 </div>
-
-                                            </div>
-                                        </div>
-                                        <!-- Field wrapper end -->
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                            <div style="border-bottom: solid grey 1px;margin-bottom:1%;  margin-bottom: 2%; margin-top: 1%;">
-                                                <h6>Default</h6>
-                                                <p>Memilih opsi bawaan untuk faktur akan mengisi judul, subjudul, catatan, dan footer terlebih dahulu. Anda tidak perlu mengedit faktur setiap saat agar terlihat lebih profesional.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <!-- Field wrapper end -->
-
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper">
-                                                <input class="form-control" type="text" placeholder="Masukan Judul">
-                                                <div class="field-placeholder">Judul</div>
                                             </div>
                                             <!-- Field wrapper end -->
-
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper">
-                                                <input class="form-control" type="text" placeholder="Masukan SubJudul">
-                                                <div class="field-placeholder">Subjudul</div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+    
+                                                <!-- Field wrapper start -->
+                                                <div class="field-wrapper-group">
+                                                    <div class="field-wrapper">
+                                                        <select class="select-multiple js-states" name="due_date" title="Select Product Category">
+                                                            <option disabled selected>Syarat Pembayaran</option>
+                                                            <option>Jatuh tempo dalam 15 hari</option>
+                                                            <option>Jatuh tempo dalam 30 hari</option>
+                                                            <option>Jatuh tempo dalam 45 hari</option>
+                                                            <option>Jatuh tempo dalam 60 hari</option>
+                                                            <option>Jatuh tempo dalam 75 hari</option>
+                                                            <option>Jatuh tempo dalam 90 hari</option>
+                                                            <option>Jatuh tempo saat diterima</option>
+    
+                                                        </select>
+                                                        <div class="field-placeholder">Syarat Pembayaran</div>
+                                                    </div>
+    
+                                                </div>
                                             </div>
                                             <!-- Field wrapper end -->
-
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper">
-                                                <textarea class="form-control" rows="2" placeholder="Masukan Catatan"></textarea>
-                                                <div class="field-placeholder">Catatan</div>
-
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div style="border-bottom: solid grey 1px;margin-bottom:1%;  margin-bottom: 2%; margin-top: 1%;">
+                                                    <h6>Default</h6>
+                                                    <p>Memilih opsi bawaan untuk faktur akan mengisi judul, subjudul, catatan, dan footer terlebih dahulu. Anda tidak perlu mengedit faktur setiap saat agar terlihat lebih profesional.
+                                                    </p>
+                                                </div>
                                             </div>
                                             <!-- Field wrapper end -->
-
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                            <!-- Field wrapper start -->
-                                            <div class="field-wrapper">
-                                                <textarea class="form-control" rows="2" placeholder="Masukan Footer"></textarea>
-                                                <div class="field-placeholder">Footer</div>
-
+    
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+    
+                                                <!-- Field wrapper start -->
+                                                <div class="field-wrapper">
+                                                    <input class="form-control" name="title" type="text" placeholder="Masukan Judul">
+                                                    <div class="field-placeholder">Judul</div>
+                                                </div>
+                                                <!-- Field wrapper end -->
+    
                                             </div>
-                                            <!-- Field wrapper end -->
-
-                                        </div>
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
-                                            <div class="d-flex justify-content-end mt-4">
-                                                <button class="btn btn-outline-secondary1" type="submit" style="border-radius: 2px; margin-right: 1%" href="#">Batal</button>
-                                                <button class="btn btn-primary" type="submit" style="border-radius: 2px">Simpan</button>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+    
+                                                <!-- Field wrapper start -->
+                                                <div class="field-wrapper">
+                                                    <input class="form-control" name="subtitle" type="text" placeholder="Masukan SubJudul">
+                                                    <div class="field-placeholder">Subjudul</div>
+                                                </div>
+                                                <!-- Field wrapper end -->
+    
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+    
+                                                <!-- Field wrapper start -->
+                                                <div class="field-wrapper">
+                                                    <textarea class="form-control" name="notes" rows="2" placeholder="Masukan Catatan"></textarea>
+                                                    <div class="field-placeholder">Catatan</div>
+    
+                                                </div>
+                                                <!-- Field wrapper end -->
+    
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+    
+                                                <!-- Field wrapper start -->
+                                                <div class="field-wrapper">
+                                                    <textarea class="form-control" name="footer" rows="2" placeholder="Masukan Footer"></textarea>
+                                                    <div class="field-placeholder">Footer</div>
+    
+                                                </div>
+                                                <!-- Field wrapper end -->
+    
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
+                                                <div class="d-flex justify-content-end mt-4">
+                                                    <button class="btn btn-outline-secondary1" type="submit" style="border-radius: 2px; margin-right: 1%" href="#">Batal</button>
+                                                    <button class="btn btn-primary" type="submit" style="border-radius: 2px">Simpan</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
+                                    
 
                                     <!-- Field wrapper end -->
 

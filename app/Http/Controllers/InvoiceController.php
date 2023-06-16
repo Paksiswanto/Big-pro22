@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Invoice;
+use App\Models\InvoiceSetting;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
@@ -77,6 +78,12 @@ class InvoiceController extends Controller
     public function setting_invoice()
     {
         return view('sistem_invoice.index');
+    }
+    public function update_invSetting(Request $request)
+    {
+        InvoiceSetting::create($request->all());
+
+        return redirect('/setting-invoice')->with('success', 'Data behasil ditambahkan');
     }
     public function getItem(Request $request, $itemId) {
         $item = Item::find($itemId);
