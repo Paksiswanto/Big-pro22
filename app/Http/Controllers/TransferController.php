@@ -12,7 +12,7 @@ class TransferController extends Controller
 {
     public function transfer()
     {
-        $data = Transfer::all();
+        $data = Transfer::all()->where('company_id',Auth::user()->company_id);
         return view('transfer.index',compact('data'));
     }
 
@@ -37,9 +37,9 @@ class TransferController extends Controller
         $userID = Auth::user()->id;
         $requestData['date'] = $formattedDate;
         $requestData['user_id'] = $userID;
-        Transfer::create($requestData);
+        $data= Transfer::create($requestData);
         
-        return redirect()->route('show_transfer')->with('success','Data Berhasil Disimpan');
+        return redirect()->route('show_transfer', ['id' => $data->id])->with('success', 'Transfer berhasil dibuat');
     }
     public function edit_transfer($id){
         $data = Transfer::find($id);
@@ -85,7 +85,7 @@ class TransferController extends Controller
         $transfer->save();
 
         
-        return redirect()->route('show_transfer')->with('success', 'Transfer berhasil diperbarui');
+        return redirect()->route('show_transfer', ['id' => $id])->with('success', 'Transfer berhasil diperbarui');
     
     }
     function deleteTransfer($id) {
