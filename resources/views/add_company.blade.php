@@ -186,7 +186,7 @@
                                                     <div class="field-wrapper">
                                                         <label>Telepon</label>
                                                         <input class="form-control" name="addtelephoneress" type="text" placeholder="Masukan Nomor Telepon">
-                                                        <input type="text" name="user_id" value="{{Auth::User()->id}}">
+                                                        <input type="hidden" name="user_id" value="{{Auth::User()->id}}">
                                                     </div>
                                                     <!-- Field wrapper end -->
                                                     <div class="field-wrapper">

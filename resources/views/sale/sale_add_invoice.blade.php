@@ -288,8 +288,8 @@
                                                           </span>
                                                       </div>
                                                       <div class="field-placeholder">Tanggal Faktur<span class="text-danger">*</span></div>
-                                                  </div>
-                                                  <div class="field-wrapper mb-3">
+                                                      </div>
+                                                  <div class="field-wrapper mb-3" style="margin-top: -11.5px">
                                                       <select class="select-single js-states" name="end_date" title="Select Product Category" data-live-search="true">
                                                           <option selected>Jatuh tempo dalam 15 hari</option>
                                                           <option>Jatuh tempo dalam 30 hari</option>
