@@ -39,7 +39,7 @@ class TransferController extends Controller
         $requestData['user_id'] = $userID;
         Transfer::create($requestData);
         
-        return redirect('transfer')->with('success','Data Berhasil Disimpan');
+        return redirect()->route('show_transfer')->with('success','Data Berhasil Disimpan');
     }
     public function edit_transfer($id){
         $data = Transfer::find($id);
@@ -85,7 +85,7 @@ class TransferController extends Controller
         $transfer->save();
 
         
-    return redirect('transfer')->with('success', 'Transfer berhasil diperbarui');
+        return redirect()->route('show_transfer')->with('success', 'Transfer berhasil diperbarui');
     
     }
     function deleteTransfer($id) {

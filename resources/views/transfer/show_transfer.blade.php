@@ -215,7 +215,7 @@
 
                                         <ul class="dropdown-menu dropdown-menu-lg-end" style="z-index: 100;">
                                             <li><a class="dropdown-item" style="margin-top: 4%;" href="{{url('add_transfer')}}">Tambah</a></li>
-                                            <li><a class="dropdown-item" href="{{url('edit_transfer')}}">Sunting</a></li>
+                                            <li><a class="dropdown-item" href="/edit_transfer/{{ $data->id }}">Sunting</a></li>
                                             <li><a class="dropdown-item" href="#">Cetak</a></li>
                                             <li><a class="dropdown-item" href="#">Unduh PDF</a></li>
 
