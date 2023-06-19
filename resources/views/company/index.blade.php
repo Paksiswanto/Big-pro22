@@ -90,7 +90,9 @@
 										<div class="card-title"><h3>Perusahaan<button type="button" style="border: none; background:none;">☆</button></h3></div>
 									</div>
 									<div class="">
-
+									<form action="{{route('update_company')}}" method="POST">
+										@method('PUT')
+										@csrf
 										<!-- Row start -->
 										<div class="row gutters">
 
@@ -109,7 +111,7 @@
 
 												<!-- Field wrapper start -->
 												<div class="field-wrapper">
-													<input class="form-control" type="text" placeholder="Masukan Nama">
+													<input class="form-control" value="{{$data -> name}}" name="name" type="text" placeholder="Masukan Nama">
 													<div class="field-placeholder">Nama <span class="text-danger">*</span></div>
 													<div class="form-text">
 														Silakan masukkan nama lengkap Anda.
@@ -121,27 +123,27 @@
 
 												<!-- Field wrapper start -->
 												<div class="field-wrapper">
-													<input class="form-control" type="email" placeholder="Masukan Email">
+													<input class="form-control" value="{{$data ->email}}" name="email" type="email" placeholder="Masukan Email">
 													<div class="field-placeholder">Email <span class="text-danger">*</span></div>
 													<div class="form-text">
 														Kami tidak akan pernah membagikan email Anda kepada siapa pun.
 													</div>
 													<div class="field-wrapper">
-														<input class="form-control" type="text" placeholder="Masukan Nomor Telepon">
+														<input class="form-control" value="{{$data->telephone}}" name="telephone" type="text" placeholder="Masukan Nomor Telepon">
 														<div class="field-placeholder">Telepon</div>
 													</div>
 												<!-- Field wrapper end -->
 												<div class="field-wrapper">
-													<input class="form-control" type="number" placeholder="Masukan Nomor NPWP">
+													<input class="form-control" value="{{$data->npwp}}" name="npwp" type="number" placeholder="Masukan Nomor NPWP">
 													<div class="field-placeholder">NPWP</div>
 												</div>
 											</div>
 											</div>
 											<div class="col-xl-3 col-lg-12 col-md-12 col-sm-12">
-												<!-- Field wrapper start -->
-												<p style="">Logo</p>
-												<!-- Example of a form that Dropzone can take over -->
-												<form action="/" id="myDropzone" class="dropzone"></form>
+												<div class="field-wrapper">
+													<input class="form-control" name="logo" type="file">
+													<div class="field-placeholder">Logo</div>
+												</div>
 											</div>
 
 
@@ -165,7 +167,7 @@
 
 												<!-- Field wrapper start -->
 												<div class="field-wrapper">
-													<textarea class="form-control" rows="2" placeholder="Masukan Alamat"></textarea>
+													<textarea class="form-control" name="address" rows="2" placeholder="Masukan Alamat">{{$data->address}}</textarea>
 													<div class="field-placeholder">Alamat <span class="text-danger">*</span></div>
 													<div class="form-text">
 														Silakan masukkan Alamat lengkap Anda.
@@ -178,7 +180,7 @@
 
 												<!-- Field wrapper start -->
 												<div class="field-wrapper">
-													<input class="form-control" type="text" placeholder="Masukan Kota">
+													<input class="form-control" value="{{$data->city}}" name="city" type="text" placeholder="Masukan Kota">
 													<div class="field-placeholder">Kota</div>
 												</div>
 												<!-- Field wrapper end -->
@@ -188,7 +190,7 @@
 
 												<!-- Field wrapper start -->
 												<div class="field-wrapper">
-													<input class="form-control" type="number" placeholder="Masukan Kode Pos">
+													<input class="form-control" value="{{$data->postal_code}}" name="postal_code" type="number" placeholder="Masukan Kode Pos">
 													<div class="field-placeholder">Kode Pos</div>
 												</div>
 												<!-- Field wrapper end -->
@@ -198,7 +200,7 @@
 
 												<!-- Field wrapper start -->
 												<div class="field-wrapper">
-													<input class="form-control" type="text" placeholder="Masukan Provinsi">
+													<input class="form-control" value="{{$data->province}}" name="province" type="text" placeholder="Masukan Provinsi">
 													<div class="field-placeholder">Provinsi</div>
 												</div>
 												<!-- Field wrapper end -->
@@ -208,7 +210,7 @@
 
 												<!-- Field wrapper start -->
 												<div class="field-wrapper">
-													<input class="form-control" type="text" placeholder="Masukan Negara">
+													<input class="form-control" value="{{$data->country}}" name="country" type="text" placeholder="Masukan Negara">
 													<div class="field-placeholder">Negara</div>
 												</div>
 												<!-- Field wrapper end -->
@@ -223,6 +225,8 @@
 
 										</div>
 										<!-- Row end -->
+									</form>
+										
 
 									</div>
 								</div>
@@ -300,3 +304,5 @@
 
 <!-- Mirrored from www.kodingwife.com/demos/unipro/v1-x/05-design-violet/forms-layout-one.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 May 2023 03:02:31 GMT -->
 </html>
+
+

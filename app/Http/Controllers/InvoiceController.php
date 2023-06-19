@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Company;
 use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\InvoiceSetting;
 use App\Models\Item;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use PHPUnit\Metadata\Uses;
 
 class InvoiceController extends Controller
 {
@@ -82,7 +86,6 @@ class InvoiceController extends Controller
     public function update_invSetting(Request $request)
     {
         InvoiceSetting::create($request->all());
-
         return redirect('/setting-invoice')->with('success', 'Data behasil ditambahkan');
     }
     public function getItem(Request $request, $itemId) {

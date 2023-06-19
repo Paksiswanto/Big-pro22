@@ -11,7 +11,9 @@ class CompanyController extends Controller
 {
     public function company()
     {
-        return view('company.index');
+        $id=Auth::user()->company_id;
+        $data = company::all()->where('id', $id)->first();
+        return view('company.index',['data'=>$data]);
     }
     public function add_company()
     {
@@ -27,7 +29,7 @@ class CompanyController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->logo = $request->input('logo');
-        $user->addtelephoneress = $request->input('addtelephoneress');
+        $user->telephone = $request->input('telephone');
         $user->npwp = $request->input('npwp');
         $user->user_id = $request->input('user_id');
         $user->save();
@@ -36,5 +38,22 @@ class CompanyController extends Controller
         $data ->save();
         return redirect()->route('dashboard');
     }
-    
+    public function update_company(Request $request)
+    {
+        $data = Company::find(Auth::user()->company_id);
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->npwp = $request->npwp;
+        $data->telephone = $request->telephone;
+        $data->address = $request->address;
+        $data->country = $request->country;
+        $data->city = $request->city;
+        $data->postal_code = $request->postal_code;
+        $data->province = $request->province;
+        $data->logo = $request->logo;
+        $data->save();
+
+
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+    }
 }
