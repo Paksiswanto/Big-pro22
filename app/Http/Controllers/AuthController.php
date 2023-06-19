@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
+use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
@@ -44,7 +45,7 @@ class AuthController extends Controller
 
         $user = User::create($request->except (['_token']));
 
-
+        $user -> assignRole(1);
         event(new Registered($user));
         auth()->login($user);
         return redirect()->route('verification.notice')->with('success',' Alun berhasil dibuat, silahkan verifikasi Dil Anda');
