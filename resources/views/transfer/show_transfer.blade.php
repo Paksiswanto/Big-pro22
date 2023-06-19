@@ -405,7 +405,17 @@
                                                 <div class="empty-box">
                                                 </div>
                                             </div>
-                                            
+
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12" style="margin-top: 3%;">
+                                                <h6>Referensi</h6>
+                                            </div>
+
+                                            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
+
+                                                <span>.....</span>
+                                                <div class="empty-box">
+                                                </div>
+                                            </div>
 
                                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12" style="margin-top: 3%;">
                                                 <h6>Deskripsi</h6>
