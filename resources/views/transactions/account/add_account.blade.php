@@ -251,8 +251,7 @@
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input type="text" name="balance" id="balance-input" oninput="formatBalanceInput(this)">
-                                                        <input name="balance" class="form-control @error('balance') is-invalid @enderror" type="text" placeholder="Masukkan Jumlah" value="{{ old('balance') }}" data-inputmode="numeric">
+                                                        <input name="balance" class="form-control @error('balance') is-invalid @enderror" type="text" placeholder="Masukkan Jumlah" value="{{ old('balance') }}" data-inputmode="numeric"  id="balance-input" oninput="formatBalanceInput(this)">
                                                         @error('balance')
                                                         <div class="invalid-feedback">{{ $message }}</div>
                                                         @enderror

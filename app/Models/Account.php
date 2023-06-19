@@ -20,4 +20,9 @@ class Account extends Model
     {
         return $this->hasMany(Expenditure::class);
     }
+    public function transfer()
+    {
+        return $this->hasMany(Transfer::class);
+    }
+
 }

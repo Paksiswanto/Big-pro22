@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('from_account')->references('id')->on('account')->onUpdate('cascade')->onDelete('cascade');;
             $table->foreignId('to_account')->references('id')->on('account')->onUpdate('cascade')->onDelete('cascade');;
+            $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');;
             $table->date('date');
             $table->bigInteger('ammount');
             $table->string('description');

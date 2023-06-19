@@ -33,6 +33,8 @@ use App\Http\Controllers\Show_reportController;
 
 use App\Http\Controllers\Show_report2Controller;
 use App\Http\Controllers\TransactionsController;
+use App\Models\Transfer;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -140,12 +142,13 @@ Route::get('/transaksi', [TransaksiController::class, 'transaksi'])->name('trans
 Route::get('/company',[CompanyController::class,'company'])->name('company');
 //transfer
 Route::get('/transfer', [TransferController::class, 'transfer'])->name('transfer');
-
+Route::post('insert_transfer',[TransferController::class,'insertTransfer'])->name('insertTransfer');
 
 Route::get('/add_transfer', [TransferController::class, 'add_transfer'])->name('add_transfer');
-Route::get('/edit_transfer', [TransferController::class, 'edit_transfer'])->name('edit_transfer');
-Route::get('/show_transfer', [TransferController::class, 'show_transfer'])->name('show_transfer');
-
+Route::get('/edit_transfer/{id}', [TransferController::class, 'edit_transfer'])->name('edit_transfer');
+Route::get('/show_transfer/{id}', [TransferController::class, 'show_transfer'])->name('show_transfer');
+Route::put('/updateTransfer/{id}',[TransferController::class,'updateTransfer'])->name('updateTransfer');
+Route::post('/deleteTransfer/{id}',[TransferController::class,'deleteTransfer'])->name('deleteTransfer');
 //account
 Route::get('/account', [AccountController::class, 'index'])->name('account');
 
