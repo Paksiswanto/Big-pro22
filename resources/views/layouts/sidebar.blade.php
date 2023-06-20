@@ -8,8 +8,7 @@
             <div style="margin-top: 10%;">
                 <div style="border-radius: 100%; overflow: hidden; width: 48px; height: 48px;">
                     <a class="nav-link-pro" data-tab="tab1" class="logo" style="margin-bottom: 10%;">
-                        <img src="{{ asset('Gmbslagi/img/better.jpg') }}"
-                            style="width: 48px; height: 48px; margin-bottom: 10%; z-index: 1;">
+                        <img src="{{ asset('Gmbslagi/img/better.jpg') }}" style="width: 48px; height: 48px; margin-bottom: 10%; z-index: 1;">
                     </a>
                 </div>
             </div>
@@ -63,18 +62,14 @@
                     <div class="sidebar-menu active">
                         <ul>
                             <li>
-                                <a href="{{ url('/') }}"
-                                    class="sidebar-menu {{ request()->routeIs('dashboard') ? 'current-page' : '' }}"
-                                    aria-selected="false">
+                                <a href="{{ url('/') }}" class="sidebar-menu {{ request()->routeIs('dashboard') ? 'current-page' : '' }}" aria-selected="false">
                                     <i class="icon-home2" style="font-size: 19px;"></i><span>&emsp;Dashboard</span>
                                 </a>
                             </li>
 
 
                             <li class=" mt-3">
-                                <a href="{{ route('item-index') }}"
-                                    class="sidebar-menu {{ request()->routeIs('item-index') || request()->routeIs('item-add') || request()->routeIs('item-edit') ? 'current-page' : '' }}"
-                                    aria-selected="false">
+                                <a href="{{ route('item-index') }}" class="sidebar-menu {{ request()->routeIs('item-index') || request()->routeIs('item-add') || request()->routeIs('item-edit') ? 'current-page' : '' }}" aria-selected="false">
                                     <i class="icon-download1" style="font-size: 19px;"></i><span>&emsp;Barang</span>
                                 </a>
                             </li>
@@ -85,8 +80,7 @@
         </a>
        </li>  -->
                             <li class="mt-3 ">
-                                <a href="#"
-                                    class="dropdown-btn {{ request()->routeIs('invoice') ||
+                                <a href="#" class="dropdown-btn {{ request()->routeIs('invoice') ||
                                     request()->routeIs('recurring_invoice') ||
                                     request()->routeIs('add_invoice') ||
                                     request()->routeIs('details_recurring') ||
@@ -97,34 +91,27 @@
                                     request()->routeIs('show_cos') ||
                                     request()->routeIs('edit_cos')
                                         ? 'current-page'
-                                        : '' }} "><i
-                                        class="icon-tag1" style=" font-size: 19px;"></i><span>&emsp;Penjualan</span><i
-                                        class="icon-chevron-down1 droprow "></i></a>
+                                        : '' }} "><i class="icon-tag1" style=" font-size: 19px;"></i><span>&emsp;Penjualan</span><i class="icon-chevron-down1 droprow "></i></a>
                                 <ul class="dropdown-container">
-                                    <li class="mt-2"><a href="{{ route('invoice') }}"
-                                            class="{{ request()->routeIs('invoice') ||
+                                    <li class="mt-2"><a href="{{ route('invoice') }}" class="{{ request()->routeIs('invoice') ||
                                             request()->routeIs('recurring_invoice') ||
                                             request()->routeIs('details_recurring') ||
                                             request()->routeIs('details_inv') ||
                                             request()->routeIs('add_invoice') ||
                                             request()->routeIs('edit_supplier')
                                                 ? 'drop-icon'
-                                                : '' }}"><span
-                                                style="margin-left: 20px;">&emsp;Faktur</span></a></li>
-                                    <li class="mt-2"><a href="{{ route('costumers') }}"
-                                            class="{{ request()->routeIs('costumers') ||
+                                                : '' }}"><span style="margin-left: 20px;">&emsp;Faktur</span></a></li>
+                                    <li class="mt-2"><a href="{{ route('costumers') }}" class="{{ request()->routeIs('costumers') ||
                                             request()->routeIs('costumers') ||
                                             request()->routeIs('add_costumers') ||
                                             request()->routeIs('edit_cos') ||
                                             request()->routeIs('show_cos')
                                                 ? 'drop-icon'
-                                                : '' }}"><span
-                                                style="margin-left: 20px;">&emsp;Pelanggan</span></a></li>
+                                                : '' }}"><span style="margin-left: 20px;">&emsp;Pelanggan</span></a></li>
                                 </ul>
                             </li>
                             <li class="mt-3 ">
-                                <a href="#"
-                                    class="dropdown-btn  {{ request()->routeIs('bill') ||
+                                <a href="#" class="dropdown-btn  {{ request()->routeIs('bill') ||
                                     request()->routeIs('recurring_bill') ||
                                     request()->routeIs('add_recurring_bill') ||
                                     request()->routeIs('add_bill') ||
@@ -134,31 +121,23 @@
                                     request()->routeIs('add_supplier') ||
                                     request()->routeIs('edit_supplier')
                                         ? 'current-page'
-                                        : '' }} "><i
-                                        class="icon-shopping-cart1"
-                                        style=" font-size: 19px;"></i><span>&emsp;Pembelian</span><i
-                                        class="icon-chevron-down1 droprow"></i></a>
+                                        : '' }} "><i class="icon-shopping-cart1" style=" font-size: 19px;"></i><span>&emsp;Pembelian</span><i class="icon-chevron-down1 droprow"></i></a>
                                 <ul class="dropdown-container">
-                                    <li class="mt-2"><a href="{{ route('bill') }}"
-                                            class="{{ request()->routeIs('bill') ||
+                                    <li class="mt-2"><a href="{{ route('bill') }}" class="{{ request()->routeIs('bill') ||
                                             request()->routeIs('recurring_bill') ||
                                             request()->routeIs('detail_bill') ||
                                             request()->routeIs('detail_rcr_bill') ||
                                             request()->routeIs('add_recurring_bill') ||
                                             request()->routeIs('add_bill')
                                                 ? 'drop-icon'
-                                                : '' }}"><span
-                                                style="margin-left: 20px;">&emsp;Tagihan</span></a></li>
-                                    <li class="mt-2"><a href="{{ url('supplier') }}"
-                                            class="{{ request()->routeIs('supplier') || request()->routeIs('add_supplier') || request()->routeIs('edit_supplier')
+                                                : '' }}"><span style="margin-left: 20px;">&emsp;Tagihan</span></a></li>
+                                    <li class="mt-2"><a href="{{ url('supplier') }}" class="{{ request()->routeIs('supplier') || request()->routeIs('add_supplier') || request()->routeIs('edit_supplier')
                                                 ? 'drop-icon'
-                                                : '' }}"><span
-                                                style="margin-left: 20px;">&emsp;Pemasok</span></a></li>
+                                                : '' }}"><span style="margin-left: 20px;">&emsp;Pemasok</span></a></li>
                                 </ul>
                             </li>
                             <li class="mt-3">
-                                <a href="#"
-                                    class="dropdown-btn {{ request()->routeIs('transactions') ||
+                                <a href="#" class="dropdown-btn {{ request()->routeIs('transactions') ||
                                     request()->routeIs('transfer') ||
                                     request()->routeIs('account') ||
                                     request()->routeIs('add_account') ||
@@ -183,21 +162,15 @@
                                     request()->routeIs('receipt_transactions') ||
                                     request()->routeIs('show_transfer')
                                         ? 'current-page'
-                                        : '' }}"><i
-                                        class="icon-attach_money"
-                                        style="font-size: 19px;"></i><span>&emsp;Perbankan</span><i
-                                        class="icon-chevron-down1 droprow"></i></a>
+                                        : '' }}"><i class="icon-attach_money" style="font-size: 19px;"></i><span>&emsp;Perbankan</span><i class="icon-chevron-down1 droprow"></i></a>
                                 <ul class="dropdown-container">
-                                    <li class="mt-2"><a href="{{ url('account') }}"
-                                            class="{{ request()->routeIs('account') ||
+                                    <li class="mt-2"><a href="{{ url('account') }}" class="{{ request()->routeIs('account') ||
                                             request()->routeIs('add_account') ||
                                             request()->routeIs('edit_account') ||
                                             request()->routeIs('show_account1')
                                                 ? 'drop-icon'
-                                                : '' }}"><span
-                                                style="margin-left: 20px;">&emsp;Akun</span></a></li>
-                                    <li class="mt-2"><a href="{{ url('transactions') }}"
-                                            class="{{ request()->routeIs('transactions') ||
+                                                : '' }}"><span style="margin-left: 20px;">&emsp;Akun</span></a></li>
+                                    <li class="mt-2"><a href="{{ url('transactions') }}" class="{{ request()->routeIs('transactions') ||
                                             request()->routeIs('add_income') ||
                                             request()->routeIs('edit_income') ||
                                             request()->routeIs('show_income') ||
@@ -214,33 +187,24 @@
                                             request()->routeIs('receipt_transactions') ||
                                             request()->routeIs('show_recurring_expenditure')
                                                 ? 'drop-icon'
-                                                : '' }}"><span
-                                                style="margin-left: 20px;">&emsp;Transaksi</a></li>
-                                    <li class="mt-2"><a href="{{ url('transfer') }}"
-                                            class="{{ request()->routeIs('transfer') ||
+                                                : '' }}"><span style="margin-left: 20px;">&emsp;Transaksi</a></li>
+                                    <li class="mt-2"><a href="{{ url('transfer') }}" class="{{ request()->routeIs('transfer') ||
                                             request()->routeIs('add_transfer') ||
                                             request()->routeIs('edit_transfer') ||
                                             request()->routeIs('show_transfer')
                                                 ? 'drop-icon'
-                                                : '' }}"><span
-                                                style="margin-left: 20px;">&emsp;Transfer</span></a></li>
+                                                : '' }}"><span style="margin-left: 20px;">&emsp;Transfer</span></a></li>
                                 </ul>
                             </li>
 
 
                             <li class="mt-3">
-                                <a href="{{ route('report') }}"
-                                    class="sidebar-menu {{ request()->routeIs('report') || request()->routeIs('show_report') || request()->routeIs('show_report2')
+                                <a href="{{ route('report') }}" class="sidebar-menu {{ request()->routeIs('report') || request()->routeIs('show_report') || request()->routeIs('show_report2')
                                         ? 'current-page'
-                                        : '' }}"
-                                    aria-selected="false"><i class="icon-file-text"
-                                        style=" font-size: 19px;"></i><span>&emsp;Laporan</span></a>
+                                        : '' }}" aria-selected="false"><i class="icon-file-text" style=" font-size: 19px;"></i><span>&emsp;Laporan</span></a>
                             </li>
                             <li class="mt-3">
-                                <a href="{{ route('calendar') }} "
-                                    class="sidebar-menu {{ request()->routeIs('calendar') ? 'current-page' : '' }}"
-                                    aria-selected="false"><i class="icon-calendar1"
-                                        style=" font-size: 19px;"></i><span>&emsp;Kalender</span></a>
+                                <a href="{{ route('calendar') }} " class="sidebar-menu {{ request()->routeIs('calendar') ? 'current-page' : '' }}" aria-selected="false"><i class="icon-calendar1" style=" font-size: 19px;"></i><span>&emsp;Kalender</span></a>
                             </li>
                         </ul>
 
@@ -273,27 +237,17 @@
                         <ul class="active">
 
                             <li class="active">
-                                <a href="{{ route('company') }}"
-                                    class="sidebar-menu {{ request()->routeIs('company') ? 'current-page' : '' }}"><i
-                                        class="icon-briefcase"
-                                        style=" font-size: 19px;"></i><span>&emsp;Perusahaan</span></a>
+                                <a href="{{ route('company') }}" class="sidebar-menu {{ request()->routeIs('company') ? 'current-page' : '' }}"><i class="icon-briefcase" style=" font-size: 19px;"></i><span>&emsp;Perusahaan</span></a>
                             </li>
 
                             <li class="mt-3 active">
-                                <a href="{{ route('setting-invoice') }}"
-                                    class="sidebar-menu {{ request()->routeIs('setting-invoice') ? 'current-page' : '' }}"><i
-                                        class="icon-file " style=" font-size: 19px;"></i><span>&emsp;Faktur</span></a>
+                                <a href="{{ route('setting-invoice') }}" class="sidebar-menu {{ request()->routeIs('setting-invoice') ? 'current-page' : '' }}"><i class="icon-file " style=" font-size: 19px;"></i><span>&emsp;Faktur</span></a>
                             </li>
                             <li class="mt-3 active">
-                                <a href="{{ route('editemail') }}"
-                                    class="sidebar-menu {{ request()->routeIs('editemail') ? 'current-page' : '' }}"><i
-                                        class="icon-mail " style=" font-size: 19px;"></i><span>&emsp;Surel</span></a>
+                                <a href="{{ route('editemail') }}" class="sidebar-menu {{ request()->routeIs('editemail') ? 'current-page' : '' }}"><i class="icon-mail " style=" font-size: 19px;"></i><span>&emsp;Surel</span></a>
                             </li>
                             <li class="mt-3" active>
-                                <a href="{{ route('index-category') }}"
-                                    class="sidebar-menu {{ request()->routeIs('index-category') || request()->routeIs('add-category') ? 'current-page' : '' }}"><i
-                                        class="icon-server "
-                                        style=" font-size: 19px;"></i><span>&emsp;Kategori</span></a>
+                                <a href="{{ route('index-category') }}" class="sidebar-menu {{ request()->routeIs('index-category') || request()->routeIs('add-category') ? 'current-page' : '' }}"><i class="icon-server " style=" font-size: 19px;"></i><span>&emsp;Kategori</span></a>
                             </li>
                             <!-- <li class="dropdown">
         <a href="#" class="pem-btn"> Pembelian <span class="fas fa-caret-down first"></span></a>
@@ -303,16 +257,11 @@
         </ul>
        </li>	 -->
                             <li class="mt-3">
-                                <a href="{{ route('currency') }}"
-                                    class="sidebar-menu {{ request()->routeIs('currency') || request()->routeIs('currency-add') ? 'current-page' : '' }}"><i
-                                        class="icon-local_atm" style=" font-size: 19px;"></i><span>&emsp;Mata
+                                <a href="{{ route('currency') }}" class="sidebar-menu {{ request()->routeIs('currency') || request()->routeIs('currency-add') ? 'current-page' : '' }}"><i class="icon-local_atm" style=" font-size: 19px;"></i><span>&emsp;Mata
                                         Uang</span></a>
                             </li>
                             <li class="mt-3">
-                                <a href="{{ route('tax') }}"
-                                    class="{{ request()->routeIs('tax') || request()->routeIs('tax-add') ? 'current-page' : '' }}"><i
-                                        class="icon-line-graph"
-                                        style=" font-size: 19px;"></i><span>&emsp;Pajak</span></a>
+                                <a href="{{ route('tax') }}" class="{{ request()->routeIs('tax') || request()->routeIs('tax-add') ? 'current-page' : '' }}"><i class="icon-line-graph" style=" font-size: 19px;"></i><span>&emsp;Pajak</span></a>
                             </li>
 
                         </ul>
@@ -347,26 +296,18 @@
                     <div class="sidebar-menu">
                         <ul>
                             <li>
-                                <a href="{{ route('profile') }}"
-                                    class="{{ request()->routeIs('profile') ? 'current-page' : '' }}"><i
-                                        class="icon-user1" style=" font-size: 19px;"></i><span>&emsp;Profil</span></a>
+                                <a href="{{ route('profile') }}" class="{{ request()->routeIs('profile') ? 'current-page' : '' }}"><i class="icon-user1" style=" font-size: 19px;"></i><span>&emsp;Profil</span></a>
                             </li>
                             <li class="mt-3">
-                                <a href="{{ url('users') }}"
-                                    class="{{ request()->routeIs('users-index') || request()->routeIs('add_users') ? 'current-page' : '' }} || {{ request()->routeIs('edit_users') ? 'current-page' : ''   }}"><i
-                                        class="icon-users"
-                                        style=" font-size: 19px;"></i><span>&emsp;Pengguna</span></a>
+                                <a href="{{ url('users') }}" class="{{ request()->routeIs('users-index') || request()->routeIs('add_users') ? 'current-page' : '' }} || {{ request()->routeIs('edit_users') ? 'current-page' : ''   }}"><i class="icon-users" style=" font-size: 19px;"></i><span>&emsp;Pengguna</span></a>
                             </li>
                             <li class="mt-3">
-                                <a href="{{ url('role') }}"
-                                    class="{{ request()->routeIs('role') || request()->routeIs('add_role') || request()->routeIs('edit_role')
+                                <a href="{{ url('role') }}" class="{{ request()->routeIs('role') || request()->routeIs('add_role') || request()->routeIs('edit_role')
                                         ? 'current-page'
-                                        : '' }}"><i
-                                        class="icon-pocket" style=" font-size: 19px;"></i><span>&emsp;Peran</span></a>
+                                        : '' }}"><i class="icon-pocket" style=" font-size: 19px;"></i><span>&emsp;Peran</span></a>
                             </li>
                             <li class="mt-3">
-                                <a href="/logout"><i class="icon-power_settings_new"
-                                        style=" font-size: 19px;"></i><span>&emsp;Logout</span></a>
+                                <a href="/logout"><i class="icon-power_settings_new" style=" font-size: 19px;"></i><span>&emsp;Logout</span></a>
                             </li>
                         </ul>
 
@@ -389,9 +330,7 @@
                         &emsp;Notifikasi
                     </div>
                     <hr class="my-hr">
-                    <div style="margin-left: 184px;">
-                        <a href=""><i class="icon-done_all" style="color: #5957b1;"></i></a>
-                    </div>
+
 
                 </div>
                 <!-- Tab content header end -->
@@ -401,24 +340,43 @@
                 <!-- Sidebar menu starts -->
                 <div class="sidebarMenuScroll">
                     <div class="sidebar-menu">
+                    <div style=" margin-left: 86%; font-size: 12pt;">
+                                <a href=""><i class="icon-done_all" style="color: #5957b1;"></i></a>
+                            </div>
                         <ul style="margin-top: -25px;">
+                            
                             <li>
+                                <div class="d-flex" style="margin-top: 30px;">
+                                    <a href="#">Transfer berhasil
+                                        Sudah Selesai
+                                        transaksi di lakukan dari dava ke trisqi dengan nominal Rp50.000.000</a>
+                                    <div class="">
+                                        <a href=""><i class="icon-check-circle" style="z-index: 1;"></i></a>
+                                    </div>
+                                </div>
+                                <div class="tab-pane-header1">
+                                    <hr class="my-hr">
+                                </div>
                                 <div class="d-flex">
                                     <a href="#">Transfer berhasil
                                         Sudah Selesai
                                         transaksi di lakukan dari dava ke trisqi dengan nominal Rp50.000.000</a>
-                                    <div class="mt-3">
+                                    <div class="">
                                         <a href=""><i class="icon-check-circle" style="z-index: 1;"></i></a>
                                     </div>
                                 </div>
+                                <div class="tab-pane-header1">
+                                    <hr class="my-hr">
+                                </div>
+
                             </li>
                             <li class="mt-3">
-                                <a href="{{ url('coba') }}"
-                                    class="{{ request()->routeIs('coba') ? 'current-page' : '' }}">Icons</a>
+                                <a href="{{ url('coba') }}" class="{{ request()->routeIs('coba') ? 'current-page' : '' }}">Icons</a>
                             </li>
                         </ul>
                     </div>
                 </div>
+
                 <!-- Sidebar menu ends -->
 
 
@@ -702,14 +660,11 @@
                         <div class="accordion" id="settingsAccordion">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="genInfo">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#genCollapse" aria-expanded="true"
-                                        aria-controls="genCollapse">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#genCollapse" aria-expanded="true" aria-controls="genCollapse">
                                         General Info
                                     </button>
                                 </h2>
-                                <div id="genCollapse" class="accordion-collapse collapse show"
-                                    aria-labelledby="genInfo" data-bs-parent="#settingsAccordion">
+                                <div id="genCollapse" class="accordion-collapse collapse show" aria-labelledby="genInfo" data-bs-parent="#settingsAccordion">
                                     <div class="accordion-body">
                                         <div class="field-wrapper">
                                             <input type="text" value="Jeivxezer Lopexz" />
@@ -733,14 +688,11 @@
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="chngPwd">
-                                    <button class="accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#chngPwdCollapse"
-                                        aria-expanded="false" aria-controls="chngPwdCollapse">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chngPwdCollapse" aria-expanded="false" aria-controls="chngPwdCollapse">
                                         Change Password
                                     </button>
                                 </h2>
-                                <div id="chngPwdCollapse" class="accordion-collapse collapse"
-                                    aria-labelledby="chngPwd" data-bs-parent="#settingsAccordion">
+                                <div id="chngPwdCollapse" class="accordion-collapse collapse" aria-labelledby="chngPwd" data-bs-parent="#settingsAccordion">
                                     <div class="accordion-body">
                                         <div class="field-wrapper">
                                             <input type="text" value="">
@@ -763,46 +715,39 @@
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="sidebarNotifications">
-                                    <button class="accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#notiCollapse"
-                                        aria-expanded="false" aria-controls="notiCollapse">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#notiCollapse" aria-expanded="false" aria-controls="notiCollapse">
                                         Notifications
                                     </button>
                                 </h2>
-                                <div id="notiCollapse" class="accordion-collapse collapse"
-                                    aria-labelledby="sidebarNotifications" data-bs-parent="#settingsAccordion">
+                                <div id="notiCollapse" class="accordion-collapse collapse" aria-labelledby="sidebarNotifications" data-bs-parent="#settingsAccordion">
                                     <div class="accordion-body">
                                         <div class="list-group m-0">
                                             <div class="noti-container">
                                                 <div class="noti-block">
                                                     <div>Alerts</div>
                                                     <div class="form-switch">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            id="showAlertss" checked>
+                                                        <input class="form-check-input" type="checkbox" id="showAlertss" checked>
                                                         <label class="form-check-label" for="showAlertss"></label>
                                                     </div>
                                                 </div>
                                                 <div class="noti-block">
                                                     <div>Enable Sound</div>
                                                     <div class="form-switch">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            id="soundEnable">
+                                                        <input class="form-check-input" type="checkbox" id="soundEnable">
                                                         <label class="form-check-label" for="soundEnable"></label>
                                                     </div>
                                                 </div>
                                                 <div class="noti-block">
                                                     <div>Allow Chat</div>
                                                     <div class="form-switch">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            id="allowChat">
+                                                        <input class="form-check-input" type="checkbox" id="allowChat">
                                                         <label class="form-check-label" for="allowChat"></label>
                                                     </div>
                                                 </div>
                                                 <div class="noti-block">
                                                     <div>Desktop Messages</div>
                                                     <div class="form-switch">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            id="desktopMessages">
+                                                        <input class="form-check-input" type="checkbox" id="desktopMessages">
                                                         <label class="form-check-label" for="desktopMessages"></label>
                                                     </div>
                                                 </div>

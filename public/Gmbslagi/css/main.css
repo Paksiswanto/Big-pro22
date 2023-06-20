@@ -617,6 +617,14 @@ p {
     color: #5957b1;
 }
 
+.sidebar-wrapper .sidebar-tabs .tab-content>.tab-pane .tab-pane-header1 {
+    margin: 0;
+    padding: 5px 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #5957b1;
+}
+
 @media (max-width:420px) {
     .sidebar-wrapper .sidebar-tabs .nav a.nav-link {
         padding: 10px;
