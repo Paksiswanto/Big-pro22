@@ -12,7 +12,7 @@ class ConvertController extends Controller
     public function coba()
     {
         $client = new Client();
-        $response = $client->get('http://data.fixer.io/api/latest?access_key=904e65cb25d99393a703192e0a050e8e&symbols=USD,IDR');
+        $response = $client->get('http://data.fixer.io/api/latest?access_key=0719dfabcdba9f85af875a9ad221eb6b&symbols=USD,IDR');
 
         $data = json_decode($response->getBody(), true);
 
