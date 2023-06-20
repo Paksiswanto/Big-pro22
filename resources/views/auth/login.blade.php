@@ -111,7 +111,7 @@
                                 <div class="field-wrapper">
                                     <input type="email" name="email" value="{{ old('email') }}" placeholder="Masukan email anda" autofocus>
                                     @error('email')
-    <span class="error">{{ $message }}</span>
+                 <span class="error">{{ $message }}</span>
 @enderror
                                     <div class="field-placeholder">Email</div>
                                 </div>

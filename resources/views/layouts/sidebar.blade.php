@@ -365,7 +365,7 @@
                                         class="icon-pocket" style=" font-size: 19px;"></i><span>&emsp;Peran</span></a>
                             </li>
                             <li class="mt-3">
-                                <a href="/login"><i class="icon-power_settings_new"
+                                <a href="/logout"><i class="icon-power_settings_new"
                                         style=" font-size: 19px;"></i><span>&emsp;Logout</span></a>
                             </li>
                         </ul>
