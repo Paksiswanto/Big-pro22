@@ -44,18 +44,21 @@ class InvoiceController extends Controller
             'discount' => $request->discount,
             'notes' => $request->notes,
             'start_date' => $start_date,
+            'quantity' => $request->quantity,
+            'price' => $request->price,
+            'tax_id' => $request->tax_id,
+            'total_pay' => $request->total_pay,
             'attachment' => $request->attachment,
             'footer' => $request->footer,
             'end_date' => $request->end_date,
-            // 'total_pay' => $request->total_pay,
-            // 'company_id' => $request->company_id,
             'invoice_number' => $request->invoice_number,
             'order_quantity' => $request->order_quantity,
             'category_id' => $request->category_id,
             'amount' => $request->amount,
         ]);
 
-        return redirect('/invoice')->with('success','Data berhasil ditambahkan');
+        return response()->json(['message' => 'Success Menambahkan data!']);
+
     }
     public function add_recurring_invoice()
     {

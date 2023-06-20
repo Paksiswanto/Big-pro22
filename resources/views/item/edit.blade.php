@@ -226,13 +226,12 @@
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                     <div class="half-width-container">
-
-                                                        <input type="radio" name="option" id="option1" value="Option 1" checked>
+                                                        <input type="radio" name="type" id="option1" value="produk" <?php echo ($item->type == 'produk') ? 'checked' : ''; ?>>
                                                         <label style="border-radius: 2px" class="label" for="option1">Produk</label>
-
-                                                        <input type="radio" name="option" id="option2" value="Option 2">
+                                                      
+                                                        <input type="radio" name="type" id="option2" value="layanan" <?php echo ($item->type == 'layanan') ? 'checked' : ''; ?>>
                                                         <label style="border-radius: 2px" class="label" for="option2">Layanan</label>
-                                                    </div>
+                                                      </div>                                                                                                            
 
                                                     <!-- Field wrapper start -->
 

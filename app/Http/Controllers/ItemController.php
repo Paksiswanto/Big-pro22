@@ -57,6 +57,7 @@ class ItemController extends Controller
             'description' => $request->description,
             'category' => $request->category,
             'tax_id' => $request->tax_id,
+            'type' => $request->type,
             'purchase_price' => $request->purchase_price,
             'selling_price' => $request->selling_price,
         ]);
