@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('selling_price')->nullable();
             $table->integer('purchase_price')->nullable();
             $table->foreignId('tax_id')->nullable()->references('id')->on('tax')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('company_id')->references('id')->on('company')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

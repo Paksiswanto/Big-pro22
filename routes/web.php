@@ -154,7 +154,7 @@ Route::get('/account', [AccountController::class, 'index'])->name('account');
 
 Route::get('/add_account', [AccountController::class, 'add_account'])->name('add_account');
 Route::get('/edit_account/{id}', [AccountController::class, 'edit_account'])->name('edit_account');
-Route::get('/show_account1', [AccountController::class, 'show_account1'])->name('show_account1');
+Route::get('/show_account/{id}', [AccountController::class, 'show_account'])->name('show_account');
 Route::get('/show_account2', [AccountController::class, 'show_account2'])->name('show_account2');
 
     // return view('pembelian.pembelian_edit_pemasok');

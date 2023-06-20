@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('parent')->nullable();
             $table->string('color');
             $table->foreignId('category_type_id')->references('id')->on('category_type')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('company_id')->nullable()->references('id')->on('company')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

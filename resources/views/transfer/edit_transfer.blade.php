@@ -195,6 +195,7 @@
                                                                 @endforeach
                                                             </select>
                                                             <div class="field-placeholder">Dari Akun<span class="text-danger">*</span></div>
+                                                            <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
                                                         </div>
 
                                                     </div>

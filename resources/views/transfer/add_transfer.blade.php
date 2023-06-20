@@ -174,14 +174,14 @@
                                                         <h6>Umum</h6>
                                                         <p>Informasi kontak penyedia Anda akan muncul di tagihan dan profil mereka. Anda dapat menambahkan informasi kontak dan logo mereka untuk digunakan dalam tagihan.</p>
                                                     </div>
-
+                                                    
                                                 </div>
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
+                                                    
                                                     <!-- Field wrapper start -->
-
+                                                    
                                                     <!-- Field wrapper end -->
-
+                                                    
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
@@ -195,10 +195,11 @@
                                                             </select>
                                                             <div class="field-placeholder">Dari Akun<span class="text-danger">*</span></div>
                                                         </div>
-
+                                                        
                                                     </div>
                                                     <!-- Field wrapper end -->
-
+                                                    <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
+                                                    
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 

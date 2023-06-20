@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Transaction;
 use App\Models\Transfer;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -33,11 +34,22 @@ class TransferController extends Controller
         
         
        
-        $requestData = $request->except('date'.'user_id');
+        $requestData = $request->except('date'.'user_id'.'company_id');
         $userID = Auth::user()->id;
+        $company_id = Auth::user()->company_id;
         $requestData['date'] = $formattedDate;
         $requestData['user_id'] = $userID;
+        $requestData['company_id'] = $company_id;
         $data= Transfer::create($requestData);
+
+        $transactionFromAccount = new Transaction();
+        $transactionFromAccount -> transfer_id = $data->id;
+        $transactionFromAccount -> account_id = $data->from_account;
+        $transactionFromAccount -> save();
+        $transactionToAccount = new Transaction();
+        $transactionToAccount -> transfer_id = $data->id;
+        $transactionToAccount -> account_id = $data->to_account;
+        $transactionToAccount -> save();
         
         return redirect()->route('show_transfer', ['id' => $data->id])->with('success', 'Transfer berhasil dibuat');
     }
