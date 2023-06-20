@@ -153,20 +153,20 @@
                     <!-- Row start -->
                     <div class="card-body">
                         <div class="row gutters">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                                    <!-- Card start -->
-                                    <div class="" style="">
-                                        <div class="row">
-                                            <div class="card-title">
-                                                <h3>Tambah Pengeluaran<button type="button" style="border: none; background:none;">☆</button></h3>
-                                            </div>
+                                <!-- Card start -->
+                                <div class="" style="">
+                                    <div class="row">
+                                        <div class="card-title">
+                                            <h3>Tambah Pengeluaran<button type="button" style="border: none; background:none;">☆</button></h3>
                                         </div>
-                                        <div class="">
+                                    </div>
+                                    <div class="">
 
-                                            <!-- Row start -->
-                                            <form action="/update_expenditure" method="POST">
-                                                @csrf
+                                        <!-- Row start -->
+                                        <form action="/update_expenditure/{{$expenditure->id}}" method="POST">
+                                            @csrf
                                             <div class="row gutters">
 
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom: 1%;">
@@ -223,11 +223,9 @@
                                                     <div class="field-wrapper-group">
                                                         <div class="field-wrapper">
                                                             <select class="select-multiple js-states" title="Select Product Category" name="account_id" id="account_id">
-                                                                @foreach ($ture as $row)
-                                                                <option value="{{ $row->account_id }}" {{ $row->account_id == $expenditure->account_id ? 'selected' : ''}}>{{ $row->account->name }}</option>
+                                                                @foreach ($account as $row)
+                                                                <option value="{{ $row->id }}" {{ $row->id == $expenditure->account_id ? 'selected' : ''}}>{{ $row->name }}</option>
                                                                 @endforeach
-                                                            </select>
-
                                                             </select>
                                                             <div class="field-placeholder">Akun</div>
                                                         </div>
@@ -275,8 +273,8 @@
                                                     <div class="field-wrapper-group">
                                                         <div class="field-wrapper">
                                                             <select class="select-multiple js-states" title="Select Product Category" name="category_id" id="category_id">
-                                                                @foreach ($ture as $row)
-                                                                <option value="{{ $row->category_id }}" {{ $row->category_id == $expenditure->category_id ? 'selected' : ''}}>{{ $row->category->name }}</option>
+                                                                @foreach ($category as $row)
+                                                                <option value="{{ $row->id }}" {{ $row->id == $expenditure->category_id ? 'selected' : ''}}>{{ $row->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                             <div class="field-placeholder">Kategori</div>
@@ -294,8 +292,8 @@
                                                     <div class="field-wrapper-group">
                                                         <div class="field-wrapper">
                                                             <select class="select-multiple js-states" style="border-radius: 10px ;" title="Select Product Category" name="supplier_id" id="supplier_id">
-                                                                @foreach ($ture as $row)
-                                                                <option value="{{ $row->supplier_id }}" {{ $row->supplier_id == $expenditure->supplier_id ? 'selected' : ''}}>{{ $row->supplier->name }}</option>
+                                                                @foreach ($supplier as $row)
+                                                                <option value="{{ $row->id }}" {{ $row->id == $expenditure->supplier_id ? 'selected' : ''}}>{{ $row->name }}</option>
                                                                 @endforeach
 
                                                             </select>
@@ -360,235 +358,566 @@
 
 
                                             </div>
-                                            </form>
-                                            <!-- Button trigger modal -->
+                                        </form>
+                                        <!-- Button trigger modal -->
 
 
-                                            <!-- Modal account start -->
-                                            <form action="">
-                                                <div class="modal fade" id="modalaccount" tabindex="-1" aria-labelledby="modalaccount" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="margin-top: -20px;">
-                                                        <div class="modal-content" style="padding: 0px; ">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Tambah Akun</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      <!-- Modal account start -->
+                                    <form action="/insert_account_income" method="POST">
+                                        @csrf
+                                        <div class="modal fade" id="modalaccount" tabindex="-1" aria-labelledby="modalaccount" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="margin-top: -20px;">
+                                                <div class="modal-content" style="padding: 0px; ">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Tambah Akun</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper">
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control" style="z-index: auto" name="name" id="name" placeholder="Masukan nama" value="{{ old('name') }}" required>
+                                                                </div>
+                                                                <div class="field-placeholder">Nama<span class="text-danger">*</span></div>
                                                             </div>
-                                                            <div class="modal-body">
+                                                            <!-- Field wrapper end -->
 
-                                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        </div>
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
 
-                                                                    <!-- Field wrapper start -->
-                                                                    <div class="field-wrapper">
-                                                                        <label style="float: left;">Nama</label>
-                                                                        <input class="form-control" type="text" placeholder="Masukkan Nama Akun">
-
-                                                                    </div>
-                                                                    <!-- Field wrapper end -->
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper">
+                                                                <div class="input-group">
+                                                                    <input name="rekening_number" id="rekening_number" type="text" class="form-control" style="z-index: auto" placeholder="Masukan Nomor Rekening" value="{{ old('rekening_number') }}" required>
 
                                                                 </div>
-                                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+                                                                <div class="field-placeholder">Nomor Rekening<span class="text-danger">*</span></div>
+                                                            </div>
+                                                            <!-- Field wrapper end -->
 
-                                                                    <!-- Field wrapper start -->
-                                                                    <div class="field-wrapper">
-                                                                        <label style="float: left;">Nomor Rekening</label>
-                                                                        <input class="form-control" type="text" placeholder="Masukkan E-mail Akun">
-                                                                    </div>
-                                                                    <!-- Field wrapper end -->
+                                                        </div>
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
 
-                                                                </div>
-                                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper-group">
+                                                                <div class="field-wrapper">
+                                                                    <select name="currency" id="currency" class="select-multiple js-states" title="Select Product Category" required>
+                                                                        <option value="">Pilih Mata Uang</option>
+                                                                        <option value="Rupiah" {{ old('currency') === 'Rupiah' ? 'selected' : '' }}>Rupiah</option>
+                                                                        <option value="Dollar" {{ old('currency') === 'Dollar' ? 'selected' : '' }}>Dollar</option>
 
-                                                                    <!-- Field wrapper start -->
-                                                                    <div class="field-wrapper">
-                                                                        <label style="float: left;">Mata Uang</label>
-                                                                        <input class="form-control" type="text" placeholder="Masukkan Nomor Telepone Akun">
-                                                                    </div>
-                                                                    <!-- Field wrapper end -->
 
-                                                                </div>
-                                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                                    <!-- Field wrapper start -->
-                                                                    <div class="field-wrapper">
-                                                                        <label style="float: left;">Saldo Awal</label>
-                                                                        <input class="form-control" type="text" placeholder="Masukkan NPWP Akun">
-                                                                    </div>
-                                                                    <!-- Field wrapper end -->
-
+                                                                    </select>
+                                                                    <div class="field-placeholder">Mata Uang<span class="text-danger">*</span></div>
                                                                 </div>
                                                             </div>
+                                                            <!-- Field wrapper end -->
 
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Simpan</button>
-                                                                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                        </div>
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper">
+                                                                <input name="balance" id="balance" class="form-control" type="number" placeholder="Rp0,00" value="{{ old('balance') }}" required>
+                                                                <div class="field-placeholder">Saldo Saat Ini<span class="text-danger">*</span></div>
                                                             </div>
+                                                            <!-- Field wrapper end -->
+
+                                                        </div>
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper">
+                                                                <input name="name_bank" id="name_bank" class="form-control" type="text" placeholder="Masukkan Nama Bank" value="{{ old('name_bank') }}" required>
+                                                                <div class="field-placeholder">Nama Bank<span class="text-danger">*</span></div>
+                                                            </div>
+                                                            <!-- Field wrapper end -->
+
+                                                        </div>
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper">
+                                                                <input name="bank_telephone" id="bank_telephone" class="form-control" type="text" placeholder="Masukkan Telepon Bank" value="{{ old('bank_telephone') }}" required>
+                                                                <div class="field-placeholder">Telepon Bank<span class="text-danger">*</span></div>
+                                                            </div>
+                                                            <!-- Field wrapper end -->
+
+                                                        </div>
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper">
+                                                                <textarea name="bank_address" id="bank_address" class="form-control1" rows="2" placeholder="Masukkan Alamat Bank" value="{{ old('bank_address') }}" required></textarea>
+                                                                <div class="field-placeholder">Alamat Bank<span class="text-danger">*</span></div>
+                                                            </div>
+                                                            <!-- Field wrapper end -->
+
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </form>
-                                            <!-- Modal account end -->
 
-                                            <!-- Modal category start -->
-                                            <form action="">
-                                                <div class="modal fade" id="modalcategory" tabindex="-1" aria-labelledby="modalcategory" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="margin-top: -20px;">
-                                                        <div class="modal-content" style="padding: 0px;">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Tambah Kategori</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                                    <!-- Field wrapper start -->
-                                                                    <div class="field-wrapper">
-                                                                        <label style="float: left;">Nama</label>
-                                                                        <input class="form-control" type="text" placeholder="Masukkan Nama Kategori">
-                                                                    </div>
-                                                                    <!-- Field wrapper end -->
-
-                                                                </div>
-                                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                                    <!-- Field wrapper start -->
-                                                                    <div class="field-wrapper row">
-                                                                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-12">
-                                                                            <label class="mb-2">Warna</label>
-                                                                        </div>
-                                                                        <div class="d-flex">
-                                                                            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12">
-                                                                                <input class="form-control" type="text" placeholder="Masukkan Warna Kategori">
-                                                                            </div>
-                                                                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12">
-                                                                                <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- Field wrapper end -->
-
-                                                                </div>
-
-
-
-
-
-
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Simpan</button>
-                                                                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                                            </div>
-                                                        </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-secondary">Simpan</button>
+                                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                                                     </div>
                                                 </div>
-                                            </form>
-                                            <!-- Modal category end -->
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- Modal account end -->
 
-                                            <!-- Modal supplier start -->
-                                            <form action="">
-                                                <div class="modal fade" id="modalsupplier" tabindex="-1" aria-labelledby="modalsupplier" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                                        <div class="modal-content" style="padding: 0px">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Tambah Pemasok</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <!-- Modal category start -->
+                                    <form action="/insert_category_income" method="POST">
+                                        @csrf
+                                        <div class="modal fade" id="modalcategory" tabindex="-1" aria-labelledby="modalcategory" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="margin-top: -20px;">
+                                                <div class="modal-content" style="padding: 0px;">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Tambah Kategori</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper">
+                                                                <input class="form-control" name="name" type="text" placeholder=" Masukan Nama">
+                                                                <div class="field-placeholder">Nama <span class="text-danger">*</span></div>
+                                                                <div class="form-text">
+
+                                                                </div>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                    <div class="field-wrapper">
+                                                            <!-- Field wrapper end -->
+
+                                                        </div>
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper row">
+                                                                <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-12">
+                                                                    <label class="mb-2">Warna</label>
+                                                                </div>
+                                                                <div class="d-flex">
+                                                                    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12">
+                                                                        <input class="form-control" name="color" type="text" placeholder="Masukkan Warna Kategori" id="hex-input">
+                                                                    </div>
+                                                                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12">
+                                                                        <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Field wrapper end -->
+
+                                                        </div>
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper-group">
+                                                                <div class="field-wrapper">
+                                                                    <select class="select-multiple js-states" name="category_type_id" title="Select Product Category">
+                                                                        @foreach ($category_type as $category)
+
+                                                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    <div class="field-placeholder">Kategori<span class="text-danger">*</span></div>
+                                                                </div>
+
+                                                            </div>
+                                                            <!-- Field wrapper end -->
+
+                                                        </div>
 
 
+
+
+
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-secondary">Simpan</button>
+                                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- Modal category end -->
+
+                                    <!-- Modal customer start -->
+                                    <form action="/insert_sup_expenditure" method="POST">
+                                        @csrf
+                                        <div class="modal fade" id="modalcustomer" tabindex="-1" aria-labelledby="modalcustomer" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="margin-top: -20px;">
+                                                <div class="modal-content" style="padding: 0px;">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Tambah Pemasok</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+
+
+
+
+
+                                                        <div class="container">
+                                                            <div class='multitab-section'>
+                                                                <ul class='multitab-widget multitab-widget-content-tabs-id'>
+                                                                    <li class='multitab-tab'><a href='#multicolumn-widget-id1'>Umum</a></li>
+                                                                    <li class='multitab-tab'><a href='#multicolumn-widget-id2'>Tags</a></li>
+                                                                    <li class='multitab-tab'><a href='#multicolumn-widget-id3'>Archive</a></li>
+                                                                </ul>
+                                                                <div class='multitab-widget-content multitab-widget-content-widget-id' id='multicolumn-widget-id1'>
+                                                                    <span class='sidebar' id='sidebartab1' preferred='yes'>
                                                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                                             <!-- Field wrapper start -->
                                                                             <div class="field-wrapper">
-                                                                                <label style="float: left;">Nama</label>
-                                                                                <input class="form-control" type="text" placeholder="Masukkan Nama Pemasok">
+                                                                                <div class="" style="float: left;">Nama <span class="text-danger">*</span></div>
+                                                                                <input class="form-control" type="text" placeholder="Masukan Nama" name="name" id="name" required>
                                                                             </div>
                                                                             <!-- Field wrapper end -->
 
                                                                         </div>
-                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                                             <!-- Field wrapper start -->
                                                                             <div class="field-wrapper">
-                                                                                <label style="float: left;">Email</label>
-                                                                                <input class="form-control" type="email" placeholder="Masukkan E-mail Pemasok">
+                                                                                <div class="" style="float: left;">Email <span class="text-danger">*</span></div>
+                                                                                <input class="form-control" type="email" placeholder="Masukan Email" name="email" id="email" required>
                                                                             </div>
                                                                             <!-- Field wrapper end -->
 
                                                                         </div>
-                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                                             <!-- Field wrapper start -->
                                                                             <div class="field-wrapper">
-                                                                                <label style="float: left;">Telepone</label>
-                                                                                <input class="form-control" type="text" placeholder="Masukkan Nomor Telepone Pemasok">
+                                                                                <div class="" style="float: left;">Telepon</div>
+                                                                                <input class="form-control" type="number" placeholder="Masukan Nomor Telepon" name="phone_number" id="phone_number" required>
                                                                             </div>
                                                                             <!-- Field wrapper end -->
 
                                                                         </div>
-                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                                             <!-- Field wrapper start -->
                                                                             <div class="field-wrapper">
-                                                                                <label style="float: left;">NPWP</label>
-                                                                                <input class="form-control" type="text" placeholder="Masukkan NPWP Pemasok">
+                                                                                <div class="" style="float: left;">NPWP</div>
+                                                                                <input class="form-control" type="number" placeholder="Masukan NPWP" name="npwp" id="npwp" required>
                                                                             </div>
                                                                             <!-- Field wrapper end -->
 
                                                                         </div>
-                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                                             <!-- Field wrapper start -->
                                                                             <div class="field-wrapper">
-                                                                                <label style="float: left;">Mata Uang</label>
-                                                                                <input class="form-control" type="text" placeholder="Masukkan Mata Uang Pemasok">
+                                                                                <select class="select-multiple js-states" title="Select Product Category" data-live-search="true" name="currency" id="currency" required>
+                                                                                    <option value="Rupiah Indonesia (IDR)">Rupiah Indonesia (IDR)</option>
+                                                                                    <option value="Dolar Amerika Serikat (USD)">Dolar Amerika Serikat (USD)</option>
+                                                                                    <div class="" style="float: left;">Mata Uang</div>
+                                                                                </select>
                                                                             </div>
                                                                             <!-- Field wrapper end -->
-
                                                                         </div>
-                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+                                                                        <p>
+                                                                    </span>
+                                                                </div>
+                                                                <div class='multitab-widget-content multitab-widget-content-widget-id' id='multicolumn-widget-id2'>
+                                                                    <span class='sidebar' id='sidebartab2' preferred='yes'>
+                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                                             <!-- Field wrapper start -->
                                                                             <div class="field-wrapper">
-                                                                                <label style="float: left;">Negara</label>
-                                                                                <input class="form-control" type="text" placeholder="Masukkan Negara Pemasok">
+                                                                                <div class="" style="float: left;">Alamat</div>
+                                                                                <textarea class="form-control" rows="2" placeholder="Masukan Alamat" name="address" id="address" required></textarea>
                                                                             </div>
                                                                             <!-- Field wrapper end -->
 
                                                                         </div>
-                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                                             <!-- Field wrapper start -->
                                                                             <div class="field-wrapper">
-                                                                                <label style="float: left;">Alamat</label>
-                                                                                <textarea class="form-control1" rows="2" placeholder="Masukkan Alamat Pelanggan"></textarea>
-
+                                                                                <div class="" style="float: left;">Kota</div>
+                                                                                <input class="form-control" type="text" placeholder="Masukan Kota" name="city" id="city" required>
                                                                             </div>
                                                                             <!-- Field wrapper end -->
 
                                                                         </div>
+                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Simpan</button>
-                                                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                                                    </div>
+                                                                            <!-- Field wrapper start -->
+                                                                            <div class="field-wrapper">
+                                                                                <div class="" style="float: left;">Kode Pos</div>
+                                                                                <input class="form-control" type="number" placeholder="Masukan Kode Pos" name="postal_code" id="postal_code" required>
+                                                                            </div>
+                                                                            <!-- Field wrapper end -->
+
+                                                                        </div>
+                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                                                            <!-- Field wrapper start -->
+                                                                            <div class="field-wrapper">
+                                                                                <div class="" style="float: left;">Provinsi</div>
+                                                                                <input class="form-control" type="text" placeholder="Masukan Provinsi" name="province" id="provice" required>
+                                                                            </div>
+                                                                            <!-- Field wrapper end -->
+
+                                                                        </div>
+                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                                                            <!-- Field wrapper start -->
+                                                                            <div class="field-wrapper">
+                                                                                <div class="" style="float: left;">Negara</div>
+                                                                                <select class="select-multiple js-states" title="Select Product Category" data-live-search="true" name="country" id="country" required>
+                                                                                    <option>Afganistan</option>
+                                                                                    <option>Afrika Selatan</option>
+                                                                                    <option>Albania</option>
+                                                                                    <option>Aljazair</option>
+                                                                                    <option>Amerika Serikat</option>
+                                                                                    <option>Andorra</option>
+                                                                                    <option>Angola</option>
+                                                                                    <option>Antigua dan Barbuda</option>
+                                                                                    <option>Arab Saudi</option>
+                                                                                    <option>Argentina</option>
+                                                                                    <option>Armenia</option>
+                                                                                    <option>Australia</option>
+                                                                                    <option>Austria</option>
+                                                                                    <option>Azerbaijan</option>
+                                                                                    <option>Bahama</option>
+                                                                                    <option>Bahrain</option>
+                                                                                    <option>Bangladesh</option>
+                                                                                    <option>Barbados</option>
+                                                                                    <option>Belarus</option>
+                                                                                    <option>Belgia</option>
+                                                                                    <option>Belize</option>
+                                                                                    <option>Benin</option>
+                                                                                    <option>Bhutan</option>
+                                                                                    <option>Bolivia</option>
+                                                                                    <option>Bosnia dan Herzegovina</option>
+                                                                                    <option>Botswana</option>
+                                                                                    <option>Brasil</option>
+                                                                                    <option>Brunei</option>
+                                                                                    <option>Bulgaria</option>
+                                                                                    <option>Burkina Faso</option>
+                                                                                    <option>Burundi</option>
+                                                                                    <option>Chad</option>
+                                                                                    <option>Chili</option>
+                                                                                    <option>China</option>
+                                                                                    <option>Denmark</option>
+                                                                                    <option>Djibouti</option>
+                                                                                    <option>Dominika</option>
+                                                                                    <option>Ekuador</option>
+                                                                                    <option>Mesir</option>
+                                                                                    <option>El Salvador</option>
+                                                                                    <option>Eritrea</option>
+                                                                                    <option>Estonia</option>
+                                                                                    <option>Eswatini</option>
+                                                                                    <option>Ethiopia</option>
+                                                                                    <option>Fiji</option>
+                                                                                    <option>Filipina</option>
+                                                                                    <option>Finlandia</option>
+                                                                                    <option>Gabon</option>
+                                                                                    <option>Gambia</option>
+                                                                                    <option>Georgia</option>
+                                                                                    <option>Ghana</option>
+                                                                                    <option>Grenada</option>
+                                                                                    <option>Guatemala</option>
+                                                                                    <option>Guinea</option>
+                                                                                    <option>Guinea Bissau</option>
+                                                                                    <option>Guinea Khatulistiwa</option>
+                                                                                    <option>Guyana</option>
+                                                                                    <option>Haiti</option>
+                                                                                    <option>Honduras</option>
+                                                                                    <option>Hongaria</option>
+                                                                                    <option>India</option>
+                                                                                    <option>Indonesia</option>
+                                                                                    <option>Inggris</option>
+                                                                                    <option>Irak</option>
+                                                                                    <option>Iran</option>
+                                                                                    <option>Irlandia</option>
+                                                                                    <option>Islandia</option>
+                                                                                    <option>Israel</option>
+                                                                                    <option>Italia</option>
+                                                                                    <option>Jamaika</option>
+                                                                                    <option>Jepang</option>
+                                                                                    <option>Yordania</option>
+                                                                                    <option>Kamboja</option>
+                                                                                    <option>Kamerun</option>
+                                                                                    <option>Kanada</option>
+                                                                                    <option>Kazakhstan</option>
+                                                                                    <option>Kenya</option>
+                                                                                    <option>Kirgistan</option>
+                                                                                    <option>Kiribati</option>
+                                                                                    <option>Kolombia</option>
+                                                                                    <option>Komoro</option>
+                                                                                    <option>Kongo</option>
+                                                                                    <option>Korea Selatan</option>
+                                                                                    <option>Korea Utara</option>
+                                                                                    <option>Kosovo</option>
+                                                                                    <option>Kroasia</option>
+                                                                                    <option>Kuba</option>
+                                                                                    <option>Kuwait</option>
+                                                                                    <option>Laos</option>
+                                                                                    <option>Latvia</option>
+                                                                                    <option>Lebanon</option>
+                                                                                    <option>Lesotho</option>
+                                                                                    <option>Liberia</option>
+                                                                                    <option>Libya</option>
+                                                                                    <option>Liechtenstein</option>
+                                                                                    <option>Lituania</option>
+                                                                                    <option>Luksemburg</option>
+                                                                                    <option>Madagaskar</option>
+                                                                                    <option>Maladewa</option>
+                                                                                    <option>Malawi</option>
+                                                                                    <option>Malaysia</option>
+                                                                                    <option>Mali</option>
+                                                                                    <option>Malta</option>
+                                                                                    <option>Maroko</option>
+                                                                                    <option>Mauritania</option>
+                                                                                    <option>Mauritius</option>
+                                                                                    <option>Meksiko</option>
+                                                                                    <option>Mesir</option>
+                                                                                    <option>Mikronesia</option>
+                                                                                    <option>Moldova</option>
+                                                                                    <option>Monako</option>
+                                                                                    <option>Mongolia</option>
+                                                                                    <option>Montenegro</option>
+                                                                                    <option>Mozambik</option>
+                                                                                    <option>Myanmar</option>
+                                                                                    <option>Namibia</option>
+                                                                                    <option>Nauru</option>
+                                                                                    <option>Nepal</option>
+                                                                                    <option>Niger</option>
+                                                                                    <option>Nigeria</option>
+                                                                                    <option>Nikaragua</option>
+                                                                                    <option>Norwegia</option>
+                                                                                    <option>Oman</option>
+                                                                                    <option>Pakistan</option>
+                                                                                    <option>Palau</option>
+                                                                                    <option>Panama</option>
+                                                                                    <option>Papua Nugini</option>
+                                                                                    <option>Paraguay</option>
+                                                                                    <option>Peru</option>
+                                                                                    <option>Polandia</option>
+                                                                                    <option>Portugal</option>
+                                                                                    <option>Prancis</option>
+                                                                                    <option>Qatar</option>
+                                                                                    <option>Republik Afrika Tengah</option>
+                                                                                    <option>Republik Ceko</option>
+                                                                                    <option>Republik Demokratik Kongo</option>
+                                                                                    <option>Republik Dominika</option>
+                                                                                    <option>Rumania</option>
+                                                                                    <option>Rusia</option>
+                                                                                    <option>Rwanda</option>
+                                                                                    <option>Saint Kitts dan Nevis</option>
+                                                                                    <option>Saint Lucia</option>
+                                                                                    <option>Saint Vincent dan Grenadines</option>
+                                                                                    <option>Samoa</option>
+                                                                                    <option>San Marino</option>
+                                                                                    <option>Sao Tome dan Principe</option>
+                                                                                    <option>Selandia Baru</option>
+                                                                                    <option>Senegal</option>
+                                                                                    <option>Serbia</option>
+                                                                                    <option>Seychelles</option>
+                                                                                    <option>Sierra Leone</option>
+                                                                                    <option>Singapura</option>
+                                                                                    <option>Slovakia</option>
+                                                                                    <option>Slovenia</option>
+                                                                                    <option>Solomon Islands</option>
+                                                                                    <option>Somalia</option>
+                                                                                    <option>Spanyol</option>
+                                                                                    <option>Sri Lanka</option>
+                                                                                    <option>Sudan</option>
+                                                                                    <option>Sudan Selatan</option>
+                                                                                    <option>Suriah</option>
+                                                                                    <option>Suriname</option>
+                                                                                    <option>Swedia</option>
+                                                                                    <option>Swiss</option>
+                                                                                    <option>Tajikistan</option>
+                                                                                    <option>Tanzania</option>
+                                                                                    <option>Thailand</option>
+                                                                                    <option>Timor Leste</option>
+                                                                                    <option>Togo</option>
+                                                                                    <option>Tonga</option>
+                                                                                    <option>Trinidad dan Tobago</option>
+                                                                                    <option>Tunisia</option>
+                                                                                    <option>Turki</option>
+                                                                                    <option>Turkmenistan</option>
+                                                                                    <option>Tuvalu</option>
+                                                                                    <option>Uganda</option>
+                                                                                    <option>Ukraina</option>
+                                                                                    <option>Uni Emirat Arab</option>
+                                                                                    <option>Uruguay</option>
+                                                                                    <option>Uzbekistan</option>
+                                                                                    <option>Vanuatu</option>
+                                                                                    <option>Vatikan</option>
+                                                                                    <option>Venezuela</option>
+                                                                                    <option>Vietnam</option>
+                                                                                    <option>Yaman</option>
+                                                                                    <option>Yordania</option>
+                                                                                    <option>Yunani</option>
+                                                                                    <option>Zambia</option>
+                                                                                    <option>Zimbabwe</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <!-- Field wrapper end -->
+
+                                                                        </div>
+                                                                        <p>
+                                                                    </span>
+                                                                </div>
+                                                                <div class='-content multitab-widget-content-widget-id' id='multicolumn-widget-id3'>
+                                                                    <span class='sidebar' id='sidebartab3' preferred='yes'>
+                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                                                            <!-- Field wrapper start -->
+                                                                            <div class="field-wrapper">
+                                                                                <div class="" style="float: left;">Situs Web</div>
+                                                                                <input class="form-control" type="text" placeholder="Masukan Situs Web" name="website" id="website" required>
+                                                                            </div>
+                                                                            <!-- Field wrapper end -->
+
+                                                                        </div>
+                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                                                            <!-- Field wrapper start -->
+                                                                            <div class="field-wrapper">
+                                                                                <div class="" style="float: left;">Refrensi</div>
+                                                                                <input class="form-control" type="text" placeholder="Masukan Refrensi" name="reference" id="reference" required>
+                                                                            </div>
+                                                                            <!-- Field wrapper end -->
+
+                                                                        </div>
+                                                                        <p>
+                                                                    </span>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                            </form>
-                                            <!-- Modal supplier end -->
-
-
-                                            <!-- Row end -->
-
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-secondary">Simpan</button>
+                                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- Card end -->
+                                    </form>
+                                    <!-- Modal customer end -->
 
+
+                                        <!-- Row end -->
+
+                                    </div>
                                 </div>
+                                <!-- Card end -->
+
+                            </div>
                         </div>
                     </div>
                     <!-- Row end -->
@@ -686,7 +1015,15 @@
             modal.style.display = "none";
         }
     </script>
+ <script>
+        const colorPicker = document.getElementById('exampleColorInput');
+        const hexInput = document.getElementById('hex-input');
 
+        colorPicker.addEventListener('input', (event) => {
+          const color = event.target.value;
+          hexInput.value = color;
+        });
+    </script>
 
 </body>
 

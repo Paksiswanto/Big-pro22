@@ -9,5 +9,22 @@ class IncomeRoutine extends Model
 {
     use HasFactory;
     protected $guarded =[];
-    protected $table ='recurring_income';
+    protected $table ='regular_incomes';
+
+    function category()
+    {
+        return $this->belongsTo(Category::class,'category_id');
+    }
+    function customer()
+    {
+        return $this->belongsTo(Customer::class,'customer_id');
+    }
+    function account()
+    {
+        return $this->belongsTo(Account::class,'account_id');
+    }
+    function categoryType()
+    {
+        return $this->belongsTo(CategoryType::class);
+    }
 }

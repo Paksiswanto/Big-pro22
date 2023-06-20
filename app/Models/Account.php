@@ -16,8 +16,16 @@ class Account extends Model
     {
         return $this->hasMany(Income::class);
     }
+    public function incomesRoutine()
+    {
+        return $this->hasMany(IncomeRoutine::class);
+    }
     public function expenditure()
     {
         return $this->hasMany(Expenditure::class);
+    }
+    public function expenditureRoutine()
+    {
+        return $this->hasMany(expenditureRoutine::class);
     }
 }

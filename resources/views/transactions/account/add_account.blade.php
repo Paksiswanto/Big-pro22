@@ -227,7 +227,7 @@
                                                                 <option value="">Pilih Mata Uang</option>
                                                                 <option value="Rupiah" {{ old('currency') === 'Rupiah' ? 'selected' : '' }}>Rupiah</option>
                                                                 <option value="Dollar" {{ old('currency') === 'Dollar' ? 'selected' : '' }}>Dollar</option>
-                                                                
+
 
                                                             </select>
                                                             <div class="field-placeholder">Mata Uang<span class="text-danger">*</span></div>
@@ -307,7 +307,7 @@
                                     <!-- Button trigger modal -->
 
 
-                                   
+
 
 
 

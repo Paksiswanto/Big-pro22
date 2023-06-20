@@ -25,9 +25,9 @@ return new class extends Migration
             $table->string('repeat3')->nullable();
             $table->date('start_date');
             $table->date('end_date');
-            $table->integer('number');
+            $table->integer('number')->nullable();
             $table->string('reference');
-            $table->string('attacment');
+            $table->string('attacment')->nullable();
             $table->foreignId('company_id')->references('id')->on('company')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
