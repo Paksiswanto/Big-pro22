@@ -320,10 +320,8 @@
 
                                 <div class="content">
                                     <div class="searchcontainer">
-                                        <form action="{{ url('account') }}" method="get">
-                                            <i class="icon-search"></i><input class="search " name="katakunci" value="{{ Request::get('katakunci') }}" type="text" placeholder="Cari Disini..." style="
-                                              margin-bottom: 2%; font-size:10pt " />
-                                        </form>
+                                        <i class="icon-search"></i>
+                                        <input class="search" name="cari" type="text" placeholder="Cari Disini..." style="margin-bottom: 2%; font-size:10pt" />
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -346,42 +344,44 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($data as $row)
-                                            <tr>
+                                            <tr class="table-row">
                                                 <td name="item"><input type="checkbox" class="other-checkbox"></td>
-                                                <td>{{ $row->name }}</th>
+                                                <td>{{ $row->name }}</td>
                                                 <td>{{ $row->rekening_number }}</td>
                                                 <td>{{ $row->name_bank }}</td>
                                                 <td>{{ $row->bank_telephone }}</td>
-                                                <td>Rp{{ $row->balance }}</td>
+                                                <td>Rp{{ number_format($row->balance, 0, ',', '.')  }}</td>
                                                 <th>
                                                     <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{ route('edit_account', ['id' => $row->id]) }}," class="menu-icon icon-edit-2"></a>
-                                                        <a href="{{url('delete_account')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteaccount{{ $row->id }}"></a>
-                                                        <a href="{{ route('show_account1', ['id' => $row->id]) }}," class="menu-icon icon-eye1"></a>
+                                                        <a href="{{ route('edit_account', ['id' => $row->id]) }}" class="menu-icon icon-edit-2"></a>
+                                                        <a href="{{ url('delete_account') }}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteaccount{{ $row->id }}"></a>
+                                                        <a href="/show_account/{{ $row->id }}" class="menu-icon icon-eye1"></a>
                                                     </div>
                                                 </th>
-                                                <!-- Modal start -->
-                                                <div class="modal fade" id="deleteaccount{{ $row->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteaccount{{ $row->id }}" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content" style="padding: 0px">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="staticBackdropLabel">Hapus Akun</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p>Anda Yakin Ingin Menghapus Akun Ini?</p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <form action="/delete_account/{{ $row->id }}" method="post">
-                                                                    @csrf
-                                                                    <button type="submit" class="btn btn-danger" id="deleteButton">Hapus</button>
-                                                                </form>
-                                                            </div>
+                                            </tr>
+                                            <!-- Modal start -->
+                                            <div class="modal fade" id="deleteaccount{{ $row->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteaccount{{ $row->id }}" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content" style="padding: 0px">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="staticBackdropLabel">Hapus Akun</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Anda Yakin Ingin Menghapus Akun Ini?</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <form action="/delete_account/{{ $row->id }}" method="post">
+                                                                @csrf
+                                                                <button type="submit" class="btn btn-danger" id="deleteButton">Hapus</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- Modal end -->
-                                                @endforeach
+                                            </div>
+
+                                            <!-- Modal end -->
+                                            @endforeach
                                         </tbody>
                                     </table>
 
@@ -393,23 +393,27 @@
                             <div class="card-body col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                 <nav aria-label="Page navigation example">
-                                    <ul class="pagination" style="float: right;">
+                                    <ul class="pagination" style="justify-content: flex-end;">
                                         <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
+                                        @if ($data->currentPage() > 1)
+                                            <a class="page-link" href="{{ $data->previousPageUrl() }}" aria-label="Previous">
+                                                <span aria-hidden="true">«</span>
                                             </a>
+                                        @endif
                                         </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        @for ($i = 1; $i <= $data->lastPage(); $i++)
+                                        <li class="page-item {{ $data->currentPage() == $i ? 'active' : '' }}"><a class="page-link" href="{{ $data->url($i) }}">{{ $i }}</a></li>
+                                        @endfor
                                         <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
+                                        @if ($data->currentPage() < $data->lastPage())
+                                            <a class="page-link" href="{{ $data->nextPageUrl() }}" aria-label="Next">
+                                                <span aria-hidden="true">»</span>
                                             </a>
+                                        @endif
                                         </li>
                                     </ul>
                                 </nav>
-
+                                
                             </div>
                         </div>
                         <!-- Card end -->
@@ -551,6 +555,43 @@
                 }
 
                 updateCountDisplay(); // Update the count display
+            });
+        </script>
+
+        <script>
+            function cari() {
+                var input = document.querySelector('.search');
+                var keyword = input.value.trim().toLowerCase();
+
+                var rows = document.querySelectorAll('.table-row');
+
+                rows.forEach(function(row) {
+                    var name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                    var rekening_number = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                    var name_bank = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+                    var bank_telephone = row.querySelector('td:nth-child(5)').textContent.toLowerCase();
+                    var balance = row.querySelector('td:nth-child(6)').textContent.toLowerCase();
+
+                    if (
+                        name.includes(keyword) ||
+                        rekening_number.includes(keyword) ||
+                        name_bank.includes(keyword) ||
+                        bank_telephone.includes(keyword) ||
+                        balance.includes(keyword)
+                    ) {
+                        row.style.display = 'table-row';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+
+            var searchInput = document.querySelector('.search');
+            searchInput.addEventListener('input', cari);
+            searchInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                }
             });
         </script>
 

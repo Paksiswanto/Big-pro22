@@ -100,35 +100,48 @@
             </div>
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <div class="login-wrapper">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+
                         <div class="login-screen" style="margin-left: 27px; margin-bottom: 100px;">
                             <div class="login-body">
                                 <a href="crm.html" class="login-logo">
                                     <img src="{{ asset ("gmbslagi/img/logo.svg")}}" alt="iChat">
                                 </a>
-                                <h6>Selamat Datang,<br>Login dan mulai manajemen keuangan anda</h6>
+                                <form action="{{ route('users.updatePassword', $user) }}" method="POST">
+                                    @csrf
                                 <div class="field-wrapper">
-                                    <input type="email" name="email" value="{{ old('email') }}" placeholder="Masukan email anda" autofocus>
-                                    @error('email')
-                                        <span class="error">{{ $message }}</span>
-                                    @enderror
-                                    <div class="field-placeholder">Email</div>
+                                    <div class="form-group ">
+                                        <label for="Email">Email</label>
+                                        <input type="Email" name="Email" value="{{ $user->email }}" id="Email" class="form-control" readonly>
+                                     
                                 </div>
-                                <div class="field-wrapper mb-3">
-                                    <input type="password" name="password" placeholder="Masukan kata kunci">
-                                    <div class="field-placeholder">Kata Kunci</div>
-                                </div>
-                                <div class="actions">
-                                    <a href="{{('reset_password')}}">Lupa Kata Kunci?</a>
-                                    <button type="submit" class="btn btn-primary">Login</button>
-                                </div>
+                                <div class="field-wrapper">
+                                    <div class="form-group ">
+                                        <label for="password">Password</label>
+                                        <input type="password" name="password" id="password" class="form-control  @error('password')
+                                        is-invalid
+                                    @enderror" required>
+                                    @error('password')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
-                            <div class="login-footer">
-                                <span class="additional-link">Tidak punya akun? <a href="{{url('keregis')}}" class="btn btn-light">Daftar</a></span>
+                                    </div>
+                                </div>
+                                <div class="field-wrapper">
+                                    <div class="form-group">
+                                        <label for="password_confirmation">Konfirmasi Password</label>
+                                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control  @error('password')
+                                        is-invalid
+                                    @enderror" required>
+                                    @error('password')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
-                        </div>
-                    </form>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mb-3">Simpan Password</button>
+                                </form>
+                                </div>
+                                
+                                
                 </div>
             </div>
         </div>

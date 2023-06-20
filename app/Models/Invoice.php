@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Invoice extends Model
 {
     use HasFactory;
+    protected $table = "invoice";
+    protected $fillable = ['title','subtitle','logo','start_date','end_date','item_id','customer_id','discount','notes','attachment','footer','total_pay','quantity','price','tax_id','company_id','invoice_number','order_quantity','category_id','amount'];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

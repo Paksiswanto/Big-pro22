@@ -35,12 +35,7 @@
 
 <body class="authentication">
 
-    <!-- Loading wrapper start -->
-    <div id="loading-wrapper">
-        <div class="spinner-border"></div>
-        Loading...
-    </div>
-    <!-- Loading wrapper end -->
+
 
     <!-- *************
 			************ Login container start *************
@@ -100,35 +95,17 @@
             </div>
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <div class="login-wrapper">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+
                         <div class="login-screen" style="margin-left: 27px; margin-bottom: 100px;">
                             <div class="login-body">
                                 <a href="crm.html" class="login-logo">
                                     <img src="{{ asset ("gmbslagi/img/logo.svg")}}" alt="iChat">
                                 </a>
-                                <h6>Selamat Datang,<br>Login dan mulai manajemen keuangan anda</h6>
-                                <div class="field-wrapper">
-                                    <input type="email" name="email" value="{{ old('email') }}" placeholder="Masukan email anda" autofocus>
-                                    @error('email')
-                                        <span class="error">{{ $message }}</span>
-                                    @enderror
-                                    <div class="field-placeholder">Email</div>
-                                </div>
-                                <div class="field-wrapper mb-3">
-                                    <input type="password" name="password" placeholder="Masukan kata kunci">
-                                    <div class="field-placeholder">Kata Kunci</div>
-                                </div>
-                                <div class="actions">
-                                    <a href="{{('reset_password')}}">Lupa Kata Kunci?</a>
-                                    <button type="submit" class="btn btn-primary">Login</button>
-                                </div>
-                            </div>
-                            <div class="login-footer">
-                                <span class="additional-link">Tidak punya akun? <a href="{{url('keregis')}}" class="btn btn-light">Daftar</a></span>
-                            </div>
-                        </div>
-                    </form>
+                                <p>Selamat datang!</p>
+                                <p>Anda telah diundang untuk bergabung dengan website kami.</p>
+                                <p>Silakan klik tombol di bawah ini untuk mengatur password Anda:</p>
+                                <a href="{{ $invitationLink }}" class="btn btn-primary mb-3">Atur Password</a>
+                                
                 </div>
             </div>
         </div>

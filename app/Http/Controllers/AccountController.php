@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Transfer;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
     public function index(Request $request){
-        $katakunci = $request->katakunci;
-        $data = Account::where('name', 'LIKE', '%'.$katakunci.'%')->get();
+        $data = Account::paginate(10)->withQueryString();
         return view('transactions.account.index', compact('data'));
-        
     }
 
     public function add_account(){
@@ -19,18 +18,30 @@ class AccountController extends Controller
     }
 
     public function insert_account(Request $request){
+        
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'rekening_number' => 'required|numeric',
+            'currency' => 'required',
+            'balance' => 'required',
+            'name_bank' => 'required',
+            'bank_telephone' => 'required|numeric',
+            'bank_address' => 'required'
+        ]);
+        $balance = $request->balance;
+        $cleanedBalance = str_replace(',', '', $balance);
         Account::create([
             'name' => $request->name,
             'rekening_number' => $request->rekening_number,
             'currency' => $request->currency,
-            'balance' => $request->balance,
+            'balance' => $cleanedBalance,
             'name_bank' => $request->name_bank,
             'bank_telephone' => $request->bank_telephone,
             'bank_address' => $request->bank_address,
             'company_id' => 1,
         ]);
 
-        return redirect()->route('account');
+        return redirect()->route('account')->withErrors($validatedData)->withInput();
     }
 
     public function edit_account($id){
@@ -39,6 +50,15 @@ class AccountController extends Controller
     }
 
     public function update_account(Request $request, $id){
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'rekening_number' => 'required|numeric',
+            'currency' => 'required',
+            'balance' => 'required',
+            'name_bank' => 'required',
+            'bank_telephone' => 'required|numeric',
+            'bank_address' => 'required'
+        ]);
         $data = Account::find($id);
         $data->update([
             'name' => $request->name,
@@ -51,7 +71,7 @@ class AccountController extends Controller
             'company_id' => 1,
         ]);
 
-        return redirect()->route('account');
+        return redirect()->route('account')->withErrors($validatedData)->withInput();
     }
 
     public function delete_account($id)
@@ -61,9 +81,12 @@ class AccountController extends Controller
         return redirect()->route('account');
     }
 
-    public function show_account1($id){
+    public function show_account($id){
         $data = Account::find($id);
-        return view('transactions.account.show_account1', compact('data'));
+        $transfer = Transfer::whereIn('from_account',[$id])
+                            ->orWhereIn('to_account',[$id])
+                            ->get();
+        return view('transactions.account.show_account1', compact('data','transfer'));
     }
     public function show_account2(){
         return view('transactions.account.show_account2');

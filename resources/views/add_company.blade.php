@@ -164,37 +164,35 @@
                                           <form action="/add_company/add" method="POST" >
                                             <div class="d-flex row ">                                      
                                                 @csrf
-                                                <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
+                                                        
                                                         <!-- Field wrapper start -->
+                                                        <div class="field-wrapper">
+                                                            <label class="">Name <span class="text-danger"></span></label>
+                                                            <input class="form-control" name="name" type="Text" placeholder="Masukan Nama">
+                                                        </div>
                                                         <div class="field-wrapper">
                                                             <label class="">Email <span class="text-danger"></span></label>
                                                             <input class="form-control" name="email" type="email" placeholder="Masukan Email">
                                                         </div>
                                                     </div>
-                                                    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
-                                                        <!-- Field wrapper start -->
-
-                                                        <!-- Example of a form that Dropzone can take over -->
-                                                        <form action="add_company_id" method="POST">
-                                                            @csrf
-                                                            <div class="drop-zone">
-                                                                <span class="drop-zone__prompt">klik disini untuk upload foto</span>
-                                                                <!-- <div class="drop-zone__thumb" data-label="myfile.txt"></div> -->
-                                                                <input type="file" name="logo" class="drop-zone__input" />
-                                                                <!-- add multiple attribute to input to support uploading more than one file-->
-                                                            </div>
-                                                        </form>
+                                                    <div class="field-wrapper">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                        <label class="">Logo <span class="text-danger"></span></label>
+                                                        <input type="file" class="form-control" name="logo">
                                                     </div>
+                                                </div>
                                                     <div class="field-wrapper">
                                                         <label>Telepon</label>
                                                         <input class="form-control" name="addtelephoneress" type="text" placeholder="Masukan Nomor Telepon">
+                                                        <input type="hidden" name="user_id" value="{{Auth::User()->id}}">
                                                     </div>
-                                                    <div style="visibility: hidden" class="field-wrapper">
-                                                        <label class="">Email <span class="text-danger"></span></label>
-                                                        <input class="form-control" name="user_id" value="" type="email" placeholder="Masukan Email">
-                                                    </div>
+                                                    <!-- Field wrapper end -->
+                                                    <div class="field-wrapper">
+                                                        <label class="">NPWP</label>
+                                                        <input class="form-control" name="npwp" type="number" placeholder="Masukan Nomor NPWP">
+
 
 
                                                 </div>

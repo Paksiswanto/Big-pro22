@@ -207,8 +207,8 @@
 									</nav>
 									<div class="content">
 										<div class="searchcontainer">
-											<i class="icon-search"></i><input class="search " type="text" placeholder="Cari atau seleksi hasil.." style="
-                                              margin-bottom: 2%; font-size:10pt " />
+											<i class="icon-search"></i>
+											<input class="search" name="cari" type="text" placeholder="Cari Disini..." style="margin-bottom: 2%; font-size:10pt" />
 										</div>
 									</div>
 									<div class="table-responsive">
@@ -232,7 +232,7 @@
 												@foreach ($data as $row)
 												<!-- Data 1 -->
 												<tr class="table-row">
-													<td><input type="checkbox" class="other-checkbox"></td>
+													<td name="item"><input type="checkbox" class="other-checkbox"></td>
 													<td>{{ $row->name }}</td>
 													<td>{{ $row->type }}</td>
 													<td>{{ $row->tax_amount }}%</td>
@@ -254,18 +254,22 @@
 											<nav aria-label="Page navigation example">
 												<ul class="pagination" style="justify-content: flex-end;">
 													<li class="page-item">
-														<a class="page-link" href="#" aria-label="Previous">
-															<span aria-hidden="true">&laquo;</span>
+														@if ($data->currentPage() > 1)
+														<a class="page-link" href="{{ $data->previousPageUrl() }}" aria-label="Previous">
+															<span aria-hidden="true">«</span>
 														</a>
+														@endif
 													</li>
-													<li class="page-item"><a class="page-link" href="#">1</a></li>
-													<li class="page-item"><a class="page-link" href="#">2</a></li>
-													<li class="page-item"><a class="page-link" href="#">3</a></li>
-													<li class="page-item">
-														<a class="page-link" href="#" aria-label="Next">
-															<span aria-hidden="true">&raquo;</span>
-														</a>
-													</li>
+													@for ($i = 1; $i <= $data->lastPage(); $i++)
+														<li class="page-item {{ $data->currentPage() == $i ? 'active' : '' }}"><a class="page-link" href="{{ $data->url($i) }}">{{ $i }}</a></li>
+														@endfor
+														<li class="page-item">
+															@if ($data->currentPage() < $data->lastPage())
+																<a class="page-link" href="{{ $data->nextPageUrl() }}" aria-label="Next">
+																	<span aria-hidden="true">»</span>
+																</a>
+																@endif
+														</li>
 												</ul>
 											</nav>
 
@@ -370,7 +374,7 @@
 		<!-- Main Js Required -->
 		<script src="{{ asset ("Gmbslagi/js/main.js")}}"></script>
 
-		
+
 		<script>
 			const checkboxes = document.querySelectorAll('.other-checkbox');
 			const selectAllCheckbox = document.querySelector('#select-all-checkbox');
@@ -420,6 +424,38 @@
 				updateCountDisplay(); // Update the count display
 			});
 		</script>
+		<script>
+            function cari() {
+                var input = document.querySelector('.search');
+                var keyword = input.value.trim().toLowerCase();
+
+                var rows = document.querySelectorAll('.table-row');
+
+                rows.forEach(function(row) {
+                    var name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                    var type = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                    var tax_amount = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+
+                    if (
+                        name.includes(keyword) ||
+                        type.includes(keyword) ||
+                        tax_amount.includes(keyword) 
+                    ) {
+                        row.style.display = 'table-row';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+
+            var searchInput = document.querySelector('.search');
+            searchInput.addEventListener('input', cari);
+            searchInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                }
+            });
+        </script>
 
 
 </body>

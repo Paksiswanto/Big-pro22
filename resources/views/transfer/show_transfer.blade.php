@@ -121,7 +121,7 @@
         .das {
 
             border: none;
-            border-top: 2px dashed #000;
+            border-top: 2px solid #000;
             height: 0;
         }
 
@@ -131,7 +131,7 @@
             width: 100%;
             height: 8px;
             border: 0px;
-            border-top: 2px dashed #9a9c9e;
+            border-top: 2px solid #9a9c9e;
         }
 
         .searchcontainer {
@@ -215,7 +215,7 @@
 
                                         <ul class="dropdown-menu dropdown-menu-lg-end" style="z-index: 100;">
                                             <li><a class="dropdown-item" style="margin-top: 4%;" href="{{url('add_transfer')}}">Tambah</a></li>
-                                            <li><a class="dropdown-item" href="{{url('edit_transfer')}}">Sunting</a></li>
+                                            <li><a class="dropdown-item" href="/edit_transfer/{{ $data->id }}">Sunting</a></li>
                                             <li><a class="dropdown-item" href="#">Cetak</a></li>
                                             <li><a class="dropdown-item" href="#">Unduh PDF</a></li>
 
@@ -243,15 +243,17 @@
                             <div class="card">
 
                                 <div class="">
-                                    <div class="card-title">Dibuat</div>
-                                    <span>Jayaabadi memebuat transaksi pada 13 Mei 2023</span>
-                                    <hr>
-
-                                    <!-- Row start -->
-
-                                    <!-- Row end -->
+                                   
+                                        <div class="card-title">Dibuat</div>
+                                        <span>{{ $data->user->name }} membuat transaksi pada {{ \Carbon\Carbon::parse($data->date)->isoFormat('DD/MMMM/YYYY') }}</span>
+                                        <hr>
+                                
+                                        <!-- Row start -->
+                                
+                                        <!-- Row end -->
 
                                 </div>
+                                
                             </div>
                             <!-- Card end -->
 
@@ -268,7 +270,6 @@
 
 
                                     <div class="card-body" style="float: right">
-
                                         <!-- Row start -->
                                         <div class="row gutters">
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" >
@@ -282,7 +283,7 @@
                                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
 
-                                                <span>Hada</span>
+                                                <span>{{ $fromAccount->name }}</span>
                                                 <div class="empty-box">
                                                 </div>
                                             </div>
@@ -293,7 +294,7 @@
 
                                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                <span>998990</span>
+                                                <span>{{ $fromAccount->rekening_number }}</span>
                                                 <div class="empty-box">
                                                 </div>
                                             </div>
@@ -304,7 +305,7 @@
 
                                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                <span>BRI</span>
+                                                <span>{{ $fromAccount->name_bank }}</span>
                                                 <div class="empty-box">
                                                 </div>
                                             </div>
@@ -315,7 +316,7 @@
 
                                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                <span>085607338154</span>
+                                                <span>{{ $fromAccount->bank_telephone }}</span>
                                                 <div class="empty-box">
                                                 </div>
                                             </div>
@@ -326,13 +327,13 @@
 
                                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                <span>Jl. Lesti Utara, Ngaglik, Kota Batu</span>
+                                                <span>{{ $fromAccount->bank_addresss }}</span>
                                                 <div class="empty-box">
                                                 </div>
                                             </div>
 
                                             <hr style="margin-top: 2%;">
-
+                                          
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 1%;">
                                                 <h6>Ke Akun </h6>
                                             </div>
@@ -344,7 +345,7 @@
 
                                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                <span>Hodo</span>
+                                                <span>{{ $toAccount->name }}</span>
                                                 <div class="empty-box">
                                                 </div>
                                             </div>
@@ -355,7 +356,7 @@
 
                                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                <span>00988678</span>
+                                                <span>{{ $toAccount->rekening_number }}</span>
                                                 <div class="empty-box">
                                                 </div>
                                             </div>
@@ -366,7 +367,7 @@
 
                                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                <span>BNI</span>
+                                                <span>{{ $toAccount->bank_name }}</span>
                                                 <div class="empty-box">
                                                 </div>
                                             </div>
@@ -377,7 +378,7 @@
 
                                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                <span>085607338154</span>
+                                                <span>{{ $toAccount->bank_telephone }}</span>
                                                 <div class="empty-box">
                                                 </div>
                                             </div>
@@ -388,24 +389,34 @@
 
                                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                <span>Jl Lesti Utara, Ngaglik, Kota Batu</span>
+                                                <span>{{ $toAccount->bank_address }}</span>
                                                 <div class="empty-box">
                                                 </div>
                                             </div>
-
+                                                                                    
                                             <hr style="margin-top: 2%;">
-
+                                            
                                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12" style="margin-top: 3%;">
                                                 <h6>Tanggal</h6>
                                             </div>
 
                                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                <span>19 Mei 2023</span>
+                                                <span>{{ \Carbon\Carbon::parse($data->date)->isoFormat('DD/MMMM/YYYY') }}</span>
                                                 <div class="empty-box">
                                                 </div>
                                             </div>
-                                            
+
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12" style="margin-top: 3%;">
+                                                <h6>Referensi</h6>
+                                            </div>
+
+                                            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
+
+                                                <span>{{ $data->reference }}.</span>
+                                                <div class="empty-box">
+                                                </div>
+                                            </div>
 
                                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12" style="margin-top: 3%;">
                                                 <h6>Deskripsi</h6>
@@ -413,23 +424,23 @@
                                             
 
                                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
-
-                                                <span>Saya transfer karena kamu baik bangeddddd jempol empat duanya jempol kaki, sudah baik, pinter, gtg, ga aneh2, sabar, rendah hati, tidak sombong, dan pitar menabung paket lengkap kamu TRISQI!!!!!!!</span>
+                                                
+                                                <span>{{ $data->description }}</span>
                                                 <div class="empty-box">
                                                 </div>
                                             </div>
 
 
-
-
+                                            
+                                            
                                             <!-- Field wrapper end -->
-
+                                            
                                         </div>
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                            <button class="btn btn-primary" style="float: right;">Jumlah : &emsp;&emsp;Rp700.000.000</button>
+                                            <button class="btn btn-primary" style="float: right;">Jumlah : &emsp;&emsp;Rp{{ $data->ammount }}</button>
                                         </div>
                                     </div>
-                                    <!-- Row end -->
+                              
 
                                 </div>
                             </div>

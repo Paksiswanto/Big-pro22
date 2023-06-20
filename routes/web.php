@@ -1,37 +1,40 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ItemController;
 use Faker\Guesser\Name;
+use PhpParser\Node\Stmt\Return_;
+use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\TransactionsController;
-use App\Http\Controllers\TransferController;
-use App\Http\Controllers\CostumersController;
-use App\Http\Controllers\AccountController;
+use App\Http\Controllers\TaxController;
 use App\Http\Controllers\BillController;
-use App\Http\Controllers\LaporanController;
-use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ChartController;
-use App\Http\Controllers\EditEmailController;
-use App\Http\Controllers\Show_reportController;
-use App\Http\Controllers\Show_report2Controller;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CopyTextController;
 use App\Http\Controllers\CurrencyController;
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SupplierController;
-use App\Http\Controllers\TaxController;
-use PhpParser\Node\Stmt\Return_;
+use App\Http\Controllers\TransferController;
+use App\Http\Controllers\CostumersController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EditEmailController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\Show_reportController;
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Show_report2Controller;
+use App\Http\Controllers\TransactionsController;
+use App\Models\Transfer;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,7 +62,7 @@ Route::get('confirm_password', function () {
 });
 
 Route::get('add_company',[CompanyController::class,'add_company'])->name('add_company');
-Route::get('add_company/add',[CompanyController::class,'add_company_id'])->name('add_company_id');
+Route::post('add_company/add',[CompanyController::class,'add_company_id'])->name('add_company_id');
 Route::get('import', function () {
     return view('import');
 });
@@ -139,18 +142,19 @@ Route::get('/transaksi', [TransaksiController::class, 'transaksi'])->name('trans
 Route::get('/company',[CompanyController::class,'company'])->name('company');
 //transfer
 Route::get('/transfer', [TransferController::class, 'transfer'])->name('transfer');
-
+Route::post('insert_transfer',[TransferController::class,'insertTransfer'])->name('insertTransfer');
 
 Route::get('/add_transfer', [TransferController::class, 'add_transfer'])->name('add_transfer');
-Route::get('/edit_transfer', [TransferController::class, 'edit_transfer'])->name('edit_transfer');
-Route::get('/show_transfer', [TransferController::class, 'show_transfer'])->name('show_transfer');
-
+Route::get('/edit_transfer/{id}', [TransferController::class, 'edit_transfer'])->name('edit_transfer');
+Route::get('/show_transfer/{id}', [TransferController::class, 'show_transfer'])->name('show_transfer');
+Route::put('/updateTransfer/{id}',[TransferController::class,'updateTransfer'])->name('updateTransfer');
+Route::post('/deleteTransfer/{id}',[TransferController::class,'deleteTransfer'])->name('deleteTransfer');
 //account
 Route::get('/account', [AccountController::class, 'index'])->name('account');
 
 Route::get('/add_account', [AccountController::class, 'add_account'])->name('add_account');
 Route::get('/edit_account/{id}', [AccountController::class, 'edit_account'])->name('edit_account');
-Route::get('/show_account1', [AccountController::class, 'show_account1'])->name('show_account1');
+Route::get('/show_account/{id}', [AccountController::class, 'show_account'])->name('show_account');
 Route::get('/show_account2', [AccountController::class, 'show_account2'])->name('show_account2');
 
     // return view('pembelian.pembelian_edit_pemasok');
@@ -197,8 +201,10 @@ Route::get('/add_users',[UsersController::class,'add_users'])->name('add_users')
 Route::Post('/add-user',[UsersController::class,'add_user'])->name('add-user');
 Route::get('/edit_users/{id}',[UsersController::class,'edit_users'])->name('edit_users');
 Route::put('/user-edit/{id}',[UsersController::class,'edit'])->name('user-edit');
+Route::post('/user_delete/{id}',[UsersController::class,'delete'])->name('user-delete');
 //Users
 Route::get('/profile',[ProfileController::class,'profile'])->name('profile');
+Route::put('/update-profile',[ProfileController::class,'update_users'])->name('update-profile');
 // Route::get('invoice', )
 //Tax
 Route::get('/tax',[TaxController::class,'tax_index'])->name('tax');
@@ -216,6 +222,9 @@ Route::get('/add-currency',[CurrencyController::class,'currency_add'])->name('cu
 Route::get('/edit-currency',[CurrencyController::class,'currency_edit'])->name('currency-edit');
 //Copy Text
 Route::get('copytext', [CopyTextController::class, 'CopyText'])->name('copytext');
+Route::get('/users/set-password/{user}', [PasswordController::class, 'setPassword'])->name('users.setPassword');
+Route::post('/users/update-password/{user}', [PasswordController::class, 'updatePassword'])->name('users.updatePassword');
+
 
 require  __DIR__. "/trisqi.php";
 

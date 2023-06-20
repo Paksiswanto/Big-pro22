@@ -184,14 +184,14 @@
 													</tr>
 												</thead>
 												<tbody>
-													@foreach ($items as $item)														
+													@foreach ($items as $item)										
 													<!-- Data 1 -->
 													<tr class="table-row item">
 														<td><input type="checkbox" class="other-checkbox"></td>
 														<td>{{$item->name}}</td>
 														<td>{{$item->description}}</td>
 														<td>{{$item->category->name}}</td>
-														<td>{{$item->tax->name}}</td>
+														<td>{{$item->tax->tax_amount}}%</td>
 														<td>{{$item->purchase_price}}</td>
 														<td>{{$item->selling_price}}</td>
 														<td>

@@ -3,13 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
+use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
     public function login(){
         return view('auth.login');
+    }
+
+    public function p_login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Jika login berhasil
+            return redirect()->intended('/');
+        } else {
+            // Jika login gagal
+            return redirect()->back()->withErrors(['email' => 'Email atau password salah']);
+        }
     }
 
     public function register(){
@@ -29,7 +45,7 @@ class AuthController extends Controller
 
         $user = User::create($request->except (['_token']));
 
-
+        $user -> assignRole(1);
         event(new Registered($user));
         auth()->login($user);
         return redirect()->route('verification.notice')->with('success',' Alun berhasil dibuat, silahkan verifikasi Dil Anda');

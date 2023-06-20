@@ -46,6 +46,12 @@
     <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/datatables/dataTables.bs4-custom.css') }}" />
     <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/datatables/buttons.bs.css') }}" />
     <style>
+          .badge-sent{
+            border-radius: 2px;
+            padding: .35rem .5rem;
+            background: #ffd7d7;
+            color: #df0000;
+        }
         .kotak{
             background-color: #00D1FF;
             color:#fff;
@@ -219,11 +225,24 @@
                                                     <td><input type="checkbox" class="other-checkbox"></td>
                                                     <td>
                                                         <div class="d-flex">
+                                                            @if ($item->email_verified_at != null)                                                             
                                                             @if ($item->picture != null)
                                                             <img src="{{ asset( $item->picture) }}" alt="Foto Profil">
-                                                            <p style="margin-left: 2%">&emsp; {{ $item->email }}</p>
+                                                            <p style="margin-left: 2%">&emsp; {{ $item->name }}</p>
                                                             @else
-                                                            <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%">&emsp; {{ $item->email }}</p>
+                                                            <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%">&emsp; {{ $item->name }}</p>
+                                                            @endif
+                                                            @else
+                                                            @if ($item->picture != null)
+                                                            <img src="{{ asset( $item->picture) }}" alt="Foto Profil">
+                                                            <p style="margin-left: 2%;margin-right:3%">&emsp; {{ $item->name }}</p><span class="badge-sent" style="width: 30%; text-align: center;">
+                                                                <p style="font-size: 10px; margin: 0;">Undangan Tertunda</p>
+                                                            @else
+                                                            <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%;margin-right:3%">&emsp; {{ $item->name }}</p>  <span class="badge-sent" style="width: 30%; text-align: center;">
+                                                                <p style="font-size: 10px; margin: 0;">Undangan Tertunda</p>
+                                                            </span>
+                                                            
+                                                            @endif
                                                             @endif
                                                         </div>
                                                     </td>
@@ -236,10 +255,32 @@
                                                     <td>
                                                         <div class="menu-icons" style="font-size: 15px;">
                                                             <a href="/edit_users/{{ $item->id }}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
+                                                            <a href="javascript.void(0)" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole{{ $item->id }}"></a>
                                                         </div>
                                                     </td>
                                                 </tr>
+                                                  <!-- Modal start -->
+                                                    <div class="modal fade" id="deleterole{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" style="padding: 0px">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="staticBackdropLabel">Hapus Pengguna</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Anda Yakin Ingin Menghapus Pengguna Ini?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <form action="user_delete/{{ $item->id }}" method="POST">
+                                                                        @csrf
+                                                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                                                    </form>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Modal end -->
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -277,25 +318,7 @@
                             </div>
                             <!-- Card end -->
                             
-                              <!-- Modal start -->
-                              <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content" style="padding: 0px">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Hapus Pengguna</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Anda Yakin Ingin Menghapus Pengguna Ini?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Modal end -->
+                            
 
                         </div>
                     </div>

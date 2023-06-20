@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
@@ -11,8 +12,9 @@ class VerificationController extends Controller
         return view('auth.verify1');
     }
 
-    public function verify (EmailVerificationRequest $request){
+    public function verify (EmailVerificationRequest $request,$id){
         $request->fulfill();
-        return redirect()->route('add_company');
+        $data = User::find($id);
+        return view('add_company',compact('data'));
     }
 }

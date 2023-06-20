@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('account', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('rekening_number');
+            $table->string('rekening_number')->unique();
             $table->string('currency');
-            $table->bigInteger('balance');
+            $table->decimal('balance', 10, 2);
             $table->string('name_bank');
             $table->string('bank_telephone');
             $table->string('bank_address');

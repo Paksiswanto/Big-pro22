@@ -6,8 +6,11 @@ use App\Models\User;
 use App\Models\Company;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Mail\InvitationEmail;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,7 +18,8 @@ class UsersController extends Controller
 {
     public function usersindex()
     {
-        $data = User::all()->where('company_id',1);
+        $id=Auth::user()->company_id;
+        $data = User::all()->where('company_id',$id);
         return view('user.index',compact('data'));
     }
     public function add_users()
@@ -50,8 +54,10 @@ class UsersController extends Controller
         
                 $role = $request->role;
                 $data->assignRole($role);
-        
-                return redirect('users')->with('success', 'Data pengguna berhasil disimpan.');
+                
+        $invitationLink = route('users.setPassword', $data->id);
+        Mail::to($data->email)->send(new InvitationEmail($invitationLink));
+                return redirect('users')->with('success', 'Data pengguna berhasil diundang.');
         
             }
         }
@@ -61,7 +67,7 @@ class UsersController extends Controller
         $data = User::find($id);
         $company = Company::all();
         $role = Role::all();
-        return view('user.edit',compact('company','role','data'));
+        return view('user.edit',compact('company','role','data'))->with('success','Pergguana berhasu');
     }
     public function edit(Request $request,$id)
     {
@@ -103,4 +109,9 @@ class UsersController extends Controller
     // Redirect atau kembali ke halaman pengguna
     return redirect()->route('users-index')->with('success', 'Data pengguna berhasil diperbarui.');     
             }
+    function delete($id)  {
+        $data = User::find($id);
+        $data ->delete();
+        return redirect()->back()->with('Succsess','Data Berhasi Dihapus');
+    }
 }

@@ -24,7 +24,7 @@ class CategoryController extends Controller
     {
         Category::create($request->all());
 
-        return redirect('/category')->with('success', 'Data berhasil ditambahkan.');
+        return redirect('/category')->with('success', 'Data berhasil ditambahkan');
     }
     public function category_edit($id)
     {
