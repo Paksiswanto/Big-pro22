@@ -360,8 +360,8 @@
                                                 <td>{{ \Carbon\Carbon::parse($item->date)->isoFormat('DD/MMMM/YYYY') }}</td>
                                                 <td>{{ $item->fromAccount->name }}</td>
                                                 <td>{{ $item->toAccount->name }}</td>
-                                                <td>{{ $item->ammount }}</td>
-                                                <td>{{ $item->ammount }}</td>
+                                                <td>Rp{{ number_format($item->ammount, 0, ',', '.')  }}</td>
+                                                <td>Rp{{ number_format($item->ammount, 0, ',', '.')  }}</td>
                                                 <th>
                                                     <div class="menu-icons" style="font-size: 15px;">
                                                         <a href="/edit_transfer/{{ $item->id }}" class="menu-icon icon-edit-2"></a>

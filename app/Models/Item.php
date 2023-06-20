@@ -9,7 +9,7 @@ class Item extends Model
 {
     use HasFactory;
     protected $table = "item";
-    protected $fillable = ['name','tax_id','description','type','currency','category_id','selling_price','purchase_price','active'];
+    protected $fillable = ['name','tax_id','description','type','category_id','selling_price','purchase_price','active','company_id'];
 
     function tax()
     {

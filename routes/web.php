@@ -103,11 +103,11 @@ Route::get('/receipt_transactions', [TransactionsController::class, 'receipt_tra
 Route::get('/receipt_bill_transactions', [TransactionsController::class, 'receipt_bill_transactions'])->name('receipt_bill_transactions');
 
 Route::get('/add_recurring_income', [TransactionsController::class, 'add_recurring_income'])->name('add_recurring_income');
-Route::get('/edit_recurring_income', [TransactionsController::class, 'edit_recurring_income'])->name('edit_recurring_income');
+Route::get('/edit_recurring_income/{id}', [TransactionsController::class, 'edit_recurring_income'])->name('edit_recurring_income');
 Route::get('/show_recurring_income', [TransactionsController::class, 'show_recurring_income'])->name('show_recurring_income');
 
 Route::get('/add_recurring_expenditure', [TransactionsController::class, 'add_recurring_expenditure'])->name('add_recurring_expenditure');
-Route::get('/edit_recurring_expenditure', [TransactionsController::class, 'edit_recurring_expenditure'])->name('edit_recurring_expenditure');
+Route::get('/edit_recurring_expenditure/{id}', [TransactionsController::class, 'edit_recurring_expenditure'])->name('edit_recurring_expenditure');
 Route::get('/show_recurring_expenditure', [TransactionsController::class, 'show_recurring_expenditure'])->name('show_recurring_expenditure');
 
 //selling
@@ -154,7 +154,7 @@ Route::get('/account', [AccountController::class, 'index'])->name('account');
 
 Route::get('/add_account', [AccountController::class, 'add_account'])->name('add_account');
 Route::get('/edit_account/{id}', [AccountController::class, 'edit_account'])->name('edit_account');
-Route::get('/show_account1', [AccountController::class, 'show_account1'])->name('show_account1');
+Route::get('/show_account/{id}', [AccountController::class, 'show_account'])->name('show_account');
 Route::get('/show_account2', [AccountController::class, 'show_account2'])->name('show_account2');
 
     // return view('pembelian.pembelian_edit_pemasok');

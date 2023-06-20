@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Transaction;
 use App\Models\Transfer;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -22,22 +23,38 @@ class TransferController extends Controller
         return view('transfer.add_transfer',compact('account'));
     }
     function insertTransfer(Request $request) {
-        $date = $request->date;
-        $formattedDate = Carbon::createFromFormat('d/m/Y', $date)->format('Y-m-d');
+      
+        $ammount = $request->ammount;
+        $cleanedAmmount = str_replace(',', '', $ammount);
         $reduced = Account::find($request->from_account);
         $plus = Account::find($request->to_account);
-        $reduced->balance= $reduced->balance-$request->ammount;
-        $plus->balance= $plus->balance+$request->ammount;
+        $reduced->balance= $reduced->balance-$cleanedAmmount;
+        $plus->balance= $plus->balance+$cleanedAmmount;
         $reduced->save();
         $plus->save();
         
-        
-       
-        $requestData = $request->except('date'.'user_id');
-        $userID = Auth::user()->id;
-        $requestData['date'] = $formattedDate;
-        $requestData['user_id'] = $userID;
-        $data= Transfer::create($requestData);
+      
+        $data = Transfer::create([
+            'description' => $request->description,
+            'ammount' => $cleanedAmmount,
+            'from_account' => $request->from_account,
+            'to_account' => $request->to_account,
+            'reference' => $request->reference,
+            'attechment' => $request->attechment,
+            'date' => $request->date,
+            'company_id' => Auth::user()->company_id,
+            'user_id' => Auth::user()->id,
+            'payment_method' => $request->payment_method,
+        ]);
+
+        $transactionFromAccount = new Transaction();
+        $transactionFromAccount -> transfer_id = $data->id;
+        $transactionFromAccount -> account_id = $data->from_account;
+        $transactionFromAccount -> save();
+        $transactionToAccount = new Transaction();
+        $transactionToAccount -> transfer_id = $data->id;
+        $transactionToAccount -> account_id = $data->to_account;
+        $transactionToAccount -> save();
         
         return redirect()->route('show_transfer', ['id' => $data->id])->with('success', 'Transfer berhasil dibuat');
     }

@@ -239,6 +239,8 @@
 
                                                                 <option value="Rupiah" {{ old('currency') === 'Rupiah' ? 'selected' : '' }}>Rupiah</option>
                                                                 <option value="Dollar" {{ old('currency') === 'Dollar' ? 'selected' : '' }}>Dollar</option>
+
+
                                                             </select>
                                                             @error('currency')
                                                             <div class="invalid-feedback">{{ $message }}</div>

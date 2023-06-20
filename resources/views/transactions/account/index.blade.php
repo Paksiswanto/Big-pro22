@@ -355,7 +355,7 @@
                                                     <div class="menu-icons" style="font-size: 15px;">
                                                         <a href="{{ route('edit_account', ['id' => $row->id]) }}" class="menu-icon icon-edit-2"></a>
                                                         <a href="{{ url('delete_account') }}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteaccount{{ $row->id }}"></a>
-                                                        <a href="{{ route('show_account1', ['id' => $row->id]) }}" class="menu-icon icon-eye1"></a>
+                                                        <a href="/show_account/{{ $row->id }}" class="menu-icon icon-eye1"></a>
                                                     </div>
                                                 </th>
                                             </tr>

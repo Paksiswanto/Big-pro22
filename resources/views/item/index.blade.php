@@ -189,9 +189,9 @@
 														<td>{{$item->name}}</td>
 														<td>{{$item->description}}</td>
 														<td>{{$item->category->name}}</td>
-														<td>{{$item->tax->name}}</td>
-														<td>Rp.{{$item->selling_price}}</td>
-														<td>Rp.{{$item->purchase_price}}</td>
+														<td>{{$item->tax->tax_amount}}%</td>
+														<td>{{$item->purchase_price}}</td>
+														<td>{{$item->selling_price}}</td>
 														<td>
 														<div class="menu-icons" style="font-size: 15px;">
 															<a href="/edit-item/{{$item->id}}" class="menu-icon icon-edit-2"></a>

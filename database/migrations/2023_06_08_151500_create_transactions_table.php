@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('invoice_id')->references('id')->on('invoice')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('bill_id')->references('id')->on('bill')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('income_id')->references('id')->on('income')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('expenditure_id')->references('id')->on('expenditure')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('company_id')->references('id')->on('company')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('invoice_id')->nullable()->references('id')->on('invoice')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('bill_id')->nullable()->references('id')->on('bill')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('income_id')->nullable()->references('id')->on('income')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('expenditure_id')->nullable()->references('id')->on('expenditure')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('company_id')->nullable()->references('id')->on('company')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('transfer_id')->nullable()->references('id')->on('transfer')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('account_id')->nullable()->references('id')->on('account')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

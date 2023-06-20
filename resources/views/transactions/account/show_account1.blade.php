@@ -755,13 +755,15 @@
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
+                                                                        @foreach ($transfer as $item)
+                                                                            
                                                                         <tr>
                                                                             <td name="item" id="checkbox1"><input type="checkbox"></td>
-                                                                            <td>16 Mei 2023</th>
-                                                                            <td>Hadi</td>
-                                                                            <td>Huda</td>
-                                                                            <td>Rp900.000.000</td>
-                                                                            <td>Rp900.000.000</td>
+                                                                            <td>{{ \Carbon\Carbon::parse($item->date)->isoFormat('DD/MMMM/YYYY') }} </th>
+                                                                            <td>{{ $item->fromAccount->name }}</td>
+                                                                            <td>{{ $item->toAccount->name }}</td>
+                                                                            <td>{{ $item->ammount }}</td>
+                                                                            <td>{{ $item->ammount }}</td>
                                                                             <th>
                                                                                 <div class="menu-icons" style="font-size: 15px;">
                                                                                     <a href="{{url('edit_transfer')}}" class="menu-icon icon-edit-2"></a>
@@ -771,70 +773,7 @@
                                                                                 </div>
                                                                             </th>
                                                                         </tr>
-                                                                        <tr>
-                                                                            <td name="item" id="checkbox1"><input type="checkbox"></td>
-                                                                            <td>23 Agustus 2023</th>
-                                                                            <td>Lana</td>
-                                                                            <td>Lani</td>
-                                                                            <td>Rp100.000.000</td>
-                                                                            <td>Rp100.000.000</td>
-                                                                            <th>
-                                                                                <div class="menu-icons" style="font-size: 15px;">
-                                                                                    <a href="{{url('edit_transfer')}}" class="menu-icon icon-edit-2"></a>
-                                                                                    <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deletetransfer"></a>
-                                                                                    <a href="{{url('show_transfer')}}" class="menu-icon icon-eye1"></a>
-                                                                                    <a href="" class="menu-icon icon-block"></a>
-                                                                                </div>
-                                                                            </th>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td name="item" id="checkbox1"><input type="checkbox"></td>
-                                                                            <td>12 Januari 2023</th>
-                                                                            <td>Rara</td>
-                                                                            <td>Roro</td>
-                                                                            <td>Rp200.000.000</td>
-                                                                            <td>Rp200.000.000</td>
-                                                                            <th>
-                                                                                <div class="menu-icons" style="font-size: 15px;">
-                                                                                    <a href="{{url('edit_transfer')}}" class="menu-icon icon-edit-2"></a>
-                                                                                    <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deletetransfer"></a>
-                                                                                    <a href="{{url('show_transfer')}}" class="menu-icon icon-eye1"></a>
-                                                                                    <a href="" class="menu-icon icon-block"></a>
-                                                                                </div>
-                                                                            </th>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td name="item" id="checkbox1"><input type="checkbox"></td>
-                                                                            <td>2 Juli 2023</th>
-                                                                            <td>Lala</td>
-                                                                            <td>Lili</td>
-                                                                            <td>Rp900.000.000</td>
-                                                                            <td>Rp900.000.000</td>
-                                                                            <th>
-                                                                                <div class="menu-icons" style="font-size: 15px;">
-                                                                                    <a href="{{url('edit_transfer')}}" class="menu-icon icon-edit-2"></a>
-                                                                                    <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deletetransfer"></a>
-                                                                                    <a href="{{url('show_transfer')}}" class="menu-icon icon-eye1"></a>
-                                                                                    <a href="" class="menu-icon icon-block"></a>
-                                                                                </div>
-                                                                            </th>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td name="item" id="checkbox1"><input type="checkbox"></td>
-                                                                            <td>7 Februari 2023</th>
-                                                                            <td>Luka</td>
-                                                                            <td>Laka</td>
-                                                                            <td>Rp900.000.000</td>
-                                                                            <td>Rp900.000.000</td>
-                                                                            <th>
-                                                                                <div class="menu-icons" style="font-size: 15px;">
-                                                                                    <a href="{{url('edit_transfer')}}" class="menu-icon icon-edit-2"></a>
-                                                                                    <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deletetransfer"></a>
-                                                                                    <a href="{{url('show_transfer')}}" class="menu-icon icon-eye1"></a>
-                                                                                    <a href="" class="menu-icon icon-block"></a>
-                                                                                </div>
-                                                                            </th>
-                                                                        </tr>
+                                                                        @endforeach
                                                                     </tbody>
                                                                 </table>
                                                                 <!-- Card end -->
