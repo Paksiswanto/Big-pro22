@@ -253,10 +253,10 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <textarea name="description" class="form-control1" rows="2" placeholder="Lampiran Tidak Wajib Diisi"></textarea>
-                                                        <div class="field-placeholder">Lampiran Pendukung<span class="text-danger">*</span></div>
+                                                        <textarea name="description" class="form-control1" rows="2" placeholder="Deskripsi tidak wajib di isi"></textarea>
+                                                        <div class="field-placeholder">Deskripsi</div>
                                                         <div class="form-text">
-                                                            Silakan masukkan Lampiran Pendukung Anda.
+                                                            Silakan masukkan Deskripsi Anda.
                                                         </div>
                                                     </div>
                                                     <!-- Field wrapper end -->
@@ -295,7 +295,7 @@
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
                                                         <input name="reference" class="form-control" type="text" placeholder="Masukkan Referensi">
-                                                        <div class="field-placeholder">Referensi<span class="text-danger">*</span></div>
+                                                        <div class="field-placeholder">Referensi</div>
                                                     </div>
                                                     <!-- Field wrapper end -->
 
@@ -305,7 +305,7 @@
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
                                                         <textarea name="attachment" class="form-control1" rows="2" placeholder="Lampiran Tidak Wajib Diisi"></textarea>
-                                                        <div class="field-placeholder">Lampiran Pendukung<span class="text-danger">*</span></div>
+                                                        <div class="field-placeholder">Lampiran Pendukung</div>
                                                         <div class="form-text">
                                                             Silakan masukkan Lampiran Pendukung Anda.
                                                         </div>

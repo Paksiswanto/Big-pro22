@@ -77,7 +77,7 @@ class TransactionsController extends Controller
             'customer_id' => $request->customer_id,
             'company_id' => 1,
         ]);
-        return redirect()->route('transactions');
+        return redirect()->route('transactions')->with('success', 'Data berhasil ditambahkan');
     }
     public function update_income(Request $request, $id)
     {
@@ -99,7 +99,7 @@ class TransactionsController extends Controller
 
         $income->save();
 
-        return redirect()->route('transactions');
+        return redirect()->route('transactions')->with('success', 'Data berhasil diubah');
     }
     //expenditure
     public function add_expenditure()
@@ -141,7 +141,7 @@ class TransactionsController extends Controller
             'supplier_id' => $request->supplier_id,
             'company_id' => 1,
         ]);
-        return redirect()->route('transactions');
+        return redirect()->route('transactions')->with('success', 'Data berhasil ditambahkan');
     }
     public function update_expenditure(Request $request, $id)
     {
@@ -163,7 +163,7 @@ class TransactionsController extends Controller
 
         $expenditure->save();
 
-        return redirect()->route('transactions');
+        return redirect()->route('transactions')->with('success', 'Data berhasil diubah');
     }
     //recurring transactions
     public function recurring_transactions()

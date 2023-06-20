@@ -209,10 +209,31 @@
 														<td>
 															<div class="menu-icons" style="font-size: 15px;">
 																<a href="/edit-item/{{$item->id}}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="delete-items/{{$item->id}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
+																<a href="/delete-items/{{$item->id}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole{{ $item->id }}"></a>
 															</div>
 														</td>
 													</tr>
+													<!-- Modal start -->
+													<div class="modal fade" id="deleterole{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole{{ $item->id }}" aria-hidden="true">
+														<div class="modal-dialog">
+															<div class="modal-content" style="padding: 0px">
+																<div class="modal-header">
+																	<h5 class="modal-title" id="staticBackdropLabel">Hapus Peran</h5>
+																	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+																</div>
+																<div class="modal-body">
+																	<p>Anda Yakin Ingin Menghapus Data Ini?</p>
+																</div>
+																<div class="modal-footer">
+																	<form action="/delete-items/{{ $item->id }}" method="POST">
+																		@csrf
+																		<button type="submit" class="btn btn-danger" id="deleteButton">Hapus</button>
+																	</form>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- Modal end -->
 													@endforeach
 
 												</tbody>
@@ -268,25 +289,6 @@
 													<div class="modal-footer" style="margin-top:2%">
 														<a href="" onclick="window.location.reload()" style="margin-right: 2%" data-bs-dismiss="modal">Batal</a>
 														<button type="button" class="btn btn-primary" style="border-radius: 20px">Upload</button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Modal end -->
-										  <!-- Modal start -->
-										  <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
-											<div class="modal-dialog">
-												<div class="modal-content" style="padding: 0px">
-													<div class="modal-header">
-														<h5 class="modal-title" id="staticBackdropLabel">Hapus Item</h5>
-														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-													</div>
-													<div class="modal-body">
-														<p>Anda Yakin Ingin Menghapus Item Ini?</p>
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
-		
 													</div>
 												</div>
 											</div>

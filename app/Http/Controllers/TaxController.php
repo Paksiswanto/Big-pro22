@@ -100,7 +100,7 @@ class TaxController extends Controller
 
         $data->save();
 
-        return redirect()->route('tax')->withErrors($validatedData)->withInput();
+        return redirect()->route('tax')->withErrors($validatedData)->withInput()->with('success', 'Data berhasil ditambahkan');
     }
 
     public function tax_edit($id)
@@ -113,7 +113,6 @@ class TaxController extends Controller
     {
         $data = Tax::find($id);
         $data->update($request->all());
-        return redirect()->route('tax');
         $validatedData = $request->validate([
             'name' => 'required|max:80|unique:tax,name,' . $data->id,
             'tax_amount' => 'required',
@@ -192,13 +191,13 @@ class TaxController extends Controller
         }
 
         $data->save();
-        return redirect()->route('tax')->withErrors($validatedData)->withInput();
+        return redirect()->route('tax')->withErrors($validatedData)->withInput()->with('success', 'Data berhasil di ubah');
     }
 
     public function tax_delete($id)
     {
         $data = Tax::find($id);
         $data->delete();
-        return redirect()->route('tax');
+        return redirect()->route('tax')->with('success', 'Data berhasil dihapus');
     }
 }

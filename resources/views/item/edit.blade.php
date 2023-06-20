@@ -231,7 +231,7 @@
                                                       
                                                         <input type="radio" name="type" id="option2" value="layanan" <?php echo ($item->type == 'layanan') ? 'checked' : ''; ?>>
                                                         <label style="border-radius: 2px" class="label" for="option2">Layanan</label>
-                                                      </div>                                                                                                            
+                                                      </div>
 
                                                     <!-- Field wrapper start -->
 

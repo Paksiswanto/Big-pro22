@@ -36,7 +36,7 @@ class CompanyController extends Controller
         $data = User::find($request->user_id);
         $data->company_id = $user->id;
         $data ->save();
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success', 'Data berhasil ditambahkan');
     }
     public function update_company(Request $request)
     {
@@ -54,6 +54,6 @@ class CompanyController extends Controller
         $data->save();
 
 
-        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Data berhasil diubah');
     }
 }
