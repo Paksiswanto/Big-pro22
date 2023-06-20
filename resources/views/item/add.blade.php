@@ -228,7 +228,6 @@
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
                                                         <input class="form-control" name="name" type="text" placeholder=" Masukan nama">
-                                                    <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
                                                         <div class="field-placeholder">Nama <span class="text-danger">*</span></div>
                                                         <div class="form-text">
 

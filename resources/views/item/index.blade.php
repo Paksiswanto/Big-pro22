@@ -182,20 +182,33 @@
 													</tr>
 												</thead>
 												<tbody>
-													@foreach ($items as $item)
+												@foreach ($items as $item)										
 													<!-- Data 1 -->
 													<tr class="table-row item">
 														<td><input type="checkbox" class="other-checkbox"></td>
 														<td>{{$item->name}}</td>
 														<td>{{$item->description}}</td>
 														<td>{{$item->category->name}}</td>
+														@if ($item->tax_id != null)														
 														<td>{{$item->tax->tax_amount}}%</td>
-														<td>{{$item->purchase_price}}</td>
-														<td>{{$item->selling_price}}</td>
+														@else
+														<td>N/A</td>
+														@endif
+														@if ($item->purchase_price != null)														
+														<td>Rp.{{$item->purchase_price}}</td>
+														@else
+														<td>N/A</td>
+														@endif
+														@if ($item->selling_price != null)														
+														<td>Rp.{{$item->selling_price}}</td>
+														@else
+														<td>N/A</td>
+														@endif
 														<td>
 															<div class="menu-icons" style="font-size: 15px;">
 																<a href="/edit-item/{{$item->id}}" class="menu-icon icon-edit-2"></a>
 																<a href="/delete-items/{{$item->id}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole{{ $item->id }}"></a>
+                                                            <a href="delete-items/{{$item->id}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
 															</div>
 														</td>
 													</tr>
