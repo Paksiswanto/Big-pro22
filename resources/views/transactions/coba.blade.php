@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Exchange Rate Converter</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <h1>Exchange Rate Converter</h1>
@@ -12,33 +13,47 @@
 
     <script>
         function getExchangeRate(callback) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://data.fixer.io/api/latest?access_key=YOUR_ACCESS_KEY&symbols=USD,IDR");
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    var exchangeRate = response.rates.IDR / response.rates.USD;
+            $.ajax({
+                url: "https://data.fixer.io/api/latest",
+                data: {
+                    access_key: "0719dfabcdba9f85af875a9ad221eb6b",
+                    symbols: "USD,IDR"
+                },
+                success: function(response) {
+                    console.log(response);
+                    // var exchangeRate = response.rates.IDR / response.rates.USD;
                     callback(exchangeRate);
                 }
-            }
-            xhr.send();
+            });
         }
 
         function convertToIDR() {
-            var amount = document.getElementById("amount").value;
+            var amount = $("#amount").val();
             getExchangeRate(function(exchangeRate) {
                 var result = amount * exchangeRate;
-                document.getElementById("result").innerHTML = "IDR " + result.toLocaleString();
+                $("#result").html("IDR " + result.toLocaleString());
             });
         }
 
         function convertToUSD() {
-            var amount = document.getElementById("amount").value;
+            var amount = $("#amount").val();
             getExchangeRate(function(exchangeRate) {
                 var result = amount / exchangeRate;
-                document.getElementById("result").innerHTML = "$ " + result.toLocaleString();
+                $("#result").html("$ " + result.toLocaleString());
             });
         }
+
+        setInterval(function() {
+            getExchangeRate(function(exchangeRate) {
+                var exchangeRateIDR = exchangeRate.toLocaleString(undefined, { minimumFractionDigits: 2 });
+                var exchangeRateUSD = (1 / exchangeRate).toLocaleString(undefined, { minimumFractionDigits: 2 });
+                $("#exchangeRateIDR").html("1 USD = " + exchangeRateIDR + " IDR");
+                $("#exchangeRateUSD").html("1 IDR = " + exchangeRateUSD + " USD");
+            });
+        }, 300000); // setiap 5 menit
     </script>
+
+    <p id="exchangeRateIDR"></p>
+    <p id="exchangeRateUSD"></p>
 </body>
 </html>
