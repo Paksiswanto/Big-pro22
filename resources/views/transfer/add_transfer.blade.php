@@ -237,7 +237,10 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input class="form-control" name="ammount" type="text" placeholder="Rp0,00">
+                                                        <input name="ammount" class="form-control @error('ammount') is-invalid @enderror" type="text" placeholder="Masukkan Jumlah" value="{{ old('ammount') }}" data-inputmode="numeric"  id="balance-input" oninput="formatBalanceInput(this)">
+                                                        @error('ammount')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror                                                        
                                                         <div class="field-placeholder">Jumlah<span class="text-danger">*</span></div>
                                                     </div>
                                                     <!-- Field wrapper end -->
@@ -276,7 +279,7 @@
                                                     <div class="field-wrapper-group">
                                                         <div class="field-wrapper">
                                                             <select name="payment_method" class="select-multiple js-states" title="Select Product Category" style="font-size: 5px;">
-                                                                <option value="Transfer Bank">Transfer Bank</option>
+                                                                <option value="TransferBank">Transfer Bank</option>
                                                                 <option value="Cash">Cash</option>
 
                                                             </select>
@@ -388,6 +391,27 @@
     <script src="{{ asset ("Gmbslagi/vendor/daterange/custom-daterange.js")}}"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var cleaveG = new Cleave('input[name="ammount"]', {
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand'
+        });
+    </script>
+      <script>
+        function formatBalanceInput(input) {
+          // Mengambil nilai input
+          let value = input.value;
+        
+          // Menghapus semua tanda koma dari nilai input
+          let cleanedValue = value.replace(/,/g, '');
+        
+          // Memformat nilai input dengan tanda koma sebagai pemisah ribuan
+          let formattedValue = Number(cleanedValue).toLocaleString();
+        
+          // Mengganti nilai input dengan nilai yang telah diformat
+          input.value = formattedValue;
+        }
+        </script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script> -->
     <!-- <script src="path/to/select2.js"></script> -->

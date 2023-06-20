@@ -23,24 +23,29 @@ class TransferController extends Controller
         return view('transfer.add_transfer',compact('account'));
     }
     function insertTransfer(Request $request) {
-        $date = $request->date;
-        $formattedDate = Carbon::createFromFormat('d/m/Y', $date)->format('Y-m-d');
+      
+        $ammount = $request->ammount;
+        $cleanedAmmount = str_replace(',', '', $ammount);
         $reduced = Account::find($request->from_account);
         $plus = Account::find($request->to_account);
-        $reduced->balance= $reduced->balance-$request->ammount;
-        $plus->balance= $plus->balance+$request->ammount;
+        $reduced->balance= $reduced->balance-$cleanedAmmount;
+        $plus->balance= $plus->balance+$cleanedAmmount;
         $reduced->save();
         $plus->save();
         
-        
-       
-        $requestData = $request->except('date'.'user_id'.'company_id');
-        $userID = Auth::user()->id;
-        $company_id = Auth::user()->company_id;
-        $requestData['date'] = $formattedDate;
-        $requestData['user_id'] = $userID;
-        $requestData['company_id'] = $company_id;
-        $data= Transfer::create($requestData);
+      
+        $data = Transfer::create([
+            'description' => $request->description,
+            'ammount' => $cleanedAmmount,
+            'from_account' => $request->from_account,
+            'to_account' => $request->to_account,
+            'reference' => $request->reference,
+            'attechment' => $request->attechment,
+            'date' => $request->date,
+            'company_id' => Auth::user()->company_id,
+            'user_id' => Auth::user()->id,
+            'payment_method' => $request->payment_method,
+        ]);
 
         $transactionFromAccount = new Transaction();
         $transactionFromAccount -> transfer_id = $data->id;
