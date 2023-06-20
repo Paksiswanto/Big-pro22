@@ -621,7 +621,7 @@
 
 									</div>
 								</div>
-					<!-- Card end -->
+					            <!-- Card end -->
 									<div class="modal fade" id="payment" tabindex="-1" aria-labelledby="paymentTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                             <div class="modal-content" style="margin-top: -10%">
@@ -632,30 +632,30 @@
                                                 <div class="modal-body">
                                                         <div class="field-wrapper">
                                                             <label for="subjudul" class="field-label">Kategori<span class="text-danger">*</span></label>
-                                                            <input type="text" class="form-control datepicker" style="border-radius: 10px">
+                                                            <input type="text" class="form-control datepicker" style="border-radius: 2px">
                                                         </div>
                                                         <div class="field-wrapper">
                                                             <label for="subjudul" class="field-label">Jumlah<span class="text-danger">*</span></label>
-                                                            <input type="number" class="form-control datepicker" style="border-radius: 10px">
+                                                            <input type="number" class="form-control datepicker" style="border-radius: 2px">
                                                         </div>
                                                         <div class="field-wrapper">
                                                             <label for="subjudul" class="field-label">Metode Pembayaran<span class="text-danger">*</span></label>
-                                                            <select class="select-single js-states" title="Select Product Category" data-live-search="true" style="border-radius: 10px">
+                                                            <select class="select-single js-states" title="Select Product Category" data-live-search="true" style="border-radius: 2px">
                                                                 <option>Cash</option>
                                                                 <option>Transfer</option>
                                                             </select>
                                                         </div>
                                                         <div class="field-wrapper">
                                                             <label for="subjudul" class="field-label">Akun<span class="text-danger">*</span></label>
-                                                            <select class="select-single js-states" title="Select Product Category" data-live-search="true" style="border-radius: 10px">
+                                                            <select class="select-single js-states" title="Select Product Category" data-live-search="true" style="border-radius: 2px">
                                                                 <option>Adi</option>
                                                                 <option>Rudi</option>
                                                             </select>
                                                         </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="text-white" style="background-color:rgb(255, 0, 0); border:none; border-radius:10px; width:20%; height:25px; color:white" data-bs-dismiss="modal">Batal</button>
-                                                    <button type="button" class="text-white" style="background-color: #55be0e; border:none; border-radius:10px; width:30%; height:25px; color:white">Simpan</button>
+                                                    <button type="button" class="text-white" style="background-color:rgb(255, 0, 0); border:none; border-radius:2px; width:20%; height:25px; color:white" data-bs-dismiss="modal">Batal</button>
+                                                    <button type="button" class="text-white" style="background-color: #55be0e; border:none; border-radius:2px; width:30%; height:25px; color:white">Simpan</button>
                                                 </div>
                                             </div>
                                         </div>
