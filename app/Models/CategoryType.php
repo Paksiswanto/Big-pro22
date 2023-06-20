@@ -15,4 +15,16 @@ class CategoryType extends Model
     {
         return $this->hasMany(Category::class);
     }
+    function incomes()
+    {
+        return $this->hasMany(Income::class);
+    }
+    function incomesRoutine()
+    {
+        return $this->hasMany(IncomeRoutine::class);
+    }
+    public function expenditureRoutine()
+    {
+        return $this->hasMany(expenditureRoutine::class);
+    }
 }

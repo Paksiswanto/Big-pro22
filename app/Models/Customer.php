@@ -15,4 +15,8 @@ class Customer extends Model
     {
         return $this->hasMany(Income::class);
     }
+    public function incomesRoutine()
+    {
+        return $this->hasMany(IncomeRoutine::class);
+    }
 }

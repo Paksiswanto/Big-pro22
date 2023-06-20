@@ -23,4 +23,8 @@ class Income extends Model
     {
         return $this->belongsTo(Account::class,'account_id');
     }
+    function categoryType()
+    {
+        return $this->belongsTo(CategoryType::class);
+    }
 }

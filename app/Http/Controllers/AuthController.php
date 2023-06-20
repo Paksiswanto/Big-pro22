@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Validation\ValidationException;
+use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
@@ -100,7 +101,7 @@ class AuthController extends Controller
 
         $user = User::create($request->except (['_token']));
 
-
+        $user -> assignRole(1);
         event(new Registered($user));
         auth()->login($user);
         return redirect()->route('verification.notice')->with('success',' Alun berhasil dibuat, silahkan verifikasi Dil Anda');

@@ -218,6 +218,7 @@
     
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper">
+                                                <input type="hidden" name="company_id" value="{{Auth::user()->company_id}}">
                                                     <input class="form-control" name="next_number" type="number" placeholder=" Masukan nomor">
                                                     <div class="field-placeholder">Nomor Berikutnya</div>
                                                     <div class="form-text">

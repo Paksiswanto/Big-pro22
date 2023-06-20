@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Transfer;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -80,9 +81,12 @@ class AccountController extends Controller
         return redirect()->route('account');
     }
 
-    public function show_account1($id){
+    public function show_account($id){
         $data = Account::find($id);
-        return view('transactions.account.show_account1', compact('data'));
+        $transfer = Transfer::whereIn('from_account',[$id])
+                            ->orWhereIn('to_account',[$id])
+                            ->get();
+        return view('transactions.account.show_account1', compact('data','transfer'));
     }
     public function show_account2(){
         return view('transactions.account.show_account2');

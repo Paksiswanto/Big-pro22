@@ -113,6 +113,8 @@
                                     @error('email')
                  <span class="error">{{ $message }}</span>
 @enderror
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
                                     <div class="field-placeholder">Email</div>
                                 </div>
                                 <div class="field-wrapper mb-3">
@@ -125,7 +127,7 @@
                                 </div>
                             </div>
                             <div class="login-footer">
-                                <span class="additional-link">Tidak punya akun? <a href="{{url('register')}}" class="btn btn-light">Daftar</a></span>
+                                <span class="additional-link">Tidak punya akun? <a href="{{url('keregis')}}" class="btn btn-light">Daftar</a></span>
                             </div>
                         </div>
                     </form>

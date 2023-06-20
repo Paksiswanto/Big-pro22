@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CostumersController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransactionsController;
@@ -17,4 +18,14 @@ Route::post('/insert_income', [TransactionsController::class, 'insert_income'])-
 Route::post('/update_income/{id}', [TransactionsController::class, 'update_income'])->name('update_income');
 
 Route::post('/insert_expenditure', [TransactionsController::class, 'insert_expenditure'])->name('insert_expenditure');
-Route::post('/update_expenditure', [TransactionsController::class, 'update_expenditure'])->name('update_expenditure');
+Route::post('/update_expenditure/{id}', [TransactionsController::class, 'update_expenditure'])->name('update_expenditure');
+
+Route::post('/insert_account_income', [TransactionsController::class, 'insert_account_income'])->name('insert_account_income');
+Route::post('/insert_category_income', [TransactionsController::class, 'insert_category_income'])->name('insert_category_income');
+Route::post('/insert_cos_income', [TransactionsController::class, 'insert_cos_income'])->name('insert_cos_income');
+Route::post('/insert_sup_expenditure', [TransactionsController::class, 'insert_sup_income'])->name('insert_sup_income');
+
+Route::post('/insert_recurring_income', [TransactionsController::class, 'insert_recurring_income'])->name('insert_recurring_income');
+Route::post('/update_recurring_income/{id}', [TransactionsController::class, 'update_recurring_income'])->name('update_recurring_income');
+
+Route::post('/insert_recurring_expenditure', [TransactionsController::class, 'insert_recurring_expenditure'])->name('insert_recurring_expenditure');

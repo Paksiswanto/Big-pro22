@@ -300,7 +300,7 @@
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                 <!-- Card start -->
-<div class="card">
+                                <div class="card">
                                 <!-- <div class="card-header"> -->
                                 <div class="card-header">
                                     <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
@@ -354,86 +354,46 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($data as $item )                                                
                                             <tr>
                                                 <td name="item"><input type="checkbox" class="other-checkbox"></td>
-                                                <td>16 Mei 2023</th>
-                                                <td>Hadi</td>
-                                                <td>Huda</td>
-                                                <td>Rp900.000.000</td>
-                                                <td>Rp900.000.000</td>
+                                                <td>{{ \Carbon\Carbon::parse($item->date)->isoFormat('DD/MMMM/YYYY') }}</td>
+                                                <td>{{ $item->fromAccount->name }}</td>
+                                                <td>{{ $item->toAccount->name }}</td>
+                                                <td>{{ $item->ammount }}</td>
+                                                <td>{{ $item->ammount }}</td>
                                                 <th>
                                                     <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{url('edit_transfer')}}" class="menu-icon icon-edit-2"></a>
-                                                        <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deletetransfer"></a>
-                                                        <a href="{{url('show_transfer')}}" class="menu-icon icon-eye1"></a>
+                                                        <a href="/edit_transfer/{{ $item->id }}" class="menu-icon icon-edit-2"></a>
+                                                        <a href="javascript:void(0)" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deletetransfer{{ $item->id }}"></a>
+                                                         <!-- Modal start -->
+                                                        <div class="modal fade" id="deletetransfer{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deletetransfer" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="padding: 0px">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="staticBackdropLabel">Hapus Transfer</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <p>Anda Yakin Ingin Menghapus Transfer Ini?</p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <form action="/deleteTransfer/{{ $item->id }}" method="POST">
+                                                                            @csrf
+                                                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                                                        </form>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Modal end -->
+                                                        <a href="/show_transfer/{{ $item->id }}" class="menu-icon icon-eye1"></a>
                                                         <a href="" class="menu-icon icon-block"></a>
                                                     </div>
                                                 </th>
-                                            </tr>
-                                            <tr>
-                                                <td name="item"><input type="checkbox" class="other-checkbox"></td>
-                                                <td>23 Agustus 2023</th>
-                                                <td>Lana</td>
-                                                <td>Lani</td>
-                                                <td>Rp100.000.000</td>
-                                                <td>Rp100.000.000</td>
-                                                <th>
-                                                    <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{url('edit_transfer')}}" class="menu-icon icon-edit-2"></a>
-                                                        <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deletetransfer"></a>
-                                                        <a href="{{url('show_transfer')}}" class="menu-icon icon-eye1"></a>
-                                                        <a href="" class="menu-icon icon-block"></a>
-                                                    </div>
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <td name="item"><input type="checkbox" class="other-checkbox"></td>
-                                                <td>12 Januari 2023</th>
-                                                <td>Rara</td>
-                                                <td>Roro</td>
-                                                <td>Rp200.000.000</td>
-                                                <td>Rp200.000.000</td>
-                                                <th>
-                                                    <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{url('edit_transfer')}}" class="menu-icon icon-edit-2"></a>
-                                                        <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deletetransfer"></a>
-                                                        <a href="{{url('show_transfer')}}" class="menu-icon icon-eye1"></a>
-                                                        <a href="" class="menu-icon icon-block"></a>
-                                                    </div>
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <td name="item"><input type="checkbox" class="other-checkbox"></td>
-                                                <td>2 Juli 2023</th>
-                                                <td>Lala</td>
-                                                <td>Lili</td>
-                                                <td>Rp900.000.000</td>
-                                                <td>Rp900.000.000</td>
-                                                <th>
-                                                    <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{url('edit_transfer')}}" class="menu-icon icon-edit-2"></a>
-                                                        <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deletetransfer"></a>
-                                                        <a href="{{url('show_transfer')}}" class="menu-icon icon-eye1"></a>
-                                                        <a href="" class="menu-icon icon-block"></a>
-                                                    </div>
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <td name="item"><input type="checkbox" class="other-checkbox"></td>
-                                                <td>7 Februari 2023</th>
-                                                <td>Luka</td>
-                                                <td>Laka</td>
-                                                <td>Rp900.000.000</td>
-                                                <td>Rp900.000.000</td>
-                                                <th>
-                                                    <div class="menu-icons" style="font-size: 15px;">
-                                                        <a href="{{url('edit_transfer')}}" class="menu-icon icon-edit-2"></a>
-                                                        <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deletetransfer"></a>
-                                                        <a href="{{url('show_transfer')}}" class="menu-icon icon-eye1"></a>
-                                                        <a href="" class="menu-icon icon-block"></a>
-                                                    </div>
-                                                </th>
-                                            </tr>
+                                            </tr>                                            
+                                            @endforeach
                                         </tbody>
                                     </table>
 
@@ -465,25 +425,7 @@
                                 </div>
                             </div>
                             <!-- Card end -->
-                            <!-- Modal start -->
-                            <div class="modal fade" id="deletetransfer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deletetransfer" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content" style="padding: 0px">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Hapus Transfer</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Anda Yakin Ingin Menghapus Transfer Ini?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Modal end -->
+                           
 
                             <!-- Card end -->
                         </div>

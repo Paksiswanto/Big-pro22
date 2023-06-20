@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ItemController;
 use Illuminate\Http\Request;
@@ -19,3 +20,4 @@ Route::put('edit_category/{id}', [CategoryController::class, 'edit_category'])->
 Route::post('create_invoice', [InvoiceController::class, 'create_invoice'])->name('create_invoice');
 Route::get('get-item/{itemId}', [InvoiceController::class, 'getItem'])->name('get-item');
 Route::post('create_settingInvoice', [InvoiceController::class, 'update_invSetting'])->name('create_settingInvoice');
+Route::put('update_company', [CompanyController::class, 'update_company'])->name('update_company');
