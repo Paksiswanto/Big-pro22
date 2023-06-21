@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function category_index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(10)->withQueryString();
         return view('category.index', compact('categories'));
     }
     public function category_add()
