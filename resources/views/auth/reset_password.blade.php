@@ -117,15 +117,19 @@
                                     <a href="crm.html" class="login-logo">
                                         <img src="{{ asset('gmbslagi/img/logo.svg') }}" alt="iChat">
                                     </a>
-                                    <h6>Selamat Datang,<br>Atur Ulang Kata Sandi Anda</h6>
+                                    <h6>Selamat datang,<br>Atur ulang kata sandi</h6>
                                     <div class="field-wrapper">
                                         <input type="email" name="email" placeholder="Masukan email anda" autofocus>
                                         <div class="field-placeholder">Email</div>
                                         @if (session('status'))
-                                            <div class="success-message">{{ session('status') }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ session('status') }}</strong>
+                                            </span>
                                         @endif
                                         @error('email')
-                                            <div class="error-message">{{ $message }}</div>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                     <div class="actions">
@@ -133,7 +137,7 @@
                                     </div>
                                 </div>
                                 <div class="login-footer">
-                                    <span><a href="{{ url('login') }}" class="additional-link">Kembali Ke Halaman
+                                    <span><a href="{{ url('kelogin') }}" class="additional-link">Kembali Ke Halaman
                                             Login</a></span>
                                 </div>
                             </div>

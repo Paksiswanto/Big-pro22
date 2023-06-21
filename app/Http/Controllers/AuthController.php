@@ -25,7 +25,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('kelogin');   
+        return redirect('kelogin');
     }
 
 
@@ -33,14 +33,14 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    
+
 
     public function p_login(Request $request)
     {
         $user =  User::where('email',$request->email)->first();
         if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
+                'email' => ['Email atau password salah      .'],
             ]);
         }
         $kodeOTP = random_int(100000, 999999);
@@ -48,7 +48,7 @@ class AuthController extends Controller
              throw ValidationException::withMessages([
             'email' => ['Tunggu 1 menit untuk mendapat OTP baru'],
         ]);
-        } 
+        }
         $user->update([
             'otp' => $kodeOTP,
             'otp_exp' =>  Carbon::now()->addMinutes(10),
@@ -58,13 +58,13 @@ class AuthController extends Controller
         return view('auth.otp',compact('email'));
     }
 
-   
+
 
     function send_otp(Request $request) {
-    
+
     $user = User::where('email', $request->email)->first();
 
- 
+
     if (!$user) {
         throw ValidationException::withMessages([
             'email' => ['Akun tidak di temukan.'],
@@ -104,7 +104,7 @@ class AuthController extends Controller
             "name.required" => "Nama harus diisi.",
             "password.confirmed" => "Konfirmasi password tidak cocok.",
         ]);
-        
+
 
         $user = User::create($request->except (['_token']));
 
@@ -116,13 +116,13 @@ class AuthController extends Controller
 
     }
    function sendReset(Request $request)  {
- 
+
     $request->validate(['email' => 'required|email']);
- 
+
     $status = Password::sendResetLink(
         $request->only('email')
     );
- 
+
     if ($status === Password::RESET_LINK_SENT) {
         return back()->with(['status' => __('Email berhasil dikirim')]);
     } else {
@@ -134,25 +134,34 @@ class AuthController extends Controller
     $request->validate([
         'token' => 'required',
         'email' => 'required|email',
-        'password' => 'required|min:8|confirmed',
+        'password' => 'required|min:3|confirmed',
+    ], [
+        'token.required' => 'Token harus diisi.',
+        'email.required' => 'Email harus diisi.',
+        'email.email' => 'Format email tidak valid.',
+        'password.required' => 'Kata sandi harus diisi.',
+        'password.min' => 'Kata sandi minimal harus terdiri dari :min karakter.',
+        'password.confirmed' => 'Konfirmasi kata sandi tidak cocok.',
     ]);
- 
+
     $status = Password::reset(
         $request->only('email', 'password', 'password_confirmation', 'token'),
         function (User $user, string $password) {
             $user->forceFill([
                 'password' => Hash::make($password)
             ])->setRememberToken(Str::random(60));
- 
+
             $user->save();
- 
+
             event(new PasswordReset($user));
         }
     );
- 
-    return $status === Password::PASSWORD_RESET
-                ? redirect()->route('login')->with('status', __($status))
-                : back()->withErrors(['email' => [__($status)]]);
+
+    if ($status === Password::PASSWORD_RESET) {
+        return redirect()->route('login')->with('status', __('Kata sandi Anda telah diatur ulang. Silakan masuk dengan kata sandi baru.'));
+    } else {
+        return back()->withErrors(['email' => ['Gagal mengatur ulang kata sandi. Silakan coba lagi.']]);
+    }
    }
 
 

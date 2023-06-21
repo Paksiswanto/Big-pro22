@@ -110,14 +110,15 @@
                                 <h6>Selamat Datang,<br>Login dan mulai manajemen keuangan anda</h6>
                                 <div class="field-wrapper">
                                     <input type="email" name="email" value="{{ old('email') }}" placeholder="Masukan email anda" autofocus>
-                                    @error('email')
-                                        <span class="error">{{ $message }}</span>
-                                    
-                                    @enderror
                                     <div class="field-placeholder">Email</div>
                                 </div>
                                 <div class="field-wrapper mb-3">
                                     <input type="password" name="password" placeholder="Masukan kata kunci">
+                                    @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     <div class="field-placeholder">Kata Kunci</div>
                                 </div>
                                 <div class="actions">
