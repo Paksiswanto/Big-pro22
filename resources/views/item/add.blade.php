@@ -189,7 +189,9 @@
                     <div class="card-body">
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
+                                
+                                <form method="POST" action="{{ route('create_item') }}">
+                                    @csrf
                                 <!-- Card start -->
                                 <div class="">
                                     <div class="d-flex">
@@ -202,12 +204,10 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
-                                            <input type="checkbox" id="toggle" class="toggle-checkbox " style="float: right;">
-                                            <label for="toggle" class="toggle-label custom-bg " style="float: right;"></label>
+                                            <input type="checkbox" name="active" id="toggle" class="toggle-checkbox" style="float: right;">
+                                            <label for="toggle" class="toggle-label custom-bg" style="float: right;"></label>
                                         </div>
                                     </div>
-                                    <form method="POST" action="{{ route('create_item') }}">
-                                        @csrf
                                         <div class="">
                                             <div style="border-bottom: solid black 1px; margin-bottom: 2%; margin-top: 2%;">
                                                 <h6>Umum</h6>
