@@ -13,7 +13,7 @@ class TransferController extends Controller
 {
     public function transfer()
     {
-        $data = Transfer::all()->where('company_id',Auth::user()->company_id);
+        $data = Transfer::all();
         return view('transfer.index',compact('data'));
     }
 
@@ -23,24 +23,29 @@ class TransferController extends Controller
         return view('transfer.add_transfer',compact('account'));
     }
     function insertTransfer(Request $request) {
-        $date = $request->date;
-        $formattedDate = Carbon::createFromFormat('d/m/Y', $date)->format('Y-m-d');
+      
+        $ammount = $request->ammount;
+        $cleanedAmmount = str_replace(',', '', $ammount);
         $reduced = Account::find($request->from_account);
         $plus = Account::find($request->to_account);
-        $reduced->balance= $reduced->balance-$request->ammount;
-        $plus->balance= $plus->balance+$request->ammount;
+        $reduced->balance= $reduced->balance-$cleanedAmmount;
+        $plus->balance= $plus->balance+$cleanedAmmount;
         $reduced->save();
         $plus->save();
         
-        
-       
-        $requestData = $request->except('date'.'user_id'.'company_id');
-        $userID = Auth::user()->id;
-        $company_id = Auth::user()->company_id;
-        $requestData['date'] = $formattedDate;
-        $requestData['user_id'] = $userID;
-        $requestData['company_id'] = $company_id;
-        $data= Transfer::create($requestData);
+      
+        $data = Transfer::create([
+            'description' => $request->description,
+            'ammount' => $cleanedAmmount,
+            'from_account' => $request->from_account,
+            'to_account' => $request->to_account,
+            'reference' => $request->reference,
+            'attechment' => $request->attechment,
+            'date' => $request->date,
+            'company_id' => Auth::user()->company_id,
+            'user_id' => Auth::user()->id,
+            'payment_method' => $request->payment_method,
+        ]);
 
         $transactionFromAccount = new Transaction();
         $transactionFromAccount -> transfer_id = $data->id;
@@ -51,7 +56,7 @@ class TransferController extends Controller
         $transactionToAccount -> account_id = $data->to_account;
         $transactionToAccount -> save();
         
-        return redirect()->route('show_transfer', ['id' => $data->id])->with('success', 'Transfer berhasil dibuat');
+        return redirect()->route('show_transfer', ['id' => $data->id])->with('success', 'Data berhasil dibuat');
     }
     public function edit_transfer($id){
         $data = Transfer::find($id);
@@ -97,7 +102,7 @@ class TransferController extends Controller
         $transfer->save();
 
         
-        return redirect()->route('show_transfer', ['id' => $id])->with('success', 'Transfer berhasil diperbarui');
+        return redirect()->route('show_transfer', ['id' => $id])->with('success', 'Data berhasil diubah');
     
     }
     function deleteTransfer($id) {
@@ -113,6 +118,6 @@ class TransferController extends Controller
         $BalancetoAccountBefore->save();     
 
         $data->delete();
-        return redirect()->back()->with('success','Data Berhasil di Hapus');
+        return redirect()->back()->with('success','Data berhasil dihapus');
     }
 }

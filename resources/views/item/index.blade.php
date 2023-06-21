@@ -47,7 +47,6 @@
 	<link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/datatables/buttons.bs.css")}}" />
 	<link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/dropzone/dropzone.min.css")}}" />
 	<style>
-
 		.hidden-menu {
 			display: none;
 			background-color: #f2f2f2;
@@ -67,23 +66,22 @@
 		}
 
 
-			.search {
-				width: 111%;
-				display: inline-block;
-				background-color: rgba(255, 255, 255, 0);
-				border: 0px;
-				color: grey;
-				font-size: 16px;
-				padding: 10px 0px;
-				padding-left: 25px;
-				border-bottom: 1px solid grey;
+		.search {
+			width: 111%;
+			display: inline-block;
+			background-color: rgba(255, 255, 255, 0);
+			border: 0px;
+			color: grey;
+			font-size: 16px;
+			padding: 10px 0px;
+			padding-left: 25px;
+			border-bottom: 1px solid grey;
 
-				&:focus {
-					outline: 0px;
-					border-bottom: 1px solid #ccc;
-				}
+			&:focus {
+				outline: 0px;
+				border-bottom: 1px solid #ccc;
 			}
-		
+		}
 	</style>
 
 </head>
@@ -131,24 +129,24 @@
 												<h3>Item<button type="button" style="border: none; background:transparent;">☆</button></h3>
 											</div>
 										</div>
-                                        <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">
-                                            <div class="graph-day-selection" role="group" style="margin-left: -30px;margin-right: 10px;">
-                                                <a href="{{url('add-item')}}">
-                                                    <button type="button" class="btn active" style="background: transparent">Tambah</button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown">
-                                            <a class="btn btn-ekspor-primary dropdown icon-dots-three-vertical" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										<div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">
+											<div class="graph-day-selection" role="group" style="margin-left: -30px;margin-right: 10px;">
+												<a href="{{url('add-item')}}">
+													<button type="button" class="btn active" style="background: transparent">Tambah</button>
+												</a>
+											</div>
+										</div>
+										<div class="dropdown">
+											<a class="btn btn-ekspor-primary dropdown icon-dots-three-vertical" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
-                                            </a>
+											</a>
 
-                                            <ul class="dropdown-menu dropdown-menu-lg-end" style="z-index: 100;">
-                                                <li><a class="dropdown-item" href="#">Impor</a></li>
-                                                <li><a class="dropdown-item" href="#">Expor</a></li>
+											<ul class="dropdown-menu dropdown-menu-lg-end" style="z-index: 100;">
+												<li><a class="dropdown-item" href="#">Impor</a></li>
+												<li><a class="dropdown-item" href="#">Expor</a></li>
 
-                                            </ul>
-                                        </div>
+											</ul>
+										</div>
 
 									</div>
 									<div class="">
@@ -158,7 +156,7 @@
 										<div class="content">
 											<div class="searchcontainer">
 												<i class="icon-search"></i><input class="search " type="text" placeholder="Cari Disini..." style="
-                                              margin-bottom: 2%; font-size:10pt"/>
+                                              margin-bottom: 2%; font-size:10pt" />
 											</div>
 										</div>
 										<div class="table-responsive">
@@ -184,19 +182,32 @@
 													</tr>
 												</thead>
 												<tbody>
-													@foreach ($items as $item)										
+												@foreach ($items as $item)										
 													<!-- Data 1 -->
 													<tr class="table-row item">
 														<td><input type="checkbox" class="other-checkbox"></td>
 														<td>{{$item->name}}</td>
 														<td>{{$item->description}}</td>
 														<td>{{$item->category->name}}</td>
+														@if ($item->tax_id != null)														
 														<td>{{$item->tax->tax_amount}}%</td>
-														<td>{{$item->purchase_price}}</td>
-														<td>{{$item->selling_price}}</td>
+														@else
+														<td>N/A</td>
+														@endif
+														@if ($item->purchase_price != null)														
+														<td>Rp.{{$item->purchase_price}}</td>
+														@else
+														<td>N/A</td>
+														@endif
+														@if ($item->selling_price != null)														
+														<td>Rp.{{$item->selling_price}}</td>
+														@else
+														<td>N/A</td>
+														@endif
 														<td>
 															<div class="menu-icons" style="font-size: 15px;">
 																<a href="/edit-item/{{$item->id}}" class="menu-icon icon-edit-2"></a>
+																<a href="/delete-items/{{$item->id}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole{{ $item->id }}"></a>
                                                             <a href="delete-items/{{$item->id}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
 															</div>
 														</td>
@@ -210,23 +221,27 @@
 
 											<!-- Card start -->
 											<div class="card">
-												<div class="card-body" style="margin-left: -2.1%">
+												<div class="card-body col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
 													<nav aria-label="Page navigation example">
 														<ul class="pagination" style="justify-content: flex-end;">
 															<li class="page-item">
-																<a class="page-link" href="#" aria-label="Previous">
+																@if ($items->currentPage() > 1)
+																<a class="page-link" href="{{ $items->previousPageUrl() }}" aria-label="Previous">
 																	<span aria-hidden="true">«</span>
 																</a>
+																@endif
 															</li>
-															<li class="page-item"><a class="page-link" href="#">1</a></li>
-															<li class="page-item"><a class="page-link" href="#">2</a></li>
-															<li class="page-item"><a class="page-link" href="#">3</a></li>
-															<li class="page-item">
-																<a class="page-link" href="#" aria-label="Next">
-																	<span aria-hidden="true">»</span>
-																</a>
-															</li>
+															@for ($i = 1; $i <= $items->lastPage(); $i++)
+																<li class="page-item {{ $items->currentPage() == $i ? 'active' : '' }}"><a class="page-link" href="{{ $items->url($i) }}">{{ $i }}</a></li>
+																@endfor
+																<li class="page-item">
+																	@if ($items->currentPage() < $items->lastPage())
+																		<a class="page-link" href="{{ $items->nextPageUrl() }}" aria-label="Next">
+																			<span aria-hidden="true">»</span>
+																		</a>
+																		@endif
+																</li>
 														</ul>
 													</nav>
 
@@ -256,25 +271,6 @@
 													<div class="modal-footer" style="margin-top:2%">
 														<a href="" onclick="window.location.reload()" style="margin-right: 2%" data-bs-dismiss="modal">Batal</a>
 														<button type="button" class="btn btn-primary" style="border-radius: 20px">Upload</button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Modal end -->
-										  <!-- Modal start -->
-										  <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
-											<div class="modal-dialog">
-												<div class="modal-content" style="padding: 0px">
-													<div class="modal-header">
-														<h5 class="modal-title" id="staticBackdropLabel">Hapus Item</h5>
-														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-													</div>
-													<div class="modal-body">
-														<p>Anda Yakin Ingin Menghapus Item Ini?</p>
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
-		
 													</div>
 												</div>
 											</div>
@@ -417,37 +413,36 @@
 	</script>
 	<script>
 		function cari() {
-		var input = document.querySelector('.search');
-		var keyword = input.value.trim().toLowerCase();
+			var input = document.querySelector('.search');
+			var keyword = input.value.trim().toLowerCase();
 
-		var rows = document.querySelectorAll('.table-row');
+			var rows = document.querySelectorAll('.table-row');
 
-		rows.forEach(function(row) {
-			var name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-			var description = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
-			var category = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
-			var tax = row.querySelector('td:nth-child(5)').textContent.toLowerCase();
-			var purchasePrice = row.querySelector('td:nth-child(6)').textContent.toLowerCase();
-			var sellingPrice = row.querySelector('td:nth-child(7)').textContent.toLowerCase();
+			rows.forEach(function(row) {
+				var name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+				var description = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+				var category = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+				var tax = row.querySelector('td:nth-child(5)').textContent.toLowerCase();
+				var purchasePrice = row.querySelector('td:nth-child(6)').textContent.toLowerCase();
+				var sellingPrice = row.querySelector('td:nth-child(7)').textContent.toLowerCase();
 
-			if (
-			name.includes(keyword) ||
-			description.includes(keyword) ||
-			category.includes(keyword) ||
-			tax.includes(keyword) ||
-			purchasePrice.includes(keyword) ||
-			sellingPrice.includes(keyword)
-			) {
-			row.style.display = 'table-row';
-			} else {
-			row.style.display = 'none';
-			}
-		});
+				if (
+					name.includes(keyword) ||
+					description.includes(keyword) ||
+					category.includes(keyword) ||
+					tax.includes(keyword) ||
+					purchasePrice.includes(keyword) ||
+					sellingPrice.includes(keyword)
+				) {
+					row.style.display = 'table-row';
+				} else {
+					row.style.display = 'none';
+				}
+			});
 		}
 
 		var searchInput = document.querySelector('.search');
 		searchInput.addEventListener('input', cari);
-
 	</script>
 </body>
 

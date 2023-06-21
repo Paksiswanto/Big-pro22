@@ -41,7 +41,7 @@ class AccountController extends Controller
             'company_id' => 1,
         ]);
 
-        return redirect()->route('account')->withErrors($validatedData)->withInput();
+        return redirect()->route('account')->withErrors($validatedData)->withInput()->with('success', 'Data berhasil ditambahkan');
     }
 
     public function edit_account($id){
@@ -71,14 +71,14 @@ class AccountController extends Controller
             'company_id' => 1,
         ]);
 
-        return redirect()->route('account')->withErrors($validatedData)->withInput();
+        return redirect()->route('account')->withErrors($validatedData)->withInput()->with('success', 'Data berhasil diubah');
     }
 
     public function delete_account($id)
     {
         $data = Account::find($id);
         $data->delete();
-        return redirect()->route('account');
+        return redirect()->route('account')->with('success', 'Data berhasil dihapus');
     }
 
     public function show_account($id){

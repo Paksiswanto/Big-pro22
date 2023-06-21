@@ -7,12 +7,13 @@ use App\Models\Item;
 use App\Models\Tax;
 use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
     public function itemindex()
     {
-      $items = Item::all();
+      $items = Item::paginate(10)->withQueryString();
 
       return view('item.index', compact('items'));
     }
@@ -32,15 +33,23 @@ class ItemController extends Controller
     }
     public function create_items(Request $request)
     {
-    // Validasi data yang dikirim dari form
-   
-
-    // Simpan data item ke database menggunakan model
-    Item::create($request->all());
-
-    // Redirect ke halaman yang sesuai dengan pesan sukses
-    return redirect('/itemindex')->with('success', 'Data berhasil ditambahkan.');
-    }
+        // Membaca nilai checkbox
+        $active = $request->filled('active') ? $request->boolean('active') : false;
+        // Membuat objek Item dengan data dari request
+        $item = new Item;
+        $item->name = $request->name;
+        $item->description = $request->description;
+        $item->active = $active;
+        $item->type = $request->type;
+        $item->category_id = $request->category_id; 
+        $item->selling_price = $request->selling_price;
+        $item->purchase_price = $request->purchase_price;
+        $item->tax_id = $request->tax_id;
+        $item->company_id = $request->company_id;
+        $item->save();
+    
+        return redirect('/itemindex')->with('success', 'Data berhasil ditambahkan.');
+    }    
 
     public function edititem($id)
     {

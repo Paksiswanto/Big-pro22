@@ -50,49 +50,54 @@
         }
 
         .half-width-container {
-  display: flex;
-  width: 68%;
-}
+            display: flex;
+            width: 68%;
+        }
 
-input[type="radio"] {
-  display: none;
-    border-radius: 2px;
+        input[type="radio"] {
+            display: none;
+            border-radius: 2px;
 
-}
+        }
 
-label {
-  margin-bottom: 2%;
-}
-@media (max-width: 1440px) {
-  .half-width-container {
-    width: 67%;
-    flex-direction: row;
-  }
-}
-@media (max-width: 768px) {
-  .half-width-container {
-    width: 139%;
-    flex-direction: row;
-  }
-}
-@media (max-width: 711px) {
-  .half-width-container {
-    width: 138%;
-    flex-direction: row;
-  }
-}
-@media (max-width: 425px) {
-  .half-width-container {
-    width: 135%;
-    flex-direction: row;
-  }
-}
-@media (max-width: 320px) {
-  .half-width-container {
-    width: 133%;
-    flex-direction: row;
-  }
-}
+        label {
+            margin-bottom: 2%;
+        }
+
+        @media (max-width: 1440px) {
+            .half-width-container {
+                width: 67%;
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .half-width-container {
+                width: 139%;
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 711px) {
+            .half-width-container {
+                width: 138%;
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 425px) {
+            .half-width-container {
+                width: 135%;
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .half-width-container {
+                width: 133%;
+                flex-direction: row;
+            }
+        }
 
         .label {
             width: 35%;
@@ -184,7 +189,9 @@ label {
                     <div class="card-body">
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
+                                
+                                <form method="POST" action="{{ route('create_item') }}">
+                                    @csrf
                                 <!-- Card start -->
                                 <div class="">
                                     <div class="d-flex">
@@ -197,127 +204,127 @@ label {
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
-                                            <input type="checkbox" id="toggle" class="toggle-checkbox " style="float: right;">
-                                            <label for="toggle" class="toggle-label custom-bg " style="float: right;"></label>
+                                            <input type="checkbox" name="active" id="toggle" class="toggle-checkbox" style="float: right;">
+                                            <label for="toggle" class="toggle-label custom-bg" style="float: right;"></label>
                                         </div>
                                     </div>
-                                    <form method="POST" action="{{ route('create_item') }}">
-                                        @csrf
-                                    <div class="">
-                                        <div style="border-bottom: solid black 1px; margin-bottom: 2%; margin-top: 2%;">
-                                            <h6>Umum</h6>
-                                            <p>Pilih kategori untuk membuat laporan Anda lebih detail. Deskripsi akan diisi saat item dipilih dalam faktur atau tagihan.</p>
-                                        </div>
-                                        <!-- Row start -->
-                                        <div class="row gutters">
-                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                <div class="half-width-container">
-                                                    <input type="radio" name="type" id="option1" value="Produk" checked>
-                                                    <label style="border-radius: 2px" class="label" for="option1">Produk</label>
-                                                    <input type="radio" name="type" id="option2" value="Layanan">
-                                                    <label style="border-radius: 2px" class="label" for="option2">Layanan</label>
-                                                </div>
+                                        <div class="">
+                                            <div style="border-bottom: solid black 1px; margin-bottom: 2%; margin-top: 2%;">
+                                                <h6>Umum</h6>
+                                                <p>Pilih kategori untuk membuat laporan Anda lebih detail. Deskripsi akan diisi saat item dipilih dalam faktur atau tagihan.</p>
                                             </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                                <!-- Field wrapper start -->
-                                                <div class="field-wrapper">
-                                                    <input class="form-control" name="name" type="text" placeholder=" Masukan nama">
-                                                    <div class="field-placeholder">Nama <span class="text-danger">*</span></div>
-                                                    <div class="form-text">
-
+                                            <!-- Row start -->
+                                            <div class="row gutters">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <div class="half-width-container">
+                                                        <input type="radio" name="type" id="option1" value="Produk" checked>
+                                                        <label style="border-radius: 2px" class="label" for="option1">Produk</label>
+                                                        <input type="radio" name="type" id="option2" value="Layanan">
+                                                        <label style="border-radius: 2px" class="label" for="option2">Layanan</label>
                                                     </div>
                                                 </div>
-                                                <!-- Field wrapper end -->
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
-                                            </div>
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                                <!-- Field wrapper start -->
-                                                <div class="field-wrapper">
-                                                    <select class="select-multiple js-states" name="category_id" title="Select Product Category">
-                                                        @foreach ( $category as $item )                                                            
-                                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <div class="field-placeholder">Kategori<span class="text-danger">*</span></div>
-                                                </div>
-
-                                            </div>
-                                                <!-- Field wrapper end -->
-
-                                            
-
-                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                <!-- Field wrapper start -->
-                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <textarea class="form-control" name="description" rows="2"></textarea>
-                                                        <div class="field-placeholder">Deskripsi <span class="text-danger">*</span></div>
+                                                        <input class="form-control" name="name" type="text" placeholder=" Masukan nama">
+                                                        <div class="field-placeholder">Nama <span class="text-danger">*</span></div>
                                                         <div class="form-text">
-                                                            Silakan masukkan Deskripsi.
+
                                                         </div>
                                                     </div>
                                                     <!-- Field wrapper end -->
 
                                                 </div>
-                                                <!-- Field wrapper end -->
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
-                                            </div>
-                                            <div style="border-bottom: solid black 1px; margin-bottom: 2%; margin-top: 2%;">
-                                                <h6>Penagihan</h6>
-                                                <p>Informasi Penjualan digunakan dalam faktur, dan Informasi Pembelian digunakan dalam tagihan. Pajak akan diterapkan pada faktur dan tagihan.</p>
-                                            </div>
-                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                <!-- Field wrapper start -->
-
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <input type="checkbox" id="checkbox1" name="checkbox1" onchange="toggleInputsDisable(1)">
-                                                        <label for="checkbox1"> Informasi Penjualan</label>
+                                                    <!-- Field wrapper start -->
+                                                    <div class="field-wrapper">
+                                                        <select class="select-multiple js-states" name="category_id" title="Select Product Category">
+                                                            @foreach ( $category as $item )
+                                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <div class="field-placeholder">Kategori<span class="text-danger">*</span></div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <input type="checkbox" id="checkbox2" name="checkbox2" onchange="toggleInputsDisable(2)">
-                                                        <label for="checkbox2"> Informasi Pembelian</label>
+
+                                                </div>
+                                                <!-- Field wrapper end -->
+
+
+
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                                    <!-- Field wrapper start -->
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <!-- Field wrapper start -->
+                                                        <div class="field-wrapper">
+                                                            <textarea class="form-control" name="description" rows="2"></textarea>
+                                                            <div class="field-placeholder">Deskripsi <span class="text-danger">*</span></div>
+                                                            <div class="form-text">
+                                                                Silakan masukkan Deskripsi.
+                                                            </div>
+                                                        </div>
+                                                        <!-- Field wrapper end -->
+
                                                     </div>
+                                                    <!-- Field wrapper end -->
+
+                                                </div>
+                                                <div style="border-bottom: solid black 1px; margin-bottom: 2%; margin-top: 2%;">
+                                                    <h6>Penagihan</h6>
+                                                    <p>Informasi Penjualan digunakan dalam faktur, dan Informasi Pembelian digunakan dalam tagihan. Pajak akan diterapkan pada faktur dan tagihan.</p>
+                                                </div>
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <!-- Field wrapper start -->
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <input type="checkbox" id="checkbox1" name="checkbox1" onchange="toggleInputsDisable(1)">
+                                                            <label for="checkbox1"> Informasi Penjualan</label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <input type="checkbox" id="checkbox2" name="checkbox2" onchange="toggleInputsDisable(2)">
+                                                            <label for="checkbox2"> Informasi Pembelian</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Field wrapper end -->
                                                 </div>
 
-                                                <!-- Field wrapper end -->
-                                            </div>
-
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <!-- Field wrapper start -->
-                                                <div class="field-wrapper">
-                                                    <input class="form-control" type="number" id="inputField1" name="selling_price" disabled>
-                                                    <div class="field-placeholder">Harga Jual</div>
-                                                </div>
-                                                <!-- Field wrapper end -->
-                                            </div>
-
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <!-- Field wrapper start -->
-                                                <div class="field-wrapper">
-                                                    <input class="form-control" type="text" id="inputField2" name="purchase_price" disabled>
-                                                    <div class="field-placeholder">Harga Beli</div>
-                                                </div>
-                                                <!-- Field wrapper end -->
-                                            </div>
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                                <!-- Field wrapper start -->
-                                                <div class="field-wrapper">
-                                                    <select class="select-multiple js-states" name="tax_id" title="Select Product Category">
-                                                        <option disabled selected>Pilih Salah Satu</option>
-                                                        @foreach ($tax as $item)                                                       
-                                                        <option value="{{$item->id}}">{{$item->name}} {{$item->tax_amount}}%</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <div class="field-placeholder">Pajak<span class="text-danger">*</span></div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <!-- Field wrapper start -->
+                                                    <div class="field-wrapper">
+                                                        <input class="form-control" type="text" id="inputField1" name="selling_price"  disabled>
+                                                        <div class="field-placeholder">Harga Jual</div>
+                                                    </div>
+                                                    <!-- Field wrapper end -->
                                                 </div>
 
-                                            </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <!-- Field wrapper start -->
+                                                    <div class="field-wrapper">
+                                                        <input class="form-control" type="text" id="inputField2" name="purchase_price" disabled>
+                                                        <div class="field-placeholder">Harga Beli</div>
+                                                    </div>
+                                                    <!-- Field wrapper end -->
+                                                </div>
+
+
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                                                    <!-- Field wrapper start -->
+                                                    <div class="field-wrapper">
+                                                        <select class="select-multiple js-states" name="tax_id" title="Select Product Category">
+                                                            <option disabled selected>Pilih Salah Satu</option>
+                                                            @foreach ($tax as $item)
+                                                            <option value="{{$item->id}}">{{$item->name}} {{$item->tax_amount}}%</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <div class="field-placeholder">Pajak<span class="text-danger">*</span></div>
+                                                    </div>
+
+                                                </div>
                                                 <!-- Field wrapper end -->
 
                                             </div>
@@ -330,27 +337,27 @@ label {
                                         </div>
                                         <!-- Row end -->
                                     </form>
-                                    </div>
                                 </div>
-                                <!-- Card end -->
-
                             </div>
+                            <!-- Card end -->
+
                         </div>
                     </div>
-                    <!-- Row end -->
-
                 </div>
-                <!-- Content wrapper end -->
-
-                <!-- App Footer start -->
-                <div class="app-footer">© Uni Pro Admin 2021</div>
-                <!-- App footer end -->
+                <!-- Row end -->
 
             </div>
-            <!-- Content wrapper scroll end -->
+            <!-- Content wrapper end -->
+
+            <!-- App Footer start -->
+            <div class="app-footer">© Uni Pro Admin 2021</div>
+            <!-- App footer end -->
 
         </div>
-        <!-- *************
+        <!-- Content wrapper scroll end -->
+
+    </div>
+    <!-- *************
     ************ Main container end *************
    ************* -->
 
@@ -399,6 +406,8 @@ label {
                 inputField2.disabled = !inputField2.disabled;
             }
         }
+
+       
     </script>
 
 </body>

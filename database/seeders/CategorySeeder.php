@@ -38,7 +38,7 @@ class CategorySeeder extends Seeder
         ]);
         Category::create([
             'name' => 'Penjualan',
-            'category_type_id' => '4',
+            'category_type_id' => '3',
             'color' => '#8fce00'
         ]);
         Category::create([

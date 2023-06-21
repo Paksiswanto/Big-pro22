@@ -196,18 +196,15 @@
                                     <div class="d-flex">
                                         <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
                                             <div class="card-title">
-                                                <h3>Edit Item<button type="button"
-                                                        style="border: none; background:none;">☆</button></h3>
+                                                <h3>Edit Item<button type="button" style="border: none; background:none;">☆</button></h3>
                                             </div>
                                             <div class="graph-day-selection" role="group" style="margin-left: 60%">
 
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
-                                            <input type="checkbox" id="toggle" class="toggle-checkbox "
-                                                style="float: right;">
-                                            <label for="toggle" class="toggle-label custom-bg "
-                                                style="float: right;"></label>
+                                            <input type="checkbox" id="toggle" class="toggle-checkbox " style="float: right;">
+                                            <label for="toggle" class="toggle-label custom-bg " style="float: right;"></label>
                                         </div>
                                     </div>
                                     <!-- Row end -->
@@ -215,8 +212,7 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="">
-                                            <div
-                                                style="border-bottom: solid black 1px; margin-bottom: 2%; margin-top: 2%;">
+                                            <div style="border-bottom: solid black 1px; margin-bottom: 2%; margin-top: 2%;">
                                                 <h6>Umum</h6>
                                                 <p>Pilih kategori untuk membuat laporan Anda lebih detail. Deskripsi
                                                     akan diisi saat item dipilih dalam faktur atau tagihan.</p>
@@ -226,12 +222,12 @@
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                     <div class="half-width-container">
-                                                        <input type="radio" name="type" id="option1" value="produk" <?php echo ($item->type == 'produk') ? 'checked' : ''; ?>>
+                                                        <input type="radio" name="type" id="option1" value="Produk" <?php echo ($item['type'] == 'Produk') ? 'checked' : ''; ?>>
                                                         <label style="border-radius: 2px" class="label" for="option1">Produk</label>
-                                                      
-                                                        <input type="radio" name="type" id="option2" value="layanan" <?php echo ($item->type == 'layanan') ? 'checked' : ''; ?>>
+
+                                                        <input type="radio" name="type" id="option2" value="Layanan" <?php echo ($item['type'] == 'Layanan') ? 'checked' : ''; ?>>
                                                         <label style="border-radius: 2px" class="label" for="option2">Layanan</label>
-                                                      </div>                                                                                                            
+                                                    </div>
 
                                                     <!-- Field wrapper start -->
 
@@ -242,10 +238,8 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input class="form-control" value="{{ $item->name }}"
-                                                            name="name" type="text" placeholder=" Masukan nama">
-                                                        <div class="field-placeholder">Nama <span
-                                                                class="text-danger">*</span></div>
+                                                        <input class="form-control" value="{{ $item->name }}" name="name" type="text" placeholder=" Masukan nama">
+                                                        <div class="field-placeholder">Nama <span class="text-danger">*</span></div>
                                                         <div class="form-text">
 
                                                         </div>
@@ -257,18 +251,15 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <select class="select-multiple js-states"
-                                                            value="{{ $item->category }}" name="category"
-                                                            title="Select Product Category">
+                                                        <select class="select-multiple js-states" value="{{ $item->category }}" name="category" title="Select Product Category">
                                                             <option disabled>Pilih Salah Satu</option>
                                                             @foreach ($categories as $category)
-                                                                <option value="{{ $category->id }}"
-                                                                    {{ old('category') == $category->id ? 'selected' : '' }}>
-                                                                    {{ $category->name }}</option>
+                                                            <option value="{{ $category->id }}" {{ old('category') == $category->id ? 'selected' : '' }}>
+                                                                {{ $category->name }}
+                                                            </option>
                                                             @endforeach
                                                         </select>
-                                                        <div class="field-placeholder">Kategori<span
-                                                                class="text-danger">*</span></div>
+                                                        <div class="field-placeholder">Kategori<span class="text-danger">*</span></div>
                                                     </div>
 
                                                 </div>
@@ -283,9 +274,8 @@
 
                                                         <!-- Field wrapper start -->
                                                         <div class="field-wrapper">
-                                                            <textarea class="form-control" name="description"rows="2" value="{{ $item->description }}">{{ $item->description }}</textarea>
-                                                            <div class="field-placeholder">Deskripsi <span
-                                                                    class="text-danger">*</span></div>
+                                                            <textarea class="form-control" name="description" rows="2" value="{{ $item->description }}">{{ $item->description }}</textarea>
+                                                            <div class="field-placeholder">Deskripsi <span class="text-danger">*</span></div>
                                                             <div class="form-text">
                                                                 Silakan masukkan Deskripsi.
                                                             </div>
@@ -296,8 +286,7 @@
                                                     <!-- Field wrapper end -->
 
                                                 </div>
-                                                <div
-                                                    style="border-bottom: solid black 1px; margin-bottom: 2%; margin-top: 2%;">
+                                                <div style="border-bottom: solid black 1px; margin-bottom: 2%; margin-top: 2%;">
                                                     <h6>Penagihan</h6>
                                                     <p>Informasi Penjualan digunakan dalam faktur, dan Informasi
                                                         Pembelian digunakan dalam tagihan. Pajak akan diterapkan pada
@@ -323,9 +312,8 @@
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input class="form-control"
-                                                            value="{{ $item->selling_price }}" type="number"
-                                                            id="inputField1" name="selling_price" readonly>
+                                                        <input class="form-control" value="" type="text" id="inputField1" name="selling_price" readonly>
+                                                        <input type="hidden" value="{{$item->selling_price}}" id="valueSell">
                                                         <div class="field-placeholder">Harga Jual</div>
                                                     </div>
                                                     <!-- Field wrapper end -->
@@ -334,9 +322,8 @@
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input class="form-control"
-                                                            value="{{ $item->purchase_price }}" type="text"
-                                                            id="inputField2" name="purchase_price" readonly>
+                                                        <input class="form-control" value="" type="text" id="inputField2" name="purchase_price" readonly>
+                                                        <input type="hidden" value="{{$item->purchase_price}}" id="valuePurchase">
                                                         <div class="field-placeholder">Harga Beli</div>
                                                     </div>
                                                     <!-- Field wrapper end -->
@@ -345,18 +332,15 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <select class="select-multiple js-states" name="tax_id"
-                                                            title="Select Product Category">
+                                                        <select class="select-multiple js-states" name="tax_id" title="Select Product Category">
                                                             <option disabled>Pilih Salah Satu</option>
                                                             @foreach ($tax as $item)
-                                                                <option value="{{ $item->id }}"
-                                                                    {{ old('tax_id') == $item->id ? 'selected' : '' }}>
-                                                                    {{ $item->name }} {{ $item->tax_amount }}%
-                                                                </option>
+                                                            <option value="{{ $item->id }}" {{ old('tax_id') == $item->id ? 'selected' : '' }}>
+                                                                {{ $item->name }} {{ $item->tax_amount }}%
+                                                            </option>
                                                             @endforeach
                                                         </select>
-                                                        <div class="field-placeholder">Pajak<span
-                                                                class="text-danger">*</span></div>
+                                                        <div class="field-placeholder">Pajak<span class="text-danger">*</span></div>
                                                     </div>
 
                                                 </div>
@@ -366,7 +350,7 @@
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
                                                 <div class="d-flex justify-content-end mt-4">
                                                     <a href="{{url('itemindex')}}" class="btn btn-outline-secondary1" type="reset" style="border-radius: 2px; margin-right: 1%">Batal</a>
-                                                    <button class="btn btn-primary" type="submit"style="border-radius: 2px">Simpan</button>
+                                                    <button class="btn btn-primary" type="submit" style="border-radius: 2px">Simpan</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -448,5 +432,7 @@
             }
 
         })
+
+       
     </script>
 </body>

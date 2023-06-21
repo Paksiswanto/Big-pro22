@@ -141,10 +141,12 @@
 											</div>
 											<div class="col-xl-3 col-lg-12 col-md-12 col-sm-12">
 												<div class="field-wrapper">
-													<input class="form-control" name="logo" type="file">
+													<input class="form-control" name="logo" type="file" id="logo-input" accept="image/*">
+													<img src="" alt="" srcset="">
 													<div class="field-placeholder">Logo</div>
 												</div>
-											</div>
+												<div id="logo-preview"></div>
+											</div>											
 
 
 										</div>
@@ -299,7 +301,60 @@
 
 			};
 		  </script>
+		  
+		<script>
+			function resizeImage(image, maxWidth, maxHeight) {
+				const canvas = document.createElement('canvas');
+				let width = image.width;
+				let height = image.height;
 
+				if (width > maxWidth || height > maxHeight) {
+					const aspectRatio = width / height;
+
+					if (aspectRatio > 1) {
+						width = maxWidth;
+						height = Math.floor(maxWidth / aspectRatio);
+					} else {
+						height = maxHeight;
+						width = Math.floor(maxHeight * aspectRatio);
+					}
+				}
+
+				canvas.width = width;
+				canvas.height = height;
+				const ctx = canvas.getContext('2d');
+				ctx.drawImage(image, 0, 0, width, height);
+
+				return canvas.toDataURL('image/jpeg');
+			}
+
+			const logoInput = document.getElementById('logo-input');
+			logoInput.addEventListener('change', function(event) {
+				const logoPreview = document.getElementById('logo-preview');
+				while (logoPreview.firstChild) {
+					logoPreview.removeChild(logoPreview.firstChild);
+				}
+
+				const file = event.target.files[0];
+				const reader = new FileReader();
+
+				reader.onload = function(e) {
+					const image = new Image();
+					image.src = e.target.result;
+
+					image.onload = function() {
+						const resizedImage = resizeImage(image, 200, 200);
+						const previewImage = document.createElement('img');
+						previewImage.classList.add('logo-preview-image');
+						previewImage.src = resizedImage;
+						logoPreview.appendChild(previewImage);
+					};
+				};
+
+				reader.readAsDataURL(file);
+			});
+		</script>		
+		
 	</body>
 
 <!-- Mirrored from www.kodingwife.com/demos/unipro/v1-x/05-design-violet/forms-layout-one.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 May 2023 03:02:31 GMT -->
