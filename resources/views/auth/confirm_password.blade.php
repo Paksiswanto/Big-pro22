@@ -13,7 +13,7 @@
 		<link rel="shortcut icon" href="img/fav.png" />
 
 		<!-- Title -->
-		<title>Register</title>
+		<title>Reset Password</title>
 
 
 		<!-- *************
@@ -100,7 +100,9 @@
 				</div>
 				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 					<div class="login-wrapper">
-						<form action="" method="POST">
+						<form action="{{ route('password.update') }}" method="POST">
+							<input type="hidden" name="email" value="{{request()->email}}">
+							<input type="hidden" name="token" value="{{request()->token}} ">
 							@csrf
 							<div class="login-screen" style="margin-bottom: 80px;">
 								<div class="login-body">

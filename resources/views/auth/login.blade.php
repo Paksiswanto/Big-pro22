@@ -121,7 +121,7 @@
                                     <div class="field-placeholder">Kata Kunci</div>
                                 </div>
                                 <div class="actions">
-                                    <a href="{{('reset_password')}}">Lupa Kata Kunci?</a>
+                                    <a href="{{('/forgot-password')}}">Lupa Kata Kunci?</a>
                                     <button type="submit" class="btn btn-primary">Login</button>
                                 </div>
                             </div>
