@@ -329,7 +329,12 @@
                         <i class="icon-notifications_none" style="font-size: 25px;"></i>
                         &emsp;Notifikasi
                     </div>
-                    <hr class="my-hr">
+                    <!-- <hr class="my-hr"> -->
+                    <div class="content" style="margin-top: 34px;">
+                        <div class="searchcontainer">
+                            <input class="search" name="cari" type="text" placeholder="Cari Disini..." style="margin-bottom: 2%; font-size:10pt" />
+                        </div>
+                    </div>
 
 
                 </div>
@@ -340,11 +345,12 @@
                 <!-- Sidebar menu starts -->
                 <div class="sidebarMenuScroll">
                     <div class="sidebar-menu">
-                    <div style=" margin-left: 86%; font-size: 12pt;">
-                                <a href=""><i class="icon-done_all" style="color: #5957b1;"></i></a>
-                            </div>
+
+                        <div style=" margin-left: 86%; font-size: 12pt;">
+                            <a href=""><i class="icon-done_all" style="color: #5957b1;"></i></a>
+                        </div>
                         <ul style="margin-top: -25px;">
-                            
+
                             <li>
                                 <div class="d-flex" style="margin-top: 30px;">
                                     <a href="#">Transfer berhasil
@@ -354,7 +360,13 @@
                                         <a href=""><i class="icon-check-circle" style="z-index: 1;"></i></a>
                                     </div>
                                 </div>
+
+                                <div style="margin-left: 9%;">
+                                    <span style="font-size: 7pt; color: #5957b1;">8 minggu yang lalu</span>
+                                </div>
+
                                 <div class="tab-pane-header1">
+
                                     <hr class="my-hr">
                                 </div>
                                 <div class="d-flex">
@@ -365,6 +377,11 @@
                                         <a href=""><i class="icon-check-circle" style="z-index: 1;"></i></a>
                                     </div>
                                 </div>
+
+                                <div style="margin-left: 9%;">
+                                    <span style="font-size: 7pt; color: #5957b1;">8 minggu yang lalu</span>
+                                </div>
+                                
                                 <div class="tab-pane-header1">
                                     <hr class="my-hr">
                                 </div>
