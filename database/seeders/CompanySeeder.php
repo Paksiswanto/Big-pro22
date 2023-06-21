@@ -15,7 +15,7 @@ class CompanySeeder extends Seeder
     {
         // Contoh data pengguna
         $company = [
-            ['name' => 'hai', 'email' => 'hai', 'npwp' => 'hai', 'addtelephoneress' => '123', 'address' => 'hai', 'city' => 'hai', 'postal_code' => 'hai', 'province' => 'hai', 'logo' => 'hai', 'user_id' => '1', 'country' => 'japan'],
+            ['name' => 'hai', 'email' => 'hai', 'npwp' => '1231', 'addtelephoneress' => '123', 'address' => 'hai', 'city' => 'hai', 'postal_code' => 'hai', 'province' => 'hai', 'logo' => 'hai', 'user_id' => '1', 'country' => 'japan'],
 
             // Tambahkan data pengguna lain sesuai kebutuhan
         ];

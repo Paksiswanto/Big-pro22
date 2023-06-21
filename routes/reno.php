@@ -21,7 +21,7 @@ Route::get('send_otp', [AuthController::class, 'send_otp'])->name('send_otp');
 Route::post('keregis', [AuthController::class, 'p_register'])->name('register');
 Route::post('kelogin', [AuthController::class, 'p_login'])->name('login');
 
-Route::post('/forgot-password', [AuthController::class, ''])->name('login');
+Route::post('/forgot-password', [AuthController::class, ''])->name('ngentod');
 
 Route::get('/forgot-password', function () {
     return view('auth.reset_password');
