@@ -17,4 +17,9 @@ class VerificationController extends Controller
         $data = User::find($id);
         return view('add_company',compact('data'));
     }
+
+    function resend(Request $request) {
+        $request->user()->sendEmailVerificatioNnotification();
+        return  view ('auth.verify1');
+    }
 }

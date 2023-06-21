@@ -55,7 +55,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::get('reset_password', function () {
-    return view('reset_password');
+    return view('auth.reset_password');
 });
 Route::get('confirm_password', function () {
     return view('confirm_password');

@@ -100,7 +100,9 @@
 				</div>
 				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 					<div class="login-wrapper">
-						<form action="https://www.kodingwife.com/demos/unipro/v1-x/05-design-violet/crm.html">
+						{{-- {{ route('password.update') }} --}}
+						<form action="" method="post">
+							@csrf
 							<div class="login-screen">
 								<div class="login-body">
 									<a href="crm.html" class="login-logo">
@@ -108,7 +110,7 @@
 									</a>
 									<h6>Selamat Datang,<br>Atur Ulang Kata Sandi Anda</h6>
 									<div class="field-wrapper">
-										<input type="email" placeholder="Masukan email anda" autofocus>
+										<input type="email" name="email" placeholder="Masukan email anda" autofocus>
 										<div class="field-placeholder">Email</div>
 									</div>
 									<div class="actions">

@@ -114,11 +114,12 @@
 									</div>
 									<div class="actions">
 										<button type="submit" class="btn btn-primary">Kirim</button>
+										
 									</div>
 								</div>
 								<div class="login-footer">
-									<span><a href="{{url('login')}}" class="additional-link" >Kembali Ke Halaman Login</a></span>
-								</div>
+									<button type="button" class="input-icon-block btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalotp">Kirim Ulang OTP</button>
+									</div>
 							</div>
 						</form>
 					</div>
@@ -129,9 +130,46 @@
 		
 			</div>
 		</div>
-		<!-- *************
-			************ Login container end *************
-		************* -->
+		   <!-- Modal account start -->
+		   <form action="{{ route('login') }}" method="post">
+			@csrf
+			<div class="modal fade" id="modalotp" tabindex="-1" aria-labelledby="modalotp" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="margin-top: -20px;">
+					<div class="modal-content" style="padding: 0px; ">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Kirim Ulang OTP</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+								<!-- Field wrapper start -->
+								<div class="field-wrapper">
+							<div class="input-group">
+								<input type="text" class="form-control" style="z-index: auto" name="password" id="password" placeholder="Masukan Password" required>
+								<input type="hidden" name="email" value="{{$email}}">
+							</div>
+							<div class="field-placeholder">Password<span class="text-danger">*</span></div>
+						</div>
+								<!-- Field wrapper end -->
+
+							</div>
+							
+							
+							
+						
+						</div>
+
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-secondary">Simpan</button>
+							<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<!-- Modal account end -->
 
 		<!-- *************
 			************ Required JavaScript Files *************
