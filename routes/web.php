@@ -69,6 +69,10 @@ Route::get('import', function () {
 Route::get('/itemindex',[ItemController::class,'itemindex'])->Name('item-index');
 Route::get('/add-item',[ItemController::class,'additem'])->Name('item-add');
 Route::get('/edit-item/{id}',[ItemController::class,'edititem'])->Name('item-edit');
+Route::get('/get-item-data/{id}', [ItemController::class, 'getItemData'])->name('get.item.data');
+Route::get('/get-items-data', [InvoiceController::class,'getAllItems'])->name('get-all-items');
+Route::get('/get-tax-data', [InvoiceController::class,'getAllTaxes'])->name('get-all-tax');
+
 
 Route::get('tambah_pemasok', function () {
     return view('pembelian.pembelian_tambah_pemasok');
@@ -113,7 +117,7 @@ Route::get('/show_recurring_expenditure', [TransactionsController::class, 'show_
 //selling
 Route::get('invoice', [InvoiceController::class, 'invoice'])->name('invoice');
 Route::get('recurring_invoice', [InvoiceController::class, 'recurring_invoice'])->name('recurring_invoice');
-Route::get('add_invoice', [InvoiceController::class, 'add_invoice'])->name('add_invoice');
+Route::get('add_invoice', [InvoiceController::class, 'addInvoice'])->name('add_invoice');
 Route::get('add_recurring_invoice', [InvoiceController::class, 'add_recurring_invoice'])->name('add_recurring_invoice');
 Route::get('details_recurring', [InvoiceController::class, 'detail_recurring'])->name('details_recurring');
 Route::get('details', [InvoiceController::class, 'details'])->name('details_inv');

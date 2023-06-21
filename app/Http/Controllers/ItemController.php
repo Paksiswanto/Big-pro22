@@ -99,6 +99,27 @@ class ItemController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan saat mengimpor data: ' . $e->getMessage());
         }
     }
-
+    public function getItemData($id)
+    {
+        $item = Item::find($id);
+    
+        if ($item) {
+            return response()->json([
+                'success' => true,
+                'data' => $item,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Item not found',
+            ]);
+        }
+    }
+    
 
 }
+    
+    
+    
+    
+

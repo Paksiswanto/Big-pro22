@@ -8,6 +8,7 @@ use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\InvoiceSetting;
 use App\Models\Item;
+use App\Models\Tax;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,24 @@ use PHPUnit\Metadata\Uses;
 
 class InvoiceController extends Controller
 {
+    function getAllItems() {
+        
+        $items = Item::all();
+
+        return response()->json([
+            'success' => true,
+            'data' => $items,
+        ]);
+    }
+    function getAllTaxes() {
+        $taxes = Tax::all();
+    
+        return response()->json([
+            'success' => true,
+            'data' => $taxes,
+        ]);
+    }
+    
     public function invoice()
     {
         $invoice = Invoice::all();
@@ -24,12 +43,14 @@ class InvoiceController extends Controller
     {
         return view('sale.sale_recurring_invoice');
     }
-    public function add_invoice()
+    public function addInvoice()
     {
         $customer = Customer::all();
-        $item = Item::all();
+        $item = Item::all()->whereNotNull('selling_price');
         $category = Category::all();
-        return view('sale.sale_add_invoice',compact('customer','item','category'));
+        $tax = Tax::all();
+        $default = InvoiceSetting::find(1);
+        return view('sale.sale_add_invoice',compact('customer','item','category','tax','default'));
     }
     public function create_invoice(Request $request)
     {
