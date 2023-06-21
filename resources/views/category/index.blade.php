@@ -227,28 +227,32 @@
                                         </table>
                                         <!-- Card start -->
                                         <div class="card">
-                                            <div class="card-body" style="margin-left: -2.1%">
+												<div class="card-body col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                                                <nav aria-label="Page navigation example">
-                                                    <ul class="pagination" style="justify-content: flex-end;">
-                                                        <li class="page-item">
-                                                            <a class="page-link" href="#" aria-label="Previous">
-                                                                <span aria-hidden="true">&laquo;</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                        <li class="page-item">
-                                                            <a class="page-link" href="#" aria-label="Next">
-                                                                <span aria-hidden="true">&raquo;</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </nav>
+													<nav aria-label="Page navigation example">
+														<ul class="pagination" style="justify-content: flex-end;">
+															<li class="page-item">
+																@if ($categories->currentPage() > 1)
+																<a class="page-link" href="{{ $categories->previousPageUrl() }}" aria-label="Previous">
+																	<span aria-hidden="true">«</span>
+																</a>
+																@endif
+															</li>
+															@for ($i = 1; $i <= $categories->lastPage(); $i++)
+																<li class="page-item {{ $categories->currentPage() == $i ? 'active' : '' }}"><a class="page-link" href="{{ $categories->url($i) }}">{{ $i }}</a></li>
+																@endfor
+																<li class="page-item">
+																	@if ($categories->currentPage() < $categories->lastPage())
+																		<a class="page-link" href="{{ $categories->nextPageUrl() }}" aria-label="Next">
+																			<span aria-hidden="true">»</span>
+																		</a>
+																		@endif
+																</li>
+														</ul>
+													</nav>
 
-                                            </div>
-                                        </div>
+												</div>
+											</div>
                                         <!-- Card end -->
                                     </div>
                                 </div>

@@ -112,6 +112,7 @@
 									<div class="actions">
 										<p>Mohon untuk verifikasi email terlebih dahulu</p>
 									</div>
+									<a href="{{url('/email/varify/resend-verification')}}" class="btn btn-light mb-3">Kirim Ulang</a>
 								</div>
 								<div class="login-footer">
 								</div>

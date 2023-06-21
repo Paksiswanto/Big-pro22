@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Mail\sendCode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Mail\sendCode;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Validation\ValidationException;
-use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
@@ -42,6 +41,11 @@ class AuthController extends Controller
             ]);
         }
         $kodeOTP = random_int(100000, 999999);
+        if($user && $user->otp_exp > Carbon::now()->addMinutes(9)){
+             throw ValidationException::withMessages([
+            'email' => ['Tunggu 1 menit untuk mendapat OTP baru'],
+        ]);
+        } 
         $user->update([
             'otp' => $kodeOTP,
             'otp_exp' =>  Carbon::now()->addMinutes(10),
@@ -60,14 +64,14 @@ class AuthController extends Controller
  
     if (!$user) {
         throw ValidationException::withMessages([
-            'email' => ['User not found.'],
+            'email' => ['Akun tidak di temukan.'],
         ]);
     }
 
     // Periksa apakah kode OTP yang dimasukkan sesuai
     if ($request->otp != $user->otp) {
         throw ValidationException::withMessages([
-            'otp' => ['Invalid OTP.'],
+            'otp' => ['OTP salah.'],
         ]);
     }
 
@@ -76,7 +80,7 @@ class AuthController extends Controller
     $otpExpired = Carbon::parse($user->otp_exp);
     if ($now->gt($otpExpired)) {
         throw ValidationException::withMessages([
-            'otp' => ['OTP has expired.'],
+            'otp' => ['OTP Kadarluarsa.'],
         ]);
     }
 
@@ -108,4 +112,6 @@ class AuthController extends Controller
 
 
     }
+   
+
 }
