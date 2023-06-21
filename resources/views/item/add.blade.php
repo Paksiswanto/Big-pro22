@@ -230,7 +230,6 @@
                                                         <input class="form-control" name="name" type="text" placeholder=" Masukan nama">
                                                         <div class="field-placeholder">Nama <span class="text-danger">*</span></div>
                                                         <div class="form-text">
-
                                                         </div>
                                                     </div>
                                                     <!-- Field wrapper end -->

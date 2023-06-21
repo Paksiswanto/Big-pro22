@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\ItemImport;
+use App\Imports\YourImportClass;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Tax;
 use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PHPExcel_IOFactory;
 
 class ItemController extends Controller
 {
@@ -45,7 +49,7 @@ class ItemController extends Controller
         $item->selling_price = $request->selling_price;
         $item->purchase_price = $request->purchase_price;
         $item->tax_id = $request->tax_id;
-        $item->company_id = $request->company_id;
+        $item->company_id = Auth::user()->company_id;
         $item->save();
     
         return redirect('/itemindex')->with('success', 'Data berhasil ditambahkan.');
@@ -73,5 +77,28 @@ class ItemController extends Controller
 
         return redirect('/itemindex')->with('success', 'Data berhasil diupdate');
     }
+
+    public function import()
+    {
+      return view('item.import');  
+    }
+
+    public function import_data(Request $request)
+    {
+        $this->validate($request, [
+            'myFile' => 'required|mimes:xls,xlsx'
+        ]);
+
+        $file = $request->file('myFile');
+
+        try {
+            Excel::import(new ItemImport, $file);
+
+            return redirect()->back()->with('success', 'Data berhasil diimport. Jumlah baris yang diimpor:');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat mengimpor data: ' . $e->getMessage());
+        }
+    }
+
 
 }

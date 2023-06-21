@@ -21,3 +21,5 @@ Route::post('create_invoice', [InvoiceController::class, 'create_invoice'])->nam
 Route::get('get-item/{itemId}', [InvoiceController::class, 'getItem'])->name('get-item');
 Route::post('create_settingInvoice', [InvoiceController::class, 'update_invSetting'])->name('create_settingInvoice');
 Route::put('update_company', [CompanyController::class, 'update_company'])->name('update_company');
+Route::get('/import', [ItemController::class, 'import'])->name('import');
+Route::post('/import_data', [ItemController::class, 'import_data'])->name('import_data');

@@ -29,7 +29,7 @@ class CompanyController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->logo = $request->input('logo');
-        $user->addtelephoneress = $request->input('addtelephoneress');
+        $user->telephone = $request->input('telephone');
         $user->npwp = $request->input('npwp');
         $user->user_id = $request->input('user_id');
         $user->save();
