@@ -275,7 +275,7 @@
     ************ Main container end *************
    ************* -->
 
-        </divkolaja>
+        </div>
         <!-- Page wrapper end -->
 
         <!-- *************
