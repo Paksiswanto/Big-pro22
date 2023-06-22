@@ -18,7 +18,9 @@ class InvoiceController extends Controller
 {
     function getAllItems() {
         
-        $items = Item::all();
+        $items = Item::whereNotNull('selling_price')
+        ->Where('company_id', Auth::user()->company_id)
+        ->get();
 
         return response()->json([
             'success' => true,
@@ -26,7 +28,8 @@ class InvoiceController extends Controller
         ]);
     }
     function getAllTaxes() {
-        $taxes = Tax::all();
+        $taxes = Tax::where('company_id',Auth::user()->company_id)
+        ->get();
     
         return response()->json([
             'success' => true,
@@ -46,11 +49,10 @@ class InvoiceController extends Controller
     public function addInvoice()
     {
         $customer = Customer::all();
-        $item = Item::all()->whereNotNull('selling_price');
         $category = Category::all();
         $tax = Tax::all();
         $default = InvoiceSetting::find(1);
-        return view('sale.sale_add_invoice',compact('customer','item','category','tax','default'));
+        return view('sale.sale_add_invoice',compact('customer','category','tax','default'));
     }
     public function create_invoice(Request $request)
     {

@@ -16,7 +16,7 @@
     <!-- Title -->
     <title>Unknown | Tambah-Faktur</title>
 
-
+    
     <!-- *************
    ************ Common Css Files *************
   ************ -->
@@ -25,6 +25,7 @@
 
     <!-- Icomoon Font Icons css -->
     <link rel="stylesheet" href="{{ asset('Gmbslagi/fonts/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/bs-select/bs-select.css') }}" />
 
     <!-- Main css -->
     <link rel="stylesheet" href="{{ asset('Gmbslagi/css/main.css') }}">
@@ -387,7 +388,7 @@
                                                     <tr>
                                                         <td>
                                                             <div class="field-wrapper m-0">
-                                                                <select id="item-dropdown" name="item_id[]">
+                                                                <select class="item-dropdown" name="item_id[]">
                                                                     <!-- Opsi item akan ditambahkan secara dinamis menggunakan JavaScript -->
                                                                 </select>                                                               
                                                                 
@@ -415,7 +416,7 @@
                                                                 
                                                                 <div
                                                                     class="field-wrapper m-0 mb-1 pajak-input-wrapper">
-                                                                    <select class="select-single js-states" id="tax-dropdown"
+                                                                    <select class="select-single js-states" class = "tax-dropdown"
                                                                     name="tax_id[]" title="Select Product Category"
                                                                     data-live-search="true">
 
@@ -719,10 +720,12 @@
     <!-- Bootstrap Select JS -->
     <script src="{{ asset('Gmbslagi/vendor/bs-select/bs-select.min.js') }}"></script>
     <script src="{{ asset('Gmbslagi/vendor/bs-select/bs-select-custom.js') }}"></script>
+
+    	<!-- Bootstrap Select CSS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-    <script>
+    {{-- <script>
 $(document).ready(function() {
   // Mengambil data item dari server
   $.ajax({
@@ -753,7 +756,7 @@ $(document).ready(function() {
   });
 });
 
-    </script>
+    </script> --}}
 <script>
  $(document).ready(function() {
   // Mengambil data tax dari server
@@ -766,12 +769,13 @@ $(document).ready(function() {
         var taxData = response.data; // Data tax yang telah diambil
 
         // Menghapus opsi sebelumnya, jika ada
-        $('#tax-dropdown').empty();
+        $('.tax-dropdown').empty();
 
         // Menambahkan opsi tax ke dalam dropdown
+        
         taxData.forEach(function(tax, index) {
           var option = $('<option>').val(tax.id).text(tax.name).attr('id', 'tax-option-' + index);
-          $('#tax-dropdown').append(option);
+          $('.tax-dropdown').append(option);
         });
 
         console.log('Data tax berhasil diambil dan ditampilkan di HTML');
@@ -837,14 +841,7 @@ $(document).ready(function() {
     </script>
     
    <script>
-    $(document).ready(function() {
-  // Event listener untuk perubahan select dengan class tertentu
-  $('#item-dropdown').change(function() {
-    var selectedValue = $(this).val();
-    console.log('Nilai yang dipilih: ' + selectedValue);
-  });
-});
-  $(document).ready(function() {
+ $(document).ready(function() {
   // Mengambil data item dari server
   $.ajax({
     url: '/get-items-data', // Gantilah '/get-items-data' dengan URL endpoint yang sesuai di aplikasi Anda
@@ -855,21 +852,19 @@ $(document).ready(function() {
         var itemsData = response.data; // Data item yang telah diambil
 
         // Menghapus opsi sebelumnya, jika ada
-        $('#item-dropdown').empty();
+        $('.item-dropdown').empty();
+
+        // Menambahkan opsi "Pilih Item" sebagai opsi default
+        var defaultOption = $('<option>').val('').text('Pilih Item');
+        $('.item-dropdown').append(defaultOption);
 
         // Menambahkan opsi item ke dalam dropdown
         itemsData.forEach(function(item) {
           var option = $('<option>').val(item.id).text(item.name);
-          $('#item-dropdown').append(option);
+          $('.item-dropdown').append(option);
         });
 
         console.log(response);
-
-        // Menghapus opsi-opsi yang belum dipilih
-        $('select[name="item_id[]"]').each(function() {
-          var selectedItemId = $(this).val();
-          $(this).find('option[value="' + selectedItemId + '"]');
-        });
       } else {
         console.log(response.message);
       }
@@ -878,6 +873,45 @@ $(document).ready(function() {
       console.log(error);
     }
   });
+
+  // Event listener pada perubahan nilai dropdown
+  $(document).ready(function() {
+  // Event listener pada perubahan nilai dropdown
+  $(document).on('change', '.item-dropdown', function() {
+    var selectedItemId = $(this).val();
+    var row = $(this).closest('tr'); // Temukan baris terkait dengan dropdown yang dipilih
+
+    // Melakukan permintaan data dengan id yang dipilih
+    if (selectedItemId !== '') {
+      $.ajax({
+        url: '/get-item-data/' + selectedItemId, // Gantilah '/get-item-data' dengan URL endpoint yang sesuai di aplikasi Anda
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+          if (response.success) {
+            var itemData = response.data; // Data item yang diterima dari server
+
+            // Mengisi nilai input dengan data item yang dipilih dalam baris yang tepat
+            row.find('input[name="description[]"]').val(itemData.description);
+            row.find('input[name="quantity[]"]').val(itemData.quantity);
+            row.find('input[name="price[]"]').val(itemData.selling_price);
+            // Setel nilai input lainnya sesuai kebutuhan
+            console.log(itemData);
+          } else {
+            console.log(response.message);
+          }
+        },
+        error: function(xhr, status, error) {
+          console.log(error);
+        }
+      });
+    } else {
+      // Jika opsi "Pilih Item" dipilih, lakukan tindakan yang sesuai
+      console.log('Pilih Item dipilih');
+    }
+  });
+});
+
 });
 
    </script>
@@ -949,7 +983,7 @@ $(document).ready(function() {
         })
     </script>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
 <script>
     document.getElementById('add-row').addEventListener('click', function() {
@@ -981,7 +1015,7 @@ $(document).ready(function() {
         <td>
           <div id="pajak-wrapper">
             <div class="field-wrapper m-0 mb-1 pajak-input-wrapper">
-              <select class="select-single js-states tax-dropdown" name="tax_id[]" title="Select Product Category" data-live-search="true">
+              <select class="tax-dropdown select-single js-states" name="tax_id[]" title="Select Product Category" data-live-search="true">
                 <!-- Opsi tax akan ditambahkan secara dinamis menggunakan JavaScript -->
               </select>
             </div>
@@ -994,7 +1028,7 @@ $(document).ready(function() {
         </td>
         <td>
           <div class="field-wrapper m-0">
-            <input type="number" style="border-radius:2px" name="amount[]" class="form-control">
+            <input type="number" style="border-radius:2px" name="amount" class="form-control">
           </div>
         </td>
         <td>
@@ -1006,7 +1040,7 @@ $(document).ready(function() {
         </td>
       `;
       tableBody.appendChild(newRow);
-  
+
       // Ambil data item dan tax dari server
       $.ajax({
         url: '/get-items-data', // Gantilah '/get-items-data' dengan URL endpoint yang sesuai di aplikasi Anda
@@ -1015,13 +1049,19 @@ $(document).ready(function() {
         success: function(response) {
           if (response.success) {
             var itemsData = response.data; // Data item yang telah diambil
-  
+
             // Temukan dropdown item terbaru dalam baris yang ditambahkan
             var itemDropdown = newRow.querySelector('.item-dropdown');
-  
+
             // Hapus opsi sebelumnya, jika ada
-            itemDropdown.innerHTML = '';
-  
+            $(itemDropdown).empty();
+
+            // Tambahkan opsi "Pilih Item" sebagai opsi default
+            var defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.text = 'Pilih Item';
+            itemDropdown.appendChild(defaultOption);
+
             // Tambahkan opsi item ke dalam dropdown
             itemsData.forEach(function(item) {
               var option = document.createElement('option');
@@ -1029,7 +1069,10 @@ $(document).ready(function() {
               option.text = item.name;
               itemDropdown.appendChild(option);
             });
-  
+
+            // Inisialisasi ulang Select2 setelah opsi ditambahkan
+            $(itemDropdown).select2(); // Inisialisasi ulang Select2
+
             console.log('Data item berhasil diambil dan ditampilkan di HTML');
           } else {
             console.log(response.message);
@@ -1039,7 +1082,7 @@ $(document).ready(function() {
           console.log(error);
         }
       });
-  
+
       // Ambil data tax dari server
       $.ajax({
         url: '/get-tax-data', // Gantilah '/get-tax-data' dengan URL endpoint yang sesuai di aplikasi Anda
@@ -1048,13 +1091,19 @@ $(document).ready(function() {
         success: function(response) {
           if (response.success) {
             var taxData = response.data; // Data tax yang telah diambil
-  
+
             // Temukan dropdown tax terbaru dalam baris yang ditambahkan
             var taxDropdown = newRow.querySelector('.tax-dropdown');
-  
+
             // Hapus opsi sebelumnya, jika ada
-            taxDropdown.innerHTML = '';
-  
+            $(taxDropdown).empty();
+
+            // Tambahkan opsi "Pilih Tax" sebagai opsi default
+            var defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.text = 'Pilih Tax';
+            taxDropdown.appendChild(defaultOption);
+
             // Tambahkan opsi tax ke dalam dropdown
             taxData.forEach(function(tax) {
               var option = document.createElement('option');
@@ -1062,7 +1111,10 @@ $(document).ready(function() {
               option.text = tax.name;
               taxDropdown.appendChild(option);
             });
-  
+
+            // Inisialisasi ulang Select2 setelah opsi ditambahkan
+            $(taxDropdown).select2(); // Inisialisasi ulang Select2
+
             console.log('Data tax berhasil diambil dan ditampilkan di HTML');
           } else {
             console.log(response.message);
@@ -1073,9 +1125,10 @@ $(document).ready(function() {
         }
       });
     });
-  </script>
+</script>
   
-    <script>
+
+      <script>
         // Fungsi untuk menghapus pajak yang baru ditambahkan
         function deletePajak(event) {
             var pajakInputWrapper = event.target.closest('.pajak-input-wrapper');
