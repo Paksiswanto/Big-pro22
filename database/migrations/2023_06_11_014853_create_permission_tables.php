@@ -44,11 +44,12 @@ class CreatePermissionTables extends Migration
             $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
             $table->timestamps();
             if ($teams || config('permission.testing')) {
-                $table->unique([$columnNames['team_foreign_key'], 'name', 'guard_name']);
+                $table->index([$columnNames['team_foreign_key'], 'name', 'guard_name'], 'roles_team_name_guard_index');
             } else {
-                $table->unique(['name', 'guard_name']);
+                $table->index(['name', 'guard_name'], 'roles_name_guard_index');
             }
         });
+        
 
         Schema::create($tableNames['model_has_permissions'], function (Blueprint $table) use ($tableNames, $columnNames, $teams) {
             $table->unsignedBigInteger(PermissionRegistrar::$pivotPermission);
