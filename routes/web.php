@@ -87,6 +87,8 @@ Route::get('add_supplier', [SupplierController::class, 'add'])->name('add_suppli
 Route::get('/edit_supplier/{id}', [SupplierController::class, 'edit'])->name('edit_supplier');
 Route::get('details_supplier', [SupplierController::class, 'details'])->name('details_supplier');
 
+
+
 Route::get('icons', function () {
     return view('icons');
 });

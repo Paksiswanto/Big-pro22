@@ -238,14 +238,43 @@
                                               margin-bottom: 2%; font-size:10pt " />
                                             </div>
                                         </div>
+                                        
                                         <div class="table-responsive">
+                                            <form action="{{ route('delete_selected_supplier') }}" method="POST" id="delete-selected-form">
+                                                @csrf
+                                                @method('DELETE')
                                             <div class="hidden-menu" style="display: none; background-color: #f2f2f2; font-size: 12pt; padding: 10px;">
                                                 <p style="display: inline" id="count-display">&emsp;</p>
                                                 &emsp;<a href="#" title="Aktifkan"> <i class="icon-check-circle" style="color:#424242 "></i> </a>
                                                 &emsp;<a href="#" title="Nonaktifkan"> <i class="icon-do_not_disturb_alt"></i> </a>
-                                                &emsp;<a href="#" title="Hapus"> <i class="icon-trash-2"></i> </a>
+                                                &emsp; <a href="#" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole1"></a>
+ 
                                             </div>
+                                            {{-- mulai --}}
                                             <table class="table table-hover caption-top">
+                                                  <!-- Modal start -->
+                                        <div class="modal fade" id="deleterole1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content" style="padding: 0px">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Hapus Pemasok di centang</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Anda Yakin Ingin Menghapus Pemasok Ini?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        
+                                                        <button type="submit" class="btn btn-danger" id="deleteButton">Hapus</button>
+                                                    
+                                                        
+                                                        
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal end -->
                                                 <thead>
                                                     <tr>
                                                         <th scope="col"> <input type="checkbox" id="select-all-checkbox"> </th>
@@ -260,7 +289,7 @@
                                                     <!-- Data 1 -->
                                                     @foreach ($data as $row)
                                                     <tr class="table-row">
-                                                        <td><input type="checkbox" class="other-checkbox"></td>
+                                                        <td><input type="checkbox" class="other-checkbox" name="selected_ids[]" value="{{$row->id}}"></td>
                                                         <td>{{ $row->name }}</td>
                                                         <td>{{ $row->email }}</td>
                                                         <td>{{ $row->country }}</td>
@@ -273,6 +302,35 @@
                                                             </div>
                                                         </td>
                                                     </tr>
+                                                      <!-- Modal start -->
+                                        <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content" style="padding: 0px">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Hapus pemasok</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                </form>
+                                                    <div class="modal-body">
+                                                        <p>Anda Yakin Ingin Menghapus Pemasok Ini?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      @isset($row)
+                                                          
+                                                      <form action="{{ route('delete_supp', ['id' => $row->id]) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger" id="deleteButton">Hapus</button>
+                                                    </form>
+                                                    @endisset
+                                                    
+                                                    
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal end -->
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -280,7 +338,6 @@
                                         <!-- Card start -->
                                         <div class="card">
                                             <div class="card-body col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
                                                 <nav aria-label="Page navigation example">
                                                     <ul class="pagination" style="float: right;">
                                                         <li class="page-item">
@@ -317,11 +374,12 @@
                                                                 <div class="dz-message needsclick">
                                                                     <button type="button" class="dz-button" style="border:none; margin-right:20%; margin-left:20%; margin-top: 12%">Pilih berkas di sini untuk mengunggah.</button><br>
                                                                 </div>
-
+                                                                
                                                             </form>
                                                         </div>
                                                     </div>
-                                                    <div class="modal-footer" style="margin-top:2%">
+                                                </form>
+                                                <div class="modal-footer" style="margin-top:2%">
                                                         <a href="" onclick="window.location.reload()" style="margin-right: 2%" data-bs-dismiss="modal">Batal</a>
                                                         <button type="button" class="btn btn-primary" style="border-radius: 2px">Upload</button>
                                                     </div>
@@ -329,25 +387,8 @@
                                             </div>
                                         </div>
                                         <!-- Modal end -->
-                                        <!-- Modal start -->
-                                        <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content" style="padding: 0px">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Hapus pemasok</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Anda Yakin Ingin Menghapus Pemasok Ini?</p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Modal end -->
+                                      
+                                      
                                     </div>
                                 </div>
                                 <!-- Card end -->

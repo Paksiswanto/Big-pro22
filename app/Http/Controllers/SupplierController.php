@@ -11,7 +11,7 @@ class SupplierController extends Controller
     public function supplier()
     {
         $data = supplier::all();
-        return view('purchase.purchase_supplier',compact('data'));
+        return view('purchase.purchase_supplier', compact('data'));
     }
     public function add()
     {
@@ -20,13 +20,28 @@ class SupplierController extends Controller
     public function edit($id)
     {
         $data = supplier::find($id);
-        return view('purchase.purchase_edit_supplier',compact('data'));
+        return view('purchase.purchase_edit_supplier', compact('data'));
     }
+
+
+    public function delete($id)
+    {
+        $supplier = supplier::find($id);
+
+        if ($supplier) {
+            $supplier->delete();
+            return redirect()->back()->with('success', 'Data supplier berhasil dihapus');
+        } else {
+            return redirect()->back()->with('error', 'Data supplier tidak ditemukan');
+        }
+    }
+
+
     public function details()
     {
         return view('purchase.purchase_details_supplier');
     }
-       public function insert_supplier(Request $request)
+    public function insert_supplier(Request $request)
     {
         // Mendapatkan file foto yang diunggah dari permintaan pengguna
         $photo = $request->file('photo');
@@ -111,10 +126,27 @@ class SupplierController extends Controller
     {
         $data = supplier::find($id);
         $photoPath = 'public/Gmbslagi/img/supplier/' . $data->photo;
-        if(file_exists($photoPath)){
+        if (file_exists($photoPath)) {
             unlink($photoPath);
         }
         $data->delete();
         return redirect()->route('supplier');
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        $selectedIds = $request->input('selected_ids');
+    
+        if (!empty($selectedIds)) {
+           $udin = Supplier::whereIn('id', $selectedIds);
+           $photoPath = 'public/Gmbslagi/img/supplier/' . $udin->photo;
+        if (file_exists($photoPath)) {
+            unlink($photoPath);
+        }
+        $udin->delete();
+            return redirect()->back()->with('success', 'Data berhasil dihapus.');
+        } else {
+            return redirect()->back()->with('error', 'Pilih setidaknya satu data untuk dihapus.');
+        }
     }
 }

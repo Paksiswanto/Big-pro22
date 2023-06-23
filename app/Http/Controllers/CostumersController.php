@@ -125,4 +125,15 @@ class CostumersController extends Controller
         $data->delete();
         return redirect()->route('costumers');
     }
+    public function deleteSelected(Request $request)
+    {
+        $selectedIds = $request->input('selected_ids');
+    
+        if (!empty($selectedIds)) {
+            customer::whereIn('id', $selectedIds)->delete();
+            return redirect()->back()->with('success', 'Data berhasil dihapus.');
+        } else {
+            return redirect()->back()->with('error', 'Pilih setidaknya satu data untuk dihapus.');
+        }
+    }
 }
