@@ -69,9 +69,9 @@ Route::get('import', function () {
 Route::get('/itemindex',[ItemController::class,'itemindex'])->Name('item-index');
 Route::get('/add-item',[ItemController::class,'additem'])->Name('item-add');
 Route::get('/edit-item/{id}',[ItemController::class,'edititem'])->Name('item-edit');
-Route::get('/get-item-data/{id}', [ItemController::class, 'getItemData'])->name('get.item.data');
-Route::get('/get-items-data', [InvoiceController::class,'getAllItems'])->name('get-all-items');
-Route::get('/get-tax-data', [InvoiceController::class,'getAllTaxes'])->name('get-all-tax');
+Route::get('/get-items-data', [InvoiceController::class,'getItemsData'])->name('get-all-items');
+Route::get('/get-tax-data', [InvoiceController::class,'getTaxData'])->name('get-tax-data');
+Route::get('/get-item-data/{id}', [InvoiceController::class, 'getItemData'])->name('get-item-data');
 
 
 Route::get('tambah_pemasok', function () {

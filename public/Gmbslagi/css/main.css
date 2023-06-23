@@ -502,14 +502,7 @@ p {
     cursor: pointer;
 }
 
-.select-menu .options {
-    padding: 6px 6px 14px 30px;
-    display: none;
-}
 
-.select-menu.active .option{
-    display: block;
-}
 
 .my-hr {
     border: none;
