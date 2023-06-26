@@ -11,31 +11,41 @@ class CompanyController extends Controller
 {
     public function company()
     {
-        $id=Auth::user()->company_id;
+        $id = Auth::user()->company_id;
         $data = company::all()->where('id', $id)->first();
-        return view('company.index',['data'=>$data]);
+        return view('company.index', ['data' => $data]);
     }
     public function add_company()
     {
-        
+
         return view('add_company');
     }
     public function add_company_id(Request $request)
     {
-         
-    
+
+        // Mendapatkan file foto yang diunggah dari permintaan pengguna
+        $logo = $request->file('logo');
+
+        // Menghasilkan nama unik untuk file foto
+        $filename = uniqid() . '. v' . $logo->getClientOriginalExtension();
+
+        // Menentukan path atau direktori tujuan untuk menyimpan file foto
+        $destinationPath = 'public/Gmbslagi/img/company';
+
+        // Menyimpan file foto ke direktori tujuan dengan nama yang dihasilkan
+        $logo->move($destinationPath, $filename);
         // simpan data yang telah diisi
         $user = new Company();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->logo = $request->input('logo');
+        $user->logo = $filename;
         $user->telephone = $request->input('telephone');
         $user->npwp = $request->input('npwp');
         $user->user_id = $request->input('user_id');
         $user->save();
         $data = User::find($request->user_id);
         $data->company_id = $user->id;
-        $data ->save();
+        $data->save();
         return redirect()->route('dashboard')->with('success', 'Data berhasil ditambahkan');
     }
     public function update_company(Request $request)
