@@ -30,7 +30,7 @@ class RoleController extends Controller
         $role->save();
         
         $roleId = $role->id;
-        
+
         // Menyimpan permission terkait dengan peran baru
         if ($request->has('permission')) {
             $permissionIds = $request->input('permission', []);
