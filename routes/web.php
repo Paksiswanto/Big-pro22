@@ -46,6 +46,17 @@ use App\Models\Transfer;
 |
 */
 
+Route::middleware(['auth','auth.session', 'verified'])->group(function () {
+
+    Route::get('supplier', [SupplierController::class, 'supplier'])->name('supplier');
+    Route::get('costumer', [CostumersController::class, 'costumers'])->name('costumers');
+
+    Route::get('/add_income', [TransactionsController::class, 'add_income'])->name('add_income');
+
+
+});
+    
+
 
 Route::get('kalender', function () {
     return view('kalender');
@@ -82,7 +93,7 @@ Route::get('edit_pemasok', function () {
 });
 
 //supplier
-Route::get('supplier', [SupplierController::class, 'supplier'])->name('supplier');
+
 Route::get('add_supplier', [SupplierController::class, 'add'])->name('add_supplier');
 Route::get('/edit_supplier/{id}', [SupplierController::class, 'edit'])->name('edit_supplier');
 Route::get('details_supplier', [SupplierController::class, 'details'])->name('details_supplier');
@@ -96,7 +107,6 @@ Route::get('icons', function () {
 //transactions
 Route::get('/transactions', [TransactionsController::class, 'transactions'])->name('transactions');
 
-Route::get('/add_income', [TransactionsController::class, 'add_income'])->name('add_income');
 Route::get('/edit_income/{id}', [TransactionsController::class, 'edit_income'])->name('edit_income');
 Route::get('/show_income', [TransactionsController::class, 'show_income'])->name('show_income');
 
@@ -125,7 +135,6 @@ Route::get('details_recurring', [InvoiceController::class, 'detail_recurring'])-
 Route::get('details', [InvoiceController::class, 'details'])->name('details_inv');
 //cos
 Route::get('add_costumers', [CostumersController::class, 'add_cos'])->name('add_costumers');
-Route::get('costumer', [CostumersController::class, 'costumers'])->name('costumers');
 Route::get('/show_cos/{id}', [CostumersController::class, 'show_cos'])->name('show_cos');
 Route::get('/edit_cos/{id}', [CostumersController::class, 'edit_cos'])->name('edit_cos');
 

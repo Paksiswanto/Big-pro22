@@ -19,4 +19,7 @@ class Customer extends Model
     {
         return $this->hasMany(IncomeRoutine::class);
     }
+    protected $casts = [
+        'status' => 'boolean',
+    ];
 }

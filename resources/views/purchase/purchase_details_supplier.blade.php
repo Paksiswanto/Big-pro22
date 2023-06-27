@@ -518,31 +518,29 @@
 
                                 <div class="card-body">
 
-                                    <div style="margin-top: 10%;">
-                                        <h6>Mata Uang</h6>
-                                    </div>
+                                   
                                     <span>Telepon</span>
-                                    <div style="margin-top: 10%;">
-                                        <h6>0876765567</h6>
+                                    <div style="">
+                                        <h6>{{$sup->phone_number}}</h6>
                                     </div>
-                                    <span>Rupiah</span>
+                                    
                                     <div style="margin-top: 10%;">
                                         <h6>Referensi</h6>
                                     </div>
-                                    <span>untuk bla bla bla bla bla abla bla bla bla bla bla bla</span>
+                                    <span>{{$sup->reference}}</span>
                                     <div style="margin-top: 10%;">
                                         <h6>Situus web</h6>
                                     </div>
-                                    <span><a href="http://localhost:8000/show_cos">Web Udin</a> </span>
+                                    <span><a href="{{$sup->website}}">{{$sup->website}}</a> </span>
                                     <div style="margin-top: 10%;">
                                         <h6>NPWP</h6>
                                     </div>
-                                    <span>3238798</span>
+                                    <span>{{$sup->npwp}}</span>
 
                                     <div style="margin-top: 10%;">
                                         <h6>Kode Pos</h6>
                                     </div>
-                                    <span>929292</span>
+                                    <span>{{$sup->postal_code}}</span>
                                 </div>
                             </div>
                         </div>

@@ -19,4 +19,8 @@ class Supplier extends Model
     {
         return $this->hasMany(expenditureRoutine::class);
     }
+    
+    protected $casts = [
+        'status' => 'boolean',
+    ];
 }

@@ -276,6 +276,8 @@
                                                             </span>
                                                         </div>
                                                         <div class="field-placeholder">Tanggal<span class="text-danger">*</span></div>
+                                                        <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
+
                                                     </div>
                                                     <!-- Field wrapper end -->
 
@@ -494,6 +496,7 @@
                                                         </div>
                                                     </div>
                                                             <!-- Field wrapper end -->
+
 
                                                         </div>
                                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">

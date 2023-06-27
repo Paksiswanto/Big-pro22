@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class SupplierController extends Controller
 {
     public function supplier()
     {
-        $data = supplier::all();
+        $company_id = Auth::user()->company_id;
+
+        $data = Supplier::where('company_id', $company_id)
+                        ->orderBy('status')
+                        ->paginate(10);
         return view('purchase.purchase_supplier', compact('data'));
     }
     public function add()
@@ -19,7 +24,9 @@ class SupplierController extends Controller
     }
     public function edit($id)
     {
-        $data = supplier::find($id);
+        $company_id = Auth::user()->company_id;
+
+$data = Supplier::where('company_id', $company_id)->find($id);
         return view('purchase.purchase_edit_supplier', compact('data'));
     }
 
@@ -41,6 +48,15 @@ class SupplierController extends Controller
     {
         return view('purchase.purchase_details_supplier');
     }
+
+    public function show($id)
+{
+    $sup = supplier::findOrFail($id);
+    return view('purchase.purchase_details_supplier', compact('sup'));
+}
+
+
+
     public function insert_supplier(Request $request)
     {
         // Mendapatkan file foto yang diunggah dari permintaan pengguna
@@ -136,17 +152,37 @@ class SupplierController extends Controller
     public function deleteSelected(Request $request)
     {
         $selectedIds = $request->input('selected_ids');
-    
+
         if (!empty($selectedIds)) {
-           $udin = Supplier::whereIn('id', $selectedIds);
-           $photoPath = 'public/Gmbslagi/img/supplier/' . $udin->photo;
-        if (file_exists($photoPath)) {
-            unlink($photoPath);
-        }
-        $udin->delete();
+            $suppliers = Supplier::whereIn('id', $selectedIds)->get();
+
+            foreach ($suppliers as $supplier) {
+                $photoPath = 'public/Gmbslagi/img/supplier/' . $supplier->photo;
+                if (file_exists($photoPath)) {
+                    unlink($photoPath);
+                }
+                $supplier->delete();
+            }
+
             return redirect()->back()->with('success', 'Data berhasil dihapus.');
         } else {
             return redirect()->back()->with('error', 'Pilih setidaknya satu data untuk dihapus.');
         }
     }
+
+        public function updateStatus($supplierId)
+        {
+            $supplier = Supplier::find($supplierId);
+
+            if ($supplier) {
+                $statusText = $supplier->status ? 'diaktifkan' : 'dinonaktifkan';
+                $supplier->status = !$supplier->status; // Mengubah status dengan boolean yang terbalik
+        $supplier->save();
+
+        
+                return redirect()->back()->with('success', 'Data berhasil ' . $statusText . '.');
+            } else {
+                return redirect()->back()->with('error', 'Pilih setidaknya satu data untuk dihapus.');
+            }
+        }
 }

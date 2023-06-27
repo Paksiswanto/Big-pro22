@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('supplier', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->boolean('status')->default(0);
             $table->string('email');
             $table->string('website');
             $table->string('reference');

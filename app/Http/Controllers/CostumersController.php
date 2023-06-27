@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class CostumersController extends Controller
 {
     public function costumers()
     {
-        $data = customer::all();
+        $company_id = Auth::user()->company_id;
+
+        $data = Customer::where('company_id', $company_id)->orderBy('status')->paginate(10);
         return view('sale.costumers', compact('data'));
     }
 
@@ -136,4 +139,20 @@ class CostumersController extends Controller
             return redirect()->back()->with('error', 'Pilih setidaknya satu data untuk dihapus.');
         }
     }
+
+    public function updateStatus($customerId)
+{
+    $customer = Customer::find($customerId);
+
+    if ($customer) {
+        $statusText = $customer->status ? 'diaktifkan' : 'dinonaktifkan';
+        $customer->status = !$customer->status; // Mengubah status dengan boolean yang terbalik
+        $customer->save();
+
+        return redirect()->back()->with('success', 'Data berhasil ' . $statusText . '.');
+    } else {
+        return redirect()->back()->with('error', 'Pilih setidaknya satu data untuk dihapus.');
+    }
+}
+
 }
