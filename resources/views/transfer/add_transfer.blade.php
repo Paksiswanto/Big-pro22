@@ -237,7 +237,7 @@
 
                                                     <!-- Field wrapper start -->
                                                     <div class="field-wrapper">
-                                                        <input name="ammount" class="form-control @error('ammount') is-invalid @enderror" type="text" placeholder="Masukkan Jumlah" value="{{ old('ammount') }}" data-inputmode="numeric"  id="balance-input" oninput="formatBalanceInput(this)">
+                                                        <input name="ammount" class="form-control @error('ammount') is-invalid @enderror" type="text" placeholder="Masukkan Jumlah" value="{{ old('ammount') }}">
                                                         @error('ammount')
                                                         <div class="invalid-feedback">{{ $message }}</div>
                                                         @enderror                                                        
@@ -391,13 +391,13 @@
     <script src="{{ asset ("Gmbslagi/vendor/daterange/custom-daterange.js")}}"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+    {{-- <script>
         var cleaveG = new Cleave('input[name="ammount"]', {
             numeral: true,
             numeralThousandsGroupStyle: 'thousand'
         });
-    </script>
-      <script>
+    </script> --}}
+      {{-- <script>
         function formatBalanceInput(input) {
           // Mengambil nilai input
           let value = input.value;
@@ -411,7 +411,7 @@
           // Mengganti nilai input dengan nilai yang telah diformat
           input.value = formattedValue;
         }
-        </script>
+        </script> --}}
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script> -->
     <!-- <script src="path/to/select2.js"></script> -->

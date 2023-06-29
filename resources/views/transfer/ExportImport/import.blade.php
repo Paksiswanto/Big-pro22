@@ -63,7 +63,7 @@
         .font-1 {
             color: #B87708;
         }
-
+        
         .alert2 {
             position: relative;
             padding: 1rem 1rem;
@@ -87,6 +87,27 @@
         .font-2 .font-s {
             color: #00537D;
         }
+        
+        .alert3 {
+            position: relative;
+            padding: 1rem 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: .25rem
+        }
+
+        .alert-light3 {
+            color: #636464;
+            background-color: #FFFFFF;
+            border-color: #fdfdfe;
+            box-shadow: 2px 2px 4px rgba(0, 0.2, 0.2, 0.3);
+            border-top: 5px solid #ff9696;
+        }
+
+        .font-3 {
+            color: #ff7979;
+        }
+
 
         .drop-zone {
             max-width: 100%;
@@ -173,13 +194,13 @@
                 <div class="content-wrapper">
 
                     <!-- Row start -->
-                    <form action="{{ route('import_data') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('ImportDataTransfer') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row gutters">
                         <div class="card">
                             <div class="card-header">
                                 <div class="card-title">
-                                    <h1 class="card-title col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="font-size: 20px;">Import Barang</h1>
+                                    <h1 class="card-title col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="font-size: 20px;">Import Transfer</h1>
                                 </div>
                             </div>
                             <!-- start -->
@@ -189,9 +210,22 @@
                                     <p class="font-1">Baris maksimal yang diizinkan: 500</p>
                                 </div>
                             </div>
+                            {{-- <div class="row mt-4">
+                                <div class="alert3 alert-light3" role="alert">
+                                    <p class="font-3">Catatan:</p>
+                                    <p class="font-3">category_type_id yang tersedia untuk di inputkan : 
+                                        @foreach ($category_type as $index => $categories)
+                                            {{ $categories->name }}
+                                            @if ($index != count($category_type) - 1)
+                                                ,
+                                            @endif
+                                        @endforeach
+                                    </p>
+                                </div>
+                            </div> --}}
                             <div class="row mt-4">
                                 <div class="alert2 alert-light2" role="alert">
-                                    <p class="font-2">Anda dapat <a href=""><strong class="font-s"> mengunduh</strong></a> berkas contoh dan lengkapi itu dengan data Anda.</p>
+                                    <p class="font-2">Anda dapat <a href="/DownloadTransfer"><strong class="font-s"> mengunduh</strong></a> berkas contoh dan lengkapi itu dengan data Anda.</p>
                                 </div>
                             </div>
                         </div>

@@ -11,12 +11,19 @@ class Item extends Model
     protected $table = "item";
     protected $fillable = ['name','tax_id','description','type','category_id','selling_price','purchase_price','active','company_id'];
 
-    function tax()
+    public function category()
     {
-        return $this->belongsTo(Tax::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
-    function category()
+
+    public function tax()
     {
-        return $this->belongsTo(category::class); 
+        return $this->belongsTo(Tax::class, 'tax_id');
     }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
+
 }

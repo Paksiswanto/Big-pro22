@@ -11,9 +11,9 @@ class Category extends Model
     protected $table = "category";
     protected $fillable = ['name','color','parent', 'category_type_id'];
 
-    function categoryType()
+    public function categoryType()
     {
-        return $this->belongsTo(CategoryType::class);
+        return $this->belongsTo(CategoryType::class, 'category_type_id');
     }
     function item()
     {
@@ -30,5 +30,9 @@ class Category extends Model
     public function expenditureRoutine()
     {
         return $this->hasMany(expenditureRoutine::class);
+    }
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
     }
 }

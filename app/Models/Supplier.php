@@ -23,4 +23,8 @@ class Supplier extends Model
     protected $casts = [
         'status' => 'boolean',
     ];
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
 }

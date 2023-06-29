@@ -126,7 +126,7 @@
 									<div class="card-header">
 										<div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
 											<div class="card-title">
-												<h3>Item<button type="button" style="border: none; background:transparent;">☆</button></h3>
+												<h3>Barang<button type="button" style="border: none; background:transparent;">☆</button></h3>
 											</div>
 										</div>
 										<div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">
@@ -142,9 +142,8 @@
 											</a>
 
 											<ul class="dropdown-menu dropdown-menu-lg-end" style="z-index: 100;">
-												<li><a class="dropdown-item" href="{{url('import')}}">Impor</a></li>
-												<li><a class="dropdown-item" href="#">Expor</a></li>
-
+												<li><a class="dropdown-item" href="{{url('ImportItem')}}">Impor</a></li>
+												<li><a class="dropdown-item" id="downloadButton" href="{{ route('ExportItem') }}">Expor</a></li>
 											</ul>
 										</div>
 
@@ -164,14 +163,14 @@
 												<p style="display: inline" id="count-display">&emsp;</p>
 												&emsp;<a href="#" title="Aktifkan"> <i class="icon-check-circle" style="color:#424242 "></i> </a>
 												&emsp;<a href="#" title="Nonaktifkan"> <i class="icon-do_not_disturb_alt"></i> </a>
-												&emsp;<a href="#" title="Hapus"> <i class="icon-trash-2"></i> </a>
+												&emsp;<a href="#" title="Hapus"> <i class="icon-trash-2"></i></a>
 											</div>
 
 
 											<table class="table table-hover caption-top">
 												<thead>
-													<tr>
-														<th scope="col"> <input type="checkbox" id="select-all-checkbox"> </th>
+													<tr class="data-item-id">
+														<th scope="col"> <input type="checkbox" id="select-all-checkbox" onclick="selectAllCheckbox()"> </th>
 														<th scope="col">Nama</th>
 														<th scope="col">Deskripsi</th>
 														<th scope="col">kategori</th>
@@ -235,7 +234,6 @@
 													@endforeach
 												</tbody>
 											</table>
-
 
 
 											<!-- Card start -->

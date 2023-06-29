@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CustomerExport;
+use App\Exports\DownloadCustomer;
+use App\Exports\ExportCustomer;
+use App\Imports\CategoryImport;
+use App\Imports\CustomerImport;
+use App\Models\Company;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CostumersController extends Controller
 {
@@ -155,4 +162,44 @@ class CostumersController extends Controller
     }
 }
 
+    public function ImportCustomer()
+    {
+        return view('sale.ExportImport.import');
+    }
+    public function ImportDataCustomer(Request $request)
+    {
+        $this->validate($request, [
+            'myFile' => 'required|mimes:xls,xlsx'
+        ]);
+
+        $file = $request->file('myFile');
+
+        try {
+            Excel::import(new CustomerImport, $file);
+
+            return redirect()->back()->with('success', 'Data berhasil diimpor');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Trejadi kesalahan saat mengimpor data: ' . $e->getMessage());
+        }
+    }
+    public function DownloadCustomer()
+    {
+        $company = Company::get()->toArray();
+
+        $randomNumber = random_int(1000, 9999);
+
+        $filename = 'Dataset_' . $randomNumber . '.xlsx';
+
+        return (new DownloadCustomer($company))->download($filename);
+    }
+    public function ExportCustomer()
+    {
+        $company = Company::all();
+
+        $randomNumber = random_int(1000, 9999);
+
+        $filename = 'Customer_' . $randomNumber . '.xlsx';
+
+        return Excel::download(new CustomerExport($company->toArray()), $filename);
+    }
 }
