@@ -5,7 +5,9 @@ $(function(){
 		"language": {
 			"lengthMenu": "Display _MENU_ Records Per Page",
 			"info": "Showing Page _PAGE_ of _PAGES_",
-		}
+			"searchPlaceholder": "Cari Disini...",
+		},
+		responsive: true
 	});
 });
 

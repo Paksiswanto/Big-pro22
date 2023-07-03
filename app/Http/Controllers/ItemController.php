@@ -21,7 +21,7 @@ class ItemController extends Controller
 {
     public function itemindex()
     {
-      $items = Item::paginate(10)->withQueryString();
+      $items = Item::latest()->get() ;
 
       return view('item.index', compact('items'));
     }

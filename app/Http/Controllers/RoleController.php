@@ -36,9 +36,9 @@ class RoleController extends Controller
             $permissionIds = $request->input('permission', []);
             $role->syncPermissions($permissionIds);
              }
-           Toastr::success('Succsess','Data Berhasil Ditambahkan');
+          
 
-        return redirect('/role');
+        return redirect('/role')->with('success', 'Data berhasil ditambahkan.');
         
     }
     public function edit_role($id){
@@ -65,12 +65,12 @@ class RoleController extends Controller
 
     $permissionIds = $validatedData['permission'];
     $data->syncPermissions($permissionIds);
-    return redirect('role');
+    return redirect('role')->with('success', 'Data berhasil diupdate.');
 }
 
     function delete_role($id)  {
         $data = Role::find($id);
         $data->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data berhasil dihapus.');
     }
 }
