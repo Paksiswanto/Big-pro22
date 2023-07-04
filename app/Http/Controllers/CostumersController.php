@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
-use App\Models\Customer;
-use Illuminate\Http\Request;
 use App\Exports\CustomerExport;
+use App\Exports\DownloadCustomer;
 use App\Exports\ExportCustomer;
 use App\Imports\CategoryImport;
 use App\Imports\CustomerImport;
-use Illuminate\Validation\Rule;
-use App\Exports\DownloadCustomer;
+use App\Models\Company;
+use App\Models\Customer;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Facades\Excel;
 
 class CostumersController extends Controller
@@ -61,7 +61,7 @@ class CostumersController extends Controller
             'country' => $request->country,
             'currency' => $request->currency,
             'phone_number' => $request->phone_number,
-            'company_id' => Auth::user()->company_id,   
+            'company_id' => Auth::user()->company_id,
             'photo' => $filename, // Menyimpan nama file foto
         ]);
 
@@ -94,7 +94,7 @@ class CostumersController extends Controller
                 'country' => $request->country,
                 'currency' => $request->currency,
                 'phone_number' => $request->phone_number,
-                'company_id' => 1,
+                'company_id' => Auth::user()->company_id,
                 'photo' => $filename, // Menyimpan nama file foto baru
             ]);
         } else {

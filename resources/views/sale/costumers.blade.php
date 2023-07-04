@@ -271,78 +271,153 @@
                                             hoverTrigger3.setAttribute('data-tooltip_byr', tooltipContent3);
                                         </script>
                                         <!-- Row end -->
-                                        <div style="margin-top: 5%;">
-                                            <div class="table-responsive">
-                                                <div class="hidden-menu" style="display: none; background-color: #f2f2f2; font-size: 12pt; padding: 10px;">
-                                                    <p style="display: inline" id="count-display">&emsp;</p>
-                                                    &emsp;<a href="#" title="Aktifkan"> <i class="icon-check-circle" style="color:#424242 "></i> </a>
-                                                    &emsp;<a href="#" title="Nonaktifkan"> <i class="icon-do_not_disturb_alt"></i> </a>
-                                                    &emsp;<a href="#" title="Hapus"> <i class="icon-trash-2"></i> </a>
+                                       <div style="margin-top: 5%;">
+                                        <div class="table-responsive">
+                                            <div class="hidden-menu" style="display: none; background-color: #f2f2f2; font-size: 12pt; padding: 10px;">
+                                                <p style="display: inline" id="count-display">&emsp;</p>
+                                                &emsp;<a href="#" title="Aktifkan"> <i class="icon-check-circle" style="color:#424242 "></i> </a>
+                                                &emsp;<a href="#" title="Nonaktifkan"> <i class="icon-do_not_disturb_alt"></i> </a>
+                                                &emsp;<a href="#" title="Hapus"> <i class="icon-trash-2" data-bs-toggle="modal" data-bs-target="#deleterole1"></i> </a>
+                                            </div>
+                                            
+                                            <form action="{{ route('delete_selected_customers') }}" method="POST" id="delete-selected-form">
+                                                @csrf
+                                                @method('DELETE')
+                                                      <!-- Modal start -->
+                                                      
+                                                      <!-- Modal end -->
+                                            <table id="basicExample" class="table table-hover caption-top">
+
+                                                <thead>
+                                                    
+                                                    <tr>
+                                                        <th scope="col"> <input type="checkbox" id="select-all-checkbox"> </th>
+                                                        <th scope="col">Nama</th>
+                                                        <th scope="col">Email</th>
+                                                        <th scope="col">Negara</th>
+                                                        <th scope="col">Jatuh Tempo</th>
+                                                        <th scope="col">Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                    <!-- Data 1 -->
+                                                    
+                                                    @foreach ($data as $row)
+                                                <div class="modal fade" id="deleterole1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content" style="padding: 0px">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="staticBackdropLabel">Hapus Pemasok di centang</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Anda Yakin Ingin Menghapus Pemasok Ini?</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                
+                                                                <button type="submit" class="btn btn-danger" id="deleteButton">Hapus</button>
+                                                            
+                                                                
+                                                                
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <table id="basicExample" class="table table-hover caption-top">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col"> <input type="checkbox" id="select-all-checkbox"> </th>
-                                                            <th scope="col">Nama</th>
-                                                            <th scope="col">Email</th>
-                                                            <th scope="col">Negara</th>
-                                                            <th scope="col">Jatuh Tempo</th>
-                                                            <th scope="col">Aksi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
+                                                
 
-                                                        <!-- Data 1 -->
-                                                        @foreach ($data as $row)
 
-                                                        <tr class="table-row">
-                                                            <a href="">
-                                                                <td><input type="checkbox" class="other-checkbox"></td>
-                                                                <td>{{ $row->name }}</td>
-                                                                <td>{{ $row->email }}</td>
-                                                                <td>{{ $row->country }}</td>
-                                                                <td>20.000.000</td>
-                                                                <th>
-                                                                    <div class="menu-icons" style="font-size: 15px;">
-                                                                        <a href="{{route('edit_cos',['id' => $row->id])}}" class="menu-icon icon-edit-2"></a>
-                                                                        <a href="{{url('delete_cos')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                                        <a href="{{route('show_cos',['id' => $row->id])}}" class="menu-icon icon-eye1"></a>
+                                                    <tr class="table-row">
+                                                        <a href="">
+                                                            <td><input type="checkbox" class="other-checkbox" name="selected_ids[]" value="{{$row->id}}"></td>
+                                                            <td>{{ $row->name }}</td>
+                                                            <td>{{ $row->email }}</td>
+                                                            <td>20.333.000</td>
+                                                            <th>
+                                                                @if ($row->status != 0)
+                                                                <div class="menu-icons" style="font-size: 15px;">
+                                                                    <a href="{{route('edit_cos',['id' => $row->id])}}" class="menu-icon icon-edit-2"></a>
+                                                                    <a href="" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
+                                                                    <a href="{{route('show_cos',['id' => $row->id])}}" class="menu-icon icon-eye1"></a>
+                                                                    <a href="" data-bs-toggle="modal" data-bs-target="#deleterole2" title="Nonaktifkan">
+                                                                        <i class="icon-do_not_disturb_alt"></i>
+                                                                    </a>
+                                                                </div>
+                                                                @else
+                                                                <div class="menu-icons" style="font-size: 15px;">
+                                                                    <a href="{{route('edit_supplier',['id' => $row->id])}}" class="menu-icon icon-edit-2"></a>
+                                                                    <a href="{{url('delete_supplier')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
+                                                                    <a href="{{ route('detail_sup', $row->id) }}" class="menu-icon icon-eye1"></a>
+                                                                   <a href="" data-bs-toggle="modal" data-bs-target="#deleterole2" title="Nonaktifkan">
+                                                                        <i class="icon-check-circle"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            @endif 
+                                                            </th>
+                                                        </a>
+                                                         <!-- Modal start -->
+                                        <div class="modal fade" id="deleterole2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content" style="padding: 0px">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Ganti status pemasok</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                </form>
+                                                    <div class="modal-body">
+                                                        <p>Anda yakin ingin pengganti status pemasok ini?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form action="{{ route('status_update_cos', ['supplierId' => $row->id]) }}" method="POST">
+                                                            @method('PATCH')
 
-                                                                    </div>
-                                                                </th>
-                                                            </a>
-                                                        </tr>
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-danger" id="deleteButton">Ubah</button>
                                                         </form>
-                                                        <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content" style="padding: 0px">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="staticBackdropLabel">Hapus Pelanggan</h5>
-                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <p>Anda Yakin Ingin Menghapus Pelanggan Ini?</p>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        @isset($row)
-                                                                        <form action="{{ route('delete_customers', ['id' => $row->id]) }}" method="POST">
-                                                                            @csrf
-                                                                            @method('DELETE')
-                                                                            <button type="submit" class="btn btn-danger" id="deleteButton">Hapus</button>
-                                                                        </form>
-                                                                        @endisset
+                                                    
+                                                    
 
-                                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal end -->
+                                                    </tr>
+                                                </form>
+                                                    <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" style="padding: 0px">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="staticBackdropLabel">Hapus Pelanggan</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Anda Yakin Ingin Menghapus Pelanggan Ini?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    @isset($row)
+                                                          
+                                                                    <form action="{{ route('delete_customers', ['id' => $row->id]) }}" method="POST">
+                                                                      @csrf
+                                                                      @method('DELETE')
+                                                                      <button type="submit" class="btn btn-danger" id="deleteButton">Hapus</button>
+                                                                  </form>
+                                                                  @endisset
+            
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        @endforeach
+                                                    </div>
+                                                    @endforeach
 
 
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                </tbody>
+                                            </table>
                                         </div>
+                                        </div>
+                                      
                                         <!-- Modal start -->
                                         <div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -371,25 +446,7 @@
                                         </div>
                                         <!-- Modal end -->
                                         <!-- Modal start -->
-                                        <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content" style="padding: 0px">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Hapus Pelanggan</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Anda Yakin Ingin Menghapus Pelanggan Ini?</p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        @isset($row)
-                                                        <a href="{{ route('delete_customers', ['id' => $row->id]) }}"><button type="button" class="btn btn-danger" id="deleteButton">Hapus</button></a>
-                                                        @endisset
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                       
                                         <!-- Modal end -->
                                     </div>
                                 </div>

@@ -637,7 +637,7 @@
                                                     <th scope="col">Nomor</th>
                                                     <th scope="col">Jenis</th>
                                                     <th scope="col">Kategori</th>
-                                                    <th></th>
+                                                    
 
                                                     <th scope="col">Akun</th>
                                                     <th scope="col">Dokumen</th>
@@ -646,31 +646,6 @@
                                                 </tr>
                                             </thead>
                                             @foreach ($data as $row)
-                                            <tbody>
-                                                <tr>
-                                                    <td name="item" id="checkbox1"><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>{{ $row->date }}</th>
-                                                    <td>TRA-{{ $row->income_number }}</td>
-                                                    <td>{{ $row->category_id }}</td>
-                                                    <td>
-                                                        <div class="lingkaran-warna1" style="background-color: {{ $row->category->color }};">
-                                                            &emsp;&emsp;{{ $row->category->name }}
-                                                        </div>
-                                                    </td>
-                                                    <td></td>
-                                                    <td>{{ $row->account_id }}</td>
-                                                    <td>N/A</td>
-                                                    <td>Rp{{ $row->amount }}</td>
-                                                    <th>
-                                                        <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{route('edit_income',['id' => $row->id])}}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_income')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteincome"></a>
-                                                            <a href="{{route('show_expenditure')}}" class="menu-icon icon-eye1"></a>
-                                                        </div>
-                                                    </th>
-                                                </tr>
-
-                                                <!-- <div id="myModal">
                                                 <tbody>
                                                     @if ($row->income)
                                                         <tr>
@@ -687,10 +662,11 @@
                                                             <td>
                                                                 <div class="lingkaran-warna1"
                                                                     style="background-color: {{ $row->income->category->color }};">
-                                                                    &emsp;&emsp;{{ $row->income->category->name }}
+                                                                   
                                                                 </div>
+                                                                &emsp;&emsp;{{ $row->income->category->name }}
                                                             </td>
-                                                            <td></td>
+                                                            
                                                             <td>{{ $row->income->account->name }}</td>
                                                             <td>N/A</td>
                                                             <td>Rp{{ $row->income->amount }}</td>
@@ -971,7 +947,34 @@
                                     </div>
                                     </div>
                                 </div>
-                              
+                                <!-- Card start -->
+
+
+                            </div>
+                            <div class="card">
+                                <div class="card-body" style="margin-left: -2.1%">
+
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination" style="justify-content: flex-end;">
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+                                </div>
+                            </div>
+                            <!-- Card end -->
                         </div>
                         <!-- Row end -->
 

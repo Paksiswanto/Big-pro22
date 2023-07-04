@@ -179,8 +179,8 @@
                                             </a>
 
                                             <ul class="dropdown-menu dropdown-menu-lg-end" style="z-index: 100;">
-                                                <li><a class="dropdown-item" href="{{url('ImportSupplier')}}">Impor</a></li>
-                                                <li><a class="dropdown-item" href="{{route('ExportSupplier')}}">Expor</a></li>
+                                                <li><a class="dropdown-item" href="#">Impor</a></li>
+                                                <li><a class="dropdown-item" href="#">Expor</a></li>
 
                                             </ul>
                                         </div>
@@ -232,7 +232,7 @@
                                             </div>
                                         </div>
                                         <!-- Row end -->
-                                        <div style="margin-top: 5%;">
+                                       <div style="margin-top: 5%;">
                                         <div class="table-responsive">
                                             <div class="hidden-menu" style="display: none; background-color: #f2f2f2; font-size: 12pt; padding: 10px;">
                                                 <p style="display: inline" id="count-display">&emsp;</p>
@@ -246,7 +246,6 @@
                                                         <th scope="col"> <input type="checkbox" id="select-all-checkbox"> </th>
                                                         <th scope="col">Nama</th>
                                                         <th scope="col">Email</th>
-                                                        <th scope="col">Negara</th>
                                                         <th scope="col">Jatuh Tempo</th>
                                                         <th scope="col">Aksi</th>
                                                     </tr>
@@ -258,7 +257,6 @@
                                                         <td><input type="checkbox" class="other-checkbox"></td>
                                                         <td>{{ $row->name }}</td>
                                                         <td>{{ $row->email }}</td>
-                                                        <td>{{ $row->country }}</td>
                                                         <td>2.000.000</td>
                                                         <td>
                                                             <div class="menu-icons" style="font-size: 15px;">
