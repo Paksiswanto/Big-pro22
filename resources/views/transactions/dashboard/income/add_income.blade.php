@@ -258,7 +258,6 @@
                                                     </div>
 
                                                 </div>
-                                                <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                     <!-- Field wrapper start -->
@@ -483,8 +482,8 @@
                                                             <!-- Field wrapper end -->
 
                                                         </div>
-                                                        <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
-                                                   
+
+
                                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
 
                                                             <!-- Field wrapper start -->

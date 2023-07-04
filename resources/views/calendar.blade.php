@@ -57,7 +57,7 @@
         <nav class="sidebar-wrapper">
 
             <!-- Sidebar content start -->
-            @include('layouts.sidebar_add_company')
+            @include('layouts.sidebar')
             <!-- Sidebar content end -->
 
         </nav>

@@ -20,6 +20,6 @@ class ReportController extends Controller
             'type'=> $request->type,
             'description'=> $request->description,
         ]);
-        return redirect()->route('report.report');
+        return redirect()->route('report');
     }
 }

@@ -1,4 +1,4 @@
-    <nav class="sidebar-wrapper">
+<nav class="sidebar-wrapper">
 
     <!-- Sidebar content start -->
     <div class="sidebar-tabs">
@@ -47,18 +47,14 @@
 
                     <div style="border-radius: 100%; overflow: hidden; width: 45px; height: 45px;">
                         <a href="#" class="logo">
-                            <?php
-                            $logoPath = 'storage/' . Auth::User()->picture;
-                            $defaultLogoPath = 'default/logo.png';
-
-                            if (file_exists($logoPath)) {
-                                echo '<img src="' . asset($logoPath) . '" style="width: 45px; height: 45px;">';
-                            } else {
-                                echo '<img src="' . asset($defaultLogoPath) . '" style="width: 45px; height: 45px;">';
-                            }
-                            ?>
+                            @if(Auth::User()->picture)
+                            <img src="{{ asset('storage/users/'.Auth::User()->picture) }}" style="width: 45px; height: 45px;">
+                            @else
+                            <img src="{{ asset('storage/default/logo.png') }}" style="width: 45px; height: 45px;">
+                            @endif
                         </a>
                     </div>
+
                     <div style="margin-top: 5%;">
                         &emsp;{{Auth::User()->company->name}}
                     </div>
