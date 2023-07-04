@@ -24,6 +24,7 @@ class TransactionsController extends Controller
         $data = Income::all();
         return view('transactions.dashboard.index', compact('data'));
     }
+   
 
     //income
     public function add_income()

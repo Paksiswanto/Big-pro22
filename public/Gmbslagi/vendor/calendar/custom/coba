@@ -1,0 +1,131 @@
+var tanggal = [
+
+]
+
+$.ajax({
+    url: '/calendar',
+    type: 'GET',
+    success: function(response) {
+        // Proses data yang diterima dari server
+
+        $.each(response, function(index, item) {
+            if (item.invoice_id) {
+              var invoiceElement = $('<div></div>').text(item.invoice.invoice_number).css('color', 'green');
+              invoiceElement.click(function() {
+                // Kode yang ingin dijalankan saat element diklik
+                console.log('Invoice element clicked');
+              });
+              tanggal.push({
+                title: invoiceElement,
+                start: item.invoice.start_date,
+                color: 'green',
+                click: function() {
+                  // Kode yang ingin dijalankan saat method di-klik
+                  console.log('Invoice method clicked');
+                  // Buka modal atau lakukan tindakan lain saat tombol modal diklik
+                  $('#invoiceModal').modal('show');
+                }
+              });
+            } else if (item.bill_id) {
+              var billElement = $('<div></div>').text(item.bill.item_id).css('color', 'blue');
+              billElement.click(function() {
+                // Kode yang ingin dijalankan saat element diklik
+                console.log('Bill element clicked');
+              });
+              tanggal.push({
+                title: billElement,
+                start: item.bill.start_date,
+                color: 'blue',
+                click: function() {
+                  // Kode yang ingin dijalankan saat method di-klik
+                  console.log('Bill method clicked');
+                  // Buka modal atau lakukan tindakan lain saat tombol modal diklik
+                  $('#billModal').modal('show');
+                }
+              });
+            } else if (item.income_id) {
+              var incomeElement = $('<div></div>').text(item.income.income_number).css('color', 'orange');
+              incomeElement.click(function() {
+                // Kode yang ingin dijalankan saat element diklik
+                console.log('Income element clicked');
+              });
+              tanggal.push({
+                title: incomeElement,
+                start: item.income.date,
+                color: 'orange',
+                click: function() {
+                  // Kode yang ingin dijalankan saat method di-klik
+                  console.log('Income method clicked');
+                  // Buka modal atau lakukan tindakan lain saat tombol modal diklik
+                  $('#incomeModal').modal('show');
+                }
+              });
+            } else if (item.expenditure_id) {
+              var expendElement = $('<div></div>').text(item.expend.expenditure_number).css('color', 'red');
+              expendElement.click(function() {
+                // Kode yang ingin dijalankan saat element diklik
+                console.log('Expenditure element clicked');
+              });
+              tanggal.push({
+                title: expendElement,
+                start: item.expend.date,
+                color: 'red',
+                click: function() {
+                  // Kode yang ingin dijalankan saat method di-klik
+                  console.log('Expenditure method clicked');
+                  // Buka modal atau lakukan tindakan lain saat tombol modal diklik
+                  $('#expenditureModal').modal('show');
+                }
+              });
+            }
+          });
+
+
+            var calendarEl = document.getElementById('selectableCalendar');
+
+            var currentDate = new Date();
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                  },
+              initialDate: currentDate,
+              selectable: true,
+              selectMirror: true,
+              select: function(arg) {
+                $('#exampleModalCenter').modal('show')
+                // console.log('aaa')
+                // var title = prompt('Event Title:');
+                // if (title) {
+                //   calendar.addEvent({
+                //     title: title,
+                //     start: arg.start,
+                //     end: arg.end,
+                //     allDay: arg.allDay
+                //   })
+                // }
+                calendar.unselect()
+              },
+              eventClick: function(arg) {
+                $('#exampleModalCenterhapus').modal('show')
+                // if (confirm('Are you sure you want to delete this event?')) {
+                //   arg.event.remove()
+                // }
+              },
+              editable: true,
+              dayMaxEvents: true, // allow "more" link when too many events
+              events:tanggal
+
+            });
+
+            calendar.render();
+
+          console.log(tanggal)
+    },
+    error: function(xhr) {
+        // Tangani jika terjadi kesalahan
+        console.log(xhr.responseText);
+    }
+});

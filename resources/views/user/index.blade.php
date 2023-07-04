@@ -115,6 +115,12 @@
                 }
             }
         }
+        .image {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #000; /* Optional border style */
+  border-radius: 50%;
+}
     </style>
 
 </head>
@@ -220,28 +226,28 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($data as $item )                                                    
+                                                @foreach ($data as $item )
                                                 <tr class="table-row">
                                                     <td><input type="checkbox" class="other-checkbox"></td>
                                                     <td>
                                                         <div class="d-flex">
-                                                            @if ($item->email_verified_at != null)                                                             
+                                                            @if ($item->email_verified_at != null)
                                                             @if ($item->picture != null)
-                                                            <img src="{{ asset( $item->picture) }}" alt="Foto Profil">
+                                                            <img src="{{ asset('storage/'.$item->picture) }}" class="image" alt="Foto Profil">
                                                             <p style="margin-left: 2%">&emsp; {{ $item->name }}</p>
                                                             @else
                                                             <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%">&emsp; {{ $item->name }}</p>
                                                             @endif
                                                             @else
                                                             @if ($item->picture != null)
-                                                            <img src="{{ asset( $item->picture) }}" alt="Foto Profil">
+                                                            <img src="{{ asset('storage/'.$item->picture) }}" class="image" alt="Foto Profil">
                                                             <p style="margin-left: 2%;margin-right:3%">&emsp; {{ $item->name }}</p><span class="badge-sent" style="width: 30%; text-align: center;">
                                                                 <p style="font-size: 10px; margin: 0;">Undangan Tertunda</p>
                                                             @else
                                                             <i class="icon-account_circle" style="font-size: 24px;transform: scale(1.5); "></i> <p style="margin-left: 2%;margin-right:3%">&emsp; {{ $item->name }}</p>  <span class="badge-sent" style="width: 30%; text-align: center;">
                                                                 <p style="font-size: 10px; margin: 0;">Undangan Tertunda</p>
                                                             </span>
-                                                            
+
                                                             @endif
                                                             @endif
                                                         </div>
@@ -250,7 +256,7 @@
                                                     <td>
                                                         @foreach ($item->roles as $role)
                                                             <p>{{ $role->name }}</p>
-                                                         @endforeach          
+                                                         @endforeach
                                                      </td>
                                                     <td>
                                                         <div class="menu-icons" style="font-size: 15px;">
@@ -317,8 +323,8 @@
                                 </div>
                             </div>
                             <!-- Card end -->
-                            
-                            
+
+
 
                         </div>
                     </div>

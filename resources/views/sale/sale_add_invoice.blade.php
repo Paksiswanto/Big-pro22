@@ -16,7 +16,7 @@
     <!-- Title -->
     <title>Unknown | Tambah-Faktur</title>
 
-    
+
     <!-- *************
    ************ Common Css Files *************
   ************ -->
@@ -25,7 +25,6 @@
 
     <!-- Icomoon Font Icons css -->
     <link rel="stylesheet" href="{{ asset('Gmbslagi/fonts/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/bs-select/bs-select.css') }}" />
 
     <!-- Main css -->
     <link rel="stylesheet" href="{{ asset('Gmbslagi/css/main.css') }}">
@@ -237,7 +236,7 @@
                                                                 <div class="d-flex flex-column">
                                                                     <div class="field-wrapper">
                                                                         <input class="form-control" type="text"
-                                                                            name="title"
+                                                                            name="title" id="judul"
                                                                             @if ( $default != null)
                                                                             value="{{ $default->title }}"  
                                                                             @else
@@ -388,10 +387,10 @@
                                                     <tr>
                                                         <td>
                                                             <div class="field-wrapper m-0">
-                                                                <select class="item-dropdown ex-dropdown-input" name="item_id[]">
+                                                                <select id="item-dropdown" name="item_id[]">
                                                                     <!-- Opsi item akan ditambahkan secara dinamis menggunakan JavaScript -->
                                                                 </select>                                                               
-                                                            </div>
+                                                                
                                                         </td>
                                                         <td>
                                                             <div class="field-wrapper m-0">
@@ -412,9 +411,15 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div id="pajak-wrapper">                                                                
-                                                                <div class="field-wrapper m-0 mb-1 pajak-input-wrapper">
-                                                                  <input type="text" name="tax_id[]" value="tax_id" class="form-control" id="">
+                                                            <div id="pajak-wrapper">
+                                                                
+                                                                <div
+                                                                    class="field-wrapper m-0 mb-1 pajak-input-wrapper">
+                                                                    <select class="select-single js-states" id="tax-dropdown"
+                                                                    name="tax_id[]" title="Select Product Category"
+                                                                    data-live-search="true">
+
+                                                                    
                                                                 </select>
                                                                 </div>
                                                                 <div class="add-pajak-wrapper mb-2">
@@ -428,7 +433,7 @@
                                                         <td>
                                                             <div class="field-wrapper m-0">
                                                                 <input type="number" style="border-radius:2px"
-                                                                    name="amount[]" class="form-control">
+                                                                    name="amount" class="form-control">
                                                             </div>
                                                         </td>
                                                         <td>
@@ -490,21 +495,21 @@
                                                                     <input type="text" name="nama"
                                                                         style="border-radius:2px"
                                                                         placeholder="Masukan nama item"
-                                                                        class="form-control">
+                                                                        id="nama"class="form-control">
                                                                 </div>
                                                                 <div class="field-wrapper m-0">
                                                                     <label for="nama">Harga Jual</label>
                                                                     <input type="text" name="Harga"
                                                                         style="border-radius:2px"
                                                                         placeholder="Masukan harga item"
-                                                                        class="form-control">
+                                                                        id="nama"class="form-control">
                                                                 </div>
                                                                 <div class="field-wrapper m-0">
                                                                     <label for="nama">kategori</label>
                                                                     <input type="text" name="kategori"
                                                                         style="border-radius:2px"
                                                                         placeholder="Masukan nama item"
-                                                                        class="form-control">
+                                                                        id="nama"class="form-control">
                                                                 </div>
                                                                 <div class="field-wrapper ">
                                                                     <label for="nama">Pajak</label>
@@ -714,12 +719,10 @@
     <!-- Bootstrap Select JS -->
     <script src="{{ asset('Gmbslagi/vendor/bs-select/bs-select.min.js') }}"></script>
     <script src="{{ asset('Gmbslagi/vendor/bs-select/bs-select-custom.js') }}"></script>
-
-    	<!-- Bootstrap Select CSS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-    {{-- <script>
+    <script>
 $(document).ready(function() {
   // Mengambil data item dari server
   $.ajax({
@@ -750,7 +753,77 @@ $(document).ready(function() {
   });
 });
 
-    </script> --}}
+    </script>
+<script>
+ $(document).ready(function() {
+  // Mengambil data tax dari server
+  $.ajax({
+    url: '/get-tax-data', // Gantilah '/get-tax-data' dengan URL endpoint yang sesuai di aplikasi Anda
+    type: 'GET',
+    dataType: 'json',
+    success: function(response) {
+      if (response.success) {
+        var taxData = response.data; // Data tax yang telah diambil
+
+        // Menghapus opsi sebelumnya, jika ada
+        $('#tax-dropdown').empty();
+
+        // Menambahkan opsi tax ke dalam dropdown
+        taxData.forEach(function(tax, index) {
+          var option = $('<option>').val(tax.id).text(tax.name).attr('id', 'tax-option-' + index);
+          $('#tax-dropdown').append(option);
+        });
+
+        console.log('Data tax berhasil diambil dan ditampilkan di HTML');
+      } else {
+        console.log(response.message);
+      }
+    },
+    error: function(xhr, status, error) {
+      console.log(error);
+    }
+  });
+});
+
+</script>
+    <script>
+        function create() {
+            $.ajax({
+                type: 'POST',
+                url: '/create_invoice',
+                data: {
+                    _token: csrfToken,
+                    type: type,
+                    date: date,
+                    to: to,
+                    message: message,
+                },
+                success: function(response) {
+                    Swal.fire({
+                        title: 'success!',
+                        text: 'Success data berhasil ditambahkan!',
+                        icon: 'success'
+                    }).then(function() {
+                        location.reload();
+                    });
+                },
+                error: function(response) {
+                    var errors = response.responseJSON.errors;
+                    var errorMessage = '';
+
+                    $.each(errors, function(key, value) {
+                        errorMessage += '<p class="text-red-500">' + value + '</p>';
+                    });
+
+                    Swal.fire({
+                        title: 'Error!',
+                        html: response.responseJSON.message,
+                        icon: 'error',
+                    })
+                }
+            })
+        }
+    </script>
     <script>
         function showInputField(selectElement) {
             var inputField = document.getElementById("customInput");
@@ -762,11 +835,19 @@ $(document).ready(function() {
             }
         }
     </script>
-<script>
-$(document).ready(function() {
+    
+   <script>
+    $(document).ready(function() {
+  // Event listener untuk perubahan select dengan class tertentu
+  $('#item-dropdown').change(function() {
+    var selectedValue = $(this).val();
+    console.log('Nilai yang dipilih: ' + selectedValue);
+  });
+});
+  $(document).ready(function() {
   // Mengambil data item dari server
   $.ajax({
-    url: '/get-items-data', // Ganti '/get-items-data' dengan URL endpoint yang sesuai di aplikasi Anda
+    url: '/get-items-data', // Gantilah '/get-items-data' dengan URL endpoint yang sesuai di aplikasi Anda
     type: 'GET',
     dataType: 'json',
     success: function(response) {
@@ -774,30 +855,21 @@ $(document).ready(function() {
         var itemsData = response.data; // Data item yang telah diambil
 
         // Menghapus opsi sebelumnya, jika ada
-        $('.item-dropdown').empty();
-
-        // Menambahkan opsi "Pilih Item" sebagai opsi default
-        var defaultOption = $('<option>').val('').text('Pilih Item');
-        $('.item-dropdown').append(defaultOption);
+        $('#item-dropdown').empty();
 
         // Menambahkan opsi item ke dalam dropdown
         itemsData.forEach(function(item) {
-          var option = $('<option>').val(item.id).text(item.name).data('tax-id', item.tax_id).attr('name', item.name);
-          $('.item-dropdown').append(option);
-        });
-
-        // Inisialisasi TomSelect pada elemen dropdown item
-        new TomSelect('.item-dropdown', {
-          plugins: ['dropdown_input'],
-          create: true,
-          allowEmptyOption: true,
-          sortField: {
-            field: "text",
-            direction: "asc",
-          }
+          var option = $('<option>').val(item.id).text(item.name);
+          $('#item-dropdown').append(option);
         });
 
         console.log(response);
+
+        // Menghapus opsi-opsi yang belum dipilih
+        $('select[name="item_id[]"]').each(function() {
+          var selectedItemId = $(this).val();
+          $(this).find('option[value="' + selectedItemId + '"]');
+        });
       } else {
         console.log(response.message);
       }
@@ -806,51 +878,9 @@ $(document).ready(function() {
       console.log(error);
     }
   });
-
-  // Mengambil data tax dari server
-
-  // Event listener pada perubahan nilai dropdown item
-  $(document).on('change', '.item-dropdown', function() {
-    var selectedItemId = $(this).val();
-    var row = $(this).closest('tr'); // Temukan baris terkait dengan dropdown yang dipilih
-
-    // Melakukan permintaan data dengan id yang dipilih
-    if (selectedItemId !== '') {
-      $.ajax({
-        url: '/get-item-data/' + selectedItemId, // Ganti '/get-item-data' dengan URL endpoint yang sesuai di aplikasi Anda
-        type: 'GET',
-        dataType: 'json',
-        success: function(response) {
-          if (response.success) {
-            var itemData = response.data; // Data item yang diterima dari server
-            var tax = response.tax; // Data item yang diterima dari server
-
-            // Mengisi nilai input dengan data item yang dipilih dalam baris yang tepat
-            row.find('input[name="description[]"]').val(itemData.description);
-            row.find('input[name="quantity[]"]').val(itemData.quantity);
-            row.find('input[name="price[]"]').val(itemData.selling_price);
-            row.find('input[name="tax_id[]"]').val(tax);
-            // Setel nilai input lainnya sesuai kebutuhan
-
-       
-            console.log(response);
-          } else {
-            console.log(response.message);
-          }
-        },
-        error: function(xhr, status, error) {
-          console.log(error);
-        }
-      });
-    } else {
-      // Jika opsi "Pilih Item" dipilih, lakukan tindakan yang sesuai
-      console.log('Pilih Item dipilih');
-    }
-  });
 });
 
-  </script>
-  
+   </script>
     <!-- Date Range JS -->
     <script src="{{ asset('Gmbslagi/vendor/daterange/daterange.js') }}"></script>
     <script src="{{ asset('Gmbslagi/vendor/daterange/custom-daterange.js') }}"></script>
@@ -888,6 +918,27 @@ $(document).ready(function() {
         });
     </script>
     <script>
+        new TomSelect('#ex-dropdown-input-1', {
+            plugins: ['dropdown_input'],
+        });
+    </script>
+    <script>
+        new TomSelect('#ex-dropdown-input', {
+            plugins: ['dropdown_input'],
+        });
+    </script>
+    <script>
+        new TomSelect('#select-code-language', {
+            sortField: 'text',
+            hideSelected: false,
+            plugins: {
+                'dropdown_header': {
+                    title: '<button id="btn-add-row" style="border:none; background: transparent"><i class="icon-add"></i> Tambah Item</button>'
+                }
+            }
+        });
+    </script>
+    <script>
         $('#drop').click(function() {
             $('#drop-items').remove()
             $('#drop-description').remove()
@@ -898,75 +949,64 @@ $(document).ready(function() {
         })
     </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
 
 <script>
     document.getElementById('add-row').addEventListener('click', function() {
       var tableBody = document.getElementById('table-body');
       var newRow = document.createElement('tr');
       newRow.innerHTML = `
-                                                        <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <select class="item-dropdown" id="ex-dropdown-input" name="item_id[]">
-                                                                    <!-- Opsi item akan ditambahkan secara dinamis menggunakan JavaScript -->
-                                                                </select>                                                               
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <input type="text" style="border-radius:2px"
-                                                                    name="description[]" class="form-control">
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <input type="number" style="border-radius:2px"
-                                                                    name="quantity[]" value="1" class="form-control">
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <input type="number" style="border-radius:2px"
-                                                                    name="price[]" class="form-control">
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div id="pajak-wrapper">
-                                                                
-                                                                <div
-                                                                    class="field-wrapper m-0 mb-1 pajak-input-wrapper">
-                                                                    <select class="tax-dropdown"
-                                                                    name="tax_id[]" id="ex-dropdown-input-3" title="Select Product Category"
-                                                                    data-live-search="true">
-
-                                                                    
-                                                                </select>
-                                                                </div>
-                                                                <div class="add-pajak-wrapper mb-2">
-                                                                    <button class="btn add-pajak"
-                                                                        type="button" name="tax_id" style="margin-top: 1%">
-                                                                        <i class="icon-plus"></i> Tambah Pajak
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <input type="number" style="border-radius:2px"
-                                                                    name="amount" class="form-control">
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="table-actions">
-                                                                <button class="btn btn-light delete-row">
-                                                                    <i class="icon-trash-2"></i>
-                                                                </button>
-                                                            </div>
-                                                        </td>
-                                                    
+        <td>
+          <div class="field-wrapper m-0">
+            <select class="item-dropdown" name="item_id[]">
+              <!-- Opsi item akan ditambahkan secara dinamis menggunakan JavaScript -->
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="field-wrapper m-0">
+            <input type="text" style="border-radius:2px" name="description[]" class="form-control">
+          </div>
+        </td>
+        <td>
+          <div class="field-wrapper m-0">
+            <input type="number" style="border-radius:2px" name="quantity[]" value="1" class="form-control">
+          </div>
+        </td>
+        <td>
+          <div class="field-wrapper m-0">
+            <input type="number" style="border-radius:2px" name="price[]" class="form-control">
+          </div>
+        </td>
+        <td>
+          <div id="pajak-wrapper">
+            <div class="field-wrapper m-0 mb-1 pajak-input-wrapper">
+              <select class="select-single js-states tax-dropdown" name="tax_id[]" title="Select Product Category" data-live-search="true">
+                <!-- Opsi tax akan ditambahkan secara dinamis menggunakan JavaScript -->
+              </select>
+            </div>
+            <div class="add-pajak-wrapper mb-2">
+              <button class="btn add-pajak" type="button" name="tax_id" style="margin-top: 1%">
+                <i class="icon-plus"></i> Tambah Pajak
+              </button>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="field-wrapper m-0">
+            <input type="number" style="border-radius:2px" name="amount[]" class="form-control">
+          </div>
+        </td>
+        <td>
+          <div class="table-actions">
+            <button class="btn btn-light delete-row">
+              <i class="icon-trash-2"></i>
+            </button>
+          </div>
+        </td>
       `;
       tableBody.appendChild(newRow);
-
+  
       // Ambil data item dan tax dari server
       $.ajax({
         url: '/get-items-data', // Gantilah '/get-items-data' dengan URL endpoint yang sesuai di aplikasi Anda
@@ -975,19 +1015,13 @@ $(document).ready(function() {
         success: function(response) {
           if (response.success) {
             var itemsData = response.data; // Data item yang telah diambil
-
+  
             // Temukan dropdown item terbaru dalam baris yang ditambahkan
             var itemDropdown = newRow.querySelector('.item-dropdown');
-
+  
             // Hapus opsi sebelumnya, jika ada
-            $(itemDropdown).empty();
-
-            // Tambahkan opsi "Pilih Item" sebagai opsi default
-            var defaultOption = document.createElement('option');
-            defaultOption.value = '';
-            defaultOption.text = 'Pilih Item';
-            itemDropdown.appendChild(defaultOption);
-
+            itemDropdown.innerHTML = '';
+  
             // Tambahkan opsi item ke dalam dropdown
             itemsData.forEach(function(item) {
               var option = document.createElement('option');
@@ -995,6 +1029,7 @@ $(document).ready(function() {
               option.text = item.name;
               itemDropdown.appendChild(option);
             });
+  
             console.log('Data item berhasil diambil dan ditampilkan di HTML');
           } else {
             console.log(response.message);
@@ -1004,7 +1039,7 @@ $(document).ready(function() {
           console.log(error);
         }
       });
-
+  
       // Ambil data tax dari server
       $.ajax({
         url: '/get-tax-data', // Gantilah '/get-tax-data' dengan URL endpoint yang sesuai di aplikasi Anda
@@ -1013,19 +1048,13 @@ $(document).ready(function() {
         success: function(response) {
           if (response.success) {
             var taxData = response.data; // Data tax yang telah diambil
-
+  
             // Temukan dropdown tax terbaru dalam baris yang ditambahkan
             var taxDropdown = newRow.querySelector('.tax-dropdown');
-
+  
             // Hapus opsi sebelumnya, jika ada
-            $(taxDropdown).empty();
-
-            // Tambahkan opsi "Pilih Tax" sebagai opsi default
-            var defaultOption = document.createElement('option');
-            defaultOption.value = '';
-            defaultOption.text = 'Pilih Tax';
-            taxDropdown.appendChild(defaultOption);
-
+            taxDropdown.innerHTML = '';
+  
             // Tambahkan opsi tax ke dalam dropdown
             taxData.forEach(function(tax) {
               var option = document.createElement('option');
@@ -1033,10 +1062,7 @@ $(document).ready(function() {
               option.text = tax.name;
               taxDropdown.appendChild(option);
             });
-
-            // Inisialisasi ulang Select2 setelah opsi ditambahkan
-            $(taxDropdown).select2(); // Inisialisasi ulang Select2
-
+  
             console.log('Data tax berhasil diambil dan ditampilkan di HTML');
           } else {
             console.log(response.message);
@@ -1047,10 +1073,9 @@ $(document).ready(function() {
         }
       });
     });
-</script>
+  </script>
   
-
-      <script>
+    <script>
         // Fungsi untuk menghapus pajak yang baru ditambahkan
         function deletePajak(event) {
             var pajakInputWrapper = event.target.closest('.pajak-input-wrapper');

@@ -16,59 +16,23 @@ use PHPUnit\Metadata\Uses;
 
 class InvoiceController extends Controller
 {
-    // Controller untuk mengambil data item
-            public function getItemsData()
-            {
-                // Lakukan proses pengambilan data item dari database atau sumber data lainnya
-            // Mengambil data item dari database
-            $itemsData = Item::whereNotNull('selling_price')
-            ->where('company_id', Auth::user()->company_id)
-            ->select('id', 'name', 'tax_id')
-            ->get();
+    function getAllItems() {
+        
+        $items = Item::all();
 
-            // Ubah format data menjadi array yang berisi objek dengan atribut 'id' dan 'name'
-            $itemOptions = $itemsData->map(function ($item) {
-            return [
-            'id' => $item->id,
-            'name' => $item->name,
-            'tax_id' => $item->tax_id,
-            ];
-            });
-
-            // Kembalikan data dalam format JSON
-            return response()->json([
-            'success' => true,
-            'data' => $itemOptions,
-            ]);
-
-            }
-
-// Controller untuk mengambil data tax
-
-
-// Controller untuk mengambil data item berdasarkan ID
-public function getItemData($id)
-{
-    // Lakukan proses pengambilan data item berdasarkan ID dari database atau sumber data lainnya
-    $itemData = Item::find($id); // Data item yang ditemukan
-
-    if (!$itemData) {
         return response()->json([
-            'success' => false,
-            'message' => 'Item not found.',
+            'success' => true,
+            'data' => $items,
         ]);
     }
-
-    $tax = Tax::find($itemData->tax_id); // Retrieve the tax data
-    $taxName = $tax->name;
-
-    // Kembalikan data dalam format JSON
-    return response()->json([
-        'success' => true,
-        'tax' => $taxName,
-        'data' => $itemData,
-    ]);
-}
+    function getAllTaxes() {
+        $taxes = Tax::all();
+    
+        return response()->json([
+            'success' => true,
+            'data' => $taxes,
+        ]);
+    }
     
     public function invoice()
     {
@@ -82,10 +46,11 @@ public function getItemData($id)
     public function addInvoice()
     {
         $customer = Customer::all();
+        $item = Item::all()->whereNotNull('selling_price');
         $category = Category::all();
         $tax = Tax::all();
         $default = InvoiceSetting::find(1);
-        return view('sale.sale_add_invoice',compact('customer','category','tax','default'));
+        return view('sale.sale_add_invoice',compact('customer','item','category','tax','default'));
     }
     public function create_invoice(Request $request)
     {

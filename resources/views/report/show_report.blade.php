@@ -134,30 +134,8 @@
                                             <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 ">
                                                 <h6 style="display: flex; align-items: center;">linimasa</h6>
                                             </div>
-                                            <li class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1" role="presentation">
-                                                <div class="nav-pills active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-transactions" type="button" role="tab" aria-controls="pills-transactions" aria-selected="true">
-                                                    <h6 class=""> <i class="fas fa-signal"></i></h6>
-                                                </div>
-                                            </li>
-                                            <li class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1" role="presentation">
-                                                <div class="nav-pills" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-transfer" type="button" role="tab" aria-controls="pills-transfer" aria-selected="false">
-                                                    <h6 class="">  <i class="fas fa-chart-pie"></i></h6>
-                                                </div>
-                                            </li>
                                         </ul>
-                                        <hr class="mb-5">
-                                        <div class="tab-content" id="pills-tabContent">
-                                            <div class="tab-pane fade show active" id="pills-transactions" role="tabpanel" aria-labelledby="pills-transactions-tab" tabindex="0">
-                                                <div>
-                                                        <div id="chart2"></div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="pills-transfer" role="tabpanel" aria-labelledby="pills-transfer-tab" tabindex="0">
-                                                <div class="col-11">
-                                                            <div id="chart3     "></div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <div id="chart2"></div>
                                     </div>
                                 </div>
 

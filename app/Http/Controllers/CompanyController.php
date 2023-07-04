@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,35 +18,35 @@ class CompanyController extends Controller
     }
     public function add_company()
     {
-
-        return view('add_company');
+        $sidebar = Company::all();
+        return view('add_company')->with('sidebar', $sidebar);
     }
     public function add_company_id(Request $request)
     {
-
-        // Mendapatkan file foto yang diunggah dari permintaan pengguna
-        $logo = $request->file('logo');
-
-        // Menghasilkan nama unik untuk file foto
-        $filename = uniqid() . '. v' . $logo->getClientOriginalExtension();
-
-        // Menentukan path atau direktori tujuan untuk menyimpan file foto
-        $destinationPath = 'public/Gmbslagi/img/company';
-
-        // Menyimpan file foto ke direktori tujuan dengan nama yang dihasilkan
-        $logo->move($destinationPath, $filename);
         // simpan data yang telah diisi
         $user = new Company();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->logo = $filename;
         $user->telephone = $request->input('telephone');
         $user->npwp = $request->input('npwp');
         $user->user_id = $request->input('user_id');
+
+        // Mengambil file gambar yang diupload
+        $logo = $request->file('logo');
+
+        // Mendapatkan nama unik untuk gambar
+        $logoName = time() . '_' . $logo->getClientOriginalName();
+
+        // Menyimpan gambar ke direktori storage/company
+        $logoPath = $logo->storeAs('company', $logoName, 'public');
+
+        $user->logo = $logoPath;
         $user->save();
-        $data = User::find($request->user_id);
+
+        $data = User::find($request->input('user_id'));
         $data->company_id = $user->id;
         $data->save();
+
         return redirect()->route('dashboard')->with('success', 'Data berhasil ditambahkan');
     }
     public function update_company(Request $request)
@@ -65,5 +66,10 @@ class CompanyController extends Controller
 
 
         return redirect()->back()->with('success', 'Data berhasil diubah');
+    }
+    public function sidebar()
+    {
+        $data = Company::all();
+        return view('layouts.sidebar', compact('data'));
     }
 }

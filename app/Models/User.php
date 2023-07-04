@@ -48,18 +48,16 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        
-
     ];
 
     public function company()
     {
-        return $this->hasMany(Company::class);
+        return $this->belongsTo(Company::class);
     }
     public function transfer()
     {
         return $this->hasMany(Transfer::class,'name');
     }
-    
+
 
 }

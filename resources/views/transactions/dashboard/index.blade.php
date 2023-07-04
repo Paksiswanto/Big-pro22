@@ -641,14 +641,14 @@
                                                     <td name="item" id="checkbox1"><input type="checkbox" class="other-checkbox"></td>
                                                     <td>{{ $row->date }}</th>
                                                     <td>TRA-{{ $row->income_number }}</td>
-                                                    <td>{{ $row->category->categoryType->name   }}</td>
+                                                    <td>{{ $row->category_id }}</td>
                                                     <td>
                                                         <div class="lingkaran-warna1" style="background-color: {{ $row->category->color }};">
                                                             &emsp;&emsp;{{ $row->category->name }}
                                                         </div>
                                                     </td>
                                                     <td></td>
-                                                    <td>{{ $row->account->name }}</td>
+                                                    <td>{{ $row->account_id }}</td>
                                                     <td>N/A</td>
                                                     <td>Rp{{ $row->amount }}</td>
                                                     <th>

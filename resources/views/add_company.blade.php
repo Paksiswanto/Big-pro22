@@ -109,7 +109,7 @@
     <div class="page-wrapper">
 
         <!-- Sidebar wrapper start -->
-        @include('layouts.sidebar')
+        @include('layouts.sidebar_add_company')
         <!-- Sidebar wrapper end -->
 
         <!-- *************
@@ -155,18 +155,17 @@
                             </div>
                             <div class="modal fade" id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-bs-backdrop="static">
 											<div class="modal-dialog">
-                                            <form action="/add_company/add" method="POST">
 											  <div class="modal-content">
 												<div class="modal-header">
 												  <h5 class="modal-title" id="exampleModalLongTitle">Inputkan Data Perusahaan</h5>
                                         </div>
                                         <div class="modal-body">
-                                          <form action="/add_company/add" method="POST" >
-                                            <div class="d-flex row ">                                      
+                                          <form action="/add_company/add" method="POST" enctype="multipart/form-data">
+                                            <div class="d-flex row ">
                                                 @csrf
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                        
+
                                                         <!-- Field wrapper start -->
                                                         <div class="field-wrapper">
                                                             <label class="">Name <span class="text-danger"></span></label>

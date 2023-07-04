@@ -24,7 +24,7 @@ class UsersController extends Controller
     }
     public function add_users()
     {
-        
+
         $company = Company::all();
         $role = Role::all();
         return view('user.add',compact('company','role'));
@@ -36,12 +36,12 @@ class UsersController extends Controller
             'picture'=> 'required|mimes:jpeg,png,jpg,jfif|max:2048',
             'email'=> 'required|unique:users'
         ]);
-        
-        if ($request->hasFile('picture')) {
-            $photo = $request->file('picture');
-            $destinationPath = 'public/users';
-            $filePath = $photo->store($destinationPath);
-        
+      
+            if ($request->hasFile('picture')) {
+                $photo = $request->file('picture');
+                $destinationPath = 'users';
+                $filePath = $photo->store($destinationPath);
+
             // Memastikan file gambar berhasil diunggah sebelum menyimpannya ke database
             if ($filePath) {
                 $data = User::create([
@@ -51,14 +51,14 @@ class UsersController extends Controller
                     'password' => $request->password,
                     'picture' => $filePath,
                 ]);
-        
+
                 $role = $request->role;
                 $data->assignRole($role);
-                
+
         $invitationLink = route('users.setPassword', $data->id);
         Mail::to($data->email)->send(new InvitationEmail($invitationLink));
                 return redirect('users')->with('success', 'Data pengguna berhasil diundang.');
-        
+
             }
         }
     }
@@ -89,8 +89,8 @@ class UsersController extends Controller
     // Update gambar profil jika ada
     if ($request->hasFile('picture')) {
         $photo = $request->file('picture');
-        $destinationPath = 'public/users';
-        $filePath = $photo->store($destinationPath);
+        $destinationPath = 'users';
+        $filePath = $photo->store($destinationPath, 'public');
 
         // Hapus gambar lama jika ada
         if ($user->picture) {
@@ -107,7 +107,7 @@ class UsersController extends Controller
     $role = $request->role;
     $user->assignRole($role);
     // Redirect atau kembali ke halaman pengguna
-    return redirect()->route('users-index')->with('success', 'Data pengguna berhasil diperbarui.');     
+    return redirect()->route('users-index')->with('success', 'Data pengguna berhasil diperbarui.');
             }
     function delete($id)  {
         $data = User::find($id);
