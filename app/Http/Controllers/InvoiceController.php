@@ -121,7 +121,7 @@ public function getItemData($id)
     
     public function invoice()
     {
-        $invoice = Invoice::where('company_id',Auth::user()->company_id)->get();
+        $invoice = Invoice::where('company_id',Auth::user()->company_id)->latest()->get();
         return view('sale.sale_invoice',compact('invoice'));
     }
     public function recurring_invoice()
@@ -196,6 +196,7 @@ public function getItemData($id)
     
     public function costumers()
     {
+        
         return view('sale.costumers');
     }
 

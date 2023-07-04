@@ -382,12 +382,7 @@
                                         </div>
                                     </div>
 									  </div>
-                                        <div class="content">
-                                            <div class="searchcontainer">
-                                              <i class="icon-search"></i><input class="search " type="text" placeholder="Cari atau seleksi hasil.." style="
-                                              margin-bottom: 2%; font-size:10pt "/>
-                                            </div>
-                                        </div>
+                                        <div style="margin-top: 5%;">
                                         <div class="table-responsive">
 											<div class="hidden-menu" style="display: none; background-color: #f2f2f2; font-size: 12pt; padding: 10px;">
 												<p style="display: inline" id="count-display">&emsp;</p>
@@ -395,7 +390,7 @@
 												&emsp;<a  href="#" title="Tandai Telah dikirim"> <i class="icon-send1" style="color:#424242 "></i> </a>
 												&emsp;<a  href="#" title="Hapus"> <i class="icon-trash-2"></i> </a>
 											</div>
-											<table class="table table-hover caption-top">
+											<table id="basicExample" class="table table-hover caption-top">
 												<thead>
 												  <tr>
 													<th scope="col"> <input type="checkbox" id="select-all-checkbox"> </th>
@@ -491,6 +486,8 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                        </div>
+                               
                                 <!-- Card start -->
                                 <div class="card">
                                     <div class="card-body col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

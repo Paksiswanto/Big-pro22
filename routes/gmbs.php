@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('insert_customers', [CostumersController::class, 'insert_cos'])->name('insert_customers');
 Route::post('update_customers/{id}', [CostumersController::class, 'update_cos'])->name('update_customers');
 Route::get('delete_customers/{id}', [CostumersController::class, 'delete_cos'])->name('delete_customers');
+Route::delete('delete_customers/{id}', [CostumersController::class, 'delete_cos'])->name('delete_customers')->middleware('permission:Delete_Customer');
+Route::delete('/delete_selected_customers', [CostumersController::class, 'deleteSelected'])->name('delete_selected_customers');
 Route::delete('/delete_selected_customers', [CostumersController::class, 'deleteSelected'])->name('delete_selected_customers');
 Route::patch('/status_update_sup/{supplierId}', [CostumersController::class, 'updateStatus'])->name('status_update_cos');
 
@@ -29,6 +31,10 @@ Route::middleware(['auth','auth.session', 'verified'])->group(function () {
 Route::post('insert_supplier', [SupplierController::class, 'insert_supplier'])->name('insert_supplier');
 Route::post('update_supplier/{id}', [SupplierController::class, 'update_supplier'])->name('update_supplier');
 Route::get('delete_supplier/{id}', [SupplierController::class, 'delete_supplier'])->name('delete_supplier');
+Route::delete('/delete_supp/{id}', [SupplierController::class, 'delete'])->name('delete_supp')->middleware('permission:Delete_Supplier');
+Route::delete('/delete_selected_supplier', [SupplierController::class, 'deleteSelected'])->name('delete_selected_supplier');
+Route::patch('/status_update/{supplierId}', [SupplierController::class, 'updateStatus'])->name('status_update');
+Route::get('/detail_sup/{id}', [SupplierController::class, 'show'])->name('detail_sup');
 
 Route::post('/insert_report', [ReportController::class, 'insert_report'])->name('insert_report');
 

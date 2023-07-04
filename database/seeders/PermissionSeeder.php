@@ -13,6 +13,7 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
+        
         Permission::create([
             'name' => 'View_Invoice',
             'guard_name' => 'web',
@@ -98,15 +99,35 @@ class PermissionSeeder extends Seeder
             'guard_name' => 'web',
         ]);
         Permission::create([
-            'name' => 'Create_Transaction',
+            'name' => 'View_Transaction_Income',
             'guard_name' => 'web',
         ]);
         Permission::create([
-            'name' => 'Edit_Transaction',
+            'name' => 'Create_Transaction_Income',
             'guard_name' => 'web',
         ]);
         Permission::create([
-            'name' => 'Delete_Transaction',
+            'name' => 'Edit_Transaction_Income',
+            'guard_name' => 'web',
+        ]);
+        Permission::create([
+            'name' => 'Delete_Transaction_Income',
+            'guard_name' => 'web',
+        ]);
+        Permission::create([
+            'name' => 'View_Transaction_Expenses',
+            'guard_name' => 'web',
+        ]);
+        Permission::create([
+            'name' => 'Create_Transaction_Expenses',
+            'guard_name' => 'web',
+        ]);
+        Permission::create([
+            'name' => 'Edit_Transaction_Expenses',
+            'guard_name' => 'web',
+        ]);
+        Permission::create([
+            'name' => 'Delete_Transaction_Expenses',
             'guard_name' => 'web',
         ]);
         Permission::create([
@@ -270,10 +291,6 @@ class PermissionSeeder extends Seeder
             'guard_name' => 'web',
         ]);
         Permission::create([
-            'name' => 'Delete_Company_general',
-            'guard_name' => 'web',
-        ]);
-        Permission::create([
             'name' => 'View_Item',
             'guard_name' => 'web',
         ]);
@@ -339,6 +356,10 @@ class PermissionSeeder extends Seeder
             'guard_name' => 'web',
         ]);
         Permission::create([
+            'name' => 'Create_Company',
+            'guard_name' => 'web',
+        ]);
+        Permission::create([
             'name' => 'Edit_Company',
             'guard_name' => 'web',
         ]);
@@ -356,6 +377,10 @@ class PermissionSeeder extends Seeder
         ]);
         Permission::create([
             'name' => 'View_Report',
+            'guard_name' => 'web',
+        ]);
+        Permission::create([
+            'name' => 'Create_Report',
             'guard_name' => 'web',
         ]);
         Permission::create([
