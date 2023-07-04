@@ -735,108 +735,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-    <script>
-$(document).ready(function() {
-  // Mengambil data item dari server
-  $.ajax({
-    url: '/get-items-data', // Gantilah '/get-items-data' dengan URL endpoint yang sesuai di aplikasi Anda
-    type: 'GET',
-    dataType: 'json',
-    success: function(response) {
-      if (response.success) {
-        var itemsData = response.data; // Data item yang telah diambil
-
-        // Menghapus opsi sebelumnya, jika ada
-        $('#item-dropdown').empty();
-
-        // Menambahkan opsi item ke dalam dropdown
-        itemsData.forEach(function(item) {
-          var option = $('<option>').val(item.id).text(item.name);
-          $('#item-dropdown').append(option);
-        });
-
-        console.log('Data item berhasil diambil dan ditampilkan di HTML');
-      } else {
-        console.log(response.message);
-      }
-    },
-    error: function(xhr, status, error) {
-      console.log(error);
-    }
-  });
-});
-
-    </script>
-<script>
- $(document).ready(function() {
-  // Mengambil data tax dari server
-  $.ajax({
-    url: '/get-tax-data', // Gantilah '/get-tax-data' dengan URL endpoint yang sesuai di aplikasi Anda
-    type: 'GET',
-    dataType: 'json',
-    success: function(response) {
-      if (response.success) {
-        var taxData = response.data; // Data tax yang telah diambil
-
-        // Menghapus opsi sebelumnya, jika ada
-        $('#tax-dropdown').empty();
-
-        // Menambahkan opsi tax ke dalam dropdown
-        taxData.forEach(function(tax, index) {
-          var option = $('<option>').val(tax.id).text(tax.name).attr('id', 'tax-option-' + index);
-          $('#tax-dropdown').append(option);
-        });
-
-        console.log('Data tax berhasil diambil dan ditampilkan di HTML');
-      } else {
-        console.log(response.message);
-      }
-    },
-    error: function(xhr, status, error) {
-      console.log(error);
-    }
-  });
-});
-
-</script>
-    <script>
-        function create() {
-            $.ajax({
-                type: 'POST',
-                url: '/create_invoice',
-                data: {
-                    _token: csrfToken,
-                    type: type,
-                    date: date,
-                    to: to,
-                    message: message,
-                },
-                success: function(response) {
-                    Swal.fire({
-                        title: 'success!',
-                        text: 'Success data berhasil ditambahkan!',
-                        icon: 'success'
-                    }).then(function() {
-                        location.reload();
-                    });
-                },
-                error: function(response) {
-                    var errors = response.responseJSON.errors;
-                    var errorMessage = '';
-
-                    $.each(errors, function(key, value) {
-                        errorMessage += '<p class="text-red-500">' + value + '</p>';
-                    });
-
-                    Swal.fire({
-                        title: 'Error!',
-                        html: response.responseJSON.message,
-                        icon: 'error',
-                    })
-                }
-            })
-        }
-    </script>
+    
     <script>
         function showInputField(selectElement) {
             var inputField = document.getElementById("customInput");
@@ -848,52 +747,7 @@ $(document).ready(function() {
             }
         }
     </script>
-    
-   <script>
-    $(document).ready(function() {
-  // Event listener untuk perubahan select dengan class tertentu
-  $('#item-dropdown').change(function() {
-    var selectedValue = $(this).val();
-    console.log('Nilai yang dipilih: ' + selectedValue);
-  });
-});
-  $(document).ready(function() {
-  // Mengambil data item dari server
-  $.ajax({
-    url: '/get-items-data', // Gantilah '/get-items-data' dengan URL endpoint yang sesuai di aplikasi Anda
-    type: 'GET',
-    dataType: 'json',
-    success: function(response) {
-      if (response.success) {
-        var itemsData = response.data; // Data item yang telah diambil
-
-        // Menghapus opsi sebelumnya, jika ada
-        $('#item-dropdown').empty();
-
-        // Menambahkan opsi item ke dalam dropdown
-        itemsData.forEach(function(item) {
-          var option = $('<option>').val(item.id).text(item.name);
-          $('#item-dropdown').append(option);
-        });
-
-        console.log(response);
-
-        // Menghapus opsi-opsi yang belum dipilih
-        $('select[name="item_id[]"]').each(function() {
-          var selectedItemId = $(this).val();
-          $(this).find('option[value="' + selectedItemId + '"]');
-        });
-      } else {
-        console.log(response.message);
-      }
-    },
-    error: function(xhr, status, error) {
-      console.log(error);
-    }
-  });
-});
-
-   </script>
+ 
    <script>
         $(document).ready(function() {
           $('.toggle-link').click(function(e) {
@@ -934,18 +788,17 @@ $(document).ready(function() {
         }
       });
       var incrementInput = $("#increment-input");
-var companyId = parseInt(response.company);
+        var companyId = parseInt(response.company);
+        var prefiks = response.prefix.prefix;
 
 if (isNaN(incrementInput.val())) {
   incrementInput.val('1');
 } else {
-  var formattedCompanyId = String(companyId + 1).padStart(2, '0');
-  console.log('companyId:', companyId);
-  console.log('formattedCompanyId:', formattedCompanyId);
-  incrementInput.val('FKR-' + formattedCompanyId);
+  var formattedCompanyId = String(companyId + 1).padStart(3, '0');
+  incrementInput.val(prefiks + '-' + formattedCompanyId);
 }
 
-      console.log(incrementInput);
+
     } else {
       console.log(response.message);
     }
@@ -972,7 +825,7 @@ if (isNaN(incrementInput.val())) {
             var description = response.description;
             var combinedTax = tax + ' (' + taxAmount / 100 + ')';
 
-            row.find('input[name="description[]"]').val(description);
+            row.find('input[name="description[]"]').val(itemData.description);
             row.find('input[name="quantity[]"]').val(itemData.quantity);
             row.find('input[name="price[]"]').val(itemData.selling_price);
 
@@ -982,7 +835,6 @@ if (isNaN(incrementInput.val())) {
               row.find('input[name="tax_id[]"]').val(combinedTax).data('taxAmount', taxAmount);
             }
 
-            console.log(response);
           } else {
             console.log(response.message);
           }
@@ -992,7 +844,6 @@ if (isNaN(incrementInput.val())) {
         }
       });
     } else {
-      console.log('Pilih Item dipilih');
     }
   });
 
@@ -1222,7 +1073,6 @@ if (isNaN(incrementInput.val())) {
                             },
                         });
 
-                        console.log('Data item berhasil diambil dan ditampilkan di HTML');
                     } else {
                         console.log(response.message);
                     }
@@ -1233,41 +1083,6 @@ if (isNaN(incrementInput.val())) {
             });
         });
     </script>
-
-
-    <script>
-        // Fungsi untuk menghapus pajak yang baru ditambahkan
-        function deletePajak(event) {
-            var pajakInputWrapper = event.target.closest('.pajak-input-wrapper');
-            pajakInputWrapper.remove();
-        }
-
-        // Event listener untuk tombol hapus pajak
-        document.addEventListener('click', function(event) {
-            if (event.target && event.target.classList.contains('delete-pajak')) {
-                deletePajak(event);
-            }
-        });
-
-        document.addEventListener('click', function(event) {
-            if (event.target && event.target.classList.contains('add-pajak')) {
-                var pajakWrapper = event.target.closest('#pajak-wrapper');
-                var pajakInputWrapper = pajakWrapper.querySelector('.pajak-input-wrapper');
-
-                var newPajakInputWrapper = pajakInputWrapper.cloneNode(true);
-                var deletePajakButton = document.createElement('button');
-                deletePajakButton.classList.add('btn', 'btn-light', 'delete-pajak');
-                deletePajakButton.innerHTML = '<i class="icon-trash-2"></i> Hapus Pajak';
-                deletePajakButton.style.width = event.target.offsetWidth +
-                    'px'; // Menyesuaikan lebar tombol dengan tombol "Tambah Pajak"
-                deletePajakButton.style.marginTop = '3%'; // Menambahkan margin-top 3%
-                newPajakInputWrapper.appendChild(deletePajakButton);
-
-                pajakWrapper.appendChild(newPajakInputWrapper);
-            }
-        });
-    </script>
-
 </body>
 
 <!-- Mirrored from www.kodingwife.com/demos/unipro/v1-x/05-design-violet/accordions.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 May 2023 03:02:35 GMT -->

@@ -280,9 +280,11 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">
                                             <div class="graph-day-selection" role="group" style="margin-left: -30px;margin-right: 10px;">
+                                                @can('Create_Invoice')
                                                 <a href="{{url('add_invoice')}}">
                                                     <button type="button" class="btn active" style="background: transparent">Tambah</button>
-                                                </a>
+                                                </a>                                                    
+                                                @endcan
                                             </div>
                                         </div>
                                         <div class="dropdown">
@@ -417,8 +419,13 @@
                                                         <td>Rp {{$data->totalPay}}</td>
                                                         <td>
                                                             <div class="menu-icons" style="font-size: 15px;">
-                                                                <a href="/showInvoice/{{ $data->id }}" class="menu-icon icon-edit-2"></a>
+                                                                @can('Edit_Invoice')
+                                                                <a href="/showInvoice/{{ $data->id }}" class="menu-icon icon-edit-2"></a>                                                                    
+                                                                @endcan
+                                                                @can('Delete_Invoice')
                                                                 <a href="javascript:void(0)" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#delete{{ $data->id }}"></a>
+                                                                    
+                                                                @endcan
                                                                 <a href="/details/{{ $data->id }}" class="menu-icon icon-eye1"></a>
                                                             <div class="dropdown icon-dots-two-vertical">
                                                                 <span>

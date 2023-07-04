@@ -72,5 +72,5 @@ Route::middleware(['auth','auth.session', 'verified'])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware('permission:View_Dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 });

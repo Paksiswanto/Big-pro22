@@ -53,6 +53,9 @@ class InvoiceController extends Controller
             ->select('id', 'name', 'tax_id')
             ->get();
             $companyId = Invoice::where('company_id',Auth::user()->company_id)->count();
+            $default = InvoiceSetting::where('company_id',Auth::user()->company_id)->first();
+
+
             // Ubah format data menjadi array yang berisi objek dengan atribut 'id' dan 'name'
             $itemOptions = $itemsData->map(function ($item) {
             return [
@@ -66,7 +69,8 @@ class InvoiceController extends Controller
             return response()->json([
             'success' => true,
             'data' => $itemOptions,
-            'company'=>$companyId
+            'company'=>$companyId,
+            'prefix'=>$default,
             ]);
 
             }
@@ -134,7 +138,7 @@ public function getItemData($id)
         $item = Item::all()->whereNotNull('selling_price');
         $category = Category::all();
         $tax = Tax::all();
-        $default = InvoiceSetting::find(1);
+        $default = InvoiceSetting::where('company_id',Auth::user()->company_id)->first();
         return view('sale.sale_add_invoice',compact('customer','item','category','tax','default'));
     }
     public function create_invoice(Request $request)
@@ -212,7 +216,8 @@ public function getItemData($id)
     }
     public function setting_invoice()
     {
-        return view('sistem_invoice.index');
+        $data = InvoiceSetting::where('company_id',Auth::user()->company_id)->first();
+        return view('sistem_invoice.index',compact('data'));
     }
     public function update_invSetting(Request $request)
     {

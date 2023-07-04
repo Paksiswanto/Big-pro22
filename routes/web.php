@@ -15,7 +15,6 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\CategoryController;
@@ -83,13 +82,10 @@ Route::get('import', function () {
 Route::get('/itemindex',[ItemController::class,'itemindex'])->Name('item-index');
 Route::get('/add-item',[ItemController::class,'additem'])->Name('item-add');
 Route::get('/edit-item/{id}',[ItemController::class,'edititem'])->Name('item-edit');
-Route::get('/get-item-data/{id}', [ItemController::class, 'getItemData'])->name('get.item.data');
-Route::get('/get-items-data', [InvoiceController::class,'getAllItems'])->name('get-all-items');
 Route::get('/get-tax-data', [InvoiceController::class,'getAllTaxes'])->name('get-all-tax');
 Route::get('/itemindex',[ItemController::class,'itemindex'])->Name('item-index')->middleware('permission:View_Item');
 Route::get('/add-item',[ItemController::class,'additem'])->Name('item-add')->middleware('permission:Create_Item');
 Route::get('/edit-item/{id}',[ItemController::class,'edititem'])->Name('item-edit')->middleware('permission:Edit_Item');
-Route::get('/get-items-data', [InvoiceController::class,'getItemsData'])->name('get-all-items');
 Route::get('/get-items-data', [InvoiceController::class,'getItemsData'])->name('get-all-items');
 Route::get('/get-item/{id}', [InvoiceController::class,'getItem'])->name('get-items');
 Route::get('/get-tax-data', [InvoiceController::class,'getTaxData'])->name('get-tax-data');
@@ -204,8 +200,7 @@ Route::get('/show_account2', [AccountController::class, 'show_account2'])->name(
 
 
 
-Route::get('/laporan',[LaporanController::class, 'laporan'])->name('laporan');
-//category
+    //category
 Route::get('/category',[CategoryController::class,'category_index'])->name('index-category')->middleware('permission:View_Category');
 Route::get('/add-category',[CategoryController::class,'category_add'])->name('add-category')->middleware('permission:Create_Category');
 Route::get('/edit-category/{id}',[CategoryController::class,'category_edit'])->name('edit-category')->middleware('permission:Edit_Category');
