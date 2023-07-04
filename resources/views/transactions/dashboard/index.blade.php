@@ -683,7 +683,7 @@
                                                                     <a href="{{ url('delete_income') }}"
                                                                         class="menu-icon icon-trash"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#deleteincome"></a>
+                                                                        data-bs-target="#deleteincome-{{$row->id}}"></a>
                                                                     <a href="{{ route('income_show', ['id' => $row->id]) }}"
                                                                         class="menu-icon icon-eye1"></a>
                                                                 </div>
@@ -878,7 +878,7 @@
 
                                                 </tbody>
                                                 <!-- Modal start -->
-                                                <div class="modal fade" id="deleteincome" data-bs-backdrop="static"
+                                                <div class="modal fade" id="deleteincome-{{$row->id}}" data-bs-backdrop="static"
                                                     data-bs-keyboard="false" tabindex="-1"
                                                     aria-labelledby="deleteincome" aria-hidden="true">
                                                     <div class="modal-dialog my-auto">
