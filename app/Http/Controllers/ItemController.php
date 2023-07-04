@@ -9,6 +9,7 @@ use App\Imports\ItemImport;
 use App\Imports\YourImportClass;
 use App\Models\Category;
 use App\Models\Company;
+use App\Models\Invoice;
 use App\Models\Item;
 use App\Models\Tax;
 use Illuminate\Contracts\Support\ValidatedData;
@@ -130,5 +131,6 @@ class ItemController extends Controller
           
           return Excel::download(new ItemExport($tax->toArray(), $category->toArray(), $company->toArray()), $fileName);
       }
+
     }
 

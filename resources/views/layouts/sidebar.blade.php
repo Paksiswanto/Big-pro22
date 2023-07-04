@@ -1,4 +1,4 @@
-<nav class="sidebar-wrapper">
+    <nav class="sidebar-wrapper">
 
     <!-- Sidebar content start -->
     <div class="sidebar-tabs">

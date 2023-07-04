@@ -398,12 +398,14 @@
         });
     </script> --}}
       {{-- <script>
+
+      <script>
         function formatBalanceInput(input) {
           // Mengambil nilai input
           let value = input.value;
         
           // Menghapus semua tanda koma dari nilai input
-          let cleanedValue = value.replace(/,/g, '');
+          let cleanedValue = value.replace(/,/g, '.');
         
           // Memformat nilai input dengan tanda koma sebagai pemisah ribuan
           let formattedValue = Number(cleanedValue).toLocaleString();

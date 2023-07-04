@@ -418,13 +418,13 @@
                                                         <td>{{$data->start_date}}</td>
                                                         <td><span class="badge-sent">Terkirim</span></td>
                                                         <td>{{$data->Customer->name}}</td>
-                                                        <td>FKR-00002</td>
-                                                        <td>Rp {{$data->total_pay}}</td>
+                                                        <td>{{ $data->invoice_number }}</td>
+                                                        <td>Rp {{$data->totalPay}}</td>
                                                         <td>
                                                             <div class="menu-icons" style="font-size: 15px;">
-                                                                <a href="{{ url('edit_supplier') }}" class="menu-icon icon-edit-2"></a>
-                                                                <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                                <a href="{{ url('details')}}" class="menu-icon icon-eye1"></a>
+                                                                <a href="/showInvoice/{{ $data->id }}" class="menu-icon icon-edit-2"></a>
+                                                                <a href="javascript:void(0)" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#delete{{ $data->id }}"></a>
+                                                                <a href="/details/{{ $data->id }}" class="menu-icon icon-eye1"></a>
                                                             <div class="dropdown icon-dots-two-vertical">
                                                                 <span>
                                                                 <div class="dropdown-content">
@@ -465,6 +465,25 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            <div class="modal fade" id="delete{{ $data->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content" style="padding: 0px">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="staticBackdropLabel">Hapus Faktur</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Anda Yakin Ingin Menghapus Faktur Ini?</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <form action="/deleteInvoice/{{ $data->id }}" method="POST">
+                                                                @csrf
+                                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                                        </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             @endforeach
 
 												  
@@ -497,6 +516,9 @@
                                     </div>
                                 </div>
                                 <!-- Card end -->
+                                                                  <!-- Modal start -->
+                                                                
+                                                                <!-- Modal end -->
                                 <div class="modal fade" id="payment" tabindex="-1" aria-labelledby="paymentTitle"
                                     aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -625,25 +647,7 @@
                                     </div>
                                 </div>
                                 <!-- Modal end -->
-                                  <!-- Modal start -->
-                                  <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content" style="padding: 0px">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="staticBackdropLabel">Hapus Faktur</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Anda Yakin Ingin Menghapus Faktur Ini?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Modal end -->
                             </div>
                         </div>
                         <!-- Card end -->
