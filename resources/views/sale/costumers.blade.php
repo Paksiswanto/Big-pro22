@@ -317,6 +317,30 @@
                                                             </th>
                                                         </a>
                                                     </tr>
+                                                </form>
+                                                    <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" style="padding: 0px">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="staticBackdropLabel">Hapus Pelanggan</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Anda Yakin Ingin Menghapus Pelanggan Ini?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    @isset($row)
+                                                                    <form action="{{ route('delete_customers', ['id' => $row->id]) }}" method="POST">
+                                                                      @csrf
+                                                                      @method('DELETE')
+                                                                      <button type="submit" class="btn btn-danger" id="deleteButton">Hapus</button>
+                                                                  </form>
+                                                                  @endisset
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     @endforeach
 
 

@@ -165,7 +165,7 @@
                                     <div class="">
 
                                         <!-- Row start -->
-                                        <form action="/update_expenditure/{{$expenditure->id}}" method="POST">
+                                        <form action="{{ route('edit_expend', ['id' => $expenditure->id]) }}" method="POST">
                                             @csrf
                                             <div class="row gutters">
 

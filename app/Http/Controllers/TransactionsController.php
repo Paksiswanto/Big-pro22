@@ -21,7 +21,9 @@ class TransactionsController extends Controller
     //transactions
     public function transactions()
     {
-        $data = Income::all();
+        $company_id = Auth::user()->company_id;
+
+        $data =  Transaction::where('company_id', $company_id)->get();
         return view('transactions.dashboard.index', compact('data'));
     }
    
@@ -33,27 +35,37 @@ class TransactionsController extends Controller
         $company_id = Auth::user()->company_id;
 
         $category_type = CategoryType::all();
-        $category =  Category::where('company_id', $company_id)->get();
-        $customer = Customer::where('company_id', $company_id)->get();
+        $category =  Category::where('company_id', $company_id)->where('category_type_id', 4)->get();
+        $customer = Customer::where('company_id', $company_id)->where('status',1)->get();
         $account = Account::where('company_id', $company_id)->get();
         return view('transactions.dashboard.income.add_income', compact('category', 'customer', 'account', 'category', 'category_type'));
     }
 
     public function edit_income($id)
     {
+
+        $company_id = Auth::user()->company_id;
+
         $income = Income::find($id);
         $come = Income::all();
         $category_type = CategoryType::all();
-        $category = Category::all();
-        $account = Account::all();
-        $customer = Customer::all();
+        $category =  Category::where('company_id', $company_id)->where('category_type_id', 4)->get();
+        
+        $customer = Customer::where('company_id', $company_id)->get();
+        $account = Account::where('company_id', $company_id)->get();
         return view('transactions.dashboard.income.edit_income', compact('income', 'come', 'category_type', 'category', 'account', 'customer'));
     }
 
-    public function show_income()
-    {
-        return view('transactions.dashboard.income.show_income');
-    }
+    public function show_income($id)
+{
+    $income = Income::findOrFail($id);
+    
+   
+        
+        return view('transactions.dashboard.income.show_income', compact('income'));
+   
+}
+
     // public function insert_income(Request $request)
     // {
 
@@ -87,7 +99,7 @@ class TransactionsController extends Controller
         $date = date("Y-m-d", strtotime(str_replace('/', '-', $request->date)));
 
         // Ambil nilai uang dari request
-        $income_number = $request->income_number;
+        $income_number = $request->amount;
 
         // Ambil account yang sesuai
         $account = Account::find($request->account_id);
@@ -112,6 +124,7 @@ class TransactionsController extends Controller
             $income->category_id = $request->category_id;
             $income->customer_id = $request->customer_id;
             $income->company_id = $request->company_id;
+            $income->user_id = $request->user_id;
             $income->save();
             $data = new Transaction ();
             $data->company_id = $income->company_id;
@@ -125,37 +138,82 @@ class TransactionsController extends Controller
         }
     }
 
+    public function delete_income($id)
+    {
+        // Hapus data transaksi berdasarkan ID
+        $transaction = Transaction::find($id);
+    
+        if ($transaction) {
+            // Hapus data penghasilan yang terkait dengan transaksi
+            $income_id = $transaction->income_id;
+            Income::find($income_id)->delete();
+            
+            // Hapus data transaksi
+            $transaction->delete();
+    
+            return redirect()->route('transactions')->with('success', 'Data berhasil dihapus');
+        }
+    
+        return redirect()->route('transactions')->with('error', 'Terjadi kesalahan saat menghapus data');
+    }
+
 
 
     public function update_income(Request $request, $id)
     {
         $date = date("Y-m-d", strtotime(str_replace('/', '-', $request->date)));
-
+    
+        // Ambil data penghasilan berdasarkan ID
         $income = Income::find($id);
-
-        $income->date = $date;
-        $income->payment_method = $request->payment_method;
-        $income->amount = $request->amount;
-        $income->description = $request->description;
-        $income->income_number = $request->income_number;
-        $income->reference = $request->reference;
-        $income->attachment = $request->attachment;
-        $income->account_id = $request->account_id;
-        $income->category_id = $request->category_id;
-        $income->customer_id = $request->customer_id;
-        $income->company_id = 1;
-
-        $income->save();
-
-        return redirect()->route('transactions')->with('success', 'Data berhasil diubah');
+    
+        // Perhitungan selisih saldo
+        $old_amount = $income->amount; // Nilai uang sebelumnya
+        $new_amount = $request->amount; // Nilai uang baru
+    
+        // Ambil account yang sesuai
+        $account = Account::find($request->account_id);
+    
+        if ($income && $account) {
+            // Kurangi saldo akun dengan nilai uang sebelumnya
+            $account->balance -= $old_amount;
+    
+            // Tambahkan saldo akun dengan nilai uang baru
+            $account->balance += $new_amount;
+    
+            // Simpan perubahan pada account
+            $account->save();
+    
+            // Update data penghasilan
+            $income->date = $date;
+            $income->payment_method = $request->payment_method;
+            $income->amount = $new_amount;
+            $income->description = $request->description;
+            $income->income_number = $request->income_number;
+            $income->reference = $request->reference;
+            $income->attachment = $request->attachment;
+            $income->account_id = $request->account_id;
+            $income->category_id = $request->category_id;
+            $income->customer_id = $request->customer_id;
+            $income->company_id = 1;
+    
+            $income->save();
+    
+            return redirect()->route('transactions')->with('success', 'Data berhasil diubah');
+        }
+    
+        return redirect()->route('transactions')->with('error', 'Terjadi kesalahan saat mengubah data');
     }
+    
     //expenditure
     public function add_expenditure()
     {
-        $supplier = Supplier::all();
+        $company_id = Auth::user()->company_id;
+      
+
+        $supplier = Supplier::where('company_id', $company_id)->get();
         $category_type = CategoryType::all();
-        $category = Category::all();
-        $account = Account::all();
+        $category = Category::where('company_id', $company_id)->where('category_type_id', 1)->get();
+        $account = Account::where('company_id', $company_id)->get();
         return view('transactions.dashboard.expenditure.add_expenditure', compact('supplier', 'account', 'category', 'category_type'));
     }
 
@@ -175,20 +233,52 @@ class TransactionsController extends Controller
     }
     public function insert_expenditure(Request $request)
     {
+     
+
         $date = date("Y-m-d", strtotime(str_replace('/', '-', $request->date)));
-        Expenditure::create([
-            'date' => $date,
-            'payment_method' => $request->payment_method,
-            'amount' => $request->amount,
-            'description' => $request->description,
-            'expenditure_number' => $request->expenditure_number,
-            'reference' => $request->reference,
-            'attachment' => $request->attachment,
-            'account_id' => $request->account_id,
-            'category_id' => $request->category_id,
-            'supplier_id' => $request->supplier_id,
-            'company_id' => 1,
-        ]);
+
+        //  // Ambil nilai uang dari request
+        //  $income_number = $request->amount;
+        $expend_tot = $request->amount;
+        $account = Account::find($request->account_id);
+        if ($account) {
+            $account->balance -= $expend_tot;
+            $account->save();
+        }
+
+        //  // Ambil account yang sesuai
+        //  $account = Account::find($request->account_id);
+ 
+        //  if ($account) {
+        //      // Tambahkan nilai uang ke saldo account
+        //      $account->balance += $income_number;
+ 
+        //      // Simpan perubahan pada account
+        //      $account->save();
+
+
+
+        $expend = new Expenditure();
+        $expend ->date= $date;
+        $expend -> payment_method = $request->payment_method;        
+        $expend -> amount = $request->amount;
+        $expend -> description = $request->description;
+        $expend -> expenditure_number = $request->expenditure_number;
+        $expend -> reference = $request->reference;
+        $expend -> attachment = $request->attachment;
+        $expend -> account_id = $request->account_id;
+        $expend -> category_id = $request->category_id;
+        $expend -> supplier_id = $request->supplier_id;
+        $expend -> company_id = $request->company_id;
+        $expend ->save();
+        
+        $data = new Transaction ();
+        $data->company_id = $expend->company_id;
+        $data->expenditure_id = $expend->id;
+        $data->account_id = $expend->account_id;
+        $data ->save();
+
+        
         return redirect()->route('transactions')->with('success', 'Data berhasil ditambahkan');
     }
     public function update_expenditure(Request $request, $id)
@@ -196,6 +286,23 @@ class TransactionsController extends Controller
         $date = date("Y-m-d", strtotime(str_replace('/', '-', $request->date)));
 
         $expenditure = Expenditure::find($id);
+        // Perhitungan selisih saldo
+        $old_amount = $expenditure->amount; // Nilai uang sebelumnya
+        $new_amount = $request->amount; // Nilai uang baru
+    
+        // Ambil account yang sesuai
+        $account = Account::find($request->account_id);
+    
+        if ($expenditure && $account) {
+            // Kurangi saldo akun dengan nilai uang sebelumnya
+            $account->balance += $old_amount;
+    
+            // Tambahkan saldo akun dengan nilai uang baru
+            $account->balance -= $new_amount;
+    
+            // Simpan perubahan pada account
+            $account->save();
+        }
 
         $expenditure->date = $date;
         $expenditure->payment_method = $request->payment_method;
@@ -213,6 +320,27 @@ class TransactionsController extends Controller
 
         return redirect()->route('transactions')->with('success', 'Data berhasil diubah');
     }
+
+
+     public function delete_expend($id)
+    {
+        // Hapus data transaksi berdasarkan ID
+        $transaction = Transaction::find($id);
+    
+        if ($transaction) {
+            // Hapus data penghasilan yang terkait dengan transaksi
+            $expend_id = $transaction->expenditure_id;
+            Expenditure::find($expend_id)->delete();
+            
+            // Hapus data transaksi
+            $transaction->delete();
+    
+            return redirect()->route('transactions')->with('success', 'Data berhasil dihapus');
+        }
+    
+        return redirect()->route('transactions')->with('error', 'Terjadi kesalahan saat menghapus data');
+    }
+
     //recurring transactions
     public function recurring_transactions()
     {

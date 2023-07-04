@@ -351,6 +351,7 @@
 
                                                     <!-- Field wrapper start -->
 
+                                                    <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">                                  
                                                     <div class="field-wrapper-group">
                                                         <div class="field-wrapper">
                                                             <select class="select-multiple js-states" title="Select Product Category" name="category_id" id="category_id">

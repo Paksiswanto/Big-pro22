@@ -27,4 +27,6 @@ class IncomeRoutine extends Model
     {
         return $this->belongsTo(CategoryType::class);
     }
+
+    
 }

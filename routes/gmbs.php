@@ -10,6 +10,21 @@ use Illuminate\Support\Facades\Route;
 Route::post('insert_customers', [CostumersController::class, 'insert_cos'])->name('insert_customers');
 Route::post('update_customers/{id}', [CostumersController::class, 'update_cos'])->name('update_customers');
 Route::get('delete_customers/{id}', [CostumersController::class, 'delete_cos'])->name('delete_customers');
+Route::delete('/delete_selected_customers', [CostumersController::class, 'deleteSelected'])->name('delete_selected_customers');
+Route::patch('/status_update_sup/{supplierId}', [CostumersController::class, 'updateStatus'])->name('status_update_cos');
+
+
+
+Route::middleware(['auth','auth.session', 'verified'])->group(function () {
+
+    Route::post('/insert_income', [TransactionsController::class, 'insert_income'])->name('insert_income');
+    Route::delete('/delete_income/{id}', [TransactionsController::class, 'delete_income'])->name('delete_income');
+    Route::get('/show_income/{id}', [TransactionsController::class, 'show_income'])->name('income_show');
+
+
+
+});
+
 
 Route::post('insert_supplier', [SupplierController::class, 'insert_supplier'])->name('insert_supplier');
 Route::post('update_supplier/{id}', [SupplierController::class, 'update_supplier'])->name('update_supplier');
@@ -21,7 +36,10 @@ Route::post('/insert_income', [TransactionsController::class, 'insert_income'])-
 Route::post('/update_income/{id}', [TransactionsController::class, 'update_income'])->name('update_income');
 
 Route::post('/insert_expenditure', [TransactionsController::class, 'insert_expenditure'])->name('insert_expenditure');
-Route::post('/update_expenditure/{id}', [TransactionsController::class, 'update_expenditure'])->name('update_expenditure');
+Route::get('/show_update_expenditure/{id}', [TransactionsController::class, 'edit_expenditure'])->name('update_expenditure');
+Route::post('/update_expenditure/{id}', [TransactionsController::class, 'update_expenditure'])->name('edit_expend');
+Route::delete('/delete_expenditure/{id}', [TransactionsController::class, 'delete_expend'])->name('delete_expend');
+
 
 Route::post('/insert_account_income', [TransactionsController::class, 'insert_account_income'])->name('insert_account_income');
 Route::post('/insert_category_income', [TransactionsController::class, 'insert_category_income'])->name('insert_category_income');
