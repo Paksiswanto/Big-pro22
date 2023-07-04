@@ -148,16 +148,11 @@
 										</div>
 
 									</div>
-									<div class="">
+									<div style="margin-top: 5%;">
 										<!-- Row start -->
 
 										<!-- Row end -->
-										<div class="content">
-											<div class="searchcontainer">
-												<i class="icon-search"></i><input class="search " type="text" placeholder="Cari Disini..." style="
-                                              margin-bottom: 2%; font-size:10pt" />
-											</div>
-										</div>
+										
 										<div class="table-responsive">
 											<div class="hidden-menu" style="display: none; background-color: #f2f2f2; font-size: 12pt; padding: 10px;">
 												<p style="display: inline" id="count-display">&emsp;</p>

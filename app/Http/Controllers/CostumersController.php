@@ -17,7 +17,7 @@ class CostumersController extends Controller
 {
     public function costumers()
     {
-        $data = customer::all();
+        $data = customer::latest()->get();;
         return view('sale.costumers', compact('data'));
     }
 

@@ -14,16 +14,16 @@ use PhpParser\Node\Stmt\Return_;
 // Route::post('delete-items/{id}', [ItemController::class], 'delete_item');
 // Route::post('create_item',[ItemController::class], 'create_item')->name('create_item');
 
-Route::post('delete-items/{id}', [ItemController::class, 'delete_item']);
+Route::post('delete-items/{id}', [ItemController::class, 'delete_item'])->middleware('permission:Delete_Item');
 Route::post('create_item', [ItemController::class, 'create_items'])->name('create_item');
 Route::put('edite-item/{id}', [ItemController::class, 'edits'])->name('edite-item');
 Route::post('create_category', [CategoryController::class, 'create_category'])->name('create_category');
-Route::post('delete_category/{id}', [CategoryController::class, 'delete_category'])->name('delete_category');
+Route::post('delete_category/{id}', [CategoryController::class, 'delete_category'])->name('delete_category')->middleware('permission:Delete_Category');
 Route::put('edit_category/{id}', [CategoryController::class, 'edit_category'])->name('edit_category');
 Route::post('create_invoice', [InvoiceController::class, 'create_invoice'])->name('create_invoice');
 Route::get('get-item/{itemId}', [InvoiceController::class, 'getItem'])->name('get-item');
 Route::post('create_settingInvoice', [InvoiceController::class, 'update_invSetting'])->name('create_settingInvoice');
-Route::put('update_company', [CompanyController::class, 'update_company'])->name('update_company');
+Route::put('update_company', [CompanyController::class, 'update_company'])->name('update_company')->middleware('permission:Edit_Company_general');
 //Import-Export Item
 Route::get('/ImportItem', [ItemController::class, 'ImportItem'])->name('ImportItem');
 Route::post('/ImportDataItem', [ItemController::class, 'ImportDataItem'])->name('ImportDataItem');

@@ -36,7 +36,7 @@ class InvoiceController extends Controller
     
     public function invoice()
     {
-        $invoice = Invoice::all();
+        $invoice = Invoice::latest()->get();
         return view('sale.sale_invoice',compact('invoice'));
     }
     public function recurring_invoice()
@@ -92,6 +92,7 @@ class InvoiceController extends Controller
     
     public function costumers()
     {
+        
         return view('sale.costumers');
     }
 
