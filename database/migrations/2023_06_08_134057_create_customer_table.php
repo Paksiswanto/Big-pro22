@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('province');
-            $table->string('status');
+            $table->boolean('status')->default(1);
             $table->string('postal_code');
             $table->string('photo')->nullable();
             $table->string('phone_number');
