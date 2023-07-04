@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\CustomerExport;
-use App\Exports\DownloadCustomer;
-use App\Exports\ExportCustomer;
-use App\Imports\CategoryImport;
-use App\Imports\CustomerImport;
 use App\Models\Company;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Exports\CustomerExport;
+use App\Exports\ExportCustomer;
+use App\Imports\CategoryImport;
+use App\Imports\CustomerImport;
 use Illuminate\Validation\Rule;
+use App\Exports\DownloadCustomer;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class CostumersController extends Controller

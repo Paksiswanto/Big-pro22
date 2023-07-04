@@ -20,7 +20,7 @@ class ProfileController extends Controller
           'name' => 'required',
           'picture' => 'mimes:jpeg,png,jpg|max:2048',
           'email' => 'required|unique:users,email,' . $id,
-          'password'=>'confirmed',
+            'password'=>'confirmed',
       ]);
 
         $user = User::findOrFail($id);

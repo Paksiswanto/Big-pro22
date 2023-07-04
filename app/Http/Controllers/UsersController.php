@@ -19,7 +19,7 @@ class UsersController extends Controller
     public function usersindex()
     {
         $id=Auth::user()->company_id;
-        $data = User::all()->where('company_id',$id);
+        $data = User::latest()->where('company_id',$id)->get();
         return view('user.index',compact('data'));
     }
     public function add_users()

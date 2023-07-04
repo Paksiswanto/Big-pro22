@@ -619,21 +619,14 @@
 
                                         </div>
                                     </div>
-                                    <div class="content">
-                                        <div class="searchcontainer">
-                                            <i class="icon-search"></i><input class="search " type="text"
-                                                placeholder="Cari Disini..."
-                                                style="
-                                              margin-bottom: 2%; font-size:10pt " />
-                                        </div>
-                                    </div>
+                                    <div style="margin-top: 5%;">
                                     <div class="table-responsive">
                                         <div class="hidden-menu"
                                             style="display: none; background-color: #f2f2f2; font-size: 12pt; padding: 10px;">
                                             <p style="display: inline" id="count-display">&emsp;</p>
                                             &emsp;<a href="#" title="Hapus"> <i class="icon-trash-2"></i> </a>
                                         </div>
-                                        <table class="table table-hover">
+                                        <table id="basicExample" class="table table-hover">
 
                                             <thead>
                                                 <tr>
@@ -976,35 +969,9 @@
 
                                         <!-- Card end -->
                                     </div>
+                                    </div>
                                 </div>
-                                <!-- Card start -->
-
-
-                            </div>
-                            <div class="card">
-                                <div class="card-body" style="margin-left: -2.1%">
-
-                                    <nav aria-label="Page navigation example">
-                                        <ul class="pagination" style="justify-content: flex-end;">
-                                            <li class="page-item">
-                                                <a class="page-link" href="#" aria-label="Previous">
-                                                    <span aria-hidden="true">&laquo;</span>
-                                                </a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#" aria-label="Next">
-                                                    <span aria-hidden="true">&raquo;</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-
-                                </div>
-                            </div>
-                            <!-- Card end -->
+                              
                         </div>
                         <!-- Row end -->
 

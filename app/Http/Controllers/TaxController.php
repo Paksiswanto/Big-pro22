@@ -9,7 +9,7 @@ class TaxController extends Controller
 {
     public function tax_index()
     {
-        $data = Tax::paginate(10)->withQueryString();
+        $data = Tax::latest()->get();
         return  view('Tax.index', compact('data'));
     }
 

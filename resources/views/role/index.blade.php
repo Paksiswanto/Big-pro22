@@ -313,18 +313,10 @@
                                 </div>
                                 
 
-                                <div class="">
-                                    <div class="content">
-                                        <div class="searchcontainer">
-                                            <form action="/role" method="GET">
-                                                @csrf
-                                            <i class="icon-search"></i><input class="search" name="key" type="search" placeholder="Cari Disini..." style="margin-bottom: 2%; font-size:10pt " />
-                                            </form>
-                                              
-                                        </div>
-                                    </div>
+                                <div style="margin-top: 5%;">
+                                   
                                     <div class="table-responsive">
-                                        <table class="table table-hover">
+                                        <table id="basicExample" class="table table-hover">
                                             <thead>
                                                 <tr>
                                                     <th scope="col"> <input type="checkbox" id="select-all" onchange="toggleCheckbox()"></th>

@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('invoice_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('prefix');
-            $table->integer('digit_number');
-            $table->integer('next_number');
+            $table->string('prefix')->default('FKR');
             $table->string('due_date');
             $table->string('title');
             $table->string('subtitle');

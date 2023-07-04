@@ -23,7 +23,7 @@ class TransactionsController extends Controller
     {
         $company_id = Auth::user()->company_id;
 
-        $data =  Transaction::where('company_id', $company_id)->get();
+        $data =  Transaction::where('company_id', $company_id)->latest()->get();
         return view('transactions.dashboard.index', compact('data'));
     }
 

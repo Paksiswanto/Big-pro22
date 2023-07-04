@@ -11,7 +11,7 @@ use Spatie\Permission\Models\Permission;
 class RoleController extends Controller
 {
     public function index(){
-        $data = Role::all();
+        $data = Role::latest()->get();
         return view('role.index',compact('data'));
     }
     public function add_role(){

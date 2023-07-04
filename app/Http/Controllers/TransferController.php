@@ -18,7 +18,7 @@ class TransferController extends Controller
 {
     public function transfer()
     {
-        $data = Transfer::all();
+        $data = Transfer::latest()->get();
         return view('transfer.index',compact('data'));
     }
 

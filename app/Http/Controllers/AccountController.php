@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class AccountController extends Controller
 {
     public function index(Request $request){
-        $data = Account::paginate(10)->withQueryString();
+        $data = Account::latest()->get();
         return view('transactions.account.index', compact('data'));
     }
 
