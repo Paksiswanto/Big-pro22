@@ -177,6 +177,7 @@
                                                     </div>
 
                                                 </div>
+                                                <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                     <!-- Field wrapper start -->
@@ -362,8 +363,8 @@
                                         <!-- Button trigger modal -->
 
 
-                                      <!-- Modal account start -->
-                                    <form action="/insert_account_income" method="POST">
+                                     <!-- Modal account start -->
+                                     <form action="/insert_account_income" method="POST">
                                         @csrf
                                         <div class="modal fade" id="modalaccount" tabindex="-1" aria-labelledby="modalaccount" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="margin-top: -20px;">
@@ -386,6 +387,7 @@
                                                             <!-- Field wrapper end -->
 
                                                         </div>
+                                                        <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
                                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
 
                                                             <!-- Field wrapper start -->
@@ -395,24 +397,6 @@
 
                                                                 </div>
                                                                 <div class="field-placeholder">Nomor Rekening<span class="text-danger">*</span></div>
-                                                            </div>
-                                                            <!-- Field wrapper end -->
-
-                                                        </div>
-                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
-
-                                                            <!-- Field wrapper start -->
-                                                            <div class="field-wrapper-group">
-                                                                <div class="field-wrapper">
-                                                                    <select name="currency" id="currency" class="select-multiple js-states" title="Select Product Category" required>
-                                                                        <option value="">Pilih Mata Uang</option>
-                                                                        <option value="Rupiah" {{ old('currency') === 'Rupiah' ? 'selected' : '' }}>Rupiah</option>
-                                                                        <option value="Dollar" {{ old('currency') === 'Dollar' ? 'selected' : '' }}>Dollar</option>
-
-
-                                                                    </select>
-                                                                    <div class="field-placeholder">Mata Uang<span class="text-danger">*</span></div>
-                                                                </div>
                                                             </div>
                                                             <!-- Field wrapper end -->
 
@@ -493,6 +477,7 @@
                                                             <!-- Field wrapper end -->
 
                                                         </div>
+                                                        <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
                                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
 
                                                             <!-- Field wrapper start -->
@@ -602,6 +587,7 @@
                                                                             <!-- Field wrapper end -->
 
                                                                         </div>
+                                                                        <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
                                                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                                             <!-- Field wrapper start -->
@@ -611,18 +597,6 @@
                                                                             </div>
                                                                             <!-- Field wrapper end -->
 
-                                                                        </div>
-                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                                            <!-- Field wrapper start -->
-                                                                            <div class="field-wrapper">
-                                                                                <select class="select-multiple js-states" title="Select Product Category" data-live-search="true" name="currency" id="currency" required>
-                                                                                    <option value="Rupiah Indonesia (IDR)">Rupiah Indonesia (IDR)</option>
-                                                                                    <option value="Dolar Amerika Serikat (USD)">Dolar Amerika Serikat (USD)</option>
-                                                                                    <div class="" style="float: left;">Mata Uang</div>
-                                                                                </select>
-                                                                            </div>
-                                                                            <!-- Field wrapper end -->
                                                                         </div>
                                                                         <p>
                                                                     </span>
@@ -669,206 +643,7 @@
                                                                             <!-- Field wrapper end -->
 
                                                                         </div>
-                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                                                                            <!-- Field wrapper start -->
-                                                                            <div class="field-wrapper">
-                                                                                <div class="" style="float: left;">Negara</div>
-                                                                                <select class="select-multiple js-states" title="Select Product Category" data-live-search="true" name="country" id="country" required>
-                                                                                    <option>Afganistan</option>
-                                                                                    <option>Afrika Selatan</option>
-                                                                                    <option>Albania</option>
-                                                                                    <option>Aljazair</option>
-                                                                                    <option>Amerika Serikat</option>
-                                                                                    <option>Andorra</option>
-                                                                                    <option>Angola</option>
-                                                                                    <option>Antigua dan Barbuda</option>
-                                                                                    <option>Arab Saudi</option>
-                                                                                    <option>Argentina</option>
-                                                                                    <option>Armenia</option>
-                                                                                    <option>Australia</option>
-                                                                                    <option>Austria</option>
-                                                                                    <option>Azerbaijan</option>
-                                                                                    <option>Bahama</option>
-                                                                                    <option>Bahrain</option>
-                                                                                    <option>Bangladesh</option>
-                                                                                    <option>Barbados</option>
-                                                                                    <option>Belarus</option>
-                                                                                    <option>Belgia</option>
-                                                                                    <option>Belize</option>
-                                                                                    <option>Benin</option>
-                                                                                    <option>Bhutan</option>
-                                                                                    <option>Bolivia</option>
-                                                                                    <option>Bosnia dan Herzegovina</option>
-                                                                                    <option>Botswana</option>
-                                                                                    <option>Brasil</option>
-                                                                                    <option>Brunei</option>
-                                                                                    <option>Bulgaria</option>
-                                                                                    <option>Burkina Faso</option>
-                                                                                    <option>Burundi</option>
-                                                                                    <option>Chad</option>
-                                                                                    <option>Chili</option>
-                                                                                    <option>China</option>
-                                                                                    <option>Denmark</option>
-                                                                                    <option>Djibouti</option>
-                                                                                    <option>Dominika</option>
-                                                                                    <option>Ekuador</option>
-                                                                                    <option>Mesir</option>
-                                                                                    <option>El Salvador</option>
-                                                                                    <option>Eritrea</option>
-                                                                                    <option>Estonia</option>
-                                                                                    <option>Eswatini</option>
-                                                                                    <option>Ethiopia</option>
-                                                                                    <option>Fiji</option>
-                                                                                    <option>Filipina</option>
-                                                                                    <option>Finlandia</option>
-                                                                                    <option>Gabon</option>
-                                                                                    <option>Gambia</option>
-                                                                                    <option>Georgia</option>
-                                                                                    <option>Ghana</option>
-                                                                                    <option>Grenada</option>
-                                                                                    <option>Guatemala</option>
-                                                                                    <option>Guinea</option>
-                                                                                    <option>Guinea Bissau</option>
-                                                                                    <option>Guinea Khatulistiwa</option>
-                                                                                    <option>Guyana</option>
-                                                                                    <option>Haiti</option>
-                                                                                    <option>Honduras</option>
-                                                                                    <option>Hongaria</option>
-                                                                                    <option>India</option>
-                                                                                    <option>Indonesia</option>
-                                                                                    <option>Inggris</option>
-                                                                                    <option>Irak</option>
-                                                                                    <option>Iran</option>
-                                                                                    <option>Irlandia</option>
-                                                                                    <option>Islandia</option>
-                                                                                    <option>Israel</option>
-                                                                                    <option>Italia</option>
-                                                                                    <option>Jamaika</option>
-                                                                                    <option>Jepang</option>
-                                                                                    <option>Yordania</option>
-                                                                                    <option>Kamboja</option>
-                                                                                    <option>Kamerun</option>
-                                                                                    <option>Kanada</option>
-                                                                                    <option>Kazakhstan</option>
-                                                                                    <option>Kenya</option>
-                                                                                    <option>Kirgistan</option>
-                                                                                    <option>Kiribati</option>
-                                                                                    <option>Kolombia</option>
-                                                                                    <option>Komoro</option>
-                                                                                    <option>Kongo</option>
-                                                                                    <option>Korea Selatan</option>
-                                                                                    <option>Korea Utara</option>
-                                                                                    <option>Kosovo</option>
-                                                                                    <option>Kroasia</option>
-                                                                                    <option>Kuba</option>
-                                                                                    <option>Kuwait</option>
-                                                                                    <option>Laos</option>
-                                                                                    <option>Latvia</option>
-                                                                                    <option>Lebanon</option>
-                                                                                    <option>Lesotho</option>
-                                                                                    <option>Liberia</option>
-                                                                                    <option>Libya</option>
-                                                                                    <option>Liechtenstein</option>
-                                                                                    <option>Lituania</option>
-                                                                                    <option>Luksemburg</option>
-                                                                                    <option>Madagaskar</option>
-                                                                                    <option>Maladewa</option>
-                                                                                    <option>Malawi</option>
-                                                                                    <option>Malaysia</option>
-                                                                                    <option>Mali</option>
-                                                                                    <option>Malta</option>
-                                                                                    <option>Maroko</option>
-                                                                                    <option>Mauritania</option>
-                                                                                    <option>Mauritius</option>
-                                                                                    <option>Meksiko</option>
-                                                                                    <option>Mesir</option>
-                                                                                    <option>Mikronesia</option>
-                                                                                    <option>Moldova</option>
-                                                                                    <option>Monako</option>
-                                                                                    <option>Mongolia</option>
-                                                                                    <option>Montenegro</option>
-                                                                                    <option>Mozambik</option>
-                                                                                    <option>Myanmar</option>
-                                                                                    <option>Namibia</option>
-                                                                                    <option>Nauru</option>
-                                                                                    <option>Nepal</option>
-                                                                                    <option>Niger</option>
-                                                                                    <option>Nigeria</option>
-                                                                                    <option>Nikaragua</option>
-                                                                                    <option>Norwegia</option>
-                                                                                    <option>Oman</option>
-                                                                                    <option>Pakistan</option>
-                                                                                    <option>Palau</option>
-                                                                                    <option>Panama</option>
-                                                                                    <option>Papua Nugini</option>
-                                                                                    <option>Paraguay</option>
-                                                                                    <option>Peru</option>
-                                                                                    <option>Polandia</option>
-                                                                                    <option>Portugal</option>
-                                                                                    <option>Prancis</option>
-                                                                                    <option>Qatar</option>
-                                                                                    <option>Republik Afrika Tengah</option>
-                                                                                    <option>Republik Ceko</option>
-                                                                                    <option>Republik Demokratik Kongo</option>
-                                                                                    <option>Republik Dominika</option>
-                                                                                    <option>Rumania</option>
-                                                                                    <option>Rusia</option>
-                                                                                    <option>Rwanda</option>
-                                                                                    <option>Saint Kitts dan Nevis</option>
-                                                                                    <option>Saint Lucia</option>
-                                                                                    <option>Saint Vincent dan Grenadines</option>
-                                                                                    <option>Samoa</option>
-                                                                                    <option>San Marino</option>
-                                                                                    <option>Sao Tome dan Principe</option>
-                                                                                    <option>Selandia Baru</option>
-                                                                                    <option>Senegal</option>
-                                                                                    <option>Serbia</option>
-                                                                                    <option>Seychelles</option>
-                                                                                    <option>Sierra Leone</option>
-                                                                                    <option>Singapura</option>
-                                                                                    <option>Slovakia</option>
-                                                                                    <option>Slovenia</option>
-                                                                                    <option>Solomon Islands</option>
-                                                                                    <option>Somalia</option>
-                                                                                    <option>Spanyol</option>
-                                                                                    <option>Sri Lanka</option>
-                                                                                    <option>Sudan</option>
-                                                                                    <option>Sudan Selatan</option>
-                                                                                    <option>Suriah</option>
-                                                                                    <option>Suriname</option>
-                                                                                    <option>Swedia</option>
-                                                                                    <option>Swiss</option>
-                                                                                    <option>Tajikistan</option>
-                                                                                    <option>Tanzania</option>
-                                                                                    <option>Thailand</option>
-                                                                                    <option>Timor Leste</option>
-                                                                                    <option>Togo</option>
-                                                                                    <option>Tonga</option>
-                                                                                    <option>Trinidad dan Tobago</option>
-                                                                                    <option>Tunisia</option>
-                                                                                    <option>Turki</option>
-                                                                                    <option>Turkmenistan</option>
-                                                                                    <option>Tuvalu</option>
-                                                                                    <option>Uganda</option>
-                                                                                    <option>Ukraina</option>
-                                                                                    <option>Uni Emirat Arab</option>
-                                                                                    <option>Uruguay</option>
-                                                                                    <option>Uzbekistan</option>
-                                                                                    <option>Vanuatu</option>
-                                                                                    <option>Vatikan</option>
-                                                                                    <option>Venezuela</option>
-                                                                                    <option>Vietnam</option>
-                                                                                    <option>Yaman</option>
-                                                                                    <option>Yordania</option>
-                                                                                    <option>Yunani</option>
-                                                                                    <option>Zambia</option>
-                                                                                    <option>Zimbabwe</option>
-                                                                                </select>
-                                                                            </div>
-                                                                            <!-- Field wrapper end -->
-
-                                                                        </div>
                                                                         <p>
                                                                     </span>
                                                                 </div>
@@ -909,6 +684,7 @@
                                         </div>
                                     </form>
                                     <!-- Modal customer end -->
+
 
 
                                         <!-- Row end -->
