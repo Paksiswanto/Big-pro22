@@ -158,16 +158,11 @@
                                         </div>
 								</div>
                             <!-- </div> -->
-                                <div class="">
+                                <div style="margin-top: 5%;">
                                     <!-- Row start -->
 
                                     <!-- Row end -->
-                                    <div class="content">
-                                        <div class="searchcontainer">
-                                            <i class="icon-search"></i>
-                                            <input class="search" type="text" placeholder="Cari Disini..." style="margin-bottom: 2%; font-size:10pt" />
-                                        </div>
-                                    </div>
+                                    
                                     <div class="table-responsive">
                                         <div class="hidden-menu" style="display: none; background-color: #f2f2f2; font-size: 12pt; padding: 10px;">
                                             <p style="display: inline" id="count-display">&emsp;</p>
@@ -175,7 +170,7 @@
                                             &emsp;<a href="#" title="Nonaktifkan"> <i class="icon-do_not_disturb_alt"></i> </a>
                                             &emsp;<a href="#" title="Hapus"> <i class="icon-trash-2"></i> </a>
                                         </div>
-                                        <table class="table table-hover caption-top">
+                                        <table id="basicExample" class="table table-hover caption-top">
                                             <thead>
                                                 <tr>
                                                     <th scope="col"> <input type="checkbox" id="select-all-checkbox"> </th>
@@ -225,35 +220,7 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
-                                        <!-- Card start -->
-                                        <div class="card">
-												<div class="card-body col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-													<nav aria-label="Page navigation example">
-														<ul class="pagination" style="justify-content: flex-end;">
-															<li class="page-item">
-																@if ($categories->currentPage() > 1)
-																<a class="page-link" href="{{ $categories->previousPageUrl() }}" aria-label="Previous">
-																	<span aria-hidden="true">«</span>
-																</a>
-																@endif
-															</li>
-															@for ($i = 1; $i <= $categories->lastPage(); $i++)
-																<li class="page-item {{ $categories->currentPage() == $i ? 'active' : '' }}"><a class="page-link" href="{{ $categories->url($i) }}">{{ $i }}</a></li>
-																@endfor
-																<li class="page-item">
-																	@if ($categories->currentPage() < $categories->lastPage())
-																		<a class="page-link" href="{{ $categories->nextPageUrl() }}" aria-label="Next">
-																			<span aria-hidden="true">»</span>
-																		</a>
-																		@endif
-																</li>
-														</ul>
-													</nav>
-
-												</div>
-											</div>
-                                        <!-- Card end -->
+                                       
                                     </div>
                                 </div>
                             </div>
