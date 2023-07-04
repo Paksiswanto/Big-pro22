@@ -404,7 +404,6 @@
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     @isset($row)
-                                                          
                                                                     <form action="{{ route('delete_customers', ['id' => $row->id]) }}" method="POST">
                                                                       @csrf
                                                                       @method('DELETE')

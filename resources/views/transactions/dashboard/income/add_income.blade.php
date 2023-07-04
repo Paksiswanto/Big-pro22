@@ -277,6 +277,7 @@
                                                         </div>
                                                         <div class="field-placeholder">Tanggal<span class="text-danger">*</span></div>
                                                         <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
+                                                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 
                                                     </div>
                                                     <!-- Field wrapper end -->
@@ -307,7 +308,7 @@
                                                         <div class="field-wrapper">
                                                             <select class="select-multiple js-states" title="Select Product Category" name="account_id" id="account_id">
                                                                 @foreach ($account as $row)
-                                                                <option value="{{ $row->id  }}">{{ $row->name }}</option>
+                                                                <option value="{{ $row->id }}">{{ $row->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                             <div class="field-placeholder">Akun<span class="text-danger">*</span></div>
@@ -476,6 +477,7 @@
 
                                                         </div>
                                                         <div class="field-placeholder">Nomor Rekening<span class="text-danger">*</span></div>
+                                                        <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
                                                     </div>
                                                             <!-- Field wrapper end -->
 

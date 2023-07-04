@@ -215,7 +215,7 @@
 
                                                 <ul class="dropdown-menu dropdown-menu-lg-end" style="z-index: 100;">
                                                     <li><a class="dropdown-item" style="margin-top: 4%;" href="{{url('add_income')}}">Tambah</a></li>
-                                                    <li><a class="dropdown-item" href="{{url('add_income')}}">Sunting</a></li>
+                                                    <li><a class="dropdown-item" href="{{ route('edit_income', ['id' => $income->id]) }}">Sunting</a></li>
                                                     <li><a class="dropdown-item" href="#">Cetak</a></li>
                                                     <li><a class="dropdown-item" href="#">Unduh PDF</a></li>
 
@@ -235,7 +235,8 @@
                                             <p style="font-size: 12pt;">Dibuat</p>
                                         </div>
                                         <p style="font-size: 10pt; margin-bottom: 3%;">Jayaabadi memebuat transaksi pada 13 Mei 2023</p>
-                                            <button style="background-color: #9a99e2;border-radius:2px;width:80px;border:transparent;height:25px;color:#ffffff">Sunting</button>     
+                                        <a href="{{ route('edit_income', ['id' => $income->id]) }}"
+                                            > <button style="background-color: #9a99e2;border-radius:2px;width:80px;border:transparent;height:25px;color:#ffffff">Sunting</button> </a>    
                                         <hr>
 
                                         <!-- Row start -->
@@ -270,7 +271,7 @@
                                                 <div class="col-xl-9 col-lg-9 col-md-9 col-sm-1 col-12" style="margin-top: 1%;">
 
                                                     <h6>Unknown</h6> <br>
-                                                    <h6>Unknoncompany@gmail.com</h6>
+                                                    <h6>{{$income->user->email}}</h6>
 
 
                                                 </div>
@@ -287,7 +288,7 @@
                                                 <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
 
-                                                    <span>TRA-0089</span>
+                                                    <span>TRA-{{$income->income_number}}</span>
                                                     <div class="empty-box">
                                                     </div>
                                                 </div>
@@ -298,7 +299,7 @@
 
                                                 <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                    <span>19 Mei 2023</span>
+                                                    <span>{{$income->date}}</span>
                                                     <div class="empty-box">
                                                     </div>
                                                 </div>
@@ -309,7 +310,7 @@
 
                                                 <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                    <span>Haha</span>
+                                                    <span>{{$income->account->name}}</span>
                                                     <div class="empty-box">
                                                     </div>
                                                 </div>
@@ -320,7 +321,7 @@
 
                                                 <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                    <span>Penjualan Website</span>
+                                                    <span>{{$income->category->name}}</span>
                                                     <div class="empty-box">
                                                     </div>
                                                 </div>
@@ -331,7 +332,7 @@
 
                                                 <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                    <span>Transfer Bank</span>
+                                                    <span>{{$income->payment_method}}</span>
                                                     <div class="empty-box">
                                                     </div>
                                                 </div>
@@ -342,7 +343,7 @@
 
                                                 <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                    <span>Penjualan website toko online yang menyediakan semua barang, kirim barang lewat jnt ataupun kantor pos</span>
+                                                    <span>{{$income->description}}</span>
                                                     <div class="empty-box">
                                                     </div>
                                                 </div>
@@ -350,12 +351,10 @@
                                                 <hr style="margin-top: 2%;">
 
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 1%;">
-                                                    <h6>Dibayar Oleh </h6>
+                                                    <h6>Data Pelanggan </h6>
                                                 </div>
 
-                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 3%;">
-                                                    <h6>Tagihan Kepada </h6>
-                                                </div>
+                                                
 
                                                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12" style="margin-top: 3%;">
                                                     <h6>Nama</h6>
@@ -363,7 +362,7 @@
 
                                                 <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                    <span>jayaabadi</span>
+                                                    <span>{{$income->customer->name}}</span>
                                                     <div class="empty-box">
                                                     </div>
                                                 </div>
@@ -374,7 +373,7 @@
 
                                                 <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                    <span>Jl Lesti Utara, Ngaglik, Kota Batu</span>
+                                                    <span>{{$income->customer->address}}</span>
                                                     <div class="empty-box">
                                                     </div>
                                                 </div>
@@ -385,7 +384,7 @@
 
                                                 <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                    <span>08.178.554.2-123.321</span>
+                                                    <span>{{$income->customer->npwp}}</span>
                                                     <div class="empty-box">
                                                     </div>
                                                 </div>
@@ -396,7 +395,7 @@
 
                                                 <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                    <span>085607338154</span>
+                                                    <span>{{$income->customer->phone_number}}</span>
                                                     <div class="empty-box">
                                                     </div>
                                                 </div>
@@ -407,7 +406,7 @@
 
                                                 <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12" style="margin-top: 3%;">
 
-                                                    <span>jayaabadi@gmail.com</span>
+                                                    <span>{{$income->customer->email}}</span>
                                                     <div class="empty-box">
                                                     </div>
                                                 </div>
@@ -417,10 +416,10 @@
 
 
                                                 <!-- Field wrapper end -->
-
+                                           
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                <button class="btn btn-primary" style="float: right;">Jumlah : &emsp;&emsp;Rp700.000.000</button>
+                                                <button class="btn btn-primary" style="float: right;">Jumlah : &emsp;&emsp;Rp{{$income->amount}}</button>
                                             </div>
                                         </div>
                                         <!-- Row end -->

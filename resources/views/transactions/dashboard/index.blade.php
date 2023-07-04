@@ -18,33 +18,33 @@
 
 
     <!-- *************
-			************ Common Css Files *************
-		************ -->
+   ************ Common Css Files *************
+  ************ -->
     <!-- Bootstrap css -->
-    <link rel="stylesheet" href="{{ asset ("Gmbslagi/css/bootstrap.min.css")}}">
+    <link rel="stylesheet" href="{{ asset('Gmbslagi/css/bootstrap.min.css') }}">
 
     <!-- Icomoon Font Icons css -->
-    <link rel="stylesheet" href="{{ asset ("Gmbslagi/fonts/style.css")}}">
+    <link rel="stylesheet" href="{{ asset('Gmbslagi/fonts/style.css') }}">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="{{ asset ("Gmbslagi/css/main.css")}}">
+    <link rel="stylesheet" href="{{ asset('Gmbslagi/css/main.css') }}">
 
 
     <!-- *************
-			************ Vendor Css Files *************
-		************ -->
+   ************ Vendor Css Files *************
+  ************ -->
 
     <!-- Mega Menu -->
-    <link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/megamenu/css/megamenu.css")}}">
+    <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/megamenu/css/megamenu.css') }}">
 
     <!-- Search Filter JS -->
-    <link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/search-filter/search-filter.css")}}">
-    <link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/search-filter/custom-search-filter.css")}}">
+    <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/search-filter/search-filter.css') }}">
+    <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/search-filter/custom-search-filter.css') }}">
 
     <!-- Data Tables -->
-    <link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/datatables/dataTables.bs4.css")}}" />
-    <link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/datatables/dataTables.bs4-custom.css")}}" />
-    <link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/datatables/buttons.bs.css")}}" />
+    <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/datatables/dataTables.bs4.css') }}" />
+    <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/datatables/dataTables.bs4-custom.css') }}" />
+    <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/datatables/buttons.bs.css') }}" />
     <style>
         .badge-start {
             border-radius: 2px;
@@ -424,8 +424,8 @@
 
 
         <!-- *************
-				************ Main container start *************
-			************* -->
+    ************ Main container start *************
+   ************* -->
         <div class="main-container">
 
 
@@ -448,30 +448,36 @@
                                     <div class="card-header">
                                         <div class=" col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 d-flex">
                                             <div class="card-title">
-                                                <h3>Transaksi<button type="button" style="border: none; background:transparent;">☆</button></h3>
+                                                <h3>Transaksi<button type="button"
+                                                        style="border: none; background:transparent;">☆</button></h3>
                                             </div>
                                         </div>
 
                                         <!-- <div class="text-end">
-											<a href="create-invoice.html" class="btn btn-primary">Create Invoice</a>
-										</div> -->
-                                        <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12 button-container" style="margin-left: 17%; justify-items: center; justify-content: end;">
+           <a href="create-invoice.html" class="btn btn-primary">Create Invoice</a>
+          </div> -->
+                                        <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12 button-container"
+                                            style="margin-left: 17%; justify-items: center; justify-content: end;">
                                             <div class="graph-day-selection" role="group" style="margin-right: 3%;">
-                                                <a href="http://127.0.0.1:8000/add_income">
-                                                    <button type="button" class="btn active" style="background: transparent; ">
+                                                <a href="{{ route('add_income') }}">
+                                                    <button type="button" class="btn active"
+                                                        style="background: transparent; ">
                                                         <div style="color: #5957b1;"> Tambah Pendapatan</div>
                                                     </button>
                                                 </a>
                                             </div>
                                             <div class="graph-day-selection" role="group" style="margin-right: 3%;">
-                                                <a href="http://127.0.0.1:8000/add_expenditure">
-                                                    <button type="button" class="btn active" style="background: transparent">
+                                                <a href="{{ route('add_expenditure') }}">
+                                                    <button type="button" class="btn active"
+                                                        style="background: transparent">
                                                         <div style="color: #5957b1;">Tambah Pengeluaran</div>
                                                     </button>
                                                 </a>
                                             </div>
                                             <div class="dropdown">
-                                                <a class="btn btn-ekspor-primary dropdown icon-dots-three-vertical" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <a class="btn btn-ekspor-primary dropdown icon-dots-three-vertical"
+                                                    href="#" role="button" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
 
                                                 </a>
 
@@ -487,8 +493,8 @@
                                     <div id="dropdown-menu">
                                         <button class="dropdown-toggle">&#8942;</button>
                                         <div class="dropdown-content">
-                                            <a href="{{url('add_income')}}">Pendapatan</a>
-                                            <a href="{{url('add_expenditure')}}">Pengeluaran</a>
+                                            <a href="{{ url('add_income') }}">Pendapatan</a>
+                                            <a href="{{ url('add_expenditure') }}">Pengeluaran</a>
                                             <a href="path/to/excel/file.xlsx" download>Ekspor</a>
                                         </div>
                                     </div>
@@ -517,7 +523,8 @@
                                     <!-- </div> -->
 
                                     <!-- Row start -->
-                                    <div class="row gutters" style="margin-left: 5%; margin-bottom: -5%; margin-top: 3%;">
+                                    <div class="row gutters"
+                                        style="margin-left: 5%; margin-bottom: -5%; margin-top: 3%;">
                                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
                                             <div class="stats-tile">
                                                 <div class="sale-icon">
@@ -532,9 +539,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-6 col-12" style="margin-top: 2%;">
+                                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-6 col-12"
+                                            style="margin-top: 2%;">
 
-                                            <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 5px;" height="43" viewBox="0 -960 960 960" width="40">
+                                            <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 5px;"
+                                                height="43" viewBox="0 -960 960 960" width="40">
                                                 <path d="M200-450v-60h560v60H200Z" />
                                             </svg>
 
@@ -553,9 +562,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-6 col-12" style="margin-top: 2%;">
+                                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-6 col-12"
+                                            style="margin-top: 2%;">
 
-                                            <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 10px;" height="30" viewBox="0 -960 960 960" width="48">
+                                            <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 10px;"
+                                                height="30" viewBox="0 -960 960 960" width="48">
                                                 <path d="M160-290v-100h640v100H160Zm0-280v-100h640v100H160Z" />
                                             </svg>
 
@@ -579,9 +590,10 @@
                                     <!-- Row end -->
 
                                     <div class="d-flex">
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 box1" style="margin-top: 8%;">
+                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 box1"
+                                            style="margin-top: 8%;">
                                             <div class="hr-switch">
-                                                <a href="{{url('transactions')}}">
+                                                <a href="{{ url('transactions') }}">
                                                     <div class="empty-box1 active">
                                                         <h6 class="">Normal</h6>
 
@@ -592,9 +604,10 @@
                                             </div>
 
                                         </div>
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 box2" style="margin-top: 8%;">
+                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 box2"
+                                            style="margin-top: 8%;">
                                             <div class="hr-switch">
-                                                <a href="{{url('recurring_transactions')}}">
+                                                <a href="{{ url('recurring_transactions') }}">
                                                     <div class="empty-box2">
                                                         <h6 class="">Rutin</h6>
 
@@ -608,21 +621,25 @@
                                     </div>
                                     <div class="content">
                                         <div class="searchcontainer">
-                                            <i class="icon-search"></i><input class="search " type="text" placeholder="Cari Disini..." style="
+                                            <i class="icon-search"></i><input class="search " type="text"
+                                                placeholder="Cari Disini..."
+                                                style="
                                               margin-bottom: 2%; font-size:10pt " />
                                         </div>
                                     </div>
                                     <div class="table-responsive">
-                                        <div class="hidden-menu" style="display: none; background-color: #f2f2f2; font-size: 12pt; padding: 10px;">
+                                        <div class="hidden-menu"
+                                            style="display: none; background-color: #f2f2f2; font-size: 12pt; padding: 10px;">
                                             <p style="display: inline" id="count-display">&emsp;</p>
                                             &emsp;<a href="#" title="Hapus"> <i class="icon-trash-2"></i> </a>
                                         </div>
                                         <table class="table table-hover">
-                                            
+
                                             <thead>
                                                 <tr>
 
-                                                    <th scope="col"> <input type="checkbox" id="select-all-checkbox"></th>
+                                                    <th scope="col"> <input type="checkbox"
+                                                            id="select-all-checkbox"></th>
                                                     <th scope="col">Tanggal</th>
                                                     <th scope="col">Nomor</th>
                                                     <th scope="col">Jenis</th>
@@ -636,146 +653,299 @@
                                                 </tr>
                                             </thead>
                                             @foreach ($data as $row)
-                                            <tbody>
-                                                <tr>
-                                                    <td name="item" id="checkbox1"><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>{{ $row->date }}</th>
-                                                    <td>TRA-{{ $row->income_number }}</td>
-                                                    <td>{{ $row->category->categoryType->name   }}</td>
-                                                    <td>
-                                                        <div class="lingkaran-warna1" style="background-color: {{ $row->category->color }};">
-                                                            &emsp;&emsp;{{ $row->category->name }}
-                                                        </div>
-                                                    </td>
-                                                    <td></td>
-                                                    <td>{{ $row->account->name }}</td>
-                                                    <td>N/A</td>
-                                                    <td>Rp{{ $row->amount }}</td>
-                                                    <th>
-                                                        <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{route('edit_income',['id' => $row->id])}}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_income')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteincome"></a>
-                                                            <a href="{{route('show_expenditure')}}" class="menu-icon icon-eye1"></a>
-                                                        </div>
-                                                    </th>
-                                                </tr>
-                                                
-                                                <!-- <div id="myModal">
+                                                <tbody>
+                                                    @if ($row->income)
+                                                        <tr>
+                                                            <td name="item" id="checkbox1"><input type="checkbox"
+                                                                    class="other-checkbox"></td>
+                                                            <td>{{ $row->income->date }}</th>
+
+                                                            <td>TRA-{{ $row->income->income_number }}</td>
+                                                            <td>
+                                                                @if ($row->income)
+                                                                    Pemasukan
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                <div class="lingkaran-warna1"
+                                                                    style="background-color: {{ $row->income->category->color }};">
+                                                                    &emsp;&emsp;{{ $row->income->category->name }}
+                                                                </div>
+                                                            </td>
+                                                            <td></td>
+                                                            <td>{{ $row->income->account->name }}</td>
+                                                            <td>N/A</td>
+                                                            <td>Rp{{ $row->income->amount }}</td>
+                                                            <th>
+                                                                <div class="menu-icons" style="font-size: 15px;">
+                                                                    <a href="{{ route('edit_income', ['id' => $row->id]) }}"
+                                                                        class="menu-icon icon-edit-2"></a>
+                                                                    <a href="{{ url('delete_income') }}"
+                                                                        class="menu-icon icon-trash"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#deleteincome"></a>
+                                                                    <a href="{{ route('income_show', ['id' => $row->id]) }}"
+                                                                        class="menu-icon icon-eye1"></a>
+                                                                </div>
+                                                            </th>
+                                                        </tr>
+                                                    @elseif($row->expend)
+                                                        <tr>
+                                                            <td name="item" id="checkbox1"><input type="checkbox"
+                                                                    class="other-checkbox"></td>
+                                                            <td>{{ $row->expend->date }}</th>
+
+                                                            <td>TRA-{{ $row->expend->expenditure_number }}</td>
+                                                            <td>
+                                                                @if ($row->expend)
+                                                                    Pengeluaran
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                <div class="lingkaran-warna1"
+                                                                    style="background-color: {{ $row->expend->category->color }};">
+                                                                    &emsp;&emsp;{{ $row->expend->category->name }}
+                                                                </div>
+                                                            </td>
+                                                            <td></td>
+                                                            <td>{{ $row->expend->account->name }}</td>
+                                                            <td>N/A</td>
+                                                            <td>Rp{{ $row->expend->amount }}</td>
+                                                            <th>
+                                                                <div class="menu-icons" style="font-size: 15px;">
+                                                                    <a href="{{ route('update_expenditure', ['id' => $row->expend->id]) }}"
+                                                                        class="menu-icon icon-edit-2"></a>
+                                                                    <a href="{{ url('delete_income') }}"
+                                                                        class="menu-icon icon-trash"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#deleteexpend-{{$row->id}}"></a>
+                                                                    <a href="{{ route('show_expenditure') }}"
+                                                                        class="menu-icon icon-eye1"></a>
+                                                                </div>
+                                                            </th>
+                                                        </tr>
+                                                    @endif
+
+
+                                                    <!-- <div id="myModal">
                                                     <div class="modal-content">
                                                         <span class="close">&times;</span>
                                                         <p>Isi modal di sini...</p>
                                                     </div>
                                                 </div> -->
 
-                                                <div id="myModal">
-                                                    <div class="modal-content">
-                                                        <div class="card" style="background-color:  #eaeaff;">
-                                                            <div class="card-header" style="margin-bottom: 2%;">
-                                                                <div class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
-                                                                    <i class="icon-user1" style="font-size: 23px; color: #5957b1;"></i>
-                                                                </div>
-                                                                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12">
-                                                                    <span>INV-00002</span> <br>
-                                                                    <span>Ugud</span>
-                                                                </div>
-                                                                <div class="col-xl-4 col-lg-4 col-md-8 col-sm-8 col-12">
-                                                                    <span class="badge-finish" style="float: right; margin-bottom: 10%;">Selesai</span>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="card-header" style="margin-bottom: 2%;">
-                                                                <div class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
-                                                                    <i class="icon-local_atm" style="font-size: 23px; color: #5957b1;"></i>
-                                                                </div>
-                                                                <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-12">
-                                                                    <span>Rp200.000.000</span> <br>
-                                                                    <span>2 minggu yang lalu</span>
+                                                    <div id="myModal">
+                                                        <div class="modal-content">
+                                                            <div class="card" style="background-color:  #eaeaff;">
+                                                                <div class="card-header" style="margin-bottom: 2%;">
+                                                                    <div
+                                                                        class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
+                                                                        <i class="icon-user1"
+                                                                            style="font-size: 23px; color: #5957b1;"></i>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12">
+                                                                        <span>INV-00002</span> <br>
+                                                                        <span>Ugud</span>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-xl-4 col-lg-4 col-md-8 col-sm-8 col-12">
+                                                                        <span class="badge-finish"
+                                                                            style="float: right; margin-bottom: 10%;">Selesai</span>
+                                                                    </div>
                                                                 </div>
 
-                                                            </div>
-                                                            <div class="card-header" style="margin-bottom: 2%;">
-                                                                <div class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
-                                                                    <i class="icon-tag1" style="font-size: 23px; color: #5957b1;"></i>
-                                                                </div>
-                                                                <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-12">
-                                                                    <span>Bayar Listrik</span> <br>
-                                                                    <span>Rp300.000.000</span>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="card-header" style="margin-bottom: 2%;">
-                                                                <div class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
-                                                                    <i class="icon-attach_money" style="font-size: 23px; color: #5957b1;"></i>
-                                                                </div>
-                                                                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12">
-                                                                    <span>Dibayar</span> <br>
-                                                                    <span>Total Pembayaran </span>
-                                                                </div>
-                                                                <div class="col-xl-4 col-lg-4 col-md-8 col-sm-8 col-12">
-                                                                    <span class="" style="float: right;">Rp200.000.000</span>
-                                                                    <span class="" style="float: right;">Rp500.000.000</span>
+                                                                <div class="card-header" style="margin-bottom: 2%;">
+                                                                    <div
+                                                                        class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
+                                                                        <i class="icon-local_atm"
+                                                                            style="font-size: 23px; color: #5957b1;"></i>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-12">
+                                                                        <span>Rp200.000.000</span> <br>
+                                                                        <span>2 minggu yang lalu</span>
+                                                                    </div>
 
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                                <div class="card-header" style="margin-bottom: 2%;">
+                                                                    <div
+                                                                        class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
+                                                                        <i class="icon-tag1"
+                                                                            style="font-size: 23px; color: #5957b1;"></i>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-12">
+                                                                        <span>Bayar Listrik</span> <br>
+                                                                        <span>Rp300.000.000</span>
+                                                                    </div>
 
-                                                <div id="myModal">
-                                                    <div class="modal-content">
-                                                        <div class="card" style="background-color:  #eaeaff;">
-                                                            <div class="card-header" style="margin-bottom: 2%;">
-                                                                <div class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
-                                                                    <i class="icon-user1" style="font-size: 23px; color: #5957b1;"></i>
                                                                 </div>
-                                                                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12">
-                                                                    <span>N/A</span> <br>
-                                                                    <span>Louis Gunawan</span>
-                                                                </div>
-                                                                <div class="col-xl-4 col-lg-4 col-md-8 col-sm-8 col-12">
-                                                                    <span class="badge-finish" style="float: right; margin-bottom: 10%;">Selesai</span>
-                                                                </div>
-                                                            </div>
+                                                                <div class="card-header" style="margin-bottom: 2%;">
+                                                                    <div
+                                                                        class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
+                                                                        <i class="icon-attach_money"
+                                                                            style="font-size: 23px; color: #5957b1;"></i>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12">
+                                                                        <span>Dibayar</span> <br>
+                                                                        <span>Total Pembayaran </span>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-xl-4 col-lg-4 col-md-8 col-sm-8 col-12">
+                                                                        <span class=""
+                                                                            style="float: right;">Rp200.000.000</span>
+                                                                        <span class=""
+                                                                            style="float: right;">Rp500.000.000</span>
 
-                                                            <div class="card-header" style="margin-bottom: 2%;">
-                                                                <div class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
-                                                                    <i class="icon-local_atm" style="font-size: 23px; color: #5957b1;"></i>
-                                                                </div>
-                                                                <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-12">
-                                                                    <span>Rp200.000.000</span> <br>
-                                                                    <span>2 minggu yang lalu</span>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="card-header" style="margin-bottom: 2%;">
-                                                                <div class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
-                                                                    <i class="icon-tag1" style="font-size: 23px; color: #5957b1;"></i>
-                                                                </div>
-                                                                <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-12">
-                                                                    <span>Bayar Listrik</span> <br>
-                                                                    <span>Rp300.000.000</span>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="card-header" style="margin-bottom: 2%;">
-                                                                <div class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
-                                                                    <i class="icon-attach_money" style="font-size: 23px; color: #5957b1;"></i>
-                                                                </div>
-                                                                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12">
-                                                                    <span>Dibayar</span> <br>
-                                                                    <span>Total Pembayaran </span>
-                                                                </div>
-                                                                <div class="col-xl-4 col-lg-4 col-md-8 col-sm-8 col-12">
-                                                                    <span class="" style="float: right;">Rp200.000.000</span>
-                                                                    <span class="" style="float: right;">Rp500.000.000</span>
-
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                            </tbody>
+                                                    <div id="myModal">
+                                                        <div class="modal-content">
+                                                            <div class="card" style="background-color:  #eaeaff;">
+                                                                <div class="card-header" style="margin-bottom: 2%;">
+                                                                    <div
+                                                                        class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
+                                                                        <i class="icon-user1"
+                                                                            style="font-size: 23px; color: #5957b1;"></i>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12">
+                                                                        <span>N/A</span> <br>
+                                                                        <span>Louis Gunawan</span>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-xl-4 col-lg-4 col-md-8 col-sm-8 col-12">
+                                                                        <span class="badge-finish"
+                                                                            style="float: right; margin-bottom: 10%;">Selesai</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="card-header" style="margin-bottom: 2%;">
+                                                                    <div
+                                                                        class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
+                                                                        <i class="icon-local_atm"
+                                                                            style="font-size: 23px; color: #5957b1;"></i>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-12">
+                                                                        <span>Rp200.000.000</span> <br>
+                                                                        <span>2 minggu yang lalu</span>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="card-header" style="margin-bottom: 2%;">
+                                                                    <div
+                                                                        class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
+                                                                        <i class="icon-tag1"
+                                                                            style="font-size: 23px; color: #5957b1;"></i>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-12">
+                                                                        <span>Bayar Listrik</span> <br>
+                                                                        <span>Rp300.000.000</span>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="card-header" style="margin-bottom: 2%;">
+                                                                    <div
+                                                                        class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-12">
+                                                                        <i class="icon-attach_money"
+                                                                            style="font-size: 23px; color: #5957b1;"></i>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12">
+                                                                        <span>Dibayar</span> <br>
+                                                                        <span>Total Pembayaran </span>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-xl-4 col-lg-4 col-md-8 col-sm-8 col-12">
+                                                                        <span class=""
+                                                                            style="float: right;">Rp200.000.000</span>
+                                                                        <span class=""
+                                                                            style="float: right;">Rp500.000.000</span>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </tbody>
+                                                <!-- Modal start -->
+                                                <div class="modal fade" id="deleteincome" data-bs-backdrop="static"
+                                                    data-bs-keyboard="false" tabindex="-1"
+                                                    aria-labelledby="deleteincome" aria-hidden="true">
+                                                    <div class="modal-dialog my-auto">
+                                                        <div class="modal-content" style="padding: 0px">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="staticBackdropLabel">Hapus
+                                                                    Transaksi pemasukan </h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Anda Yakin Ingin Menghapus Transaksi Pemasukan Ini?
+                                                                </p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                @isset($row)
+                                                                    <form
+                                                                        action="{{ route('delete_income', ['id' => $row->id]) }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit" class="btn btn-danger"
+                                                                            id="deleteButton">Hapus</button>
+                                                                    </form>
+                                                                @endisset
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal end -->
+
+                                                <!-- Modal start -->
+                                                <div class="modal fade" id="deleteexpend-{{$row->id}}" data-bs-backdrop="static"
+                                                    data-bs-keyboard="false" tabindex="-1"
+                                                    aria-labelledby="deleteincome" aria-hidden="true">
+                                                    <div class="modal-dialog my-auto">
+                                                        <div class="modal-content" style="padding: 0px">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="staticBackdropLabel">Hapus
+                                                                    Transaksi pengeluaran </h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Anda Yakin Ingin Menghapus Transaksi pengeluaran Ini?
+                                                                </p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                @isset($row)
+                                                                    <form
+                                                                        action="{{ route('delete_expend', ['id' => $row->id]) }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit" class="btn btn-danger"
+                                                                            id="deleteButton">Hapus</button>
+                                                                    </form>
+                                                                @endisset
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal end -->
                                             @endforeach
                                         </table>
 
@@ -815,25 +985,9 @@
 
                     </div>
                     <!-- Content wrapper end -->
-                    <!-- Modal start -->
-                    <div class="modal fade" id="deleteincome" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteincome" aria-hidden="true">
-                        <div class="modal-dialog my-auto">
-                            <div class="modal-content" style="padding: 0px">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Hapus Transaksi</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Anda Yakin Ingin Menghapus Transaksi Ini?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal end -->
+
+
 
                     <!-- App Footer start -->
                     <div class="app-footer">© Uni Pro Admin 2021</div>
@@ -844,59 +998,59 @@
 
             </div>
             <!-- *************
-				************ Main container end *************
-			************* -->
+    ************ Main container end *************
+   ************* -->
 
             </divkolaja>
             <!-- Page wrapper end -->
 
             <!-- *************
-			************ Required JavaScript Files *************
-		************* -->
+   ************ Required JavaScript Files *************
+  ************* -->
             <!-- Required jQuery first, then Bootstrap Bundle JS -->
-            <script src="{{ asset ("Gmbslagi/js/jquery.min.js")}}"></script>
-            <script src="{{ asset ("Gmbslagi/js/bootstrap.bundle.min.js")}}"></script>
-            <script src="{{ asset ("Gmbslagi/js/modernizr.js")}}"></script>
-            <script src="{{ asset ("Gmbslagi/js/moment.js")}}"></script>
-            <script src="{{ asset ("Gmbslagi/js/main.js")}}"></script>
+            <script src="{{ asset('Gmbslagi/js/jquery.min.js') }}"></script>
+            <script src="{{ asset('Gmbslagi/js/bootstrap.bundle.min.js') }}"></script>
+            <script src="{{ asset('Gmbslagi/js/modernizr.js') }}"></script>
+            <script src="{{ asset('Gmbslagi/js/moment.js') }}"></script>
+            <script src="{{ asset('Gmbslagi/js/main.js') }}"></script>
             <script src="Gmbslagi/js/dropdown.js"></script>
 
             <!-- *************
-			************ Vendor Js Files *************
-		************* -->
+   ************ Vendor Js Files *************
+  ************* -->
 
             <!-- Megamenu JS -->
-            <script src="{{ asset ("Gmbslagi/vendor/megamenu/js/megamenu.js")}}"></script>
-            <script src="{{ asset ("Gmbslagi/vendor/megamenu/js/custom.js")}}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/megamenu/js/megamenu.js') }}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/megamenu/js/custom.js') }}"></script>
 
             <!-- Slimscroll JS -->
-            <script src="{{ asset ("Gmbslagi/vendor/slimscroll/slimscroll.min.js")}}"></script>
-            <script src="{{ asset ("Gmbslagi/vendor/slimscroll/custom-scrollbar.js")}}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/slimscroll/slimscroll.min.js') }}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/slimscroll/custom-scrollbar.js') }}"></script>
 
             <!-- Search Filter JS -->
-            <script src="{{ asset ("Gmbslagi/vendor/search-filter/search-filter.js")}}"></script>
-            <script src="{{ asset ("Gmbslagi/vendor/search-filter/custom-search-filter.js")}}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/search-filter/search-filter.js') }}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/search-filter/custom-search-filter.js') }}"></script>
 
             <!-- Data Tables -->
-            <script src="{{ asset ("Gmbslagi/vendor/datatables/dataTables.min.js")}}"></script>
-            <script src="{{ asset ("Gmbslagi/vendor/datatables/dataTables.bootstrap.min.js")}}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/datatables/dataTables.min.js') }}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/datatables/dataTables.bootstrap.min.js') }}"></script>
 
-            <script src="{{ asset ("Gmbslagi/js/main.js")}}"></script>
+            <script src="{{ asset('Gmbslagi/js/main.js') }}"></script>
 
             <!-- Custom Data tables -->
-            <script src="{{ asset ("Gmbslagi/vendor/datatables/custom/custom-datatables.js")}}"></script>
-            <script src="{{ asset ("Gmbslagi/vendor/datatables/custom/fixedHeader.js")}}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/datatables/custom/custom-datatables.js') }}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/datatables/custom/fixedHeader.js') }}"></script>
 
             <!-- Download / CSV / Copy / Print -->
-            <script src="{{ asset ("Gmbslagi/vendor/datatables/buttons.min.js")}}"></script>
-            <script src="{{ asset ("Gmbslagi/vendor/datatables/jszip.min.js")}}"></script>
-            <script src="{{ asset ("Gmbslagi/vendor/datatables/pdfmake.min.js")}}"></script>
-            <script src="{{ asset ("Gmbslagi/vendor/datatables/vfs_fonts.js")}}"></script>
-            <script src="{{ asset ("Gmbslagi/vendor/datatables/html5.min.js")}}"></script>
-            <script src="{{ asset ("Gmbslagi/vendor/datatables/buttons.print.min.js")}}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/datatables/buttons.min.js') }}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/datatables/jszip.min.js') }}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/datatables/pdfmake.min.js') }}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/datatables/vfs_fonts.js') }}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/datatables/html5.min.js') }}"></script>
+            <script src="{{ asset('Gmbslagi/vendor/datatables/buttons.print.min.js') }}"></script>
 
             <!-- Main Js Required -->
-            <script src="{{ asset ("Gmbslagi/js/main.js")}}"></script>
+            <script src="{{ asset('Gmbslagi/js/main.js') }}"></script>
             <script>
                 const checkboxes = document.querySelectorAll('.other-checkbox');
                 const selectAllCheckbox = document.querySelector('#select-all-checkbox');
@@ -923,7 +1077,8 @@
                         } else {
                             const checkedCount = countCheckedCheckboxes();
                             if (checkedCount === 0) {
-                                hiddenMenu.style.display = 'none'; // Hide the hidden menu if no checkboxes are checked
+                                hiddenMenu.style.display =
+                                    'none'; // Hide the hidden menu if no checkboxes are checked
                             }
                         }
 
@@ -934,7 +1089,8 @@
                 // Add event listener to the "Select All" checkbox
                 selectAllCheckbox.addEventListener('change', function() {
                     checkboxes.forEach(function(checkbox) {
-                        checkbox.checked = selectAllCheckbox.checked; // Set the state of each checkbox based on the "Select All" checkbox
+                        checkbox.checked = selectAllCheckbox
+                            .checked; // Set the state of each checkbox based on the "Select All" checkbox
                     });
 
                     if (this.checked) {

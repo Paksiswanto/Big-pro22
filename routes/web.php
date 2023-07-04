@@ -53,6 +53,9 @@ Route::middleware(['auth','auth.session', 'verified'])->group(function () {
 
     Route::get('/add_income', [TransactionsController::class, 'add_income'])->name('add_income');
 
+    Route::get('/add_expenditure', [TransactionsController::class, 'add_expenditure'])->name('add_expenditure');
+
+
 
 });
     
@@ -110,7 +113,6 @@ Route::get('/transactions', [TransactionsController::class, 'transactions'])->na
 Route::get('/edit_income/{id}', [TransactionsController::class, 'edit_income'])->name('edit_income');
 Route::get('/show_income', [TransactionsController::class, 'show_income'])->name('show_income');
 
-Route::get('/add_expenditure', [TransactionsController::class, 'add_expenditure'])->name('add_expenditure');
 Route::get('/edit_expenditure/{id}', [TransactionsController::class, 'edit_expenditure'])->name('edit_expenditure');
 Route::get('/show_expenditure', [TransactionsController::class, 'show_expenditure'])->name('show_expenditure');
 //recurring transactions

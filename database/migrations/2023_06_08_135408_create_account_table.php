@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('rekening_number')->unique();
             $table->string('currency');
-            $table->decimal('balance', 10, 2);
+            $table->unsignedBigInteger('balance');
             $table->string('name_bank');
             $table->string('bank_telephone');
             $table->string('bank_address');

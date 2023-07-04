@@ -226,12 +226,20 @@
 
                                                     <!-- Field wrapper start -->
 
+                                                    
+
                                                     <div class="field-wrapper-group">
                                                         <div class="field-wrapper">
                                                             <select class="select-multiple js-states" title="Select Product Category" name="account_id" id="account_id">
                                                                 @foreach ($account as $row)
-                                                                <option value="{{ $row->id }}" {{ $row->account_id == $income->account_id ? 'selected' : ''}}>{{ $row->name }}</option>
-                                                                @endforeach
+                                                                <option value="{{ $row->id }}" {{ $row->id == $income->account_id ? 'selected' : '' }}>
+                                                                    {{ $row->name }}
+                                                                </option>
+                                                            @endforeach
+                                                           
+                                                            
+                                                            
+                                                            
 
                                                             </select>
                                                             <div class="field-placeholder">Akun<span class="text-danger">*</span></div>
