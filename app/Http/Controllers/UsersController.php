@@ -36,11 +36,11 @@ class UsersController extends Controller
             'picture'=> 'required|mimes:jpeg,png,jpg,jfif|max:2048',
             'email'=> 'required|unique:users'
         ]);
-      
+
             if ($request->hasFile('picture')) {
                 $photo = $request->file('picture');
                 $destinationPath = 'users';
-                $filePath = $photo->store($destinationPath);
+                $filePath = $photo->store($destinationPath,'public');
 
             // Memastikan file gambar berhasil diunggah sebelum menyimpannya ke database
             if ($filePath) {

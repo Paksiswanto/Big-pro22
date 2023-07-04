@@ -351,7 +351,7 @@
 
                                                     <!-- Field wrapper start -->
 
-                                                    <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">                                  
+                                                    <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
                                                     <div class="field-wrapper-group">
                                                         <div class="field-wrapper">
                                                             <select class="select-multiple js-states" title="Select Product Category" name="category_id" id="category_id">
@@ -380,7 +380,7 @@
                                                                 @endforeach
 
                                                             </select>
-                                                            <div class="field-placeholder">Pelanggan<span class="text-danger">*</span></div>
+                                                            <div class="field-placeholder">Pemasok<span class="text-danger">*</span></div>
                                                         </div>
                                                         <button type="button" class="input-icon-block btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalcustomer">
                                                             <i class="icon-plus1"></i>
@@ -628,7 +628,7 @@
                                     <!-- Modal category end -->
 
                                     <!-- Modal customer start -->
-                                    <form action="/insert_sup_Expenditure" method="POST">
+                                    <form action="/insert_sup_expenditure" method="POST">
                                         @csrf
                                         <div class="modal fade" id="modalcustomer" tabindex="-1" aria-labelledby="modalcustomer" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="margin-top: -20px;">
