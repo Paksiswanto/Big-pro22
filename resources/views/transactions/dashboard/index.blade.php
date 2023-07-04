@@ -653,6 +653,31 @@
                                                 </tr>
                                             </thead>
                                             @foreach ($data as $row)
+                                            <tbody>
+                                                <tr>
+                                                    <td name="item" id="checkbox1"><input type="checkbox" class="other-checkbox"></td>
+                                                    <td>{{ $row->date }}</th>
+                                                    <td>TRA-{{ $row->income_number }}</td>
+                                                    <td>{{ $row->category_id }}</td>
+                                                    <td>
+                                                        <div class="lingkaran-warna1" style="background-color: {{ $row->category->color }};">
+                                                            &emsp;&emsp;{{ $row->category->name }}
+                                                        </div>
+                                                    </td>
+                                                    <td></td>
+                                                    <td>{{ $row->account_id }}</td>
+                                                    <td>N/A</td>
+                                                    <td>Rp{{ $row->amount }}</td>
+                                                    <th>
+                                                        <div class="menu-icons" style="font-size: 15px;">
+                                                            <a href="{{route('edit_income',['id' => $row->id])}}" class="menu-icon icon-edit-2"></a>
+                                                            <a href="{{url('delete_income')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleteincome"></a>
+                                                            <a href="{{route('show_expenditure')}}" class="menu-icon icon-eye1"></a>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+
+                                                <!-- <div id="myModal">
                                                 <tbody>
                                                     @if ($row->income)
                                                         <tr>

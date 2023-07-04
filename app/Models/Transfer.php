@@ -9,7 +9,7 @@ use App\Models\User;
 class Transfer extends Model
 {
     use HasFactory;
-    
+
     protected $table= 'transfer';
     protected $fillable =[
         'from_account',
@@ -36,6 +36,7 @@ class Transfer extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     public function company()
     {
         return $this->belongsTo(Company::class, 'company_id');

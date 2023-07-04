@@ -355,7 +355,7 @@
     <div class="page-wrapper">
 
         <!-- Sidebar wrapper start -->
-        @include('layouts.sidebar_add_company')
+        @include('layouts.sidebar')
 
         <!-- Sidebar wrapper end -->
 
@@ -462,171 +462,123 @@
                                     </div>
                                 </div>
 
-                                <div class="bg">
-                                    <h5 class="text-subjudul mt-3">Pendapatan dan Pengeluaran</h5>
-                                    <hr class="col-12">
-                                    <div class="row">
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                            <div class="ringkasan d-flex">
-                                                <div class="d-flex">
-                                                    <a href="show_report">
-                                                        <div class="ringkasan-icon">
-                                                            <i class="icon-shopping-cart1" style="margin-bottom: 22px;"></i>
-                                                        </div>
-                                                        <div class="sale-details">
-                                                            <h5>Ringkasan Pengeluaran</h5>
-                                                    </a>
-                                                    <p>Ringkasan pengeluaran bulanan</p>
-                                                </div>
-                                            </div>
-                                            <a href="" class="" style="margin-left: auto;"><svg class="after" style="transform: rotate(30deg); margin-bottom: 22px;" xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" width="39">
-                                                    <path d="m634-448 86 77v60H510v241l-30 30-30-30v-241H240v-60l80-77v-332h-50v-60h414v60h-50v332Zm-313 77h312l-59-55v-354H380v354l-59 55Zm156 0Z" />
-                                                </svg>
-                                            </a>
-                                            <button class="dropdown1-btn icon-more-vertical" style="margin-bottom: 8%;"></button>
-                                            <div class="dropdown1-content">
-                                                <a href="#">Sunting</a>
-                                                <a href="#">Hapus</a>
 
-                                            </div>
-
-
-                                        </div>
-                                    </div>
+                                <h5 class="mt-3">Akuntansi </h5>
+                                <hr class="col-12">
+                                <div class="row">
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="ringkasan d-flex">
                                             <div class="d-flex">
-                                                <div class="ringkasan-icon">
-                                                    <i class="icon-shopping-cart1" style="margin-bottom: 22px;"></i>
-                                                </div>
-                                                <div class="sale-details">
-                                                    <h5>Ringkasan Pendapatan</h5>
-                                                    </a>
-                                                    <p>Ringkasan pendapatan bulanan</p>
-                                                </div>
-                                            </div>
-                                            <a href="" class="" style="margin-left: auto;"><svg class="after" style="transform: rotate(30deg); margin-bottom: 22px;" xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" width="39">
-                                                    <path d="m634-448 86 77v60H510v241l-30 30-30-30v-241H240v-60l80-77v-332h-50v-60h414v60h-50v332Zm-313 77h312l-59-55v-354H380v354l-59 55Zm156 0Z" />
-                                                </svg>
-                                            </a>
-                                            <button class="dropdown2-btn icon-more-vertical" style="margin-bottom: 8%;"></button>
-                                            <div class="dropdown2-content">
-                                                <a href="#">Sunting</a>
-                                                <a href="#">Hapus</a>
-
+                                                <a href="show_report2">
+                                                    <div class="ringkasan-icon">
+                                                        <i class="icon-shopping-cart1" style="margin-bottom: 22px;"></i>
+                                                    </div>
+                                                    <div class="sale-details">
+                                                        <h5>Ringkasan Pengeluaran</h5>
+                                                </a>
+                                                <p>Ringkasan pengeluaran bulanan</p>
                                             </div>
                                         </div>
+                                        <a href="" class="" style="margin-left: auto;"><svg class="after" style="transform: rotate(30deg); margin-bottom: 22px;" xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" width="39">
+                                                <path d="m634-448 86 77v60H510v241l-30 30-30-30v-241H240v-60l80-77v-332h-50v-60h414v60h-50v332Zm-313 77h312l-59-55v-354H380v354l-59 55Zm156 0Z" />
+                                            </svg>
+                                        </a>
+                                        <button class="dropdown4-btn icon-more-vertical" style="margin-bottom: 8%;"></button>
+                                        <div class="dropdown4-content">
+                                            <a href="#">Sunting</a>
+                                            <a href="#">Hapus</a>
+
+                                        </div>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div class="ringkasan d-flex">
-                                            <div class="d-flex">
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="ringkasan d-flex">
+                                        <div class="d-flex">
+                                            <a href="show_report2">
                                                 <div class="ringkasan-icon">
                                                     <i class="icon-shopping-cart1" style="margin-bottom: 22px;"></i>
                                                 </div>
                                                 <div class="sale-details">
                                                     <h5>Ringkasan Pengeluaran</h5>
-                                                    </a>
-                                                    <p>Ringkasan pengeluaran bulanan</p>
-                                                </div>
-                                            </div>
-                                            <a href="" class="" style="margin-left: auto;"><svg class="after" style="transform: rotate(30deg); margin-bottom: 22px;" xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" width="39">
-                                                    <path d="m634-448 86 77v60H510v241l-30 30-30-30v-241H240v-60l80-77v-332h-50v-60h414v60h-50v332Zm-313 77h312l-59-55v-354H380v354l-59 55Zm156 0Z" />
-                                                </svg>
                                             </a>
-                                            <button class="dropdown3-btn icon-more-vertical" style="margin-bottom: 8%;"></button>
-                                            <div class="dropdown3-content">
-                                                <a href="#">Sunting</a>
-                                                <a href="#">Hapus</a>
-
-                                            </div>
+                                            <p>Ringkasan pengeluaran bulanan</p>
                                         </div>
                                     </div>
-                                </div>
+                                    <a href="" class="" style="margin-left: auto;"><svg class="after" style="transform: rotate(30deg); margin-bottom: 22px;" xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" width="39">
+                                            <path d="m634-448 86 77v60H510v241l-30 30-30-30v-241H240v-60l80-77v-332h-50v-60h414v60h-50v332Zm-313 77h312l-59-55v-354H380v354l-59 55Zm156 0Z" />
+                                        </svg>
+                                    </a>
+                                    <button class="dropdown5-btn icon-more-vertical" style="margin-bottom: 8%;"></button>
+                                    <div class="dropdown5-content">
+                                        <a href="#">Sunting</a>
+                                        <a href="#">Hapus</a>
 
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <h5 class="mt-3">Akuntansi </h5>
-                                <hr class="col-12">
-                                <div class="d-flex">
-                                    <div class="col-12">
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                            <div class="ringkasan d-flex">
-                                                <div class="d-flex">
-                                                    <a href="show_report2">
-                                                        <div class="ringkasan-icon">
-                                                            <i class="icon-shopping-cart1" style="margin-bottom: 22px;"></i>
-                                                        </div>
-                                                        <div class="sale-details">
-                                                            <h5>Ringkasan Pengeluaran</h5>
-                                                    </a>
-                                                    <p>Ringkasan pengeluaran bulanan</p>
+                        <div class="">
+                            <h5 class="text-subjudul mt-3">Pendapatan dan Pengeluaran</h5>
+                            <hr class="col-12">
+                            <!-- <div class="d-flex"> -->
+                            <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"> -->
+                            <!-- @foreach ($data as $row)
+                                <div class="" style="grid-column:span 1 / span 1;">
+                                    <div class="ringkasan d-flex">
+                                        <div class="d-flex">
+                                            <a href="show_report">
+                                                <div class="ringkasan-icon">
+                                                    <i class="icon-shopping-cart1" style="margin-bottom: 22px;"></i>
                                                 </div>
-                                            </div>
-                                            <a href="" class="" style="margin-left: auto;"><svg class="after" style="transform: rotate(30deg); margin-bottom: 22px;" xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" width="39">
-                                                    <path d="m634-448 86 77v60H510v241l-30 30-30-30v-241H240v-60l80-77v-332h-50v-60h414v60h-50v332Zm-313 77h312l-59-55v-354H380v354l-59 55Zm156 0Z" />
-                                                </svg>
+                                                <div class="sale-details">
+                                                    <h5>{{ $row->name }}</h5>
                                             </a>
-                                            <button class="dropdown5-btn icon-more-vertical" style="margin-bottom: 8%;"></button>
-                                            <div class="dropdown5-content">
-                                                <a href="#">Sunting</a>
-                                                <a href="#">Hapus</a>
-
-                                            </div>
+                                            <p>Ringkasan pengeluaran bulanan</p>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                            <div class="ringkasan d-flex">
-                                                <div class="d-flex">
-                                                    <a href="show_report2">
-                                                        <div class="ringkasan-icon">
-                                                            <i class="icon-shopping-cart1" style="margin-bottom: 22px;"></i>
-                                                        </div>
-                                                        <div class="sale-details">
-                                                            <h5>Ringkasan Pengeluaran</h5>
-                                                    </a>
-                                                    <p>Ringkasan pengeluaran bulanan</p>
-                                                </div>
-                                            </div>
-                                            <a href="" class="" style="margin-left: auto;"><svg class="after" style="transform: rotate(30deg); margin-bottom: 22px;" xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" width="39">
-                                                    <path d="m634-448 86 77v60H510v241l-30 30-30-30v-241H240v-60l80-77v-332h-50v-60h414v60h-50v332Zm-313 77h312l-59-55v-354H380v354l-59 55Zm156 0Z" />
-                                                </svg>
-                                            </a>
-                                            <button class="dropdown5-btn icon-more-vertical" style="margin-bottom: 8%;"></button>
-                                            <div class="dropdown5-content">
-                                                <a href="#">Sunting</a>
-                                                <a href="#">Hapus</a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                            <div class="ringkasan d-flex">
-                                                <div class="d-flex">
-                                                    <a href="show_report2">
-                                                        <div class="ringkasan-icon">
-                                                            <i class="icon-shopping-cart1" style="margin-bottom: 22px;"></i>
-                                                        </div>
-                                                        <div class="sale-details">
-                                                            <h5>Ringkasan Pengeluaran</h5>
-                                                    </a>
-                                                    <p>Ringkasan pengeluaran bulanan</p>
-                                                </div>
-                                            </div>
-                                            <a href="" class="" style="margin-left: auto;"><svg class="after" style="transform: rotate(30deg); margin-bottom: 22px;" xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" width="39">
-                                                    <path d="m634-448 86 77v60H510v241l-30 30-30-30v-241H240v-60l80-77v-332h-50v-60h414v60h-50v332Zm-313 77h312l-59-55v-354H380v354l-59 55Zm156 0Z" />
-                                                </svg>
-                                            </a>
-                                            <button class="dropdown5-btn icon-more-vertical" style="margin-bottom: 8%;"></button>
-                                            <div class="dropdown5-content">
-                                                <a href="#">Sunting</a>
-                                                <a href="#">Hapus</a>
-
-                                            </div>
-                                        </div>
+                                    <a href="" class="" style="margin-left: auto;"><svg class="after" style="transform: rotate(30deg); margin-bottom: 22px;" xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" width="39">
+                                            <path d="m634-448 86 77v60H510v241l-30 30-30-30v-241H240v-60l80-77v-332h-50v-60h414v60h-50v332Zm-313 77h312l-59-55v-354H380v354l-59 55Zm156 0Z" />
+                                        </svg>
+                                    </a>
+                                    <button class="dropdown1-btn icon-more-vertical" style="margin-bottom: 8%;"></button>
+                                    <div class="dropdown1-content">
+                                        <a href="#">Sunting</a>
+                                        <a href="#">Hapus</a>
                                     </div>
                                 </div>
+                                @endforeach -->
+                            <div class="" style="display: grid; grid-template-columns:repeat(2, minmax(0, 1fr))">
+                                @foreach ($data as $row)
+                                <div class="" style="grid-column:span 1 / span 1;">
+                                    <div class="ringkasan d-flex">
+                                    <div class="ringkasan d-flex">
+                                            <div class="d-flex">
+                                                <a href="show_report2">
+                                                    <div class="ringkasan-icon">
+                                                        <i class="icon-shopping-cart1" style="margin-bottom: 22px;"></i>
+                                                    </div>
+                                                    <div class="sale-details">
+                                                        <h5>Ringkasan Pengeluaran</h5>
+                                                </a>
+                                                <p>Ringkasan pengeluaran bulanan</p>
+                                            </div>
+                                        </div>
+                                        <a href="" class="" style="margin-left: auto;"><svg class="after" style="transform: rotate(30deg); margin-bottom: 22px;" xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" width="39">
+                                                <path d="m634-448 86 77v60H510v241l-30 30-30-30v-241H240v-60l80-77v-332h-50v-60h414v60h-50v332Zm-313 77h312l-59-55v-354H380v354l-59 55Zm156 0Z" />
+                                            </svg>
+                                        </a>
+                                        <button class="dropdown4-btn icon-more-vertical" style="margin-bottom: 8%;"></button>
+                                        <div class="dropdown4-content">
+                                            <a href="#">Sunting</a>
+                                            <a href="#">Hapus</a>
+
+                                        </div>
+                                </div>
+                                @endforeach
+                            </div>
+                            <!-- </div> -->
+
+                        </div>
                     </div>
 
                 </div>

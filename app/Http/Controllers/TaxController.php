@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Tax;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class TaxController extends Controller
 {
@@ -35,7 +34,7 @@ class TaxController extends Controller
             'name' => $request->name,
             'tax_amount' => $request->tax_amount,
             'type' => $request->type,
-            'company_id' => Auth::user()->company_id,
+            'company_id' => 1,
         ]);
 
         // Logika sesuai dengan jenis pajak

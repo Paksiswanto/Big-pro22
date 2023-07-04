@@ -15,7 +15,6 @@ class CategoryType extends Model
     {
         return $this->hasMany(Category::class);
     }
-    
     function incomes()
     {
         return $this->hasMany(Income::class);

@@ -10,12 +10,7 @@ class Tax extends Model
     use HasFactory;
 
     protected $guarded = [];
-    protected $fillable =[
-        'company_id',
-        'tax_amount',
-        'name',
-        'type',
-    ]; 
+
     protected $table='tax';
     function item()
     {

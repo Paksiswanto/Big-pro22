@@ -26,6 +26,7 @@ class TransactionsController extends Controller
         $data =  Transaction::where('company_id', $company_id)->get();
         return view('transactions.dashboard.index', compact('data'));
     }
+   
 
     //income
     public function add_income()
