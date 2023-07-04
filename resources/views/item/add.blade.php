@@ -197,7 +197,7 @@
                                     <div class="d-flex">
                                         <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
                                             <div class="card-title">
-                                                <h3>Tambah Item<button type="button" style="border: none; background:none;">☆</button></h3>
+                                                <h3>Tambah Barang<button type="button" style="border: none; background:none;">☆</button></h3>
                                             </div>
                                             <div class="graph-day-selection" role="group" style="margin-left: 60%">
 
@@ -210,8 +210,8 @@
                                     </div>
                                         <div class="">
                                             <div style="border-bottom: solid black 1px; margin-bottom: 2%; margin-top: 2%;">
-                                                <h6>Umum</h6>
-                                                <p>Pilih kategori untuk membuat laporan Anda lebih detail. Deskripsi akan diisi saat item dipilih dalam faktur atau tagihan.</p>
+                                                <h6>Umum</h6>   
+                                                <p>Pilih kategori untuk membuat laporan Anda lebih detail. Deskripsi akan diisi saat barang dipilih dalam faktur atau tagihan.</p>
                                             </div>
                                             <!-- Row start -->
                                             <div class="row gutters">

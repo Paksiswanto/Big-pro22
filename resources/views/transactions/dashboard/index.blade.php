@@ -400,6 +400,13 @@
                 }
             }
         }
+        .icon-star_border {
+		/* gaya tombol tidak aktif */
+		}
+
+		.icon-star1 {
+		/* gaya tombol aktif */
+		}
     </style>
 
 </head>
@@ -448,8 +455,20 @@
                                     <div class="card-header">
                                         <div class=" col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 d-flex">
                                             <div class="card-title">
-                                                <h3>Transaksi<button type="button"
-                                                        style="border: none; background:transparent;">☆</button></h3>
+                                                <h3 class="d-flex">
+                                                    <span>Transaksi</span>
+                                                    @if( in_array('Transaksi',Auth()->user()->favorit->pluck('name')->toArray()))
+                                                    <form action="/unfavorite/Transaksi" class="d-flex" method="POST" >
+                                                        @csrf
+                                                    <button id="myButton" type="submit" style="border: none; background-color:white" class="icon-star1"></button>
+                                                    </form>
+                                                    @else
+                                                    <form action="/favorite/Transaksi" class="d-flex" method="POST" >
+                                                        @csrf
+                                                    <button id="myButton" type="submit" style="border: none; background-color:white" class="icon-star_border"></button>
+                                                    </form>
+                                                    @endif
+                                                </h3>
                                             </div>
                                         </div>
 
@@ -996,7 +1015,7 @@
     ************ Main container end *************
    ************* -->
 
-            </divkolaja>
+            </div>
             <!-- Page wrapper end -->
 
             <!-- *************
@@ -1122,7 +1141,6 @@
                     });
                 });
             </script>
-
 
 </body>
 

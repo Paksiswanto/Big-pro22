@@ -274,8 +274,20 @@
                                 <div class="card-header">
                                     <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
                                         <div class="card-title">
-                                            <h3>Faktur<button type="button"
-                                                    style="border: none; background:transparent;">☆</button></h3>
+                                            <h3 class="d-flex">
+                                                <span>Faktur</span>
+                                                @if( in_array('Faktur',Auth()->user()->favorit->pluck('name')->toArray()))
+                                                <form action="/unfavorite/Faktur" class="d-flex" method="POST" >
+                                                    @csrf
+                                                <button id="myButton" type="submit" style="border: none; background-color:white" class="icon-star1"></button>
+                                                </form>
+                                                @else
+                                                <form action="/favorite/Faktur" class="d-flex" method="POST" >
+                                                    @csrf
+                                                <button id="myButton" type="submit" style="border: none; background-color:white" class="icon-star_border"></button>
+                                                </form>
+                                                @endif
+                                            </h3>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">

@@ -48,7 +48,9 @@ class CostumersController extends Controller
         $filename = uniqid() . '.' . $photo->getClientOriginalExtension();
         $destinationPath = 'public/customer';
         $photo->move($destinationPath, $filename);
-        customer::create([
+
+        // Menyimpan data customer beserta foto ke dalam database
+        $data = Customer::create([
             'name' => $request->name,
             'email' => $request->email,
             'website' => $request->website,
@@ -64,6 +66,7 @@ class CostumersController extends Controller
             'company_id' => Auth::user()->company_id,
             'photo' => $filename, // Menyimpan nama file foto
         ]);
+        // dd($data);
 
         return redirect()->route('costumers');
     }

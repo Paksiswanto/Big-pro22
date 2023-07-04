@@ -146,6 +146,13 @@
             cursor: pointer;
             position: relative;
         }
+        .icon-star_border {
+		/* gaya tombol tidak aktif */
+		}
+
+		.icon-star1 {
+		/* gaya tombol aktif */
+		}
     </style>
 
 </head>
@@ -190,7 +197,20 @@
                                     <div class="card-header">
                                         <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
                                             <div class="card-title">
-                                                <h3>Pelanggan<button type="button" style="border: none; background:transparent;">☆</button></h3>
+                                                <h3 class="d-flex">
+                                                    <span>Pelanggan</span>
+                                                    @if( in_array('Pelanggan',Auth()->user()->favorit->pluck('name')->toArray()))
+                                                    <form action="/unfavorite/Pelanggan" class="d-flex" method="POST" >
+                                                        @csrf
+                                                    <button id="myButton" type="submit" style="border: none; background-color:white" class="icon-star1"></button>
+                                                    </form>
+                                                    @else
+                                                    <form action="/favorite/Pelanggan" class="d-flex" method="POST" >
+                                                        @csrf
+                                                    <button id="myButton" type="submit" style="border: none; background-color:white" class="icon-star_border"></button>
+                                                    </form>
+                                                    @endif
+                                                </h3>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">
@@ -583,7 +603,6 @@
             }
         });
     </script>
-
 </body>
 
 <!-- Mirrored from www.kodingwife.com/demos/unipro/v1-x/05-design-violet/data-tables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 May 2023 03:02:54 GMT -->

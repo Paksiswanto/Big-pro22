@@ -339,6 +339,13 @@
         .text-before {
             color: #c4c2c2;
         }
+        .icon-star_border {
+		/* gaya tombol tidak aktif */
+		}
+
+		.icon-star1 {
+		/* gaya tombol aktif */
+		}
     </style>
 </head>
 
@@ -382,7 +389,20 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
                                         <div class="card-title">
-                                            <h3>Laporan<button type="button" style="border: none; background:transparent;">☆</button></h3>
+                                            <h3 class="d-flex">
+                                                <span>Laporan</span>
+                                                @if( in_array('Laporan',Auth()->user()->favorit->pluck('name')->toArray()))
+                                                <form action="/unfavorite/Laporan" class="d-flex" method="POST" >
+                                                    @csrf
+                                                <button id="myButton" type="submit" style="border: none; background-color:white" class="icon-star1"></button>
+                                                </form>
+                                                @else
+                                                <form action="/favorite/Laporan" class="d-flex" method="POST" >
+                                                    @csrf
+                                                <button id="myButton" type="submit" style="border: none; background-color:white" class="icon-star_border"></button>
+                                                </form>
+                                                @endif
+                                            </h3>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">
@@ -686,7 +706,6 @@
             dropdownContent6.style.display = (dropdownContent6.style.display === "block") ? "none" : "block";
         });
     </script>
-
 
 
 </body>

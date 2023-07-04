@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\CategoryType;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -29,8 +30,14 @@ class CategoryController extends Controller
     }
     public function create_category(Request $request)
     {
-        Category::create($request->all());
-
+        // Category::create($request->all());
+        Category::create([
+            'name' => $request->name,
+            'parent' => $request->parent,
+            'color' => $request->color,
+            'category_type_id' => $request->category_type_id,
+            'company_id' => Auth::user()->company_id
+        ]);
         return redirect('/category')->with('success', 'Data berhasil ditambahkan');
     }
     public function category_edit($id)

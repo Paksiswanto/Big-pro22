@@ -283,12 +283,45 @@
                     <div class="row gutters">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                            <!-- Card start -->
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
-                                        <div class="card-title">
-                                            <h3>Tagihan<button type="button" style="border: none; background:transparent;">☆</button></h3>
+                                <!-- Card start -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
+                                            <div class="card-title">
+                                                <h3 class="d-flex">
+                                                    <span>Tagihan</span>
+                                                    @if( in_array('Tagihan',Auth()->user()->favorit->pluck('name')->toArray()))
+                                                   
+                                                    <form action="/unfavorite/Tagihan" class="d-flex" method="POST" >
+                                                        @csrf
+                                                    <button id="myButton" type="submit" style="border: none; background-color:white" class="icon-star1"></button>
+                                                    </form>
+                                                    @else
+                                                    <form action="/favorite/Tagihan" class="d-flex" method="POST" >
+                                                        @csrf
+                                                    <button id="myButton" type="submit" style="border: none; background-color:white" class="icon-star_border"></button>
+                                                    </form>
+                                                    @endif
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">
+                                            <div class="graph-day-selection" role="group" style="margin-left: -30px;margin-right: 10px;">
+                                                <a href="{{url('add_bill')}}">
+                                                    <button type="button" class="btn active" style="background: transparent">Tambah Tagihan</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown">
+                                            <a class="btn btn-ekspor-primary dropdown icon-dots-three-vertical" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                            </a>
+
+                                            <ul class="dropdown-menu dropdown-menu-lg-end" style="z-index: 100;">
+                                                <li><a class="dropdown-item" href="#">Impor</a></li>
+                                                <li><a class="dropdown-item" href="#">Expor</a></li>
+
+                                            </ul>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">

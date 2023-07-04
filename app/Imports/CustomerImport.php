@@ -5,6 +5,7 @@ namespace App\Imports;
 use App\Models\Company;
 use App\Models\Customer;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -17,7 +18,6 @@ class CustomerImport implements ToModel,WithHeadingRow
     */
     public function model(array $row)
     {
-        $company = Company::where('name', $row['company_id'])->firstOrFail();
 
         return new Customer([
             'name' => $row['name'],
@@ -33,7 +33,7 @@ class CustomerImport implements ToModel,WithHeadingRow
             'postal_code' => $row['postal_code'],
             'photo' => $row['photo'],
             'phone_number' => $row['phone_number'],
-            'company_id' => $company->id,
+            'company_id' => Auth::user()->company_id
         ]);
     }
 }
