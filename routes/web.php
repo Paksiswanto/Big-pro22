@@ -31,6 +31,7 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\Show_reportController;
 use App\Http\Controllers\Show_report2Controller;
 use App\Http\Controllers\TransactionsController;
+use App\Models\Bill;
 use App\Models\Transfer;
 
 /*
@@ -207,11 +208,13 @@ Route::get('/edit-category/{id}',[CategoryController::class,'category_edit'])->n
 
 //bill
 Route::get('bill', [BillController::class, 'bill'])->name('bill')->middleware('permission:View_Bill');
-Route::get('bill_detail', [BillController::class, 'detail_bill'])->name('detail_bill')->middleware('permission:View_Bill');
+Route::get('bill_detail/{id}', [BillController::class, 'detail_bill'])->name('detail_bill')->middleware('permission:View_Bill');
 Route::get('recurring_bill', [BillController::class, 'recurring_bill'])->name('recurring_bill');
 Route::get('add_recurring_bill', [BillController::class, 'add_recurring_bill' ])->name('add_recurring_bill');
 Route::get('add_bill', [BillController::class, 'add_bill'])->name('add_bill')->middleware('permission:Create_Bill');
 Route::get('detail_rcr_bill', [BillController::class, 'detail_rcr_bill'])->name('detail_rcr_bill')->middleware('permission:View_Bill');
+Route::get('/get-items-data-bill',[BillController::class,'getItems'])->name('getItems')->middleware('permission:Create_Bill');
+Route::get('/saveBill',[BillController::class,'saveBill'])->name('saveBill')->middleware('permission:Create_Bill');
 
 
 //laporan

@@ -19,29 +19,29 @@ class InvoiceController extends Controller
 {
     // Controller untuk mengambil data item
     function getItem($id) {
-        $data = ItemToInvoice::where('InvoiceId',$id)->get();
+            $data = ItemToInvoice::where('InvoiceId',$id)->get();
 
-        $itemsData = Item::whereNotNull('selling_price')
-        ->where('company_id', Auth::user()->company_id)
-        ->select('id', 'name', 'tax_id')
-        ->get();
-        $companyId = Invoice::where('company_id',Auth::user()->company_id)->count();
-        // Ubah format data menjadi array yang berisi objek dengan atribut 'id' dan 'name'
-        $itemOptions = $itemsData->map(function ($item) {
-        return [
-        'id' => $item->id,
-        'name' => $item->name,
-        'tax_id' => $item->tax_id,
-        ];
-        });
+            $itemsData = Item::whereNotNull('selling_price')
+            ->where('company_id', Auth::user()->company_id)
+            ->select('id', 'name', 'tax_id')
+            ->get();
+            $companyId = Invoice::where('company_id',Auth::user()->company_id)->count();
+            // Ubah format data menjadi array yang berisi objek dengan atribut 'id' dan 'name'
+            $itemOptions = $itemsData->map(function ($item) {
+            return [
+            'id' => $item->id,
+            'name' => $item->name,
+            'tax_id' => $item->tax_id,
+            ];
+            });
 
-        // Kembalikan data dalam format JSON
-        return response()->json([
-        'success' => true,
-        'data' => $itemOptions,
-        'company'=>$companyId,
-        'invoice' => $data
-        ]);
+            // Kembalikan data dalam format JSON
+            return response()->json([
+            'success' => true,
+            'data' => $itemOptions,
+            'company'=>$companyId,
+            'invoice' => $data
+            ]);
 
     }
             public function getItemsData()

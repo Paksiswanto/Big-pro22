@@ -46,6 +46,7 @@
     <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/dropzone/dropzone.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/daterange/daterange.css') }}">
     <style>
+        
       .button-tagihan {
     position: relative;
     margin-bottom: 10px;

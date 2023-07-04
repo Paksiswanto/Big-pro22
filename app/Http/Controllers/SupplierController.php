@@ -48,8 +48,6 @@ class SupplierController extends Controller
             'city' => $request->city,
             'province' => $request->province,
             'postal_code' => $request->postal_code,
-            'country' => $request->country,
-            'currency' => $request->currency,
             'phone_number' => $request->phone_number,
             'company_id' => Auth::user()->company_id,
             'photo' => $filename, // Menyimpan nama file foto
