@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DownloadItem;
+use App\Exports\ExportItem;
+use App\Exports\ItemExport;
 use App\Imports\ItemImport;
 use App\Imports\YourImportClass;
 use App\Models\Category;
+use App\Models\Company;
 use App\Models\Item;
 use App\Models\Tax;
 use Illuminate\Contracts\Support\ValidatedData;
@@ -17,7 +21,7 @@ class ItemController extends Controller
 {
     public function itemindex()
     {
-      $items = Item::paginate(10)->withQueryString();
+      $items = Item::latest()->get() ;
 
       return view('item.index', compact('items'));
     }
@@ -78,17 +82,20 @@ class ItemController extends Controller
         return redirect('/itemindex')->with('success', 'Data berhasil diupdate');
     }
 
-    public function import()
+    public function ImportItem()
     {
-      return view('item.import');  
+      $category = Category::all();
+      $tax = Tax::all();
+      return view('item.ExportImport.import',compact('category','tax'));
     }
 
-    public function import_data(Request $request)
+    public function ImportDataItem(Request $request)
     {
+
         $this->validate($request, [
             'myFile' => 'required|mimes:xls,xlsx'
         ]);
-
+        
         $file = $request->file('myFile');
 
         try {
@@ -99,27 +106,29 @@ class ItemController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan saat mengimpor data: ' . $e->getMessage());
         }
     }
-    public function getItemData($id)
+    public function DownloadItem()
     {
-        $item = Item::find($id);
-    
-        if ($item) {
-            return response()->json([
-                'success' => true,
-                'data' => $item,
-            ]);
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Item not found',
-            ]);
-        }
+        $tax = Tax::get()->toArray();
+        $category = Category::get()->toArray();
+        $company = Company::get()->toArray();
+        
+        $randomNumber = random_int(1000, 9999); // Menghasilkan nomor acak antara 1000 dan 9999
+        
+        $fileName = 'Dataset_' . $randomNumber . '.xlsx'; // Gabungkan nomor acak dengan nama file
+        
+        return (new DownloadItem($tax, $category, $company))->download($fileName);
     }
-    
-
-}
-    
-    
-    
-    
+      public function ExportItem()
+      {
+          $tax = Tax::all(); // Mengambil data dari model Tax (sesuaikan dengan model yang sesuai)
+          $category = Category::all(); // Mengambil data dari model Category (sesuaikan dengan model yang sesuai)
+          $company = Company::all(); // Mengambil data dari model Company (sesuaikan dengan model yang sesuai)
+          
+          $randomNumber = random_int(1000, 9999); // Menghasilkan nomor acak antara 1000 dan 9999
+          
+          $fileName = 'Item_' . $randomNumber . '.xlsx'; // Gabungkan nomor acak dengan nama file
+          
+          return Excel::download(new ItemExport($tax->toArray(), $category->toArray(), $company->toArray()), $fileName);
+      }
+    }
 

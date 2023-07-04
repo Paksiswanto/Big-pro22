@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/datatables/dataTables.bs4-custom.css")}}" />
     <link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/datatables/buttons.bs.css")}}" />
     <style>
-        				 .hidden-menu {
+    .hidden-menu {
     display: none;
     background-color: #f2f2f2;
     font-size: 20px;
@@ -321,7 +321,7 @@
                                             </a>
 
                                             <ul class="dropdown-menu dropdown-menu-lg-end" style="z-index: 100;">
-                                                <li><a class="dropdown-item" href="#">Impor</a></li>
+                                                <li><a class="dropdown-item" href="{{url('ImportTransfer')}}">Impor</a></li>
                                                 <li><a class="dropdown-item" href="#">Expor</a></li>
 
                                             </ul>

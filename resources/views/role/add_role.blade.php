@@ -491,9 +491,9 @@
                                                                                 <th scope="col">Widget</th>
                                                                                 <th scope="col">Full Access</th>
                                                                                 <th scope="col">View</th>
-                                                                                <th scope="col">Create</th>
+                                                                                <!-- <th scope="col">Create</th>
                                                                                 <th scope="col">Edit</th>
-                                                                                <th scope="col">Delete</th>
+                                                                                <th scope="col">Delete</th> -->
 
                                                                             </tr>
                                                                         </thead>
@@ -505,10 +505,10 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox57"><input name="permission[]"  value="45" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox57"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox57"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox57"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox57"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                               
+                                                                                -->
 
                                                                             </tr>
                                                                             <tr>
@@ -518,9 +518,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox62"><input name="permission[]" value="46" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox62"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox62"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox62"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox62"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox62"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
                                                                                 
 
                                                                             </tr>
@@ -531,9 +531,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox67"><input name="permission[]" value="47" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox67"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox67"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox67"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox67"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox67"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
                                                                             <tr>
@@ -549,9 +549,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox77"><input name="permission[]" value="48" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox77"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox77"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox77"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox77"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox77"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
                                                                               
 
                                                                             </tr>
@@ -562,9 +562,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox82"><input name="permission[]" value="49" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox82"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox82"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox82"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox82"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox82"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
                                                                                
 
                                                                             </tr>
@@ -575,9 +575,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox87"><input name="permission[]" value="50" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox87"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox87"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox87"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox87"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox87"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
 
@@ -604,9 +604,9 @@
                                                                                 <th scope="col">Kalender</th>
                                                                                 <th scope="col">Full Access</th>
                                                                                 <th scope="col">View</th>
-                                                                                <th scope="col">Create</th>
+                                                                                <!-- <th scope="col">Create</th>
                                                                                 <th scope="col">Edit</th>
-                                                                                <th scope="col">Delete</th>
+                                                                                <th scope="col">Delete</th> -->
 
                                                                             </tr>
                                                                         </thead>
@@ -617,9 +617,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox102"><input name="permission[]" value="51" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox102"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox102"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox102"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox102"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox102"><input name="permission[]" style="visibility: hidden" type="checkbox"></td> -->
                                                                                
 
                                                                             </tr>
@@ -673,9 +673,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox112"><input name="permission[]" value="56" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox113"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox113"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox114"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox115"><input name="permission[]" style="visibility: hidden" value="57" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox115"><input name="permission[]" style="visibility: hidden" value="57" type="checkbox"></td> -->
 
                                                                             </tr>
                                                                             <tr>
@@ -749,9 +749,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox162"><input name="permission[]" value="71" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox163"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox163"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox164"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox165"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox165"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
                                                                             
@@ -762,9 +762,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox172"><input name="permission[]" value="70" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox173"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox173"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox174"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox175"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox175"><input name="permission[]" style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
                                                                             <tr>
@@ -774,9 +774,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox177"><input name="permission[]" value="86" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox178"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox178"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox179"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox180"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox180"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
                                                                         </tbody>
@@ -838,9 +838,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox212"><input name="permission[]" value="81" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox213"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox213"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
                                                                                 <td name="item" id="checkbox214"><input name="permission[]" value="82" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox215"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox215"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
                                                                           
@@ -851,9 +851,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox222"><input name="permission[]" value="83" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox223"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox223"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
                                                                                 <td name="item" id="checkbox224"><input name="permission[]" value="84" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox225"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox225"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
                                                                            
@@ -864,9 +864,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox237"><input name="permission[]" value="85" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox238"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox238"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
                                                                                 <td name="item" id="checkbox239"><input name="permission[]" value="86" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox240"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox240"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
 

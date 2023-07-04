@@ -494,9 +494,9 @@
                                                                                 <th scope="col">Widget</th>
                                                                                 <th scope="col">Full Access</th>
                                                                                 <th scope="col">View</th>
-                                                                                <th scope="col">Create</th>
+                                                                                <!-- <th scope="col">Create</th>
                                                                                 <th scope="col">Edit</th>
-                                                                                <th scope="col">Delete</th>
+                                                                                <th scope="col">Delete</th> -->
 
                                                                             </tr>
                                                                         </thead>
@@ -508,9 +508,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox57"><input name="permission[]" value="45" {{ in_array('View_Balance',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox57"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox57"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox57"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox57"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox57"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
                                                                                
 
                                                                             </tr>
@@ -521,9 +521,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox62"><input name="permission[]" value="46" {{ in_array('View_Cash_flow',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox62"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox62"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox62"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox62"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox62"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
                                                                                 
 
                                                                             </tr>
@@ -534,9 +534,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox67"><input name="permission[]" value="47" {{ in_array('View_Expenses_by_category',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox67"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox67"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox67"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox67"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox67"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
                                                                             <tr>
@@ -552,9 +552,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox77"><input name="permission[]" value="48" {{ in_array('View_Debt',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox77"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox77"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox77"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox77"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox77"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
                                                                               
 
                                                                             </tr>
@@ -565,9 +565,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox82"><input name="permission[]" value="49" {{ in_array('View_Profit_and_loss_widget',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox82"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox82"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox82"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox82"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox82"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
                                                                                
 
                                                                             </tr>
@@ -578,9 +578,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox87"><input name="permission[]" value="50" {{ in_array('View_Receivables',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox87"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox87"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox87"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox87"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox87"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
 
@@ -607,9 +607,9 @@
                                                                                 <th scope="col">Kalender</th>
                                                                                 <th scope="col">Full Access</th>
                                                                                 <th scope="col">View</th>
-                                                                                <th scope="col">Create</th>
+                                                                                <!-- <th scope="col">Create</th>
                                                                                 <th scope="col">Edit</th>
-                                                                                <th scope="col">Delete</th>
+                                                                                <th scope="col">Delete</th> -->
 
                                                                             </tr>
                                                                         </thead>
@@ -620,9 +620,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox102"><input name="permission[]" value="51" {{ in_array('View_Calender',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox102"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox102"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox102"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox102"><input name="permission[]" style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox102"><input name="permission[]" style="visibility: hidden" type="checkbox"></td> -->
                                                                                
 
                                                                             </tr>
@@ -676,9 +676,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox112"><input name="permission[]" value="56" {{ in_array('View_Profil',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
-                                                                                <td name="item" id="checkbox114"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox114"><input name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
                                                                                 <td name="item" id="checkbox113"><input name="permission[]" value="57" {{ in_array('Edit_Profil',$permissions) ? 'checked' : '' }} type="checkbox"></td>
-                                                                                <td name="item" id="checkbox115"><input name="permission[]" style="visibility: hidden" value="57" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox115"><input name="permission[]" style="visibility: hidden" value="57" type="checkbox"></td> -->
 
                                                                             </tr>
                                                                             <tr>
@@ -752,9 +752,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox162"><input name="permission[]" value="71" {{ in_array('Import',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
-                                                                                <td name="item" id="checkbox163"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox163"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox164"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox165"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox165"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
                                                                             
@@ -765,9 +765,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox172"><input name="permission[]" value="70" {{ in_array('View_Dashboard',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
-                                                                                <td name="item" id="checkbox173"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox173"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox174"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox175"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox175"><input name="permission[]" style="visibility: hidden"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
                                                                             <tr>
@@ -777,9 +777,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox177"><input name="permission[]" value="86" {{ in_array('View_Report',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
-                                                                                <td name="item" id="checkbox178"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox178"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
                                                                                 <td name="item" id="checkbox179"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
-                                                                                <td name="item" id="checkbox180"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <td name="item" id="checkbox180"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
                                                                         </tbody>
@@ -841,9 +841,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox212"><input name="permission[]" value="81" {{ in_array('View_Company',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
-                                                                                <td name="item" id="checkbox213"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox213"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
                                                                                 <td name="item" id="checkbox214"><input name="permission[]" value="82" {{ in_array('Edit_Company',$permissions) ? 'checked' : '' }} type="checkbox"></td>
-                                                                                <td name="item" id="checkbox215"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox215"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
                                                                           
@@ -854,9 +854,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox222"><input name="permission[]" value="83" {{ in_array('View_Invoice_setting',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
-                                                                                <td name="item" id="checkbox223"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox223"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
                                                                                 <td name="item" id="checkbox224"><input name="permission[]" value="84" {{ in_array('Edit_Invoice_setting',$permissions) ? 'checked' : '' }} type="checkbox"></td>
-                                                                                <td name="item" id="checkbox225"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox225"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
                                                                            
@@ -867,9 +867,9 @@
                                                                                     <input type="checkbox" onchange="toggleRowCheckboxes(this)" />
                                                                                 </td>
                                                                                 <td name="item" id="checkbox237"><input name="permission[]" value="85" {{ in_array('View_Email',$permissions) ? 'checked' : '' }}  type="checkbox"></td>
-                                                                                <td name="item" id="checkbox238"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox238"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
                                                                                 <td name="item" id="checkbox239"><input name="permission[]" value="86" {{ in_array('Edit_Email',$permissions) ? 'checked' : '' }} type="checkbox"></td>
-                                                                                <td name="item" id="checkbox240"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td>
+                                                                                <!-- <td name="item" id="checkbox240"><input style="visibility: hidden" name="permission[]"  style="visibility: hidden" type="checkbox"></td> -->
 
                                                                             </tr>
 

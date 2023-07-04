@@ -19,4 +19,11 @@ class Customer extends Model
     {
         return $this->hasMany(IncomeRoutine::class);
     }
+    protected $casts = [
+        'status' => 'boolean',
+    ];
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
 }

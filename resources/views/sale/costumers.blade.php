@@ -206,9 +206,8 @@
                                             </a>
 
                                             <ul class="dropdown-menu dropdown-menu-lg-end" style="z-index: 100;">
-                                                <li><a class="dropdown-item" href="#">Impor</a></li>
-                                                <li><a class="dropdown-item" href="#">Expor</a></li>
-
+                                                <li><a class="dropdown-item" href="{{url('ImportCustomer')}}">Impor</a></li>
+                                                <li><a class="dropdown-item" href="{{route('ExportCustomer')}}">Expor</a></li>
                                             </ul>
                                         </div>
                                     </div>

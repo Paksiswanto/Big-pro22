@@ -41,11 +41,7 @@
 	<link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/search-filter/search-filter.css")}}">
 	<link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/search-filter/custom-search-filter.css")}}">
 
-	<!-- Data Tables -->
-	<link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/datatables/dataTables.bs4.css")}}" />
-	<link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/datatables/dataTables.bs4-custom.css")}}" />
-	<link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/datatables/buttons.bs.css")}}" />
-	<link rel="stylesheet" href="{{ asset ("Gmbslagi/vendor/dropzone/dropzone.min.css")}}" />
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 	<style>
 		.hidden-menu {
 			display: none;
@@ -218,7 +214,7 @@
 											&emsp;<a href="#" title="Nonaktifkan"> <i class="icon-do_not_disturb_alt"></i> </a>
 											&emsp;<a href="#" title="Hapus"> <i class="icon-trash-2"></i> </a>
 										</div>
-										<table class="table table-hover caption-top">
+										<table id="myTable" class="table table-hover caption-top">
 											<thead>
 												<tr>
 													<th scope="col"> <input type="checkbox" id="select-all-checkbox"> </th>
@@ -350,31 +346,20 @@
 		<script src="{{ asset ("Gmbslagi/vendor/slimscroll/slimscroll.min.js")}}"></script>
 		<script src="{{ asset ("Gmbslagi/vendor/slimscroll/custom-scrollbar.js")}}"></script>
 
-		<!-- Search Filter JS -->
-		<script src="{{ asset ("Gmbslagi/vendor/search-filter/search-filter.js")}}"></script>
-		<script src="{{ asset ("Gmbslagi/vendor/search-filter/custom-search-filter.js")}}"></script>
+		<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 
-		<!-- Data Tables -->
-		<script src="{{ asset ("Gmbslagi/vendor/datatables/dataTables.min.js")}}"></script>
-		<script src="{{ asset ("Gmbslagi/vendor/datatables/dataTables.bootstrap.min.js")}}"></script>
 
-		<!-- Custom Data tables -->
-		<script src="{{ asset ("Gmbslagi/vendor/datatables/custom/custom-datatables.js")}}"></script>
-		<script src="{{ asset ("Gmbslagi/vendor/datatables/custom/fixedHeader.js")}}"></script>
-
-		<!-- Download / CSV / Copy / Print -->
-		<script src="{{ asset ("Gmbslagi/vendor/datatables/buttons.min.js")}}"></script>
-		<script src="{{ asset ("Gmbslagi/vendor/datatables/jszip.min.js")}}"></script>
-		<script src="{{ asset ("Gmbslagi/vendor/datatables/pdfmake.min.js")}}"></script>
-		<script src="{{ asset ("Gmbslagi/vendor/datatables/vfs_fonts.js")}}"></script>
-		<script src="{{ asset ("Gmbslagi/vendor/datatables/html5.min.js")}}"></script>
-		<script src="{{ asset ("Gmbslagi/vendor/datatables/buttons.print.min.js")}}"></script>
-		<script src="{{ asset ("Gmbslagi/vendor/dropzone/dropzone.min.js")}}"></script>
 
 		<!-- Main Js Required -->
 		<script src="{{ asset ("Gmbslagi/js/main.js")}}"></script>
 
-
+		<script>
+			$(document).ready(function() {
+				$('#myTable').DataTable({
+					responsive: true
+				});
+			});
+		</script>
 		<script>
 			const checkboxes = document.querySelectorAll('.other-checkbox');
 			const selectAllCheckbox = document.querySelector('#select-all-checkbox');
@@ -425,42 +410,43 @@
 			});
 		</script>
 		<script>
-            function cari() {
-                var input = document.querySelector('.search');
-                var keyword = input.value.trim().toLowerCase();
+			function cari() {
+				var input = document.querySelector('.search');
+				var keyword = input.value.trim().toLowerCase();
 
-                var rows = document.querySelectorAll('.table-row');
+				var rows = document.querySelectorAll('.table-row');
 
-                rows.forEach(function(row) {
-                    var name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-                    var type = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
-                    var tax_amount = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+				rows.forEach(function(row) {
+					var name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+					var type = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+					var tax_amount = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
 
-                    if (
-                        name.includes(keyword) ||
-                        type.includes(keyword) ||
-                        tax_amount.includes(keyword) 
-                    ) {
-                        row.style.display = 'table-row';
-                    } else {
-                        row.style.display = 'none';
-                    }
-                });
-            }
+					if (
+						name.includes(keyword) ||
+						type.includes(keyword) ||
+						tax_amount.includes(keyword)
+					) {
+						row.style.display = 'table-row';
+					} else {
+						row.style.display = 'none';
+					}
+				});
+			}
 
-            var searchInput = document.querySelector('.search');
-            searchInput.addEventListener('input', cari);
-            searchInput.addEventListener('keydown', function(event) {
-                if (event.key === 'Enter') {
-                    event.preventDefault();
-                }
-            });
-        </script>
+			var searchInput = document.querySelector('.search');
+			searchInput.addEventListener('input', cari);
+			searchInput.addEventListener('keydown', function(event) {
+				if (event.key === 'Enter') {
+					event.preventDefault();
+				}
+			});
+		</script>
 		@if(Session::has('success'))
 		<script>
-			toastr.success('{{ Session::get('success') }}');
+			toastr.success('{{ Session::get('
+				success ') }}');
 		</script>
-	@endif
+		@endif
 
 
 </body>

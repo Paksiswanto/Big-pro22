@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CategoryExport;
+use App\Exports\DownloadCategory;
+use App\Exports\ExportCategory;
+use App\Exports\ExportItem;
+use App\Imports\CategoryImport;
 use App\Models\Category;
 use App\Models\CategoryType;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryController extends Controller
 {
@@ -51,4 +58,49 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
+    public function ImportCategory()
+    {
+        $category_type = CategoryType::all();
+        return view('category.ExportImport.import',compact('category_type'));
+    }
+    public function ImportDataCategory(Request $request)
+    {
+
+        $this->validate($request, [
+            'myFile' => 'required|mimes:xls,xlsx'
+        ]);
+        
+        $file = $request->file('myFile');
+
+        try {
+            Excel::import(new CategoryImport, $file);
+
+            return redirect()->back()->with('success', 'Data berhasil diimport. Jumlah baris yang diimpor:');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat mengimpor data: ' . $e->getMessage());
+        }
+    }
+    public function DownloadCategory()
+    {
+        $category_type = CategoryType::get()->toArray();
+        $category = Category::get()->toArray();
+        $company = Company::get()->toArray();
+        
+        $randomNumber = random_int(1000, 9999); // Menghasilkan nomor acak antara 1000 dan 9999
+        
+        $fileName = 'Dataset_' . $randomNumber . '.xlsx'; // Gabungkan nomor acak dengan nama file
+        
+        return (new DownloadCategory($category_type,$category,$company))->download($fileName);
+    }
+    public function ExportCategory()
+      {
+          $category_type = CategoryType::all();
+          $company = Company::all();
+          
+          $randomNumber = random_int(1000, 9999); // Menghasilkan nomor acak antara 1000 dan 9999
+          
+          $fileName = 'Item_' . $randomNumber . '.xlsx'; // Gabungkan nomor acak dengan nama file
+          
+          return Excel::download(new CategoryExport($category_type->toArray(), $company->toArray()), $fileName);
+      }
 }

@@ -51,7 +51,7 @@ Route::get('kalender', function () {
     return view('kalender');
 });
 
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 
 
 Route::get('reset_password', function () {

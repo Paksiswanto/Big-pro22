@@ -259,7 +259,7 @@
                                                         <!-- Field wrapper start -->
                                                         <div class="field-wrapper">
                                                             <textarea class="form-control" name="description" rows="2"></textarea>
-                                                            <div class="field-placeholder">Deskripsi <span class="text-danger">*</span></div>
+                                                            <div class="field-placeholder">Deskripsi</div>
                                                             <div class="form-text">
                                                                 Silakan masukkan Deskripsi.
                                                             </div>

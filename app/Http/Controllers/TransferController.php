@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DownloadTransfer;
+use App\Imports\TransferImport;
 use App\Models\Account;
+use App\Models\Company;
 use App\Models\Transaction;
 use App\Models\Transfer;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TransferController extends Controller
 {
@@ -25,18 +30,18 @@ class TransferController extends Controller
     function insertTransfer(Request $request) {
       
         $ammount = $request->ammount;
-        $cleanedAmmount = str_replace(',', '', $ammount);
+        dd($ammount);
         $reduced = Account::find($request->from_account);
         $plus = Account::find($request->to_account);
-        $reduced->balance= $reduced->balance-$cleanedAmmount;
-        $plus->balance= $plus->balance+$cleanedAmmount;
+        $reduced->balance= $reduced->balance-$ammount;
+        $plus->balance= $plus->balance+$ammount;
         $reduced->save();
         $plus->save();
         
       
         $data = Transfer::create([
             'description' => $request->description,
-            'ammount' => $cleanedAmmount,
+            'ammount' => $ammount,
             'from_account' => $request->from_account,
             'to_account' => $request->to_account,
             'reference' => $request->reference,
@@ -115,9 +120,42 @@ class TransferController extends Controller
 
         $BalancetoAccountBefore = Account::find($data->to_account);
         $BalancetoAccountBefore->balance -= $oldammount;
-        $BalancetoAccountBefore->save();     
+        $BalancetoAccountBefore->save();
 
         $data->delete();
         return redirect()->back()->with('success','Data berhasil dihapus');
+    }
+    public function importTransfer()
+    {
+        return view('transfer.ExportImport.import');
+    }
+    public function ImportDataTransfer(Request $request)
+    {
+        $this->validate($request, [
+            'myFile' => 'required|mimes::xls,xlsx'
+        ]);
+
+        $file = $request->file('myFile');
+
+        try {
+            Excel::import(new TransferImport, $file);
+
+            return redirect()->back()->with('success', 'Data berhasil diimpor');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi keslahan saat mengimpor data: ' . $e->getMessage());
+        }
+    }
+    public function DownloadTransfer()
+    {
+        $from_account = Account::get()->toArray();
+        $to_account = Account::get()->toArray();
+        $user = User::get()->toArray();
+        $company = Company::get()->toArray();
+
+        $randomNumber = random_int(1000, 9999); // Menghasilkan nomor acak antara 1000 dan 9999
+        
+        $fileName = 'Dataset_' . $randomNumber . '.xlsx'; // Gabungkan nomor acak dengan nama file
+
+        return (new DownloadTransfer($from_account,$to_account,$user,$company))->download($fileName);
     }
 }

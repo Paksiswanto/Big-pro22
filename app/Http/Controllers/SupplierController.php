@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DownloadCategory;
+use App\Exports\DownloadSupplier;
+use App\Exports\SupplierExport;
+use App\Imports\SupplierImport;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SupplierController extends Controller
 {
@@ -96,5 +101,82 @@ class SupplierController extends Controller
         }
         $data->delete();
         return redirect()->route('supplier');
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        $selectedIds = $request->input('selected_ids');
+
+        if (!empty($selectedIds)) {
+            $suppliers = Supplier::whereIn('id', $selectedIds)->get();
+
+            foreach ($suppliers as $supplier) {
+                $photoPath = 'public/Gmbslagi/img/supplier/' . $supplier->photo;
+                if (file_exists($photoPath)) {
+                    unlink($photoPath);
+                }
+                $supplier->delete();
+            }
+
+            return redirect()->back()->with('success', 'Data berhasil dihapus.');
+        } else {
+            return redirect()->back()->with('error', 'Pilih setidaknya satu data untuk dihapus.');
+        }
+    }
+
+        public function updateStatus($supplierId)
+        {
+            $supplier = Supplier::find($supplierId);
+
+            if ($supplier) {
+                $statusText = $supplier->status ? 'diaktifkan' : 'dinonaktifkan';
+                $supplier->status = !$supplier->status; // Mengubah status dengan boolean yang terbalik
+        $supplier->save();
+
+
+                return redirect()->back()->with('success', 'Data berhasil ' . $statusText . '.');
+            } else {
+                return redirect()->back()->with('error', 'Pilih setidaknya satu data untuk dihapus.');
+            }
+        }
+    public function ImportSupplier()
+    {
+        return view('purchase.ExportImport.import');
+    }
+    public function ImportDataSupplier(Request $request)
+    {
+        $this->validate($request, [
+            'myFile' => 'required|mimes:xls,xlsx'
+        ]);
+
+        $file = $request->file('myFile');
+
+        try {
+            Excel::import(new SupplierImport, $file);
+
+            return redirect()->back()->with('success', 'Data berhasil diimpor');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat mengimpor data: ' . $e->getMessage());
+        }
+    }
+    public function DownloadSupplier()
+    {
+        $supplier = Supplier::get()->toArray();
+
+        $randomNumber = random_int(1000, 9999);
+
+        $filename = 'Dataset_' . $randomNumber . '.xlsx';
+
+        return (new DownloadSupplier($supplier))->download($filename);
+    }
+    public function ExportSupplier()
+    {
+        $supplier = Supplier::all();
+
+        $randomNumber = random_int(1000, 9999);
+
+        $filename = 'Supplier_' . $randomNumber . '.xlsx';
+
+        return Excel::download(new SupplierExport($supplier->toArray()), $filename);
     }
 }

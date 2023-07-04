@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('item', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->boolean('active')->default(0);
             $table->string('type');
             $table->foreignId('category_id')->references('id')->on('category')->onUpdate('cascade')->onDelete('cascade');

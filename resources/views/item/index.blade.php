@@ -126,7 +126,7 @@
 									<div class="card-header">
 										<div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
 											<div class="card-title">
-												<h3>Item<button type="button" style="border: none; background:transparent;">☆</button></h3>
+												<h3>Barang<button type="button" style="border: none; background:transparent;">☆</button></h3>
 											</div>
 										</div>
 										<div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">
@@ -142,9 +142,8 @@
 											</a>
 
 											<ul class="dropdown-menu dropdown-menu-lg-end" style="z-index: 100;">
-												<li><a class="dropdown-item" href="{{url('import')}}">Impor</a></li>
-												<li><a class="dropdown-item" href="#">Expor</a></li>
-
+												<li><a class="dropdown-item" href="{{url('ImportItem')}}">Impor</a></li>
+												<li><a class="dropdown-item" id="downloadButton" href="{{ route('ExportItem') }}">Expor</a></li>
 											</ul>
 										</div>
 
@@ -164,50 +163,50 @@
 												<p style="display: inline" id="count-display">&emsp;</p>
 												&emsp;<a href="#" title="Aktifkan"> <i class="icon-check-circle" style="color:#424242 "></i> </a>
 												&emsp;<a href="#" title="Nonaktifkan"> <i class="icon-do_not_disturb_alt"></i> </a>
-												&emsp;<a href="#" title="Hapus"> <i class="icon-trash-2"></i> </a>
+												&emsp;<a href="#" title="Hapus"> <i class="icon-trash-2"></i></a>
 											</div>
 
 
-											<table class="table table-hover caption-top">
+											<table id="basicExample" class="table custom-table">
 												<thead>
-													<tr>
-														<th scope="col"> <input type="checkbox" id="select-all-checkbox"> </th>
-														<th scope="col">Nama</th>
-														<th scope="col">Deskripsi</th>
-														<th scope="col">kategori</th>
-														<th scope="col">Pajak</th>
-														<th scope="col">Harga Beli</th>
-														<th scope="col">Harga Jual</th>
-														<th scope="col">Aksi</th>
+													<tr class="data-item-id">
+														<th class="min-w-100px" scope="col"> <input type="checkbox" id="select-all-checkbox" onclick="selectAllCheckbox()"> </th>
+														<th class="min-w-100px" scope="col">Nama</th>
+														<th class="min-w-300px" scope="col">Deskripsi</th>
+														<th class="min-w-100px" scope="col">kategori</th>
+														<th class="min-w-100px" scope="col">Pajak</th>
+														<th class="min-w-100px" scope="col">Harga Beli</th>
+														<th class="min-w-100px" scope="col">Harga Jual</th>
+														<th class="min-w-100px" scope="col">Aksi</th>
 													</tr>
 												</thead>
 												<tbody>
-												@foreach ($items as $item)										
+													@foreach ($items as $item)
 													<!-- Data 1 -->
 													<tr class="table-row item">
 														<td><input type="checkbox" class="other-checkbox"></td>
 														<td>{{$item->name}}</td>
 														<td>{{$item->description}}</td>
 														<td>{{$item->category->name}}</td>
-														@if ($item->tax_id != null)														
+														@if ($item->tax_id != null)
 														<td>{{$item->tax->tax_amount}}%</td>
 														@else
 														<td>N/A</td>
 														@endif
-														@if ($item->purchase_price != null)														
+														@if ($item->purchase_price != null)
 														<td>Rp.{{$item->purchase_price}}</td>
 														@else
 														<td>N/A</td>
 														@endif
-														@if ($item->selling_price != null)														
+														@if ($item->selling_price != null)
 														<td>Rp.{{$item->selling_price}}</td>
 														@else
 														<td>N/A</td>
 														@endif
 														<td>
-															<div class="menu-icons" style="font-size: 15px;">
+															<div class="menu-icons d-flex" style="font-size: 15px;">
 																<a href="/edit-item/{{$item->id}}" class="menu-icon icon-edit-2"></a>
-																<a href="/delete-items/{{$item->id}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole{{ $item->id }}"></a>
+																<a href="/delete-items/{{$item->id}}" style="margin-left: 2px;" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole{{ $item->id }}"></a>
 															</div>
 														</td>
 													</tr>
@@ -237,35 +236,8 @@
 											</table>
 
 
-
 											<!-- Card start -->
-											<div class="card">
-												<div class="card-body col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-													<nav aria-label="Page navigation example">
-														<ul class="pagination" style="justify-content: flex-end;">
-															<li class="page-item">
-																@if ($items->currentPage() > 1)
-																<a class="page-link" href="{{ $items->previousPageUrl() }}" aria-label="Previous">
-																	<span aria-hidden="true">«</span>
-																</a>
-																@endif
-															</li>
-															@for ($i = 1; $i <= $items->lastPage(); $i++)
-																<li class="page-item {{ $items->currentPage() == $i ? 'active' : '' }}"><a class="page-link" href="{{ $items->url($i) }}">{{ $i }}</a></li>
-																@endfor
-																<li class="page-item">
-																	@if ($items->currentPage() < $items->lastPage())
-																		<a class="page-link" href="{{ $items->nextPageUrl() }}" aria-label="Next">
-																			<span aria-hidden="true">»</span>
-																		</a>
-																		@endif
-																</li>
-														</ul>
-													</nav>
-
-												</div>
-											</div>
 											<!-- Card end -->
 										</div>
 										<!-- Modal start -->
@@ -366,6 +338,7 @@
 
 	<!-- Main Js Required -->
 	<script src="{{ asset ("Gmbslagi/js/main.js")}}"></script>
+
 	<script>
 		const checkboxes = document.querySelectorAll('.other-checkbox');
 		const selectAllCheckbox = document.querySelector('#select-all-checkbox');
