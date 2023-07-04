@@ -1,4 +1,4 @@
-<nav class="sidebar-wrapper">
+    <nav class="sidebar-wrapper">
 
     <!-- Sidebar content start -->
     <div class="sidebar-tabs">
@@ -8,7 +8,7 @@
             <div style="margin-top: 10%;">
                 <div style="border-radius: 100%; overflow: hidden; width: 48px; height: 48px;">
                     <a class="nav-link-pro" data-tab="tab1" class="logo" style="margin-bottom: 10%;">
-                        <img src="{{ asset('storage/'.Auth::User()->picture) }}" style="width: 48px; height: 48px; margin-bottom: 10%; z-index: 1;">
+                        <img src="{{ asset('storage/'.Auth::User()->company->logo) }}" style="width: 48px; height: 48px; margin-bottom: 10%; z-index: 1;">
                     </a>
                 </div>
             </div>
@@ -47,10 +47,18 @@
 
                     <div style="border-radius: 100%; overflow: hidden; width: 45px; height: 45px;">
                         <a href="#" class="logo">
-                            <img src="{{ asset('storage/'.Auth::User()->company->logo) }}" style="width: 45px; height: 45px;">
+                            <?php
+                            $logoPath = 'storage/' . Auth::User()->picture;
+                            $defaultLogoPath = 'default/logo.png';
+
+                            if (file_exists($logoPath)) {
+                                echo '<img src="' . asset($logoPath) . '" style="width: 45px; height: 45px;">';
+                            } else {
+                                echo '<img src="' . asset($defaultLogoPath) . '" style="width: 45px; height: 45px;">';
+                            }
+                            ?>
                         </a>
                     </div>
-
                     <div style="margin-top: 5%;">
                         &emsp;{{Auth::User()->company->name}}
                     </div>

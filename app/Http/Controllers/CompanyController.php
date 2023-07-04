@@ -23,6 +23,17 @@ class CompanyController extends Controller
     }
     public function add_company_id(Request $request)
     {
+
+        // Mendapatkan file foto yang diunggah dari permintaan pengguna
+        $logo = $request->file('logo');
+
+        // Menghasilkan nama unik untuk file foto
+        $filename = uniqid();
+
+        // Menentukan path atau direktori tujuan untuk menyimpan file foto
+        $destinationPath = 'public/Gmbslagi/img/company';
+
+        // Menyimpan file foto ke direktori tujuan dengan nama yang dihasilkan
         // simpan data yang telah diisi
         $user = new Company();
         $user->name = $request->input('name');

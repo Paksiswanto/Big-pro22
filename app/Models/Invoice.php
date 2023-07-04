@@ -31,4 +31,11 @@ class Invoice extends Model
     {
         return $this->hasMany(Transaction::class);
     }
+    public function company()
+    {
+        return $this->belongsTo(company::class);
+    }
+    function user() {
+        return $this->belongsTo(User::class);
+    }
 }

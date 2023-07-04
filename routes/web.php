@@ -50,6 +50,8 @@ Route::middleware(['auth','auth.session', 'verified'])->group(function () {
     Route::get('supplier', [SupplierController::class, 'supplier'])->name('supplier')->middleware('permission:View_Supplier');
     Route::get('costumer', [CostumersController::class, 'costumers'])->name('costumers')->middleware('permission:View_Customer');;
 
+    Route::get('/add_income', [TransactionsController::class, 'add_income'])->name('add_income')->middleware('permission:add_income');
+
     Route::get('/add_expenditure', [TransactionsController::class, 'add_expenditure'])->name('add_expenditure');
 
 
@@ -88,6 +90,8 @@ Route::get('/itemindex',[ItemController::class,'itemindex'])->Name('item-index')
 Route::get('/add-item',[ItemController::class,'additem'])->Name('item-add')->middleware('permission:Create_Item');
 Route::get('/edit-item/{id}',[ItemController::class,'edititem'])->Name('item-edit')->middleware('permission:Edit_Item');
 Route::get('/get-items-data', [InvoiceController::class,'getItemsData'])->name('get-all-items');
+Route::get('/get-items-data', [InvoiceController::class,'getItemsData'])->name('get-all-items');
+Route::get('/get-item/{id}', [InvoiceController::class,'getItem'])->name('get-items');
 Route::get('/get-tax-data', [InvoiceController::class,'getTaxData'])->name('get-tax-data');
 Route::get('/get-item-data/{id}', [InvoiceController::class, 'getItemData'])->name('get-item-data');
 
@@ -103,7 +107,7 @@ Route::get('edit_pemasok', function () {
 Route::get('supplier', [SupplierController::class, 'supplier'])->name('supplier');
 Route::get('add_supplier', [SupplierController::class, 'add'])->name('add_supplier');
 Route::get('/edit_supplier/{id}', [SupplierController::class, 'edit'])->name('edit_supplier');
-Route::get('details_supplier', [SupplierController::class, 'details'])->name('details_supplier');
+Route::get('details_supplier/{id}', [SupplierController::class, 'details'])->name('details_supplier');
 
 Route::get('add_supplier', [SupplierController::class, 'add'])->name('add_supplier')->middleware('permission:Create_Supplier');
 Route::get('/edit_supplier/{id}', [SupplierController::class, 'edit'])->name('edit_supplier')->middleware('permission:Edit_Supplier');
@@ -149,6 +153,10 @@ Route::get('add_invoice', [InvoiceController::class, 'addInvoice'])->name('add_i
 Route::get('add_recurring_invoice', [InvoiceController::class, 'add_recurring_invoice'])->name('add_recurring_invoice');
 Route::get('details_recurring', [InvoiceController::class, 'detail_recurring'])->name('details_recurring');
 Route::get('details', [InvoiceController::class, 'details'])->name('details_inv')->middleware('permission:View_Invoice');
+Route::get('details/{id}', [InvoiceController::class, 'details'])->name('details_inv');
+Route::get('showInvoice/{id}', [InvoiceController::class, 'showInvoice'])->name('showInvoice');
+Route::put('editInvoice/{id}', [InvoiceController::class, 'editInvoice'])->name('editInvoice');
+Route::post('deleteInvoice/{id}', [InvoiceController::class, 'deleteInvoice'])->name('deleteInvoice');
 //cos
 Route::get('add_costumers', [CostumersController::class, 'add_cos'])->name('add_costumers');
 Route::get('costumer', [CostumersController::class, 'costumers'])->name('costumers');

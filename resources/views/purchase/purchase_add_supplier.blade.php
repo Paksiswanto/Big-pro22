@@ -189,6 +189,8 @@
                                                 </div>
                                                 <!-- Field wrapper end -->
 
+                                                <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
+
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 

@@ -30,7 +30,6 @@ class TransferController extends Controller
     function insertTransfer(Request $request) {
       
         $ammount = $request->ammount;
-        dd($ammount);
         $reduced = Account::find($request->from_account);
         $plus = Account::find($request->to_account);
         $reduced->balance= $reduced->balance-$ammount;

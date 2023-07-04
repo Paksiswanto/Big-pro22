@@ -50,7 +50,7 @@ Route::delete('/delete_expenditure/{id}', [TransactionsController::class, 'delet
 Route::post('/insert_account_income', [TransactionsController::class, 'insert_account_income'])->name('insert_account_income');
 Route::post('/insert_category_income', [TransactionsController::class, 'insert_category_income'])->name('insert_category_income');
 Route::post('/insert_cos_income', [TransactionsController::class, 'insert_cos_income'])->name('insert_cos_income');
-Route::post('/insert_sup_expenditure', [TransactionsController::class, 'insert_sup_income'])->name('insert_sup_income');
+Route::post('/insert_sup_expenditure', [TransactionsController::class, 'insert_sup_expenditure'])->name('insert_sup_expenditure');
 
 Route::post('/insert_recurring_income', [TransactionsController::class, 'insert_recurring_income'])->name('insert_recurring_income');
 Route::post('/update_recurring_income/{id}', [TransactionsController::class, 'update_recurring_income'])->name('update_recurring_income');

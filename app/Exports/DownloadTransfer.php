@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromView;
 
+
 class DownloadTransfer implements FromView
 {
     use Exportable;

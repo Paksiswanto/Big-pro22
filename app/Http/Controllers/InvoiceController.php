@@ -8,6 +8,7 @@ use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\InvoiceSetting;
 use App\Models\Item;
+use App\Models\ItemToInvoice;
 use App\Models\Tax;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,13 +17,73 @@ use PHPUnit\Metadata\Uses;
 
 class InvoiceController extends Controller
 {
-    function getAllItems() {
-        
-        $items = Item::all();
+    // Controller untuk mengambil data item
+    function getItem($id) {
+        $data = ItemToInvoice::where('InvoiceId',$id)->get();
 
+        $itemsData = Item::whereNotNull('selling_price')
+        ->where('company_id', Auth::user()->company_id)
+        ->select('id', 'name', 'tax_id')
+        ->get();
+        $companyId = Invoice::where('company_id',Auth::user()->company_id)->count();
+        // Ubah format data menjadi array yang berisi objek dengan atribut 'id' dan 'name'
+        $itemOptions = $itemsData->map(function ($item) {
+        return [
+        'id' => $item->id,
+        'name' => $item->name,
+        'tax_id' => $item->tax_id,
+        ];
+        });
+
+        // Kembalikan data dalam format JSON
+        return response()->json([
+        'success' => true,
+        'data' => $itemOptions,
+        'company'=>$companyId,
+        'invoice' => $data
+        ]);
+
+    }
+            public function getItemsData()
+            {
+                // Lakukan proses pengambilan data item dari database atau sumber data lainnya
+            // Mengambil data item dari database
+            $itemsData = Item::whereNotNull('selling_price')
+            ->where('company_id', Auth::user()->company_id)
+            ->select('id', 'name', 'tax_id')
+            ->get();
+            $companyId = Invoice::where('company_id',Auth::user()->company_id)->count();
+            // Ubah format data menjadi array yang berisi objek dengan atribut 'id' dan 'name'
+            $itemOptions = $itemsData->map(function ($item) {
+            return [
+            'id' => $item->id,
+            'name' => $item->name,
+            'tax_id' => $item->tax_id,
+            ];
+            });
+
+            // Kembalikan data dalam format JSON
+            return response()->json([
+            'success' => true,
+            'data' => $itemOptions,
+            'company'=>$companyId
+            ]);
+
+            }
+
+// Controller untuk mengambil data tax
+
+
+// Controller untuk mengambil data item berdasarkan ID
+public function getItemData($id)
+{
+    // Lakukan proses pengambilan data item berdasarkan ID dari database atau sumber data lainnya
+    $itemData = Item::find($id); // Data item yang ditemukan
+
+    if (!$itemData) {
         return response()->json([
             'success' => true,
-            'data' => $items,
+            'data' => $itemData,
         ]);
     }
     function getAllTaxes() {
@@ -33,10 +94,34 @@ class InvoiceController extends Controller
             'data' => $taxes,
         ]);
     }
+    if ($itemData->tax_id != null) {
+        $tax = Tax::find($itemData->tax_id);
+        $taxAmount = $tax->tax_amount; // Retrieve the tax data
+        $taxName = $tax->name;
+         // Kembalikan data dalam format JSON
+    return response()->json([
+        'success' => true,
+        'tax' => $taxName,
+        'taxAmount'=>$taxAmount,
+        'data' => $itemData,
+        'description'=>$itemData->description
+    ]);
+    }
+    else {
+        return response()->json([
+            'success' => true,
+            'tax' => 'null',
+            'data' => $itemData,
+        ]);
+    }
+    
+
+   
+}
     
     public function invoice()
     {
-        $invoice = Invoice::latest()->get();
+        $invoice = Invoice::where('company_id',Auth::user()->company_id)->latest()->get();
         return view('sale.sale_invoice',compact('invoice'));
     }
     public function recurring_invoice()
@@ -54,32 +139,51 @@ class InvoiceController extends Controller
     }
     public function create_invoice(Request $request)
     {
-        $start_date = $request->start_date ? date("Y-m-d", strtotime(str_replace('/','-',$request->start_date))) : start_date("Y-m-d");
-        Invoice::create([
-            'title' => $request->title,
-            'subtitle' => $request->subtitle,
-            'logo' => $request->logo,
-            'start_date' => $request->start_date,
-            'item_id' => $request->item_id,
-            'customer_id' => $request->customer_id,
-            'discount' => $request->discount,
-            'notes' => $request->notes,
-            'start_date' => $start_date,
-            'quantity' => $request->quantity,
-            'price' => $request->price,
-            'tax_id' => $request->tax_id,
-            'total_pay' => $request->total_pay,
-            'attachment' => $request->attachment,
-            'footer' => $request->footer,
-            'end_date' => $request->end_date,
-            'invoice_number' => $request->invoice_number,
-            'order_quantity' => $request->order_quantity,
-            'category_id' => $request->category_id,
-            'amount' => $request->amount,
-        ]);
+        
+        $itemIds = $request->input('item_id',[]);
+        $quantities = $request->input('quantity',[]);
+        $price = $request->input('price',[]);
+        $amount = $request->input('amount',[]);
+        $description = $request->input('description',[]);
+        $data = new Invoice();
+        $data->logo = 32;
+        $data->title = $request->title;
+        $data->subtitle = $request->subtitle;
+        $data->start_date = "2023-06-27";
+        $data->customer_id = $request->customer_id;
+        $data->category_id = 1;
+        $data->discount = $request->discount;
+        $data->notes = $request->notes;
+        $data->totalPay = $request->totalPay;
+        $data->totalAmount = $request->totalAmount;
+        $data->attachment = $request->attachment;
+        $data->footer = $request->footer;
+        $data->end_date ="2023-06-27";
+        $data->invoice_number = $request->invoice_number;
+        $data->order_quantity = $request->order_quantity;
+        $data->company_id = Auth::user()->company_id;
+        $data->user_id = Auth::user()->id;
+        $data->totalTax = $request->totalTax;
+        $data->totalDiscount = $request->totalDiscount;
+        $data->save();
+        $invoiceId = $data->id;
+        foreach ($itemIds as $key => $itemId) {
+            // Memastikan nilai 'ItemId' tidak null
 
-        return response()->json(['message' => 'Success Menambahkan data!']);
+                ItemToInvoice::create([
+                    'ItemId' => $itemId,
+                    'quantity' => $quantities[$key],
+                    'InvoiceId' => $invoiceId,
+                    'price' => $price[$key],
+                    'amount' => $amount[$key],
+                    'description'=>$description[$key]
+                ]);
+            }
+        
+        
 
+
+            return redirect()->route('details_inv', ['id' => $data->id])->with('success', 'Data berhasil dibuat');
     }
     public function add_recurring_invoice()
     {
@@ -100,9 +204,11 @@ class InvoiceController extends Controller
     {
         return view('sale.add_costumers');
     }
-    public function details()
+    public function details($id)
     {
-        return view('sale.sale_details_invoice');
+        $data = Invoice::find($id);
+        $items = ItemToInvoice::where('InvoiceId',$data->id)->get();
+        return view('sale.sale_details_invoice',compact('data','items'));
     }
     public function setting_invoice()
     {
@@ -113,12 +219,71 @@ class InvoiceController extends Controller
         InvoiceSetting::create($request->all());
         return redirect('/setting-invoice')->with('success', 'Data behasil ditambahkan');
     }
-    public function getItem(Request $request, $itemId) {
-        $item = Item::find($itemId);
-        if ($item) {
-            return response()->json(['description' => $item->description]);
-        } else {
-            return response()->json(['error' => 'Item not found'], 404);
-        }
+
+    function showInvoice($id) {
+        $data = ItemToInvoice::where('InvoiceId',$id)->get();
+        $invoice = Invoice::find($id);
+        $default = InvoiceSetting::find(1);
+        $customer = Customer::where('company_id',Auth::user()->company_id)->get();
+        $category = Category::where('company_id',Auth::user()->company_id);
+        $items = Item::whereNotNull('selling_price')
+        ->where('company_id', Auth::user()->company_id)
+        ->select('id', 'name', 'tax_id')
+        ->get();
+        return view('sale.editInvoice',compact('data','invoice','default','customer','category','items'));
     }
+    function editInvoice(Request $request,$id) {
+        $data = Invoice::findOrFail($id);
+        $itemToInvoice = ItemToInvoice::where('InvoiceId',$id);
+        $itemToInvoice->delete();
+
+        $itemIds = $request->input('item_id',[]);
+        $quantities = $request->input('quantity',[]);
+        $price = $request->input('price',[]);
+        $amount = $request->input('amount',[]);
+        $description = $request->input('description',[]);
+        
+        $data->logo = 32;
+        $data->title = $request->title;
+        $data->subtitle = $request->subtitle;
+        $data->start_date = "2023-06-27";
+        $data->customer_id = $request->customer_id;
+        $data->category_id = 1;
+        $data->discount = $request->discount;
+        $data->notes = $request->notes;
+        $data->totalPay = $request->totalPay;
+        $data->totalAmount = $request->totalAmount;
+        $data->attachment = $request->attachment;
+        $data->footer = $request->footer;
+        $data->end_date ="2023-06-27";
+        $data->invoice_number = $request->invoice_number;
+        $data->order_quantity = $request->order_quantity;
+        $data->company_id = Auth::user()->company_id;
+        $data->user_id = Auth::user()->id;
+        $data->totalTax = $request->totalTax;
+        $data->totalDiscount = $request->totalDiscount;
+        $data->update();
+        $invoiceId = $data->id;
+        foreach ($itemIds as $key => $itemId) {
+            // Memastikan nilai 'ItemId' tidak null
+
+                ItemToInvoice::create([
+                    'ItemId' => $itemId,
+                    'quantity' => $quantities[$key],
+                    'InvoiceId' => $invoiceId,
+                    'price' => $price[$key],
+                    'amount' => $amount[$key],
+                    'description'=>$description[$key]
+                ]);
+            }
+        return redirect()->route('details_inv',[$data->id])->with('success','Data Berhasil Di Sunting');
+        
+      }
+      function deleteInvoice($id) {
+        $data = Invoice::findOrFail($id);
+        $item = ItemToInvoice::where('InvoiceId',$id);
+        $data->delete();
+        $item->delete();
+        return redirect()->back()->with('success','Data Berhasil Dihapus');
+      }
 }

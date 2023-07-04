@@ -26,4 +26,9 @@ class Item extends Model
         return $this->belongsTo(Company::class, 'company_id');
     }
 
+    function itemToInvoice()
+    {
+        return $this->belongsTo(ItemToInvoice::class); 
+    }
+
 }

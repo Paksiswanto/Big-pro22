@@ -134,7 +134,7 @@
                         <div class="card-header col-12">
                             <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">
                                 <div class="card-title ">
-                                    <h3>Faktur: FKR-00002</h3>
+                                    <h3>Faktur: {{ $data->invoice_number }}</h3>
 
                                 </div>
                             </div>
@@ -175,9 +175,8 @@
                                             role="alert">
                                             <p style="font-size:14pt;color:black">Membuat</p>
                                             <br>
-                                            <p style="font-size:10pt;color:black">Trisqi membuat Faktur ini pada
-                                                <b>24
-                                                    mei 2023</b>
+                                            <p style="font-size:10pt;color:black">{{ $data->user->name }} membuat Faktur ini pada
+                                                <b>{{ \Carbon\Carbon::parse($data->date)->isoFormat('DD/MMMM/YYYY') }}</b>
                                             </p>
                                             <button
                                                 style="background-color: #9a99e2;border-radius:2px;width:80px;border:transparent;height:25px;color:#ffffff">Sunting</button>
@@ -307,7 +306,7 @@
                                                         <p style="font-size:14pt">Telah dibayar</p>
                                                         <br>
                                                         <p style="font-size:10pt">Nilai jatuh tempo:
-                                                            <b>90.000.000,00</b>
+                                                            <b>{{ $data->totalPay }}</b>
                                                         </p>
                                                     </div>
                                                 </button>
@@ -404,18 +403,18 @@
                                     <div class="rcr-screen">
                                         <div class="login-body pb-4 ">
                                             <div class="d-flex row col-12 ms-2">
-                                                <p>Biaya nikah</p>
+                                                <p>{{ $data->title }}</p>
                                                 <div class="col-8">
                                                     <img style="width: 25%"
                                                         src="{{ asset('Gmbslagi/img/Carausel/person.jpg') }}"
                                                         alt="Uni Pro Admin">
                                                 </div>
                                                 <div class="ml-2 col-4">
-                                                    <p style="float: right" class="me-3">cina baik hati</p>
+                                                    <p style="float: right" class="me-3">{{ $data->subbtitle }}</p>
                                                     <br>
-                                                    <p style="float: right" class="me-3">unknown company</p>
+                                                    <p style="float: right" class="me-3">{{ $data->company->name }}</p>
                                                     <br>
-                                                    <p style="float: right" class="me-3">cireng@gmail.com</p>
+                                                    <p style="float: right" class="me-3">{{ $data->company->email }}</p>
                                                 </div>
                                             </div>
                                             <div class="field-wrapper mb-3">
@@ -424,15 +423,15 @@
                                                 <div class="d-flex" style="margin-top: 2%">
                                                     <div class="col-6 ms-3">
                                                         <p style="margin-top:2%">Faktur Kepada</p>
-                                                        <p style="margin-top:2%">Pt Jawa</p>
-                                                        <p style="margin-top:2%">MPWP: 1672671</p>
-                                                        <p style="margin-top:2%">cireng@gmail.com</p>
+                                                        <p style="margin-top:2%">{{ $data->customer->name }}</p>
+                                                        <p style="margin-top:2%">{{ $data->customer->npwp }}</p>
+                                                        <p style="margin-top:2%">{{ $data->customer->email }}</p>
                                                     </div>
                                                     <div class="col-6">
-                                                        <p style="margin-top:2%">Nomor Faktur:BRLB-00002 </p>
-                                                        <p style="margin-top:2%">Nomer Antrean: 123</p>
-                                                        <p style="margin-top:2%">Tanggal Faktur: 24 mei 2023</p>
-                                                        <p style="margin-top:2%">Tanggal Jatuh Tempo: 24 mei 2023
+                                                        <p style="margin-top:2%">Nomor Faktur:{{ $data->invoice_number }} </p>
+                                                        <p style="margin-top:2%">Nomer Antrean: {{ $data->order_quantity }}</p>
+                                                        <p style="margin-top:2%">Tanggal Faktur: {{ $data->start_date }}</p>
+                                                        <p style="margin-top:2%">Tanggal Jatuh Tempo: {{ $data->end_date }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -441,25 +440,34 @@
                                                         class="table1 products-table col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <thead>
                                                             <tr>
-                                                                <th>Item</th>
+                                                                <th>Item</th><br>
                                                                 <th>Kuantitas</th>
+                                                                <th>Pajak</th>
                                                                 <th>Harga</th>
                                                                 <th>Jumlah</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            @foreach ($items as $item )
                                                             <tr>
+                                                                    
                                                                 <td>
-                                                                    <p>api maps</p>
+                                                                    <p>a{{ $item->item->name }}</p>
                                                                     <br>
                                                                     <p style="font-size: 8pt; margin-top: -10%">
-                                                                        pembelian api untuk map</p>
-                                                                </td>
+                                                                        {{ $item->item->description }}</p>
+                                                                    </td>
                                                                 <td><span class="badge"
-                                                                        style="border-radius:2px">1</span></td>
-                                                                <td>385.000,00</td>
-                                                                <td>385.000,00</td>
+                                                                        style="border-radius:2px">{{ $item->quantity }}</span></td>
+                                                                        @if ( $item->item->tax_id != null)
+                                                                        <td>{{ $item->item->tax->tax_amount }}%</td>
+                                                                            @else
+                                                                            <td>N/A</td>
+                                                                        @endif
+                                                                <td>{{ $item->price }}</td>
+                                                                <td>{{ $item->amount }}</td>
                                                             </tr>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"
@@ -467,10 +475,10 @@
                                                         <!-- Card start -->
                                                         <div class="card">
                                                             <div class="card-body">
-                                                                <li class="list-group-item">Subtotal: 9000000 </li>
-                                                                <li class="list-group-item">Ppn(20%): 9000000 </li>
-                                                                <li class="list-group-item">PPH(12%): 9000000 </li>
-                                                                <li class="list-group-item">Total: 9000000 </li>
+                                                                <li class="list-group-item">Subtotal: {{ $data->totalAmount }}</li>
+                                                                <li class="list-group-item">total pajak: {{ $data->totalTax }} </li>
+                                                                <li class="list-group-item">total diskon: {{ $data->totalDiscount }} </li>
+                                                                <li class="list-group-item">Total:  {{ $data->totalPay }}  </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -621,10 +629,10 @@
                     ['para', ['ul', 'ol']],
                     ['insert', ['link', 'picture', 'video']],
                     ['view', ['fullscreen', 'codeview', 'help']],
-                ]
+                ];
             });
         });
-    </script>
+    </script> 
 </body>
 
 <!-- Mirrored from www.kodingwife.com/demos/unipro/v1-x/05-design-violet/accordions.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 May 2023 03:02:35 GMT -->

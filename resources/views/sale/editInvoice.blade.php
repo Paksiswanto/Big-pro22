@@ -25,6 +25,7 @@
 
     <!-- Icomoon Font Icons css -->
     <link rel="stylesheet" href="{{ asset('Gmbslagi/fonts/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/bs-select/bs-select.css') }}" />
 
     <!-- Main css -->
     <link rel="stylesheet" href="{{ asset('Gmbslagi/css/main.css') }}">
@@ -226,7 +227,8 @@
                 <div class="content-wrapper">
 
                     <!-- Row start -->
-                    <form action="{{ route('create_invoice') }}" method="POST">
+                    <form action="/editInvoice/{{ $invoice->id }}" method="POST">
+                        @method('PUT')
                         @csrf
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -263,9 +265,7 @@
                                                                     <div class="field-wrapper">
                                                                         <input class="form-control" type="text"
                                                                             name="title"
-                                                                            @if ($default != null) value="{{ $default->title }}"  
-                                                                            @else
-                                                                            placeholder="Masukkan Judul" @endif>
+                                                                            value="{{ $invoice -> title }}">
                                                                         <div class="field-placeholder">Judul</div>
                                                                     </div>
                                                                 </div>
@@ -275,9 +275,7 @@
                                                                     <div class="field-wrapper">
                                                                         <input class="form-control" type="text"
                                                                             name="subtitle" id="subjudul"
-                                                                            @if ($default != null) value="{{ $default->subtitle }}"  
-                                                                            @else
-                                                                            placeholder="Masukkan subJudul" @endif
+                                                                         value="{{ $invoice->subtitle }}""
                                                                             placeholder="Masukkan Subjudul">
                                                                         <div class="field-placeholder">Subjudul</div>
                                                                     </div>
@@ -322,8 +320,8 @@
                                             <select class="select-single js-states" name="customer_id"
                                                 title="Select Product Category" data-live-search="true">
                                                 <option disabled selected>Pilih Salah Satu</option>
-                                                @foreach ($customer as $data)
-                                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                @foreach ($customer as $customer)
+                                                    <option value="{{ $customer->id }}" {{($customer->id==$invoice->customer_id)? "selected" : ""}} >{{ $customer->name }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="field-placeholder">Pelanggan <span
@@ -359,13 +357,13 @@
                                             </div>
                                             <div class="col-6">
                                                 <div class="field-wrapper mb-3">
-                                                    <input class="form-control" name="invoice_number" id="increment-input" type="text"
+                                                    <input class="form-control" name="invoice_number" value="{{ $invoice->invoice_number  }}" id="increment-input" type="text"
                                                         placeholder="Masukkan Nomor Faktur">
                                                     <div class="field-placeholder">Nomor Faktur <span
                                                             class="text-danger">*</span></div>
                                                 </div>
                                                 <div class="field-wrapper mb-3">
-                                                    <input class="form-control" name="order_quantity" type="number"
+                                                    <input class="form-control" name="order_quantity" value="{{ $invoice->order_quantity }}" type="number"
                                                         placeholder="Masukkan Jumlah Pesanan">
                                                     <div class="field-placeholder">Jumlah Pesanan</div>
                                                 </div>
@@ -403,75 +401,86 @@
 
 
                                                 </thead>
-                                                <tbody id="table-body">
-                                                    <tr>
-                                                        <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <select class="item-dropdown ex-dropdown-input drop-items"
+                                                    <tbody id="table-body">
+                                                        <input type="hidden" value="{{ $invoice->id }}" id="invoiceId" name="invoice_id">
+                                                        @foreach ($data as $index => $item)
+                                                        <tr data-row-index="{{ $index }}">
+                                                                
+                                                            <td>
+                                                                <div class="field-wrapper m-0">
+                                                                    <select class="item-dropdown ex-dropdown-input drop-items"
                                                                     name="item_id[]">
-                                                                    <!-- Opsi item akan ditambahkan secara dinamis menggunakan JavaScript -->
-                                                                </select>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <input type="text" style="border-radius:2px"
-                                                                    name="description[]" class="form-control drop-description">
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <input type="number" style="border-radius:2px"
-                                                                    name="quantity[]"
-                                                                    class="quantity-input form-control drop-quantity">
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <input type="number" style="border-radius:2px"
-                                                                    name="price[]" class="form-control drop-price">
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div id="pajak-wrapper">
-                                                                <div
-                                                                    class="field-wrapper m-0 mb-1 pajak-input-wrapper">
-                                                                    <input type="text" name="tax_id[]"
-                                                                         class="form-control"
-                                                                        id="" readonly> <br>
-                                                                        
+                                                                    @foreach ( $items as $data )
+                                                                    <option value="{{ $data->id }}" {{($data->id==$item->ItemId)? "selected" : ""}} >{{ $data->name }}</option>                                                                    
+                                                                    @endforeach
+                                                                    </select>
                                                                 </div>
-                                                               
-                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="field-wrapper m-0">
+                                                                    <input type="text" value="{{ $item->description }}" style="border-radius:2px"
+                                                                        name="description[]" class="form-control drop-description">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="field-wrapper m-0">
+                                                                    <input type="number" value="{{ $item->quantity }}" style="border-radius:2px"
+                                                                        name="quantity[]"
+                                                                        class="quantity-input form-control drop-quantity" oninput="updateTotal(this)">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="field-wrapper m-0">
+                                                                    <input type="number" style="border-radius:2px"
+                                                                    name="price[]" value="{{ $item->price }}" class="form-control drop-price" oninput="updateTotal(this)">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div id="pajak-wrapper">
+                                                                    <div
+                                                                        class="field-wrapper m-0 mb-1 pajak-input-wrapper">
+                                                                        @if ($item->item->tax_id != null)
+                                                                        <input type="text" name="tax_id[]" class="form-control drop-tax-amount" value="{{ $item->item->tax->name }}({{ $item->item->tax->tax_amount }})" data-taxAmount="{{ $item->item->tax->tax_amount }}" oninput="updateTotal(this)" readonly>
+                                                                        @else
+                                                                        <input type="text" name="tax_id[]" class="form-control drop-tax-amount"  value="0" oninput="updateTotal(this)" readonly>
+                                                                    @endif                                                                  
+                                                                    </div>
+                                                                
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="field-wrapper m-0">
+                                                                    <input type="number" style="border-radius:2px"
+                                                                        name="amount[]" value="{{ $item->amount }}" oninput="updateTotal(this)" class="form-control drop-amount" readonly>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="table-actions">
+                                                                    <button type="button" class="btn btn-light delete-row drop-delete">
+                                                                        <i class="icon-trash-2"></i>
+                                                                    </button>
+                                                                </div>
                                                         </td>
-                                                        <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <input type="number" style="border-radius:2px"
-                                                                    name="amount[]" class="form-control drop-amount" readonly>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="table-actions">
-                                                                <button type="button" class="btn btn-light delete-row drop-delete">
-                                                                    <i class="icon-trash-2"></i>
-                                                                </button>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
 
                                                 <tfoot>
                                                     <tr>
                                                         <td colspan="5"></td>
                                                         <td colspan="2">
-                                                          <p>Subtotal = <span id="total-amount"></span></p>
-                                                          <a href="#" class="toggle-link button-tagihan" data-target=".toggle-content"><p>Discount = <span id="total-discount"></span></p></a>
-                                                          <div class="toggle-content field-wrapper" style="width:40%">
-                                                            <input type="text" style="border-radius:2px" class="discount form-control" name="discount">
-                                                          </div>
-                                                          <p>Total Pajak = <span id="total-tax"></span></p>
-                                                          <h5 class="mt-2">Total = <b id="total"></b></h5>
-                                                        </td>
+                                                            <p>Subtotal = <span id="total-amount">{{ isset($invoice) ? 'Rp ' . $invoice->totalAmount : 'N/A' }}</span></p>
+                                                            <a href="#" class="toggle-link button-tagihan" data-target=".toggle-content">
+                                                              <p>Discount = <span id="total-discount">{{ isset($invoice) ? 'Rp ' . $invoice->totalDiscount : 'N/A' }}</span></p>
+                                                            </a>
+                                                            <div class="toggle-content field-wrapper" style="width:40%">
+                                                              <input type="text" style="border-radius:2px" class="discount form-control" oninput="updateTotal(this)" value="{{ isset($invoice) ? $invoice->discount : 0 }}" name="discount">
+                                                            </div>
+                                                            <p>Total Pajak = <span id="total-tax">{{ isset($invoice) ? 'Rp ' . $invoice->totalTax : 'N/A' }}</span></p>
+                                                            <h5 class="mt-2">Total = <b id="total">{{ isset($invoice) ? 'Rp ' . $invoice->totalPay : 'N/A' }}</b></h5>
+                                                          </td>
+                                                          
+                                                          
                                                         </tr>
                                                       <input type="hidden" class="total-tax" name="totalTax">
                                                       <input type="hidden" class="total-discount" name="totalDiscount">
@@ -506,21 +515,21 @@
                                                                     <input type="text" name="nama"
                                                                         style="border-radius:2px"
                                                                         placeholder="Masukan nama item"
-                                                                        id="nama"class="form-control">
+                                                                        class="form-control">
                                                                 </div>
                                                                 <div class="field-wrapper m-0">
                                                                     <label for="nama">Harga Jual</label>
                                                                     <input type="text" name="Harga"
                                                                         style="border-radius:2px"
                                                                         placeholder="Masukan harga item"
-                                                                        id="nama"class="form-control">
+                                                                        class="form-control">
                                                                 </div>
                                                                 <div class="field-wrapper m-0">
                                                                     <label for="nama">kategori</label>
                                                                     <input type="text" name="kategori"
                                                                         style="border-radius:2px"
                                                                         placeholder="Masukan nama item"
-                                                                        id="nama"class="form-control">
+                                                                        class="form-control">
                                                                 </div>
                                                                 <div class="field-wrapper ">
                                                                     <label for="nama">Pajak</label>
@@ -735,7 +744,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-    <script>
+    {{-- <script>
 $(document).ready(function() {
   // Mengambil data item dari server
   $.ajax({
@@ -766,195 +775,114 @@ $(document).ready(function() {
   });
 });
 
-    </script>
-<script>
- $(document).ready(function() {
-  // Mengambil data tax dari server
-  $.ajax({
-    url: '/get-tax-data', // Gantilah '/get-tax-data' dengan URL endpoint yang sesuai di aplikasi Anda
-    type: 'GET',
-    dataType: 'json',
-    success: function(response) {
-      if (response.success) {
-        var taxData = response.data; // Data tax yang telah diambil
+    </script> --}}
 
-        // Menghapus opsi sebelumnya, jika ada
-        $('#tax-dropdown').empty();
-
-        // Menambahkan opsi tax ke dalam dropdown
-        taxData.forEach(function(tax, index) {
-          var option = $('<option>').val(tax.id).text(tax.name).attr('id', 'tax-option-' + index);
-          $('#tax-dropdown').append(option);
-        });
-
-        console.log('Data tax berhasil diambil dan ditampilkan di HTML');
-      } else {
-        console.log(response.message);
-      }
-    },
-    error: function(xhr, status, error) {
-      console.log(error);
-    }
-  });
+    <script>
+// Event listener saat input quantity, price, atau tax berubah
+$(document).on('input', '.quantity-input, [name^="price"], [name^="tax_id"]', function() {
+  updateTotal(this);
 });
 
-</script>
-    <script>
-        function create() {
-            $.ajax({
-                type: 'POST',
-                url: '/create_invoice',
-                data: {
-                    _token: csrfToken,
-                    type: type,
-                    date: date,
-                    to: to,
-                    message: message,
-                },
-                success: function(response) {
-                    Swal.fire({
-                        title: 'success!',
-                        text: 'Success data berhasil ditambahkan!',
-                        icon: 'success'
-                    }).then(function() {
-                        location.reload();
-                    });
-                },
-                error: function(response) {
-                    var errors = response.responseJSON.errors;
-                    var errorMessage = '';
+// Event listener saat tombol "Add Row" di klik
+document.getElementById('add-row').addEventListener('click', function() {
+  var tableBody = document.getElementById('table-body');
+  var newRow = document.createElement('tr');
+  newRow.innerHTML = `
+    <td>
+      <div class="field-wrapper m-0">
+        <select class="item-dropdown ex-dropdown-input" name="item_id[]">
+          <!-- Opsi item akan ditambahkan secara dinamis menggunakan JavaScript -->
+        </select>
+      </div>
+    </td>
+    <td>
+      <div class="field-wrapper m-0">
+        <input type="text" style="border-radius:2px" name="description[]" class="form-control">
+      </div>
+    </td>
+    <td>
+      <div class="field-wrapper m-0">
+        <input type="number" oninput="updateTotal(this)" style="border-radius:2px" name="quantity[]" class="quantity-input form-control">
+      </div>
+    </td>
+    <td>
+      <div class="field-wrapper m-0">
+        <input type="number" style="border-radius:2px" name="price[]" class="form-control">
+      </div>
+    </td>
+    <td>
+      <div id="pajak-wrapper">
+        <div class="field-wrapper m-0 mb-1 pajak-input-wrapper">
+          <input type="text" oninput="updateTotal(this)" name="tax_id[]" class="form-control" readonly> <br>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="field-wrapper m-0">
+        <input type="number" style="border-radius:2px" name="amount[]" class="form-control drop-amount" oninput="updateTotal(this)" readonly>
+      </div>
+    </td>
+    <td>
+      <div class="table-actions">
+        <button type="button" class="btn btn-light delete-row">
+          <i class="icon-trash-2"></i>
+        </button>
+      </div>
+    </td>
+  `;
+  tableBody.appendChild(newRow);
 
-                    $.each(errors, function(key, value) {
-                        errorMessage += '<p class="text-red-500">' + value + '</p>';
-                    });
-
-                    Swal.fire({
-                        title: 'Error!',
-                        html: response.responseJSON.message,
-                        icon: 'error',
-                    })
-                }
-            })
-        }
-    </script>
-    <script>
-        function showInputField(selectElement) {
-            var inputField = document.getElementById("customInput");
-
-            if (selectElement.value === "Khusus") {
-                inputField.style.display = "block";
-            } else {
-                inputField.style.display = "none";
-            }
-        }
-    </script>
-    
-   <script>
-    $(document).ready(function() {
-  // Event listener untuk perubahan select dengan class tertentu
-  $('#item-dropdown').change(function() {
-    var selectedValue = $(this).val();
-    console.log('Nilai yang dipilih: ' + selectedValue);
-  });
-});
-  $(document).ready(function() {
-  // Mengambil data item dari server
+  // Ambil data item dari server
   $.ajax({
-    url: '/get-items-data', // Gantilah '/get-items-data' dengan URL endpoint yang sesuai di aplikasi Anda
+    url: '/get-items-data', // Ganti '/get-items-data' dengan URL endpoint yang sesuai di aplikasi Anda
     type: 'GET',
     dataType: 'json',
     success: function(response) {
       if (response.success) {
         var itemsData = response.data; // Data item yang telah diambil
 
-        // Menghapus opsi sebelumnya, jika ada
-        $('#item-dropdown').empty();
+        // Temukan dropdown item terbaru dalam baris yang ditambahkan
+        var itemDropdown = newRow.querySelector('.item-dropdown');
 
-        // Menambahkan opsi item ke dalam dropdown
+        // Hapus opsi sebelumnya, jika ada
+        while (itemDropdown.firstChild) {
+          itemDropdown.removeChild(itemDropdown.firstChild);
+        }
+
+        // Tambahkan opsi "Pilih Item" sebagai opsi default
+        var defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.text = 'Pilih Item';
+        itemDropdown.appendChild(defaultOption);
+
+        // Tambahkan opsi item ke dalam dropdown
         itemsData.forEach(function(item) {
-          var option = $('<option>').val(item.id).text(item.name);
-          $('#item-dropdown').append(option);
+          var option = document.createElement('option');
+          option.value = item.id;
+          option.text = item.name;
+          itemDropdown.appendChild(option);
         });
 
-        console.log(response);
-
-        // Menghapus opsi-opsi yang belum dipilih
-        $('select[name="item_id[]"]').each(function() {
-          var selectedItemId = $(this).val();
-          $(this).find('option[value="' + selectedItemId + '"]');
+        // Inisialisasi TomSelect pada elemen dropdown item
+        new TomSelect(itemDropdown, {
+          plugins: ['dropdown_input'],
+          create: true,
+          allowEmptyOption: true,
+          sortField: {
+            field: 'text',
+            direction: 'asc',
+          },
         });
+
+        console.log('Data item berhasil diambil dan ditampilkan di HTML');
       } else {
         console.log(response.message);
       }
     },
     error: function(xhr, status, error) {
       console.log(error);
-    }
+    },
   });
-});
-
-   </script>
-   <script>
-        $(document).ready(function() {
-          $('.toggle-link').click(function(e) {
-            e.preventDefault();
-            var target = $(this).data('target');
-            $(target).toggle('toggle');
-          });
-        });
-      </script>
-    
-    <script>
-   $(document).ready(function() {
-  // Mengambil data item dari server
-  $.ajax({
-  url: '/get-items-data',
-  type: 'GET',
-  dataType: 'json',
-  success: function(response) {
-    if (response.success) {
-      var itemsData = response.data;
-
-      $('.item-dropdown').empty();
-      var defaultOption = $('<option>').val('').text('Pilih Item');
-      $('.item-dropdown').append(defaultOption);
-
-      itemsData.forEach(function(item) {
-        var option = $('<option>').val(item.id).text(item.name).data('tax-id', item.tax_id).attr('name', item.name);
-        $('.item-dropdown').append(option);
-      });
-
-      new TomSelect('.item-dropdown', {
-        plugins: ['dropdown_input'],
-        create: true,
-        allowEmptyOption: true,
-        sortField: {
-          field: "text",
-          direction: "asc",
-        }
-      });
-      var incrementInput = $("#increment-input");
-var companyId = parseInt(response.company);
-
-if (isNaN(incrementInput.val())) {
-  incrementInput.val('1');
-} else {
-  var formattedCompanyId = String(companyId + 1).padStart(2, '0');
-  console.log('companyId:', companyId);
-  console.log('formattedCompanyId:', formattedCompanyId);
-  incrementInput.val('FKR-' + formattedCompanyId);
-}
-
-      console.log(incrementInput);
-    } else {
-      console.log(response.message);
-    }
-  },
-  error: function(xhr, status, error) {
-    console.log(error);
-  }
-});
-
   $(document).on('change', '.item-dropdown', function() {
     var selectedItemId = $(this).val();
     var row = $(this).closest('tr');
@@ -969,18 +897,19 @@ if (isNaN(incrementInput.val())) {
             var itemData = response.data;
             var tax = response.tax;
             var taxAmount = response.taxAmount;
-            var description = response.description;
             var combinedTax = tax + ' (' + taxAmount / 100 + ')';
 
-            row.find('input[name="description[]"]').val(description);
+            row.find('input[name="description[]"]').val(itemData.description);
+            console.log(itemData.description)
             row.find('input[name="quantity[]"]').val(itemData.quantity);
             row.find('input[name="price[]"]').val(itemData.selling_price);
 
             if (tax === 'null') {
-              row.find('input[name="tax_id[]"]').val(0);
+            row.find('input[name="tax_id[]"]').val('null').data('taxamount', 0);
             } else {
-              row.find('input[name="tax_id[]"]').val(combinedTax).data('taxAmount', taxAmount);
+            row.find('input[name="tax_id[]"]').val(combinedTax).data('taxamount', taxAmount);
             }
+
 
             console.log(response);
           } else {
@@ -996,98 +925,89 @@ if (isNaN(incrementInput.val())) {
     }
   });
 
-  $(document).on('input', 'input[name="quantity[]"], input[name="price[]"], input[name="tax_id[]"], input[name="discount"]', function() {
-    updateTotals();
+
+  // Hubungkan event listener pada input jumlah, harga, dan pajak pada baris yang ditambahkan
+  $(newRow).on('input', '.quantity-input, [name^="price"], [name^="tax_id"]', function() {
+    updateTotal(this);
   });
+});
 
-  $(document).on('click', '.delete-row', function() {
-    var deletedRow = $(this).closest('tr');
-    var deletedAmount = parseFloat(deletedRow.find('input[name="amount[]"]').val());
-    var totalAmountElement = document.getElementById('total-amount');
-    var totalAmount = parseFloat(totalAmountElement.textContent.replace('Rp. ', ''));
-    var totalTaxElement = document.getElementById('total-tax');
-    var totalTax = parseFloat(totalTaxElement.textContent.replace('Rp. ', ''));
-    var totalDiscountElement = document.getElementById('total-discount');
-    var totalDiscount = parseFloat(totalDiscountElement.textContent.replace('Rp. ', ''));
+function updateTotal(input) {
+  var row = $(input).closest('tr');
+  var quantity = parseFloat(row.find('.quantity-input').val()) || 0;
+  var price = parseFloat(row.find('[name^="price"]').val()) || 0;
+  var taxAmount = parseFloat(row.find('[name^="tax_id"]').data('taxamount')) || 0;
 
-    if (!isNaN(deletedAmount)) {
-      totalAmount -= deletedAmount;
-      totalTax -= deletedAmount * (deletedRow.data('taxAmount') / 100);
-    }
+  var amount = quantity * price;
+  var tax = amount * (taxAmount / 100);
+  var total = amount - tax;
 
-    var discountInput = document.querySelector('input[name="discount"]');
-    var discount = parseFloat(discountInput.value);
-    if (isNaN(discount)) {
-      totalDiscount = 0;
-    }
+  row.find('.drop-amount').val(total.toFixed(2));
+  updateTotalInvoice();
+}
 
-    var total = totalAmount - totalDiscount;
-    totalAmountElement.textContent = 'Rp. ' + totalAmount.toFixed(2);
-    totalTaxElement.textContent = 'Rp. ' + totalTax.toFixed(2);
-    totalDiscountElement.textContent = 'Rp. ' + totalDiscount.toFixed(2);
-    $('#total').text('Rp. ' + total.toFixed(2));
-
-    deletedRow.remove();
-
-    if ($('input[name="quantity[]"]').length === 0) {
-      resetTotals();
-    }
-  });
-
-  function updateTotals() {
+function updateTotalInvoice() {
   var totalAmount = 0;
+  var totalDiscount = parseFloat($('.discount').val()) || 0;
   var totalTax = 0;
-  var hasEmptyQuantity = false;
 
-  $('input[name="quantity[]"]').each(function() {
-    var row = $(this).closest('tr');
-    var quantity = parseFloat($(this).val());
-    var price = parseFloat(row.find('input[name="price[]"]').val());
-    var taxAmount = parseFloat(row.find('input[name="tax_id[]"]').data('taxAmount'));
-
-    if (isNaN(quantity) || isNaN(price)) {
-      hasEmptyQuantity = true;
-      return false;
-    }
-
-    var amount = price * quantity;
-
-    // Kurangi amount dengan pajak jika ada
-    if (!isNaN(taxAmount)) {
-      amount -= amount * (taxAmount / 100);
-      totalTax += amount * (taxAmount / 100);
-    }
-
-    row.find('input[name="amount[]"]').val(amount.toFixed(2));
+  $('.drop-amount').each(function() {
+    var amount = parseFloat($(this).val()) || 0;
     totalAmount += amount;
+    var taxAmount = parseFloat($(this).closest('tr').find('[name^="tax_id"]').data('taxamount')) || 0;
+    totalTax += amount * (taxAmount / 100);
   });
 
-  if (hasEmptyQuantity) {
-    resetTotals();
-    return;
+  var subtotal = totalAmount;
+  var discountAmount = subtotal * (totalDiscount / 100);
+  var totalPay = subtotal - discountAmount;
+
+  $('#total-amount').text('Rp ' + subtotal.toFixed(2));
+  $('#total-discount').text('Rp ' + discountAmount.toFixed(2));
+  $('#total-tax').text('Rp ' + totalTax.toFixed(2));
+  $('#total').text('Rp ' + totalPay.toFixed(2));
+
+  $('.total-amount').val(subtotal.toFixed(2));
+  $('.total-discount').val(discountAmount.toFixed(2));
+  $('.total-tax').val(totalTax.toFixed(2));
+  $('.total').val(totalPay.toFixed(2));
+}
+// Event listener saat tombol "delete" di klik
+$(document).on('click', '.delete-row', function() {
+  var deletedRow = $(this).closest('tr');
+  var deletedAmount = parseFloat(deletedRow.find('input[name="amount[]"]').val());
+  var totalAmountElement = document.getElementById('total-amount');
+  var totalAmount = parseFloat(totalAmountElement.textContent.replace('Rp ', ''));
+  var totalTaxElement = document.getElementById('total-tax');
+  var totalTax = parseFloat(totalTaxElement.textContent.replace('Rp ', ''));
+  var totalDiscountElement = document.getElementById('total-discount');
+  var totalDiscount = parseFloat(totalDiscountElement.textContent.replace('Rp ', ''));
+
+  if (!isNaN(deletedAmount)) {
+    totalAmount -= deletedAmount;
+    totalTax -= deletedAmount * (deletedRow.find('[name^="tax_id"]').data('taxamount') / 100);
   }
 
   var discountInput = document.querySelector('input[name="discount"]');
   var discount = parseFloat(discountInput.value);
-  var totalDiscount = isNaN(discount) ? 0 : totalAmount * (discount / 100);
+  if (isNaN(discount)) {
+    totalDiscount = 0;
+  }
+
   var total = totalAmount - totalDiscount;
+  totalAmountElement.textContent = 'Rp ' + totalAmount.toFixed(2);
+  totalTaxElement.textContent = 'Rp ' + totalTax.toFixed(2);
+  totalDiscountElement.textContent = 'Rp ' + totalDiscount.toFixed(2);
+  $('#total').text('Rp ' + total.toFixed(2));
 
-  var totalAmountElement = document.getElementById('total-amount');
-  totalAmountElement.textContent = 'Rp. ' + totalAmount.toFixed(2);
-  var totalTaxElement = document.getElementById('total-tax');
-  totalTaxElement.textContent = 'Rp. ' + totalTax.toFixed(2);
-  var totalDiscountElement = document.getElementById('total-discount');
-  totalDiscountElement.textContent = 'Rp. ' + totalDiscount.toFixed(2);
-  $('#total').text('Rp. ' + total.toFixed(2));
+  deletedRow.remove();
 
-  // Update the values of the hidden input fields
-  $('input[name="totalAmount"]').val(totalAmount.toFixed(2));
-  $('input[name="totalTax"]').val(totalTax.toFixed(2));
-  $('input[name="totalDiscount"]').val(totalDiscount.toFixed(2));
-  $('input[name="totalPay"]').val(total.toFixed(2));
-}
+  if ($('input[name="quantity[]"]').length === 0) {
+    resetTotals();
+  }
+});
 
-  function resetTotals() {
+    function resetTotals() {
     var totalAmount = 0;
     var totalDiscount = 0;
 
@@ -1104,8 +1024,35 @@ if (isNaN(incrementInput.val())) {
     $('input[name="totalPay"]').val(totalAmount.toFixed(2));
 
   }
+      </script>
+            
+    <script>
+        $(document).ready(function() {
+          $('.toggle-link').click(function(e) {
+            e.preventDefault();
+            var target = $(this).data('target');
+            $(target).toggle('toggle');
+          });
+        });
+      </script>
+<script>
+// Inisialisasi TomSelect pada setiap elemen dropdown item
+var itemDropdowns = document.querySelectorAll('.item-dropdown');
+
+itemDropdowns.forEach(function(itemDropdown) {
+  new TomSelect(itemDropdown, {
+    plugins: ['dropdown_input'],
+    create: true,   
+    allowEmptyOption: true,
+    sortField: {
+      field: 'text',
+      direction: 'asc',
+    },
+  });
 });
 
+  </script>
+    <script>
     </script>
 
     <!-- Date Range JS -->
@@ -1116,122 +1063,6 @@ if (isNaN(incrementInput.val())) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
     <script>
-        document.getElementById('add-row').addEventListener('click', function() {
-            var tableBody = document.getElementById('table-body');
-            var newRow = document.createElement('tr');
-            newRow.innerHTML = `
-            <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <select class="item-dropdown ex-dropdown-input"
-                                                                    name="item_id[]">
-                                                                    <!-- Opsi item akan ditambahkan secara dinamis menggunakan JavaScript -->
-                                                                </select>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <input type="text" style="border-radius:2px"
-                                                                    name="description[]" class="form-control">
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <input type="number" style="border-radius:2px"
-                                                                    name="quantity[]"
-                                                                    class="quantity-input form-control">
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <input type="number" style="border-radius:2px"
-                                                                    name="price[]" class="form-control">
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div id="pajak-wrapper">
-                                                                <div
-                                                                    class="field-wrapper m-0 mb-1 pajak-input-wrapper">
-                                                                    <input type="text" name="tax_id[]"
-                                                                         class="form-control"
-                                                                        id="" readonly> <br>
-                                                                        
-                                                                </div>
-                                                                <div class="add-pajak-wrapper mb-2">
-                                                                    <button class="btn add-pajak" type="button"
-                                                                        name="tax_id[]" style="margin-top: 1%">
-                                                                        <i class="icon-plus"></i> Tambah Pajak
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="field-wrapper m-0">
-                                                                <input type="number" style="border-radius:2px"
-                                                                    name="amount[]" class="form-control" readonly>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="table-actions">
-                                                                <button class="btn btn-light delete-row">
-                                                                    <i class="icon-trash-2"></i>
-                                                                </button>
-                                                            </div>
-                                                        </td>
-  `;
-            tableBody.appendChild(newRow);
-
-            // Ambil data item dari server
-            $.ajax({
-                url: '/get-items-data', // Ganti '/get-items-data' dengan URL endpoint yang sesuai di aplikasi Anda
-                type: 'GET',
-                dataType: 'json',
-                success: function(response) {
-                    if (response.success) {
-                        var itemsData = response.data; // Data item yang telah diambil
-
-                        // Temukan dropdown item terbaru dalam baris yang ditambahkan
-                        var itemDropdown = newRow.querySelector('.item-dropdown');
-
-                        // Hapus opsi sebelumnya, jika ada
-                        while (itemDropdown.firstChild) {
-                            itemDropdown.removeChild(itemDropdown.firstChild);
-                        }
-
-                        // Tambahkan opsi "Pilih Item" sebagai opsi default
-                        var defaultOption = document.createElement('option');
-                        defaultOption.value = '';
-                        defaultOption.text = 'Pilih Item';
-                        itemDropdown.appendChild(defaultOption);
-
-                        // Tambahkan opsi item ke dalam dropdown
-                        itemsData.forEach(function(item) {
-                            var option = document.createElement('option');
-                            option.value = item.id;
-                            option.text = item.name;
-                            itemDropdown.appendChild(option);
-                        });
-
-                        // Inisialisasi TomSelect pada elemen dropdown item
-                        new TomSelect(itemDropdown, {
-                            plugins: ['dropdown_input'],
-                            create: true,
-                            allowEmptyOption: true,
-                            sortField: {
-                                field: 'text',
-                                direction: 'asc',
-                            },
-                        });
-
-                        console.log('Data item berhasil diambil dan ditampilkan di HTML');
-                    } else {
-                        console.log(response.message);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.log(error);
-                },
-            });
-        });
     </script>
 
 
