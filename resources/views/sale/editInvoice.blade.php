@@ -482,10 +482,10 @@
                                                           
                                                           
                                                         </tr>
-                                                      <input type="hidden" class="total-tax" name="totalTax">
-                                                      <input type="hidden" class="total-discount" name="totalDiscount">
-                                                      <input type="hidden" class="total" name="totalPay">
-                                                      <input type="hidden" class="total-amount" name="totalAmount">
+                                                      <input type="hidden" value="{{ $invoice->totalTax }}" class="total-tax" name="totalTax">
+                                                      <input type="hidden" value="{{ $invoice->totalDiscount }}" class="total-discount" name="totalDiscount">
+                                                      <input type="hidden" value="{{ $invoice->total_pay }}" class="total" name="totalPay">
+                                                      <input type="hidden" value="{{ $invoice->totalAmount }}" class="total-amount" name="totalAmount">
                                                 </tfoot>
                                             </table>
 
@@ -619,7 +619,7 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <label for="judul" class="field-label">Catatan</label>
-                                        <textarea class="form-control" name="notes" placeholder="Masukan Catatan" rows="2"></textarea>
+                                        <textarea class="form-control" name="notes" placeholder="Masukan Catatan" rows="2">{{ $invoice->notes }}</textarea>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
@@ -657,7 +657,7 @@
                                                             title="Select Product Category" data-live-search="true">
                                                             <option disabled selected>Pilih Salah Satu</option>
                                                             @foreach ($category as $data)
-                                                                <option value="{{ $data->id }}">
+                                                                <option value="{{ $data->id }}"  {{($data->id==$invoice->category_id)? "selected" : ""}}  >
                                                                     {{ $data->name }}</option>
                                                             @endforeach
                                                             <option><button type="button">Kategori Baru</button>
@@ -671,7 +671,7 @@
                                                     style="width: 100%; height: auto; margin-top: -8%;">
                                                     <div class="field-wrapper"
                                                         style="width: 100%; height: auto; margin-top:3%">
-                                                        <textarea class="form-control" name="footer" placeholder="Masukan Catatan" rows="2"></textarea>
+                                                        <textarea class="form-control" name="footer" placeholder="Masukan Catatan" rows="2">{{ $invoice->footer }}</textarea>
                                                         <div class="field-placeholder">Footer</div>
                                                     </div>
                                                 </div>

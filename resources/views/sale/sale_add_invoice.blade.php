@@ -783,30 +783,31 @@
                         var defaultOption = $('<option>').val('').text('Pilih Item');
                         $('.item-dropdown').append(defaultOption);
 
-                        itemsData.forEach(function(item) {
-                            var option = $('<option>').val(item.id).text(item.name).data('tax-id', item.tax_id).attr('name', item.name);
-                            $('.item-dropdown').append(option);
-                        });
+      new TomSelect('.item-dropdown', {
+        plugins: ['dropdown_input'],
+        create: true,
+        allowEmptyOption: true,
+        sortField: {
+          field: "text",
+          direction: "asc",
+        }
+      });
+      var incrementInput = $("#increment-input");
+        var companyId = parseInt(response.company);
+        var prefiks = response.prefix.prefix;            
+        
 
-                        new TomSelect('.item-dropdown', {
-                            plugins: ['dropdown_input'],
-                            create: true,
-                            allowEmptyOption: true,
-                            sortField: {
-                                field: "text",
-                                direction: "asc",
-                            }
-                        });
-                        var incrementInput = $("#increment-input");
-                        var companyId = parseInt(response.company);
-                        var prefiks = response.prefix.prefix;
-
-                        if (isNaN(incrementInput.val())) {
-                            incrementInput.val('1');
-                        } else {
-                            var formattedCompanyId = String(companyId + 1).padStart(3, '0');
-                            incrementInput.val(prefiks + '-' + formattedCompanyId);
-                        }
+if (isNaN(incrementInput.val())) {
+  incrementInput.val('1');
+} else {
+  var formattedCompanyId = String(companyId + 1).padStart(3, '0');
+  if (!isNaN(prefiks)) {
+      incrementInput.val(prefiks + '-' + formattedCompanyId);       
+}
+else{
+    incrementInput.val( 'FKR - ' + formattedCompanyId);       
+}
+}
 
 
                     } else {

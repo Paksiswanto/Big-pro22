@@ -215,6 +215,8 @@ Route::get('add_bill', [BillController::class, 'add_bill'])->name('add_bill')->m
 Route::get('detail_rcr_bill', [BillController::class, 'detail_rcr_bill'])->name('detail_rcr_bill')->middleware('permission:View_Bill');
 Route::get('/get-items-data-bill',[BillController::class,'getItems'])->name('getItems')->middleware('permission:Create_Bill');
 Route::get('/saveBill',[BillController::class,'saveBill'])->name('saveBill')->middleware('permission:Create_Bill');
+Route::get('/show-bill/{id}',[BillController::class,'showBill'])->name('showBill')->middleware('permission:Edit_Bill');
+Route::put('/edit-bill/{id}',[BillController::class,'editBill'])->name('editBill')->middleware('permission:Edit_Bill');
 
 
 //laporan

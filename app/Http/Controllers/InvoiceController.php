@@ -55,6 +55,9 @@ class InvoiceController extends Controller
             ->get();
             $companyId = Invoice::where('company_id',Auth::user()->company_id)->count();
             $default = InvoiceSetting::where('company_id',Auth::user()->company_id)->first();
+            if ($default == null) {
+                $default = "FKR";
+            }
 
 
             // Ubah format data menjadi array yang berisi objek dengan atribut 'id' dan 'name'

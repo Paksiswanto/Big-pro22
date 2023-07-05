@@ -448,19 +448,24 @@
                                             </thead>
                                             <tbody>
                                                 <!-- Data 1 -->
+                                                @foreach ( $data as $item )
                                                 <tr class="table-row">
                                                     <td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>12 mei 2023</td>
-                                                    <td>13 mei 2023</td>
-                                                    <td><span class="badge-sent">Terkirim</span></td>
-                                                    <td>koirul</td>
-                                                    <th scope="col">TGH-00005</th>
-                                                    <td>91.000.000,00</td>
+                                                    <td>{{ $item->end_date }}</td>
+                                                    <td>{{ $item->start_date }}</td>
+                                                    @if ($item->status == 'draft')
+                                                    <td><span class="badge-draft">Konsep</span></td>                                                        
+                                                    @else
+                                                    <td><span class="badge-draft">Konsep</span></td>
+                                                    @endif
+                                                    <td>{{ $item->supplier->name }}</td>
+                                                    <th scope="col">{{ $item->bill_number }}</th>
+                                                    <td>{{ $item->totalPay }}</td>
                                                     <td>
                                                         <div class="menu-icons d-flex" style="font-size: 15px;">
-                                                            <a href="{{ url('edit_supplier') }}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" style="margin-left: 2px;" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                            <a href="{{ url('bill_detail') }}" style="margin-left: 2px;" class="menu-icon icon-eye1"></a>
+                                                            <a href="/show-bill/{{ $item->id }}" class="menu-icon icon-edit-2"></a>
+                                                            <a href="{{url('delete_transfer',[$item->id])}}" style="margin-left: 2px;" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole{{ $item->id }}"></a>
+                                                            <a href="{{ url('bill_detail',[$item->id]) }}" style="margin-left: 2px;" class="menu-icon icon-eye1"></a>
                                                             <div class="dropdown icon-dots-two-vertical" style="margin-left: 2px;">
                                                                 <span>
                                                                     <div class="dropdown-content">
@@ -484,158 +489,28 @@
                                                         </div>
                                                     </td>
                                                 </tr>
+                                                                                <!-- Modal start -->
+                                <div class="modal fade" id="deleterole{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content" style="padding: 0px">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Hapus Tagihan</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Anda Yakin Ingin Menghapus Tagihan Ini?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
 
-                                                <!-- Data 2 -->
-                                                <tr class="table-row">
-                                                    <td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>12 mei 2024</td>
-                                                    <td>14 mei 2024</td>
-                                                    <td><span class="badge-draft">Konsep</span></td>
-                                                    <td>choirul</td>
-                                                    <th scope="col">TGH-00004</th>
-                                                    <td>80.000.000,00</td>
-                                                    <td>
-                                                        <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{ url('edit_supplier') }}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                            <a href="#" class="menu-icon icon-eye1"></a>
-                                                            <div class="dropdown icon-dots-two-vertical">
-                                                                <span>
-                                                                    <div class="dropdown-content">
-                                                                        <a href="#">
-                                                                            <button type="button" style="border: none; background:none; color:#333; background:transparent" data-bs-toggle="modal" data-bs-target="#payment" class="icon-attach_money">
-                                                                                Bayar
-                                                                            </button>
-                                                                        </a>
-                                                                        <a href="#">
-                                                                            <button type="button" style="border: none; background-col   or: white; color:#333; background:transparent" class="icon-printer">
-                                                                                Cetak
-                                                                            </button>
-                                                                        </a>
-                                                                        <a href="#" class="icon-x-circle" style="color: #333">
-                                                                            <button type="button" style="border: none; background-color: white; color:#333; background:transparent">
-                                                                                Batal</button>
-                                                                        </a>
-                                                                    </div>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal end -->
+                                                @endforeach
 
-
-                                                <!-- Data 3 -->
-                                                <tr class="table-row">
-                                                    <td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>14 mei 2023</td>
-                                                    <td>15 mei 2023</td>
-                                                    <td><span class="badge-draft">Konsep</span></td>
-                                                    <td>rudi</td>
-                                                    <th scope="col">TGH-00003</th>
-                                                    <td>100.000.000,00</td>
-                                                    <td>
-                                                        <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{ url('edit_supplier') }}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                            <a href="#" class="menu-icon icon-eye1"></a>
-                                                            <div class="dropdown icon-dots-two-vertical">
-                                                                <span>
-                                                                    <div class="dropdown-content">
-                                                                        <a href="#">
-                                                                            <button type="button" style="border: none; background:none; color:#333; background:transparent" data-bs-toggle="modal" data-bs-target="#payment" class="icon-attach_money">
-                                                                                Bayar
-                                                                            </button>
-                                                                        </a>
-                                                                        <a href="#">
-                                                                            <button type="button" style="border: none; background-color: white; color:#333; background:transparent" class="icon-printer">
-                                                                                Cetak
-                                                                            </button>
-                                                                        </a>
-                                                                        <a href="#" class="icon-x-circle" style="color: #333">
-                                                                            <button type="button" style="border: none; background-color: white; color:#333; background:transparent">
-                                                                                Batal</button>
-                                                                        </a>
-                                                                    </div>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-
-                                                <tr class="table-row">
-                                                    <td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>15 mei 2023</td>
-                                                    <td>15 mei 2023</td>
-                                                    <td><span class="badge-start">Sebagian</span></td>
-                                                    <td>slemet</td>
-                                                    <th scope="col">TGH-00002</th>
-                                                    <td>20.000.000,00</td>
-                                                    <td>
-                                                        <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{ url('edit_supplier') }}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                            <a href="#" class="menu-icon icon-eye1"></a>
-                                                            <div class="dropdown icon-dots-two-vertical">
-                                                                <span>
-                                                                    <div class="dropdown-content">
-                                                                        <a href="#">
-                                                                            <button type="button" style="border: none; background:none; color:#333; background:transparent" data-bs-toggle="modal" data-bs-target="#payment" class="icon-attach_money">
-                                                                                Bayar
-                                                                            </button>
-                                                                        </a>
-                                                                        <a href="#">
-                                                                            <button type="button" style="border: none; background-color: white; color:#333; background:transparent" class="icon-printer">
-                                                                                Cetak
-                                                                            </button>
-                                                                        </a>
-                                                                        <a href="#" class="icon-x-circle" style="color: #333">
-                                                                            <button type="button" style="border: none; background-color: white; color:#333; background:transparent">
-                                                                                Batal</button>
-                                                                        </a>
-                                                                    </div>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-
-                                                <tr class="table-row">
-                                                    <td><input type="checkbox" class="other-checkbox"></td>
-                                                    <td>25 mei 2023</td>
-                                                    <td>25 mei 2023</td>
-                                                    <td><span class="badge-finish">Dibayar</span></td>
-                                                    <td>wahyu</td>
-                                                    <th scope="col">TGH-00001</th>
-                                                    <td>45.000.000,00</td>
-                                                    <td>
-                                                        <div class="menu-icons" style="font-size: 15px;">
-                                                            <a href="{{ url('edit_supplier') }}" class="menu-icon icon-edit-2"></a>
-                                                            <a href="{{url('delete_transfer')}}" class="menu-icon icon-trash" data-bs-toggle="modal" data-bs-target="#deleterole"></a>
-                                                            <a href="#" class="menu-icon icon-eye1"></a>
-                                                            <div class="dropdown icon-dots-two-vertical">
-                                                                <span>
-                                                                    <div class="dropdown-content">
-                                                                        <a href="#">
-                                                                            <button type="button" style="border: none; background:none; color:#333; background:transparent" data-bs-toggle="modal" data-bs-target="#payment" class="icon-attach_money">
-                                                                                Bayar
-                                                                            </button>
-                                                                        </a>
-                                                                        <a href="#">
-                                                                            <button type="button" style="border: none; background-color: white; color:#333; background:transparent" class="icon-printer">
-                                                                                Cetak
-                                                                            </button>
-                                                                        </a>
-                                                                        <a href="#" class="icon-x-circle" style="color: #333">
-                                                                            <button type="button" style="border: none; background-color: white; color:#333; background:transparent">
-                                                                                Batal</button>
-                                                                        </a>
-                                                                    </div>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-
+                                               
                                             </tbody>
                                         </table>
                                     </div>
@@ -700,25 +575,6 @@
                                             <div class="modal-footer" style="margin-top:2%">
                                                 <a href="" onclick="window.location.reload()" style="margin-right: 2%" data-bs-dismiss="modal">Batal</a>
                                                 <button type="button" class="btn btn-primary" style="border-radius: 2px">Upload</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Modal end -->
-                                <!-- Modal start -->
-                                <div class="modal fade" id="deleterole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleterole" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content" style="padding: 0px">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="staticBackdropLabel">Hapus Tagihan</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Anda Yakin Ingin Menghapus Tagihan Ini?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
-
                                             </div>
                                         </div>
                                     </div>

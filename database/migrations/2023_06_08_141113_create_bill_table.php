@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('start_date');
             $table->date('end_date');
-            $table->foreignId('supplier_id')->nullable()->constrained('supplier')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('supplier_id')->constrained('supplier')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('category_id')->nullable()->constrained('category')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('discount')->nullable();
             $table->string('notes')->nullable();
