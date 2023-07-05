@@ -276,7 +276,7 @@
                                                             </span>
                                                         </div>
                                                         <div class="field-placeholder">Tanggal<span class="text-danger">*</span></div>
-                                                        <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
+                                                        
                                                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 
                                                     </div>
@@ -477,7 +477,7 @@
 
                                                         </div>
                                                         <div class="field-placeholder">Nomor Rekening<span class="text-danger">*</span></div>
-                                                        <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
+                                                        
                                                     </div>
                                                             <!-- Field wrapper end -->
 
@@ -547,6 +547,7 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
+                                                        
                                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                             <!-- Field wrapper start -->
@@ -560,7 +561,6 @@
                                                             <!-- Field wrapper end -->
 
                                                         </div>
-                                                        <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
                                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
 
                                                             <!-- Field wrapper start -->
@@ -660,7 +660,7 @@
                                                                             <!-- Field wrapper end -->
 
                                                                         </div>
-                                                                        <input type="hidden" name="company_id" value="{{ Auth::user()->company_id }}">
+                                                                        
                                                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                                             <!-- Field wrapper start -->

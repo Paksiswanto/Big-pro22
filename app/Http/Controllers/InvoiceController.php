@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\CategoryType;
 use App\Models\Company;
 use App\Models\Customer;
 use App\Models\Invoice;
@@ -135,11 +136,12 @@ public function getItemData($id)
     public function addInvoice()
     {
         $customer = Customer::all();
+        $category_type = CategoryType::where('id',1)->get();
         $item = Item::all()->whereNotNull('selling_price');
         $category = Category::all();
         $tax = Tax::all();
         $default = InvoiceSetting::where('company_id',Auth::user()->company_id)->first();
-        return view('sale.sale_add_invoice',compact('customer','item','category','tax','default'));
+        return view('sale.sale_add_invoice',compact('customer','item','category','tax','default','category_type'));
     }
     public function create_invoice(Request $request)
     {

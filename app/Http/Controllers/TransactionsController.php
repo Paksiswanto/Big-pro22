@@ -34,7 +34,7 @@ class TransactionsController extends Controller
 
         $company_id = Auth::user()->company_id;
 
-        $category_type = CategoryType::all();
+        $category_type = CategoryType::where('id',4)->get();
         $category =  Category::where('company_id', $company_id)->where('category_type_id', 4)->get();
         $customer = Customer::where('company_id', $company_id)->where('status',1)->get();
         $account = Account::where('company_id', $company_id)->get();
@@ -48,7 +48,7 @@ class TransactionsController extends Controller
 
         $income = Income::find($id);
         $come = Income::all();
-        $category_type = CategoryType::all();
+        $category_type = CategoryType::where('id',4)->get();
         $category =  Category::where('company_id', $company_id)->where('category_type_id', 4)->get();
 
         $customer = Customer::where('company_id', $company_id)->get();
@@ -85,7 +85,7 @@ class TransactionsController extends Controller
     //         'account_id' => $request->account_id,
     //         'category_id' => $request->category_id,
     //         'customer_id' => $request->customer_id,
-    //         'company_id' => $request->company_id,
+    //         'company_id' => Auth::user()->company_id,
     //     ]);
     //     return redirect()->route('transactions')->with('success', 'Data berhasil ditambahkan');
     // }
@@ -123,7 +123,7 @@ class TransactionsController extends Controller
             $income->account_id = $request->account_id;
             $income->category_id = $request->category_id;
             $income->customer_id = $request->customer_id;
-            $income->company_id = $request->company_id;
+            $income->company_id = Auth::user()->company_id;
             $income->user_id = $request->user_id;
             $income->save();
             $data = new Transaction ();
@@ -194,7 +194,7 @@ class TransactionsController extends Controller
             $income->account_id = $request->account_id;
             $income->category_id = $request->category_id;
             $income->customer_id = $request->customer_id;
-            $income->company_id = 1;
+            $income->company_id = Auth::user()->company_id;
 
             $income->save();
 
@@ -211,7 +211,7 @@ class TransactionsController extends Controller
 
 
         $supplier = Supplier::where('company_id', $company_id)->get();
-        $category_type = CategoryType::all();
+        $category_type = CategoryType::where('id',1)->get();
         $category = Category::where('company_id', $company_id)->where('category_type_id', 1)->get();
         $account = Account::where('company_id', $company_id)->get();
         return view('transactions.dashboard.expenditure.add_expenditure', compact('supplier', 'account', 'category', 'category_type'));
@@ -220,7 +220,7 @@ class TransactionsController extends Controller
     public function edit_expenditure($id)
     {
         $expenditure = Expenditure::find($id);
-        $category_type = CategoryType::all();
+        $category_type = CategoryType::where('id',1)->get();
         $category = Category::all();
         $account = Account::all();
         $supplier = Supplier::all();
@@ -269,7 +269,7 @@ class TransactionsController extends Controller
         $expend -> account_id = $request->account_id;
         $expend -> category_id = $request->category_id;
         $expend -> supplier_id = $request->supplier_id;
-        $expend -> company_id = $request->company_id;
+        $expend -> company_id = Auth::user()->company_id;
         $expend ->save();
 
         $data = new Transaction ();
@@ -314,7 +314,7 @@ class TransactionsController extends Controller
         $expenditure->account_id = $request->account_id;
         $expenditure->category_id = $request->category_id;
         $expenditure->supplier_id = $request->supplier_id;
-        $expenditure->company_id = 1;
+        $expenditure->company_id = Auth::user()->company_id;
 
         $expenditure->save();
 
@@ -395,7 +395,7 @@ class TransactionsController extends Controller
             'account_id' => $request->account_id,
             'category_id' => $request->category_id,
             'customer_id' => $request->customer_id,
-            'company_id' => $request->company_id,
+            'company_id' => Auth::user()->company_id,
         ]);
         return redirect()->route('recurring_transactions');
     }
@@ -423,7 +423,7 @@ class TransactionsController extends Controller
         $incomeRoutine->account_id = $request->account_id;
         $incomeRoutine->category_id = $request->category_id;
         $incomeRoutine->customer_id = $request->customer_id;
-        $incomeRoutine->company_id = 1;
+        $incomeRoutine->company_id = Auth::user()->company_id;
 
         $incomeRoutine->save();
 
@@ -477,7 +477,7 @@ class TransactionsController extends Controller
             'account_id' => $request->account_id,
             'category_id' => $request->category_id,
             'supplier_id' => $request->supplier_id,
-            'company_id' => $request->company_id,
+            'company_id' => Auth::user()->company_id,
         ]);
         return redirect()->route('recurring_transactions');
     }
@@ -504,7 +504,7 @@ class TransactionsController extends Controller
         $routineExpenses->account_id = $request->account_id;
         $routineExpenses->category_id = $request->category_id;
         $routineExpenses->supplier_id = $request->supplier_id;
-        $routineExpenses->company_id = 1;
+        $routineExpenses->company_id = Auth::user()->company_id;
 
         $routineExpenses->save();
 
@@ -529,7 +529,7 @@ class TransactionsController extends Controller
             'name_bank' => $request->name_bank,
             'bank_telephone' => $request->bank_telephone,
             'bank_address' => $request->bank_address,
-            'company_id' => $request->company_id,
+            'company_id' => Auth::user()->company_id,
         ]);
 
         return redirect()->back();
@@ -553,7 +553,7 @@ class TransactionsController extends Controller
             'province' => $request->province,
             'postal_code' => $request->postal_code,
             'phone_number' => $request->phone_number,
-            'company_id' => $request->company_id,
+            'company_id' => Auth::user()->company_id,
         ]);
         return redirect()->back();
     }
@@ -570,7 +570,7 @@ class TransactionsController extends Controller
             'province' => $request->province,
             'postal_code' => $request->postal_code,
             'phone_number' => $request->phone_number,
-            'company_id' => $request->company_id,
+            'company_id' => Auth::user()->company_id,
         ]);
         return redirect()->back();
     }

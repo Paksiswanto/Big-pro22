@@ -46,32 +46,33 @@
     <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/dropzone/dropzone.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('Gmbslagi/vendor/daterange/daterange.css') }}">
     <style>
-      .button-tagihan {
-    position: relative;
-    margin-bottom: 10px;
-  }
+        .button-tagihan {
+            position: relative;
+            margin-bottom: 10px;
+        }
 
-  .button-tagihan::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 17%;
-    height: 2px;
-    background-color: #A9A9A9;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease;
-  }
+        .button-tagihan::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 17%;
+            height: 2px;
+            background-color: #A9A9A9;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
 
-  .button-tagihan:hover::after {
-    transform: scaleX(1);
-  }
+        .button-tagihan:hover::after {
+            transform: scaleX(1);
+        }
 
-    .toggle-content {
-      display: none;
-      margin-top: 10px;
-    }
+        .toggle-content {
+            display: none;
+            margin-top: 10px;
+        }
+
         .edit-icon {
             display: inline-block;
             vertical-align: middle;
@@ -235,8 +236,7 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="card-title">
-                                            <h3>Tambah Faktur<button type="button"
-                                                    style="border: none; background:none;">☆</button></h3>
+                                            <h3>Tambah Faktur<button type="button" style="border: none; background:none;">☆</button></h3>
                                         </div>
                                     </div>
                                     <div class="card-body">
@@ -244,9 +244,7 @@
                                         <div class="accordion" id="faqAccordion">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingOne">
-                                                    <button class="accordion-button" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                        aria-expanded="true" aria-controls="collapseOne">
+                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                         <div class="accordion-heading">
                                                             <h6 class="accordion-title">Perusahaan</h6>
                                                             <p class="accordion-description">Ubah alamat, logo, dan
@@ -254,18 +252,13 @@
                                                         </div>
                                                     </button>
                                                 </h2>
-                                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                                    aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
                                                     <div class="accordion-body">
                                                         <div class="flex-row row">
                                                             <div class="col-md-8">
                                                                 <div class="d-flex flex-column">
                                                                     <div class="field-wrapper">
-                                                                        <input class="form-control" type="text"
-                                                                            name="title"
-                                                                            @if ($default != null) value="{{ $default->title }}"  
-                                                                            @else
-                                                                            placeholder="Masukkan Judul" @endif>
+                                                                        <input class="form-control" type="text" name="title" @if ($default !=null) value="{{ $default->title }}" @else placeholder="Masukkan Judul" @endif>
                                                                         <div class="field-placeholder">Judul</div>
                                                                     </div>
                                                                 </div>
@@ -273,12 +266,7 @@
                                                             <div class="col-md-8">
                                                                 <div class="d-flex flex-column">
                                                                     <div class="field-wrapper">
-                                                                        <input class="form-control" type="text"
-                                                                            name="subtitle" id="subjudul"
-                                                                            @if ($default != null) value="{{ $default->subtitle }}"  
-                                                                            @else
-                                                                            placeholder="Masukkan subJudul" @endif
-                                                                            placeholder="Masukkan Subjudul">
+                                                                        <input class="form-control" type="text" name="subtitle" id="subjudul" @if ($default !=null) value="{{ $default->subtitle }}" @else placeholder="Masukkan subJudul" @endif placeholder="Masukkan Subjudul">
                                                                         <div class="field-placeholder">Subjudul</div>
                                                                     </div>
                                                                 </div>
@@ -289,8 +277,7 @@
                                                                 <div class="d-flex">
                                                                     <div class="flex-grow-1">
                                                                         <div class="field-wrapper">
-                                                                            <input class="form-control" type="file"
-                                                                                name="logo" id="logo">
+                                                                            <input class="form-control" type="file" name="logo" id="logo">
                                                                             <div class="field-placeholder">Logo</div>
                                                                         </div>
                                                                     </div>
@@ -304,8 +291,7 @@
                                         </div>
                                     </div>
                                     <div class="" style="margin-top: 2%;">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
-                                            style="margin-bottom: 1%;">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom: 1%;">
 
                                             <div style="border-bottom: solid grey 1px;">
                                                 <h6>Tagihan</h6>
@@ -317,35 +303,28 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="field-wrapper mb-3 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12"
-                                            style="margin-left: initial;height: 76px;margin-right: -1%;">
-                                            <select class="select-single js-states" name="customer_id"
-                                                title="Select Product Category" data-live-search="true">
+                                        <div class="field-wrapper mb-3 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" style="margin-left: initial;height: 76px;margin-right: -1%;">
+                                            <select class="select-single js-states" name="customer_id" title="Select Product Category" data-live-search="true">
                                                 <option disabled selected>Pilih Salah Satu</option>
                                                 @foreach ($customer as $data)
-                                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
                                             </select>
-                                            <div class="field-placeholder">Pelanggan <span
-                                                    class="text-danger">*</span></div>
+                                            <div class="field-placeholder">Pelanggan <span class="text-danger">*</span></div>
                                         </div>
                                         <div class=" col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 d-flex">
                                             <div class="col-6 ml-5 mr-5" style="margin-right:1%">
                                                 <div class="field-wrapper">
                                                     <div class="input-group">
-                                                        <input type="text" style="z-index:auto"
-                                                            class="form-control datepicker" name="start_date"
-                                                            id="date">
+                                                        <input type="text" style="z-index:auto" class="form-control datepicker" name="start_date" id="date">
                                                         <span class="input-group-text">
                                                             <i class="icon-calendar1"></i>
                                                         </span>
                                                     </div>
-                                                    <div class="field-placeholder">Tanggal Faktur<span
-                                                            class="text-danger">*</span></div>
+                                                    <div class="field-placeholder">Tanggal Faktur<span class="text-danger">*</span></div>
                                                 </div>
                                                 <div class="field-wrapper mb-3" style="margin-top: 16.5px">
-                                                    <select class="select-single js-states" name="end_date"
-                                                        title="Select Product Category" data-live-search="true">
+                                                    <select class="select-single js-states" name="end_date" title="Select Product Category" data-live-search="true">
                                                         <option selected>Jatuh tempo dalam 15 hari</option>
                                                         <option>Jatuh tempo dalam 30 hari</option>
                                                         <option>Jatuh tempo dalam 45 hari</option>
@@ -353,20 +332,16 @@
                                                         <option>Jatuh tempo dalam 90 hari</option>
                                                         <option>Jatuh tempo saat diterima</option>
                                                     </select>
-                                                    <div class="field-placeholder">Tanggal Pembayaran <span
-                                                            class="text-danger">*</span></div>
+                                                    <div class="field-placeholder">Tanggal Pembayaran <span class="text-danger">*</span></div>
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="field-wrapper mb-3">
-                                                    <input class="form-control" name="invoice_number" id="increment-input" type="text"
-                                                        placeholder="Masukkan Nomor Faktur">
-                                                    <div class="field-placeholder">Nomor Faktur <span
-                                                            class="text-danger">*</span></div>
+                                                    <input class="form-control" name="invoice_number" id="increment-input" type="text" placeholder="Masukkan Nomor Faktur">
+                                                    <div class="field-placeholder">Nomor Faktur <span class="text-danger">*</span></div>
                                                 </div>
                                                 <div class="field-wrapper mb-3">
-                                                    <input class="form-control" name="order_quantity" type="number"
-                                                        placeholder="Masukkan Jumlah Pesanan">
+                                                    <input class="form-control" name="order_quantity" type="number" placeholder="Masukkan Jumlah Pesanan">
                                                     <div class="field-placeholder">Jumlah Pesanan</div>
                                                 </div>
                                             </div>
@@ -381,14 +356,9 @@
                                                 <thead>
                                                     <tr>
                                                         <th>
-                                                            <button class="edit-icon"
-                                                                style="background-color: transparent;border:none"
-                                                                type="button" data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal1">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" height="20"
-                                                                    viewBox="0 -960 960 960" width="20">
-                                                                    <path
-                                                                        d="M180-180h44l443-443-44-44-443 443v44Zm614-486L666-794l42-42q17-17 42-17t42 17l44 44q17 17 17 42t-17 42l-42 42Zm-42 42L248-120H120v-128l504-504 128 128Zm-107-21-22-22 44 44-22-22Z" />
+                                                            <button class="edit-icon" style="background-color: transparent;border:none" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20">
+                                                                    <path d="M180-180h44l443-443-44-44-443 443v44Zm614-486L666-794l42-42q17-17 42-17t42 17l44 44q17 17 17 42t-17 42l-42 42Zm-42 42L248-120H120v-128l504-504 128 128Zm-107-21-22-22 44 44-22-22Z" />
                                                                 </svg>
                                                             </button>
                                                             Item
@@ -407,47 +377,38 @@
                                                     <tr>
                                                         <td>
                                                             <div class="field-wrapper m-0">
-                                                                <select class="item-dropdown ex-dropdown-input drop-items"
-                                                                    name="item_id[]">
+                                                                <select class="item-dropdown ex-dropdown-input drop-items" name="item_id[]">
                                                                     <!-- Opsi item akan ditambahkan secara dinamis menggunakan JavaScript -->
                                                                 </select>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="field-wrapper m-0">
-                                                                <input type="text" style="border-radius:2px"
-                                                                    name="description[]" class="form-control drop-description">
+                                                                <input type="text" style="border-radius:2px" name="description[]" class="form-control drop-description">
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="field-wrapper m-0">
-                                                                <input type="number" style="border-radius:2px"
-                                                                    name="quantity[]"
-                                                                    class="quantity-input form-control drop-quantity">
+                                                                <input type="number" style="border-radius:2px" name="quantity[]" class="quantity-input form-control drop-quantity">
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="field-wrapper m-0">
-                                                                <input type="number" style="border-radius:2px"
-                                                                    name="price[]" class="form-control drop-price">
+                                                                <input type="number" style="border-radius:2px" name="price[]" class="form-control drop-price">
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div id="pajak-wrapper">
-                                                                <div
-                                                                    class="field-wrapper m-0 mb-1 pajak-input-wrapper">
-                                                                    <input type="text" name="tax_id[]"
-                                                                         class="form-control"
-                                                                        id="" readonly> <br>
-                                                                        
+                                                                <div class="field-wrapper m-0 mb-1 pajak-input-wrapper">
+                                                                    <input type="text" name="tax_id[]" class="form-control" id="" readonly> <br>
+
                                                                 </div>
-                                                               
+
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="field-wrapper m-0">
-                                                                <input type="number" style="border-radius:2px"
-                                                                    name="amount[]" class="form-control drop-amount" readonly>
+                                                                <input type="number" style="border-radius:2px" name="amount[]" class="form-control drop-amount" readonly>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -464,99 +425,81 @@
                                                     <tr>
                                                         <td colspan="5"></td>
                                                         <td colspan="2">
-                                                          <p>Subtotal = <span id="total-amount"></span></p>
-                                                          <a href="#" class="toggle-link button-tagihan" data-target=".toggle-content"><p>Discount = <span id="total-discount"></span></p></a>
-                                                          <div class="toggle-content field-wrapper" style="width:40%">
-                                                            <input type="text" style="border-radius:2px" class="discount form-control" name="discount">
-                                                          </div>
-                                                          <p>Total Pajak = <span id="total-tax"></span></p>
-                                                          <h5 class="mt-2">Total = <b id="total"></b></h5>
+                                                            <p>Subtotal = <span id="total-amount"></span></p>
+                                                            <a href="#" class="toggle-link button-tagihan" data-target=".toggle-content">
+                                                                <p>Discount = <span id="total-discount"></span></p>
+                                                            </a>
+                                                            <div class="toggle-content field-wrapper" style="width:40%">
+                                                                <input type="text" style="border-radius:2px" class="discount form-control" name="discount">
+                                                            </div>
+                                                            <p>Total Pajak = <span id="total-tax"></span></p>
+                                                            <h5 class="mt-2">Total = <b id="total"></b></h5>
                                                         </td>
-                                                        </tr>
-                                                      <input type="hidden" class="total-tax" name="totalTax">
-                                                      <input type="hidden" class="total-discount" name="totalDiscount">
-                                                      <input type="hidden" class="total" name="totalPay">
-                                                      <input type="hidden" class="total-amount" name="totalAmount">
+                                                    </tr>
+                                                    <input type="hidden" class="total-tax" name="totalTax">
+                                                    <input type="hidden" class="total-discount" name="totalDiscount">
+                                                    <input type="hidden" class="total" name="totalPay">
+                                                    <input type="hidden" class="total-amount" name="totalAmount">
                                                 </tfoot>
                                             </table>
 
                                             <button class="btn btn-primary" type="button" id="add-row">Tambah
                                                 Baris</button>
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
+                                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 Tambah Item
                                             </button>
 
                                             <!-- Modal start -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content" style="margin-top: -20%;">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Modal title
                                                             </h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <form>
                                                                 <div class="field-wrapper m-0">
                                                                     <label for="nama">Nama</label>
-                                                                    <input type="text" name="nama"
-                                                                        style="border-radius:2px"
-                                                                        placeholder="Masukan nama item"
-                                                                        id="nama"class="form-control">
+                                                                    <input type="text" name="nama" style="border-radius:2px" placeholder="Masukan nama item" id="nama" class="form-control">
                                                                 </div>
                                                                 <div class="field-wrapper m-0">
                                                                     <label for="nama">Harga Jual</label>
-                                                                    <input type="text" name="Harga"
-                                                                        style="border-radius:2px"
-                                                                        placeholder="Masukan harga item"
-                                                                        id="nama"class="form-control">
+                                                                    <input type="text" name="Harga" style="border-radius:2px" placeholder="Masukan harga item" id="nama" class="form-control">
                                                                 </div>
                                                                 <div class="field-wrapper m-0">
                                                                     <label for="nama">kategori</label>
-                                                                    <input type="text" name="kategori"
-                                                                        style="border-radius:2px"
-                                                                        placeholder="Masukan nama item"
-                                                                        id="nama"class="form-control">
+                                                                    <input type="text" name="kategori" style="border-radius:2px" placeholder="Masukan nama item" id="nama" class="form-control">
                                                                 </div>
                                                                 <div class="field-wrapper ">
                                                                     <label for="nama">Pajak</label>
-                                                                    <input type="text" name="Pajak"
-                                                                        style="border-radius:2px"
-                                                                        placeholder="Masukan nama item"
-                                                                        id="nama"class="form-control">
+                                                                    <input type="text" name="Pajak" style="border-radius:2px" placeholder="Masukan nama item" id="nama" class="form-control">
                                                                 </div>
                                                             </form>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- Modal end -->
                                             <!-- Modal start -->
-                                            <div class="modal fade" id="exampleModal1" tabindex="-1"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content" style="margin-top: -20%;">
                                                         <div class="modal-header" style="margin-bottom: -1%">
                                                             <h5 class="modal-title" id="exampleModalLabel">Edit Kolom
                                                             </h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <form>
                                                                 <div class="field-wrapper m-0">
                                                                     <label for="nama">Nama Item</label>
-                                                                    <select class="select-single js-states"
-                                                                        title="Select Product Category"
-                                                                        data-live-search="true">
+                                                                    <select class="select-single js-states" title="Select Product Category" data-live-search="true">
                                                                         <option>Item</option>
                                                                         <option>Layanan</option>
                                                                         <option>Produk</option>
@@ -566,27 +509,20 @@
                                                                 <!--  -->
                                                                 <div class="field-wrapper m-0">
                                                                     <label for="nama">Nama Harga</label>
-                                                                    <select class="select-single js-states"
-                                                                        title="Select Product Category"
-                                                                        data-live-search="true">
+                                                                    <select class="select-single js-states" title="Select Product Category" data-live-search="true">
                                                                         <option>Harga</option>
                                                                         <option>Tarif</option>
                                                                     </select>
 
                                                                 </div>
                                                                 <label for="nama">Nama Kuantitas</label>
-                                                                <div class="field-wrapper m-0"
-                                                                    style="display: flex; flex-direction: row;">
-                                                                    <select class="select-single js-states"
-                                                                        title="Select Product Category"
-                                                                        onchange="showInputField(this)">
+                                                                <div class="field-wrapper m-0" style="display: flex; flex-direction: row;">
+                                                                    <select class="select-single js-states" title="Select Product Category" onchange="showInputField(this)">
                                                                         <option>Kuantitas</option>
                                                                         <option>Khusus</option>
                                                                     </select>
-                                                                    <div id="customInput"
-                                                                        style="display: none; margin-left: 10px;">
-                                                                        <input type="text" class=""
-                                                                            placeholder="Masukan">
+                                                                    <div id="customInput" style="display: none; margin-left: 10px;">
+                                                                        <input type="text" class="" placeholder="Masukan">
                                                                     </div>
                                                                 </div>
 
@@ -594,8 +530,7 @@
                                                             </form>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -620,9 +555,7 @@
                             <div class="accordion" id="faqAccordion">
                                 <div class="accordion-item" style="margin-top: 1%">
                                     <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                            aria-expanded="false" aria-controls="collapseTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                             <div class="accordion-heading">
                                                 <h6 class="accordion-title">Opsi Lanjutan</h6>
                                                 <p class="accordion-description">Pilih kategori, tambahkan, atau edit
@@ -630,38 +563,36 @@
                                             </div>
                                         </button>
                                     </h2>
-                                    <div id="collapseTwo" class="accordion-collapse collapse"
-                                        aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
                                         <div class="accordion-body">
                                             <div class="d-flex flex-wrap row">
                                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                     <div class="field-wrapper" style="height: 88px">
-                                                        <input class="form-control" type="file" name="attachment"
-                                                            id="judul"
-                                                            style="border-radius: 2px; margin-bottom: 10px; margin-right: 10%">
+                                                        <input class="form-control" type="file" name="attachment" id="judul" style="border-radius: 2px; margin-bottom: 10px; margin-right: 10%">
                                                         <div class="field-placeholder">Lampiran</div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                                                    <div class="field-wrapper mb-3">
-                                                        <select class="select-single js-states" name="category_id"
-                                                            title="Select Product Category" data-live-search="true">
-                                                            <option disabled selected>Pilih Salah Satu</option>
-                                                            @foreach ($category as $data)
-                                                                <option value="{{ $data->id }}">
-                                                                    {{ $data->name }}</option>
-                                                            @endforeach
-                                                            <option><button type="button">Kategori Baru</button>
-                                                            </option>
-                                                        </select>
-                                                        <div class="field-placeholder">Kategori <span
-                                                                class="text-danger">*</span></div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                                                    <!-- Field wrapper start -->
+
+                                                    <div class="field-wrapper-group">
+                                                        <div class="field-wrapper">
+                                                            <select class="select-multiple js-states" title="Select Product Category" name="category_id" id="category_id">
+                                                                @foreach ($category as $row)
+                                                                <option value="{{ $row->id}}">{{ $row->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <div class="field-placeholder">Kategori<span class="text-danger">*</span></div>
+                                                        </div>
+                                                        <button type="button" class="input-icon-block btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalcategory">
+                                                            <i class="icon-plus1"></i>
+                                                        </button>
                                                     </div>
+
                                                 </div>
-                                                <div class="col-8"
-                                                    style="width: 100%; height: auto; margin-top: -8%;">
-                                                    <div class="field-wrapper"
-                                                        style="width: 100%; height: auto; margin-top:3%">
+                                                <div class="col-8" style="width: 100%; height: auto; margin-top: -5%;">
+                                                    <div class="field-wrapper" style="width: 100%; height: auto; margin-top:3%">
                                                         <textarea class="form-control" name="footer" placeholder="Masukan Catatan" rows="2"></textarea>
                                                         <div class="field-placeholder">Footer</div>
                                                     </div>
@@ -674,12 +605,86 @@
                             </div>
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
                                 <div class="d-flex justify-content-end mt-4">
-                                    <button class="btn btn-outline-secondary1" type="submit"
-                                        style="border-radius: 2px; margin-right: 1%" href="#">Batal</button>
-                                    <button class="btn btn-primary" onclick="create()"
-                                        style="border-radius: 2px">Simpan</button>
+                                    <button class="btn btn-outline-secondary1" type="submit" style="border-radius: 2px; margin-right: 1%" href="#">Batal</button>
+                                    <button class="btn btn-primary" onclick="create()" style="border-radius: 2px">Simpan</button>
                                 </div>
                             </div>
+                            <form action="/insert_category_income" method="POST">
+                                        @csrf
+                                        <div class="modal fade" id="modalcategory" tabindex="-1" aria-labelledby="modalcategory" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="margin-top: -20px;">
+                                                <div class="modal-content" style="padding: 0px;">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Tambah Kategori</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper">
+                                                                <input class="form-control" name="name" type="text" placeholder=" Masukan Nama">
+                                                                <div class="field-placeholder">Nama <span class="text-danger">*</span></div>
+                                                                <div class="form-text">
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- Field wrapper end -->
+
+                                                        </div>
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 28px;">
+
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper row">
+                                                                <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-12">
+                                                                    <label class="mb-2">Warna</label>
+                                                                </div>
+                                                                <div class="d-flex">
+                                                                    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12">
+                                                                        <input class="form-control" name="color" type="text" placeholder="Masukkan Warna Kategori" id="hex-input">
+                                                                    </div>
+                                                                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12">
+                                                                        <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Field wrapper end -->
+
+                                                        </div>
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                                            <!-- Field wrapper start -->
+                                                            <div class="field-wrapper-group">
+                                                                <div class="field-wrapper">
+                                                                    <select class="select-multiple js-states" name="category_type_id" title="Select Product Category">
+                                                                        @foreach ($category_type as $category)
+
+                                                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    <div class="field-placeholder">Kategori<span class="text-danger">*</span></div>
+                                                                </div>
+
+                                                            </div>
+                                                            <!-- Field wrapper end -->
+
+                                                        </div>
+
+
+
+
+
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-secondary">Simpan</button>
+                                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                             <div class="app-footer">© Uni Pro Admin 2021</div>
                         </div>
 
@@ -735,7 +740,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-    
+
     <script>
         function showInputField(selectElement) {
             var inputField = document.getElementById("customInput");
@@ -747,216 +752,214 @@
             }
         }
     </script>
- 
-   <script>
-        $(document).ready(function() {
-          $('.toggle-link').click(function(e) {
-            e.preventDefault();
-            var target = $(this).data('target');
-            $(target).toggle('toggle');
-          });
-        });
-      </script>
-    
+
     <script>
-   $(document).ready(function() {
-  // Mengambil data item dari server
-  $.ajax({
-  url: '/get-items-data',
-  type: 'GET',
-  dataType: 'json',
-  success: function(response) {
-    if (response.success) {
-      var itemsData = response.data;
+        $(document).ready(function() {
+            $('.toggle-link').click(function(e) {
+                e.preventDefault();
+                var target = $(this).data('target');
+                $(target).toggle('toggle');
+            });
+        });
+    </script>
 
-      $('.item-dropdown').empty();
-      var defaultOption = $('<option>').val('').text('Pilih Item');
-      $('.item-dropdown').append(defaultOption);
+    <script>
+        $(document).ready(function() {
+            // Mengambil data item dari server
+            $.ajax({
+                url: '/get-items-data',
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        var itemsData = response.data;
 
-      itemsData.forEach(function(item) {
-        var option = $('<option>').val(item.id).text(item.name).data('tax-id', item.tax_id).attr('name', item.name);
-        $('.item-dropdown').append(option);
-      });
+                        $('.item-dropdown').empty();
+                        var defaultOption = $('<option>').val('').text('Pilih Item');
+                        $('.item-dropdown').append(defaultOption);
 
-      new TomSelect('.item-dropdown', {
-        plugins: ['dropdown_input'],
-        create: true,
-        allowEmptyOption: true,
-        sortField: {
-          field: "text",
-          direction: "asc",
-        }
-      });
-      var incrementInput = $("#increment-input");
-        var companyId = parseInt(response.company);
-        var prefiks = response.prefix.prefix;
+                        itemsData.forEach(function(item) {
+                            var option = $('<option>').val(item.id).text(item.name).data('tax-id', item.tax_id).attr('name', item.name);
+                            $('.item-dropdown').append(option);
+                        });
 
-if (isNaN(incrementInput.val())) {
-  incrementInput.val('1');
-} else {
-  var formattedCompanyId = String(companyId + 1).padStart(3, '0');
-  incrementInput.val(prefiks + '-' + formattedCompanyId);
-}
+                        new TomSelect('.item-dropdown', {
+                            plugins: ['dropdown_input'],
+                            create: true,
+                            allowEmptyOption: true,
+                            sortField: {
+                                field: "text",
+                                direction: "asc",
+                            }
+                        });
+                        var incrementInput = $("#increment-input");
+                        var companyId = parseInt(response.company);
+                        var prefiks = response.prefix.prefix;
+
+                        if (isNaN(incrementInput.val())) {
+                            incrementInput.val('1');
+                        } else {
+                            var formattedCompanyId = String(companyId + 1).padStart(3, '0');
+                            incrementInput.val(prefiks + '-' + formattedCompanyId);
+                        }
 
 
-    } else {
-      console.log(response.message);
-    }
-  },
-  error: function(xhr, status, error) {
-    console.log(error);
-  }
-});
+                    } else {
+                        console.log(response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                }
+            });
 
-  $(document).on('change', '.item-dropdown', function() {
-    var selectedItemId = $(this).val();
-    var row = $(this).closest('tr');
+            $(document).on('change', '.item-dropdown', function() {
+                var selectedItemId = $(this).val();
+                var row = $(this).closest('tr');
 
-    if (selectedItemId !== '') {
-      $.ajax({
-        url: '/get-item-data/' + selectedItemId,
-        type: 'GET',
-        dataType: 'json',
-        success: function(response) {
-          if (response.success) {
-            var itemData = response.data;
-            var tax = response.tax;
-            var taxAmount = response.taxAmount;
-            var description = response.description;
-            var combinedTax = tax + ' (' + taxAmount / 100 + ')';
+                if (selectedItemId !== '') {
+                    $.ajax({
+                        url: '/get-item-data/' + selectedItemId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success) {
+                                var itemData = response.data;
+                                var tax = response.tax;
+                                var taxAmount = response.taxAmount;
+                                var description = response.description;
+                                var combinedTax = tax + ' (' + taxAmount / 100 + ')';
 
-            row.find('input[name="description[]"]').val(itemData.description);
-            row.find('input[name="quantity[]"]').val(itemData.quantity);
-            row.find('input[name="price[]"]').val(itemData.selling_price);
+                                row.find('input[name="description[]"]').val(itemData.description);
+                                row.find('input[name="quantity[]"]').val(itemData.quantity);
+                                row.find('input[name="price[]"]').val(itemData.selling_price);
 
-            if (tax === 'null') {
-              row.find('input[name="tax_id[]"]').val(0);
-            } else {
-              row.find('input[name="tax_id[]"]').val(combinedTax).data('taxAmount', taxAmount);
+                                if (tax === 'null') {
+                                    row.find('input[name="tax_id[]"]').val(0);
+                                } else {
+                                    row.find('input[name="tax_id[]"]').val(combinedTax).data('taxAmount', taxAmount);
+                                }
+
+                            } else {
+                                console.log(response.message);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.log(error);
+                        }
+                    });
+                } else {}
+            });
+
+            $(document).on('input', 'input[name="quantity[]"], input[name="price[]"], input[name="tax_id[]"], input[name="discount"]', function() {
+                updateTotals();
+            });
+
+            $(document).on('click', '.delete-row', function() {
+                var deletedRow = $(this).closest('tr');
+                var deletedAmount = parseFloat(deletedRow.find('input[name="amount[]"]').val());
+                var totalAmountElement = document.getElementById('total-amount');
+                var totalAmount = parseFloat(totalAmountElement.textContent.replace('Rp. ', ''));
+                var totalTaxElement = document.getElementById('total-tax');
+                var totalTax = parseFloat(totalTaxElement.textContent.replace('Rp. ', ''));
+                var totalDiscountElement = document.getElementById('total-discount');
+                var totalDiscount = parseFloat(totalDiscountElement.textContent.replace('Rp. ', ''));
+
+                if (!isNaN(deletedAmount)) {
+                    totalAmount -= deletedAmount;
+                    totalTax -= deletedAmount * (deletedRow.data('taxAmount') / 100);
+                }
+
+                var discountInput = document.querySelector('input[name="discount"]');
+                var discount = parseFloat(discountInput.value);
+                if (isNaN(discount)) {
+                    totalDiscount = 0;
+                }
+
+                var total = totalAmount - totalDiscount;
+                totalAmountElement.textContent = 'Rp. ' + totalAmount.toFixed(2);
+                totalTaxElement.textContent = 'Rp. ' + totalTax.toFixed(2);
+                totalDiscountElement.textContent = 'Rp. ' + totalDiscount.toFixed(2);
+                $('#total').text('Rp. ' + total.toFixed(2));
+
+                deletedRow.remove();
+
+                if ($('input[name="quantity[]"]').length === 0) {
+                    resetTotals();
+                }
+            });
+
+            function updateTotals() {
+                var totalAmount = 0;
+                var totalTax = 0;
+                var hasEmptyQuantity = false;
+
+                $('input[name="quantity[]"]').each(function() {
+                    var row = $(this).closest('tr');
+                    var quantity = parseFloat($(this).val());
+                    var price = parseFloat(row.find('input[name="price[]"]').val());
+                    var taxAmount = parseFloat(row.find('input[name="tax_id[]"]').data('taxAmount'));
+
+                    if (isNaN(quantity) || isNaN(price)) {
+                        hasEmptyQuantity = true;
+                        return false;
+                    }
+
+                    var amount = price * quantity;
+
+                    // Kurangi amount dengan pajak jika ada
+                    if (!isNaN(taxAmount)) {
+                        amount -= amount * (taxAmount / 100);
+                        totalTax += amount * (taxAmount / 100);
+                    }
+
+                    row.find('input[name="amount[]"]').val(amount.toFixed(2));
+                    totalAmount += amount;
+                });
+
+                if (hasEmptyQuantity) {
+                    resetTotals();
+                    return;
+                }
+
+                var discountInput = document.querySelector('input[name="discount"]');
+                var discount = parseFloat(discountInput.value);
+                var totalDiscount = isNaN(discount) ? 0 : totalAmount * (discount / 100);
+                var total = totalAmount - totalDiscount;
+
+                var totalAmountElement = document.getElementById('total-amount');
+                totalAmountElement.textContent = 'Rp. ' + totalAmount.toFixed(2);
+                var totalTaxElement = document.getElementById('total-tax');
+                totalTaxElement.textContent = 'Rp. ' + totalTax.toFixed(2);
+                var totalDiscountElement = document.getElementById('total-discount');
+                totalDiscountElement.textContent = 'Rp. ' + totalDiscount.toFixed(2);
+                $('#total').text('Rp. ' + total.toFixed(2));
+
+                // Update the values of the hidden input fields
+                $('input[name="totalAmount"]').val(totalAmount.toFixed(2));
+                $('input[name="totalTax"]').val(totalTax.toFixed(2));
+                $('input[name="totalDiscount"]').val(totalDiscount.toFixed(2));
+                $('input[name="totalPay"]').val(total.toFixed(2));
             }
 
-          } else {
-            console.log(response.message);
-          }
-        },
-        error: function(xhr, status, error) {
-          console.log(error);
-        }
-      });
-    } else {
-    }
-  });
+            function resetTotals() {
+                var totalAmount = 0;
+                var totalDiscount = 0;
 
-  $(document).on('input', 'input[name="quantity[]"], input[name="price[]"], input[name="tax_id[]"], input[name="discount"]', function() {
-    updateTotals();
-  });
+                var totalAmountElement = document.getElementById('total-amount');
+                totalAmountElement.textContent = 'Rp. ' + totalAmount.toFixed(2);
+                var totalTaxElement = document.getElementById('total-tax');
+                totalTaxElement.textContent = 'Rp. 0.00';
+                var totalDiscountElement = document.getElementById('total-discount');
+                totalDiscountElement.textContent = 'Rp. ' + totalDiscount.toFixed(2);
+                $('#total').text('Rp. ' + totalAmount.toFixed(2));
+                $('input[name="totalAmount"]').val(totalAmount.toFixed(2));
+                $('input[name="totalTax"]').val('0.00');
+                $('input[name="totalDiscount"]').val(totalDiscount.toFixed(2));
+                $('input[name="totalPay"]').val(totalAmount.toFixed(2));
 
-  $(document).on('click', '.delete-row', function() {
-    var deletedRow = $(this).closest('tr');
-    var deletedAmount = parseFloat(deletedRow.find('input[name="amount[]"]').val());
-    var totalAmountElement = document.getElementById('total-amount');
-    var totalAmount = parseFloat(totalAmountElement.textContent.replace('Rp. ', ''));
-    var totalTaxElement = document.getElementById('total-tax');
-    var totalTax = parseFloat(totalTaxElement.textContent.replace('Rp. ', ''));
-    var totalDiscountElement = document.getElementById('total-discount');
-    var totalDiscount = parseFloat(totalDiscountElement.textContent.replace('Rp. ', ''));
-
-    if (!isNaN(deletedAmount)) {
-      totalAmount -= deletedAmount;
-      totalTax -= deletedAmount * (deletedRow.data('taxAmount') / 100);
-    }
-
-    var discountInput = document.querySelector('input[name="discount"]');
-    var discount = parseFloat(discountInput.value);
-    if (isNaN(discount)) {
-      totalDiscount = 0;
-    }
-
-    var total = totalAmount - totalDiscount;
-    totalAmountElement.textContent = 'Rp. ' + totalAmount.toFixed(2);
-    totalTaxElement.textContent = 'Rp. ' + totalTax.toFixed(2);
-    totalDiscountElement.textContent = 'Rp. ' + totalDiscount.toFixed(2);
-    $('#total').text('Rp. ' + total.toFixed(2));
-
-    deletedRow.remove();
-
-    if ($('input[name="quantity[]"]').length === 0) {
-      resetTotals();
-    }
-  });
-
-  function updateTotals() {
-  var totalAmount = 0;
-  var totalTax = 0;
-  var hasEmptyQuantity = false;
-
-  $('input[name="quantity[]"]').each(function() {
-    var row = $(this).closest('tr');
-    var quantity = parseFloat($(this).val());
-    var price = parseFloat(row.find('input[name="price[]"]').val());
-    var taxAmount = parseFloat(row.find('input[name="tax_id[]"]').data('taxAmount'));
-
-    if (isNaN(quantity) || isNaN(price)) {
-      hasEmptyQuantity = true;
-      return false;
-    }
-
-    var amount = price * quantity;
-
-    // Kurangi amount dengan pajak jika ada
-    if (!isNaN(taxAmount)) {
-      amount -= amount * (taxAmount / 100);
-      totalTax += amount * (taxAmount / 100);
-    }
-
-    row.find('input[name="amount[]"]').val(amount.toFixed(2));
-    totalAmount += amount;
-  });
-
-  if (hasEmptyQuantity) {
-    resetTotals();
-    return;
-  }
-
-  var discountInput = document.querySelector('input[name="discount"]');
-  var discount = parseFloat(discountInput.value);
-  var totalDiscount = isNaN(discount) ? 0 : totalAmount * (discount / 100);
-  var total = totalAmount - totalDiscount;
-
-  var totalAmountElement = document.getElementById('total-amount');
-  totalAmountElement.textContent = 'Rp. ' + totalAmount.toFixed(2);
-  var totalTaxElement = document.getElementById('total-tax');
-  totalTaxElement.textContent = 'Rp. ' + totalTax.toFixed(2);
-  var totalDiscountElement = document.getElementById('total-discount');
-  totalDiscountElement.textContent = 'Rp. ' + totalDiscount.toFixed(2);
-  $('#total').text('Rp. ' + total.toFixed(2));
-
-  // Update the values of the hidden input fields
-  $('input[name="totalAmount"]').val(totalAmount.toFixed(2));
-  $('input[name="totalTax"]').val(totalTax.toFixed(2));
-  $('input[name="totalDiscount"]').val(totalDiscount.toFixed(2));
-  $('input[name="totalPay"]').val(total.toFixed(2));
-}
-
-  function resetTotals() {
-    var totalAmount = 0;
-    var totalDiscount = 0;
-
-    var totalAmountElement = document.getElementById('total-amount');
-    totalAmountElement.textContent = 'Rp. ' + totalAmount.toFixed(2);
-    var totalTaxElement = document.getElementById('total-tax');
-    totalTaxElement.textContent = 'Rp. 0.00';
-    var totalDiscountElement = document.getElementById('total-discount');
-    totalDiscountElement.textContent = 'Rp. ' + totalDiscount.toFixed(2);
-    $('#total').text('Rp. ' + totalAmount.toFixed(2));
-    $('input[name="totalAmount"]').val(totalAmount.toFixed(2));
-    $('input[name="totalTax"]').val('0.00');
-    $('input[name="totalDiscount"]').val(totalDiscount.toFixed(2));
-    $('input[name="totalPay"]').val(totalAmount.toFixed(2));
-
-  }
-});
-
+            }
+        });
     </script>
 
     <!-- Date Range JS -->

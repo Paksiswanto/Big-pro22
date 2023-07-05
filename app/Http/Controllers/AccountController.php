@@ -38,7 +38,7 @@ class AccountController extends Controller
             'name_bank' => $request->name_bank,
             'bank_telephone' => $request->bank_telephone,
             'bank_address' => $request->bank_address,
-            'company_id' => 1,
+            'company_id' => Auth::user()->company_id,
         ]);
 
         return redirect()->route('account')->withErrors($validatedData)->withInput()->with('success', 'Data berhasil ditambahkan');
@@ -68,7 +68,7 @@ class AccountController extends Controller
             'name_bank' => $request->name_bank,
             'bank_telephone' => $request->bank_telephone,
             'bank_address' => $request->bank_address,
-            'company_id' => 1,
+            'company_id' => Auth::user()->company_id,
         ]);
 
         return redirect()->route('account')->withErrors($validatedData)->withInput()->with('success', 'Data berhasil diubah');

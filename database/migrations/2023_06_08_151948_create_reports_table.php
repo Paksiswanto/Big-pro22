@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('type');
             $table->string('description');
+            $table->string('category');
+            $table->string('description');
             $table->boolean('pin')->default(false);
 
             $table->timestamps();

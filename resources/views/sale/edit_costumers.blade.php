@@ -190,19 +190,6 @@
                                                     <!-- Field wrapper end -->
 
                                                 </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                                    <!-- Field wrapper start -->
-                                                    <div class="field-wrapper">
-                                                        <select class="select-multiple js-states" title="Select Product Category" data-live-search="true" name="currency" id="currency">
-                                                            <option value="Rupiah Indonesia (IDR)" <?php echo ($data['currency'] == 'Rupiah Indonesia (IDR)') ? 'selected="selected"' : '' ?>>Rupiah Indonesia (IDR)</option>
-                                                            <option value="Dolar Amerika Serikat (USD)" <?php echo ($data['currency'] == 'Dolar Amerika Serikat (USD)') ? 'selected="selected"' : '' ?>>Dolar Amerika Serikat (USD)</option>
-                                                        </select>
-                                                        <div class="field-placeholder">Mata Uang</div>
-                                                    </div>
-                                                    <!-- Field wrapper end -->
-
-                                                </div>
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                     <!-- Field wrapper start -->
@@ -242,92 +229,6 @@
                                                     <div class="field-wrapper">
                                                         <input class="form-control" type="text" placeholder="Masukan Provinsi" name="province" id="province" value="{{$data->province}}">
                                                         <div class="field-placeholder">Provinsi</div>
-                                                    </div>
-                                                    <!-- Field wrapper end -->
-
-                                                </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                                                    <!-- Field wrapper start -->
-                                                    <div class="field-wrapper">
-                                                        <select class="select-multiple js-states" title="Select Product Category" data-live-search="true" name="country" id="country">
-                                                            <option value="Afganistan" <?php echo ($data['currency'] == 'Afganistan') ? 'selected="selected"' : '' ?>>Afganistan</option>
-                                                            <option value="Afrika Selatan" <?php echo ($data['currency'] == 'Afrika Selatan') ? 'selected="selected"' : '' ?>>Afrika Selatan</option>
-                                                            <option value="Albania" <?php echo ($data['currency'] == 'Albania') ? 'selected="selected"' : '' ?>>Albania</option>
-                                                            <option value="Aljazair" <?php echo ($data['currency'] == 'Aljazair') ? 'selected="selected"' : '' ?>>Aljazair</option>
-                                                            <option value="Amerika Serikat" <?php echo ($data['currency'] == 'Amerika Serikat') ? 'selected="selected"' : '' ?>>Amerika Serikat</option>
-                                                            <option value="Andorra" <?php echo ($data['currency'] == 'Andorra') ? 'selected="selected"' : '' ?>>Andorra</option>
-                                                            <option value="Angola" <?php echo ($data['currency'] == 'Angola') ? 'selected="selected"' : '' ?>>Angola</option>
-                                                            <option value="Antigua dan Barbuda" <?php echo ($data['currency'] == 'Antigua dan Barbuda') ? 'selected="selected"' : '' ?>>Antigua dan Barbuda</option>
-                                                            <option value="Arab Saudi" <?php echo ($data['currency'] == 'Arab Saudi') ? 'selected="selected"' : '' ?>>Arab Saudi</option>
-                                                            <option value="Argentina" <?php echo ($data['currency'] == 'Argentina') ? 'selected="selected"' : '' ?>>Argentina</option>
-                                                            <option value="Armenia" <?php echo ($data['currency'] == 'Armenia') ? 'selected="selected"' : '' ?>>Armenia</option>
-                                                            <option value="Australia" <?php echo ($data['currency'] == 'Australia') ? 'selected="selected"' : '' ?>>Australia</option>
-                                                            <option value="Austria" <?php echo ($data['currency'] == 'Austria') ? 'selected="selected"' : '' ?>>Austria</option>
-                                                            <option value="Azerbaijan" <?php echo ($data['currency'] == 'Azerbaijan') ? 'selected="selected"' : '' ?>>Azerbaijan</option>
-                                                            <option value="Bahama" <?php echo ($data['currency'] == 'Bahama') ? 'selected="selected"' : '' ?>>Bahama</option>
-                                                            <option value="Bahrain" <?php echo ($data['currency'] == 'Bahrain') ? 'selected="selected"' : '' ?>>Bahrain</option>
-                                                            <option value="Bangladesh" <?php echo ($data['currency'] == 'Bangladesh') ? 'selected="selected"' : '' ?>>Bangladesh</option>
-                                                            <option value="Barbados" <?php echo ($data['currency'] == 'Barbados') ? 'selected="selected"' : '' ?>>Barbados</option>
-                                                            <option value="Belarus" <?php echo ($data['currency'] == 'Belarus') ? 'selected="selected"' : '' ?>>Belarus</option>
-                                                            <option value="Belgia" <?php echo ($data['currency'] == 'Belgia') ? 'selected="selected"' : '' ?>>Belgia</option>
-                                                            <option value="Belize" <?php echo ($data['currency'] == 'Belize') ? 'selected="selected"' : '' ?>>Belize</option>
-                                                            <option value="Benin" <?php echo ($data['currency'] == 'Benin') ? 'selected="selected"' : '' ?>>Benin</option>
-                                                            <option value="Bhutan" <?php echo ($data['currency'] == 'Bhutan') ? 'selected="selected"' : '' ?>>Bhutan</option>
-                                                            <option value="Bolivia" <?php echo ($data['currency'] == 'Bolivia') ? 'selected="selected"' : '' ?>>Bolivia</option>
-                                                            <option value="Bosnia dan Herzegovina" <?php echo ($data['currency'] == 'Bosnia dan Herzegovina') ? 'selected="selected"' : '' ?>>Bosnia dan Herzegovina</option>
-                                                            <option value="Botswana" <?php echo ($data['currency'] == 'Botswana') ? 'selected="selected"' : '' ?>>Botswana</option>
-                                                            <option value="Brasil" <?php echo ($data['currency'] == 'Brasil') ? 'selected="selected"' : '' ?>>Brasil</option>
-                                                            <option value="Brunei" <?php echo ($data['currency'] == 'Brunei') ? 'selected="selected"' : '' ?>>Brunei</option>
-                                                            <option value="Bulgaria" <?php echo ($data['currency'] == 'Bulgaria') ? 'selected="selected"' : '' ?>>Bulgaria</option>
-                                                            <option value="Burkina Faso" <?php echo ($data['currency'] == 'Burkina Faso') ? 'selected="selected"' : '' ?>>Burkina Faso</option>
-                                                            <option value="Burundi" <?php echo ($data['currency'] == 'Burundi') ? 'selected="selected"' : '' ?>>Burundi</option>
-                                                            <option value="Ceko" <?php echo ($data['currency'] == 'Ceko') ? 'selected="selected"' : '' ?>>Ceko</option>
-                                                            <option value="Chad" <?php echo ($data['currency'] == 'Chad') ? 'selected="selected"' : '' ?>>Chad</option>
-                                                            <option value="Chili" <?php echo ($data['currency'] == 'Chili') ? 'selected="selected"' : '' ?>>Chili</option>
-                                                            <option value="China" <?php echo ($data['currency'] == 'China') ? 'selected="selected"' : '' ?>>China</option>
-                                                            <option value="Denmark" <?php echo ($data['currency'] == 'Denmark') ? 'selected="selected"' : '' ?>>Denmark</option>
-                                                            <option value="Djibouti" <?php echo ($data['currency'] == 'Djibouti') ? 'selected="selected"' : '' ?>>Djibouti</option>
-                                                            <option value="Dominika" <?php echo ($data['currency'] == 'Dominika') ? 'selected="selected"' : '' ?>>Dominika</option>
-                                                            <option value="Ekuador" <?php echo ($data['currency'] == 'Ekuador') ? 'selected="selected"' : '' ?>>Ekuador</option>
-                                                            <option value="El Salvador" <?php echo ($data['currency'] == 'El Salvador') ? 'selected="selected"' : '' ?>>El Salvador</option>
-                                                            <option value="Eritrea" <?php echo ($data['currency'] == 'Eritrea') ? 'selected="selected"' : '' ?>>Eritrea</option>
-                                                            <option value="Estonia" <?php echo ($data['currency'] == 'Estonia') ? 'selected="selected"' : '' ?>>Estonia</option>
-                                                            <option value="Ethiopia" <?php echo ($data['currency'] == 'Ethiopia') ? 'selected="selected"' : '' ?>>Ethiopia</option>
-                                                            <option value="Fiji" <?php echo ($data['currency'] == 'Fiji') ? 'selected="selected"' : '' ?>>Fiji</option>
-                                                            <option value="Filipina" <?php echo ($data['currency'] == 'Filipina') ? 'selected="selected"' : '' ?>>Filipina</option>
-                                                            <option value="Finlandia" <?php echo ($data['currency'] == 'Finlandia') ? 'selected="selected"' : '' ?>>Finlandia</option>
-                                                            <option value="Gabon" <?php echo ($data['currency'] == 'Gabon') ? 'selected="selected"' : '' ?>>Gabon</option>
-                                                            <option value="Gambia" <?php echo ($data['currency'] == 'Gambia') ? 'selected="selected"' : '' ?>>Gambia</option>
-                                                            <option value="Georgia" <?php echo ($data['currency'] == 'Georgia') ? 'selected="selected"' : '' ?>>Georgia</option>
-                                                            <option value="Ghana" <?php echo ($data['currency'] == 'Ghana') ? 'selected="selected"' : '' ?>>Ghana</option>
-                                                            <option value="Gibraltar" <?php echo ($data['currency'] == 'Gibraltar') ? 'selected="selected"' : '' ?>>Gibraltar</option>
-                                                            <option value="Greenland" <?php echo ($data['currency'] == 'Greenland') ? 'selected="selected"' : '' ?>>Greenland</option>
-                                                            <option value="Grenada" <?php echo ($data['currency'] == 'Grenada') ? 'selected="selected"' : '' ?>>Grenada</option>
-                                                            <option value="Guatemala" <?php echo ($data['currency'] == 'Guatemala') ? 'selected="selected"' : '' ?>>Guatemala</option>
-                                                            <option value="Guinea" <?php echo ($data['currency'] == 'Guinea') ? 'selected="selected"' : '' ?>>Guinea</option>
-                                                            <option value="Guyana" <?php echo ($data['currency'] == 'Guyana') ? 'selected="selected"' : '' ?>>Guyana</option>
-                                                            <option value="Haiti" <?php echo ($data['currency'] == 'Haiti') ? 'selected="selected"' : '' ?>>Haiti</option>
-                                                            <option value="Honduras" <?php echo ($data['currency'] == 'Honduras') ? 'selected="selected"' : '' ?>>Honduras</option>
-                                                            <option value="Hongaria" <?php echo ($data['currency'] == 'Hongaria') ? 'selected="selected"' : '' ?>>Hongaria</option>
-                                                            <option value="Hong Kong" <?php echo ($data['currency'] == 'Hong Kong') ? 'selected="selected"' : '' ?>>Hong Kong</option>
-                                                            <option value="India" <?php echo ($data['currency'] == 'India') ? 'selected="selected"' : '' ?>>India</option>
-                                                            <option value="Indonesia" <?php echo ($data['currency'] == 'Indonesia') ? 'selected="selected"' : '' ?>>Indonesia</option>
-                                                            <option value="Irak" <?php echo ($data['currency'] == 'Irak') ? 'selected="selected"' : '' ?>>Irak</option>
-                                                            <option value="Iran" <?php echo ($data['currency'] == 'Iran') ? 'selected="selected"' : '' ?>>Iran</option>
-                                                            <option value="Irlandia" <?php echo ($data['currency'] == 'Irlandia') ? 'selected="selected"' : '' ?>>Irlandia</option>
-                                                            <option value="Islandia" <?php echo ($data['currency'] == 'Islandia') ? 'selected="selected"' : '' ?>>Islandia</option>
-                                                            <option value="Israel" <?php echo ($data['currency'] == 'Israel') ? 'selected="selected"' : '' ?>>Israel</option>
-                                                            <option value="Italia" <?php echo ($data['currency'] == 'Italia') ? 'selected="selected"' : '' ?>>Italia</option>
-                                                            <option value="Jamaika" <?php echo ($data['currency'] == 'Jamaika') ? 'selected="selected"' : '' ?>>Jamaika</option>
-                                                            <option value="Jepang" <?php echo ($data['currency'] == 'Jepang') ? 'selected="selected"' : '' ?>>Jepang</option>
-                                                            <option value="Yordania" <?php echo ($data['currency'] == 'Yordania') ? 'selected="selected"' : '' ?>>Yordania</option>
-                                                            <option value="Yunani" <?php echo ($data['currency'] == 'Yunani') ? 'selected="selected"' : '' ?>>Yunani</option>
-                                                            <option value="Zambia" <?php echo ($data['currency'] == 'Zambia') ? 'selected="selected"' : '' ?>>Zambia</option>
-                                                            <option value="Zimbabwe" <?php echo ($data['currency'] == 'Zimbabwe') ? 'selected="selected"' : '' ?>>Zimbabwe</option>
-                                                        </select>
-
-                                                        <div class="field-placeholder">Negara</div>
                                                     </div>
                                                     <!-- Field wrapper end -->
 
