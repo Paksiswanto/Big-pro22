@@ -196,8 +196,8 @@
                                                     <div class="field-wrapper-group">
                                                         <div class="field-wrapper">
                                                             <select class="select-multiple js-states" title="Select Product Category" name="type" style="font-size: 5px;">
-                                                            <option value="hada">hada</option>
-                                                        <option value="hodo">hodo</option>
+                                                            <option value="Ringkasan pendapatan">Ringkasan pendapatan</option>
+                                                        <option value="Ringkasan pengeluaran">Ringkasan pengeluaran</option>
 
                                                             </select>
                                                             <div class="field-placeholder">Jenis<span class="text-danger">*</span></div>
