@@ -256,7 +256,9 @@
 													@enderror" name="confirm_password" type="password" placeholder="Masukan konfirmasi kata sandi baru">
 													<div class="field-placeholder">Konfirmas kata sandi baru</div>
 													@error('confirm_password')
-													{{ $message }}
+													<div class="invalid-feedback">
+														{{ $message }}
+													</div>
 													@enderror
 												</div>
 												<!-- Field wrapper end -->
