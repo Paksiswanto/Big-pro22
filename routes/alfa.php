@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CostumersController;
+use App\Http\Controllers\FavoritController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\SupplierController;
@@ -48,3 +49,7 @@ Route::get('/ExportSupplier', [SupplierController::class, 'ExportSupplier'])->na
 Route::get('ImportTransfer', [TransferController::class, 'importTransfer'])->name('ImportTransfer');
 Route::post('/ImportDataTransfer', [TransferController::class, 'ImportDataTransfer'])->name('ImportDataTransfer');
 Route::get('/DownloadTransfer', [TransferController::class, 'DownloadTransfer'])->name('DownloadTransfer');
+Route::get('/ExportTransfer', [TransferController::class, 'ExportTransfer'])->name('ExportTransfer');
+//Favorit
+Route::post('favorite/{item}', [FavoritController::class, 'active'])->name('favorit');
+Route::post('unfavorite/{item}', [FavoritController::class, 'nonactive'])->name('unfavorit');

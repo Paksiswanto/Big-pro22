@@ -51,6 +51,11 @@
             margin-bottom: 10px;
         }
 
+      .button-tagihan {
+    position: relative;
+    margin-bottom: 10px;
+  }
+
         .button-tagihan::after {
             content: "";
             position: absolute;
@@ -619,7 +624,7 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        
+
                                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                             <!-- Field wrapper start -->
@@ -1008,7 +1013,7 @@
                                                                     <input type="text" name="tax_id[]"
                                                                          class="form-control"
                                                                         id="" readonly> <br>
-                                                                        
+
                                                                 </div>
                                                                 <div class="add-pajak-wrapper mb-2">
                                                                     <button class="btn add-pajak" type="button"

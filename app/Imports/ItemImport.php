@@ -7,6 +7,7 @@ use App\Models\Company;
 use Maatwebsite\Excel\Concerns\ToModel;
 use App\Models\Item; // Gantikan dengan model Anda sendiri
 use App\Models\Tax;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class ItemImport implements ToModel,WithHeadingRow
@@ -15,7 +16,7 @@ class ItemImport implements ToModel,WithHeadingRow
     {
         $tax = Tax::where('name', $row['tax_id'])->firstOrFail();
         $category = Category::where('name', $row['category_id'])->firstOrFail();
-        $company = Company::where('name', $row['company_id'])->firstOrFail();
+
         // Proses data dari setiap baris dan simpan ke dalam model
         return new Item([
             'name' => $row['name'],
@@ -26,7 +27,7 @@ class ItemImport implements ToModel,WithHeadingRow
             'selling_price' => $row['selling_price'],
             'purchase_price' => $row['purchase_price'],
             'tax_id' => $tax->id,
-            'company_id' => $company->id,
+            'company_id' => Auth::user()->company_id
         ]);
     }
 }

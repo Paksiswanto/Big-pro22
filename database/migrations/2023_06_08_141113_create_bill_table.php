@@ -15,14 +15,20 @@ return new class extends Migration
             $table->id();
             $table->date('start_date');
             $table->date('end_date');
-            $table->foreignId('item_id')->constrained('item')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('supplier_id')->constrained('supplier')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('discount1');
+            $table->foreignId('supplier_id')->nullable()->constrained('supplier')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('category_id')->nullable()->constrained('category')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('discount')->nullable();
             $table->string('notes')->nullable();
             $table->string('attachment')->nullable();
             $table->string('footer')->nullable();
-            $table->decimal('total_pay', 8, 2);
+            $table->integer('totalPay')->nullable();
+            $table->decimal('totalTax', 8, 2)->nullable();
+            $table->decimal('totalDiscount', 8, 2)->nullable();
+            $table->integer('order_quantity');
+            $table->decimal('totalAmount', 8, 2)->nullable();
             $table->foreignId('company_id')->constrained('company')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('bill_number')->nullable();
             $table->timestamps();
         });
     }

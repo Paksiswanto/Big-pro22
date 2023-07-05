@@ -50,7 +50,7 @@ class ItemController extends Controller
         $item->description = $request->description;
         $item->active = $active;
         $item->type = $request->type;
-        $item->category_id = $request->category_id; 
+        $item->category_id = $request->category_id;
         $item->selling_price = $request->selling_price;
         $item->purchase_price = $request->purchase_price;
         $item->tax_id = $request->tax_id;

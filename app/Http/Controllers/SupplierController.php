@@ -8,6 +8,7 @@ use App\Exports\SupplierExport;
 use App\Imports\SupplierImport;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -47,10 +48,8 @@ class SupplierController extends Controller
             'city' => $request->city,
             'province' => $request->province,
             'postal_code' => $request->postal_code,
-            'country' => $request->country,
-            'currency' => $request->currency,
             'phone_number' => $request->phone_number,
-            'company_id' => $request->company_id,
+            'company_id' => Auth::user()->company_id,
             'photo' => $filename, // Menyimpan nama file foto
         ]);
 
@@ -82,7 +81,7 @@ class SupplierController extends Controller
                 'country' => $request->country,
                 'currency' => $request->currency,
                 'phone_number' => $request->phone_number,
-                'company_id' => $request->company_id,
+                'company_id' => Auth::user()->company_id,
                 'photo' => $filename, // Menyimpan nama file foto baru
             ]);
         } else {
@@ -92,7 +91,7 @@ class SupplierController extends Controller
         return redirect()->route('supplier');
     }
 
-    public function delete_cos($id)
+    public function delete_supplier($id)
     {
         $data = supplier::find($id);
         $photoPath = 'public/supplier/' . $data->photo;

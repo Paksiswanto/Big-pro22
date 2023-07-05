@@ -215,7 +215,6 @@
 
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
                                                 <!-- Field wrapper start -->
                                                 <div class="field-wrapper-group">
                                                     <div class="field-wrapper">

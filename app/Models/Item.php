@@ -30,5 +30,9 @@ class Item extends Model
     {
         return $this->belongsTo(ItemToInvoice::class); 
     }
+    function itemToBill()
+    {
+        return $this->belongsTo(ItemToBill::class); 
+    }
 
 }

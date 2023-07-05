@@ -83,6 +83,22 @@
 			}
 		}
 	</style>
+	{{-- <style>
+		button {
+		background: none;
+		border: none;
+		cursor: pointer;
+		font-size: 24px;
+		}
+
+		.icon-star_border::before {
+		content: '\2606';
+		}
+
+		.icon-star1::before {
+		content: '\2605';
+		}
+	</style> --}}
 
 </head>
 
@@ -126,7 +142,20 @@
 									<div class="card-header">
 										<div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6">
 											<div class="card-title">
-												<h3>Barang<button type="button" style="border: none; background:transparent;">☆</button></h3>
+												<h3 class="d-flex">
+													<span>Barang</span>
+													@if( in_array('Barang',Auth()->user()->favorit->pluck('name')->toArray()))
+													<form action="/unfavorite/Barang" class="d-flex" method="POST" >
+														@csrf
+													<button id="myButton" type="submit" style="border: none; background-color:white" class="icon-star1"></button>
+													</form>
+													@else
+													<form action="/favorite/Barang" class="d-flex" method="POST" >
+														@csrf
+													<button id="myButton" type="submit" style="border: none; background-color:white" class="icon-star_border"></button>
+													</form>
+													@endif
+												</h3>
 											</div>
 										</div>
 										<div class="col-xl-6 col-lg-6 col-md-8 col-sm-8 col-6">
@@ -397,39 +426,6 @@
 				});
 			}
 		});
-	</script>
-	<script>
-		function cari() {
-			var input = document.querySelector('.search');
-			var keyword = input.value.trim().toLowerCase();
-
-			var rows = document.querySelectorAll('.table-row');
-
-			rows.forEach(function(row) {
-				var name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-				var description = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
-				var category = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
-				var tax = row.querySelector('td:nth-child(5)').textContent.toLowerCase();
-				var purchasePrice = row.querySelector('td:nth-child(6)').textContent.toLowerCase();
-				var sellingPrice = row.querySelector('td:nth-child(7)').textContent.toLowerCase();
-
-				if (
-					name.includes(keyword) ||
-					description.includes(keyword) ||
-					category.includes(keyword) ||
-					tax.includes(keyword) ||
-					purchasePrice.includes(keyword) ||
-					sellingPrice.includes(keyword)
-				) {
-					row.style.display = 'table-row';
-				} else {
-					row.style.display = 'none';
-				}
-			});
-		}
-
-		var searchInput = document.querySelector('.search');
-		searchInput.addEventListener('input', cari);
 	</script>
 </body>
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');;
             $table->foreignId('company_id')->references('id')->on('company')->onUpdate('cascade')->onDelete('cascade');
             $table->date('date');
-            $table->bigInteger('ammount');
+            $table->float('ammount');
             $table->string('description');
             $table->string('payment_method');
             $table->string('reference')->nullable();

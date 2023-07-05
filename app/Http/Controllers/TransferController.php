@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Exports\DownloadTransfer;
+use App\Exports\TransferExport;
 use App\Imports\TransferImport;
 use App\Models\Account;
 use App\Models\Company;
+use App\Models\FavoritSidebar;
 use App\Models\Transaction;
 use App\Models\Transfer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Excel as ExcelExcel;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TransferController extends Controller
@@ -44,7 +47,7 @@ class TransferController extends Controller
             'from_account' => $request->from_account,
             'to_account' => $request->to_account,
             'reference' => $request->reference,
-            'attechment' => $request->attechment,
+            'attachment' => $request->attachment,
             'date' => $request->date,
             'company_id' => Auth::user()->company_id,
             'user_id' => Auth::user()->id,
@@ -156,5 +159,18 @@ class TransferController extends Controller
         $fileName = 'Dataset_' . $randomNumber . '.xlsx'; // Gabungkan nomor acak dengan nama file
 
         return (new DownloadTransfer($from_account,$to_account,$user,$company))->download($fileName);
+    }
+    public function ExportTransfer()
+    {
+        $from_account = Account::all();
+        $to_account = Account::all();
+        $user = User::all();
+        $company = Company::all();
+
+        $randomNumber = random_int(1000, 9999); // Menghasilkan nomor acak antara 1000 dan 9999
+        
+        $fileName = 'Transfer_' . $randomNumber . '.xlsx'; // Menggabungkan nomor acak dengan nama file
+
+        return Excel::download(new TransferExport($from_account->toArray(), $to_account->toArray(), $user->toArray(), $company->toArray()), $fileName);
     }
 }

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
-use App\Models\Customer;
-use Illuminate\Http\Request;
 use App\Exports\CustomerExport;
+use App\Exports\DownloadCustomer;
 use App\Exports\ExportCustomer;
 use App\Imports\CategoryImport;
 use App\Imports\CustomerImport;
-use Illuminate\Validation\Rule;
-use App\Exports\DownloadCustomer;
+use App\Models\Company;
+use App\Models\Customer;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Facades\Excel;
 
 class CostumersController extends Controller
@@ -48,7 +48,9 @@ class CostumersController extends Controller
         $filename = uniqid() . '.' . $photo->getClientOriginalExtension();
         $destinationPath = 'public/customer';
         $photo->move($destinationPath, $filename);
-        customer::create([
+
+        // Menyimpan data customer beserta foto ke dalam database
+        $data = Customer::create([
             'name' => $request->name,
             'email' => $request->email,
             'website' => $request->website,
@@ -61,9 +63,10 @@ class CostumersController extends Controller
             'country' => $request->country,
             'currency' => $request->currency,
             'phone_number' => $request->phone_number,
-            'company_id' => Auth::user()->company_id,   
+            'company_id' => Auth::user()->company_id,
             'photo' => $filename, // Menyimpan nama file foto
         ]);
+        // dd($data);
 
         return redirect()->route('costumers');
     }

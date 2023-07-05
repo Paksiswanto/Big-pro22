@@ -25,12 +25,14 @@
                 <i class="icon-notifications_none"></i>
                 <span class="nav-link-text">Notifikasi</span>
             </a>
-            <div class="mt-5">
-                <a class="nav-link">
-                    <i class="icon-settings1"></i>
-                    <span class="nav-link-text">Settings</span>
+            @foreach (Auth()->user()->favorit as $favorite)
+            <div class="mt-1">
+                <a class="nav-link" href="{{$favorite->link}}">
+                    <i class="{{$favorite->icon}}"></i>
+                    <span class="nav-link-text">{{$favorite->name}}</span>
                 </a>
             </div>
+            @endforeach
         </div>
 
 

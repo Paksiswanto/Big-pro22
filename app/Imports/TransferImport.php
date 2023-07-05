@@ -24,13 +24,12 @@ class TransferImport implements ToModel,WithHeadingRow,WithCustomCsvSettings
         $user = User::where('name', $row['user_id'])->firstOrFail();
         $company = Company::where('name', $row['company_id'])->firstOrFail();
 
-        $date = Carbon::createFromFormat('d/m/Y', $row['date'])->format('Y-m-d');
-
+        $date = Carbon::parse($row['date'])->format('Y-m-d');
         return new Transfer([
             'from_account' => $from_account->id,
             'to_account' => $to_account->id,
-            'user' => $user->id,
-            'company' => $company->id,
+            'user_id' => $user->id,
+            'company_id' => $company->id,
             'date' => $date,
             'ammount' => $row['ammount'],
             'description' => $row['description'],
